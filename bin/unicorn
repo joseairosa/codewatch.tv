@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+require 'timeout'
+unicorn_pid = `test -e pids/unicorn.pid && cat pids/unicorn.pid`.chomp
+
+def new_workers_have_started?(old_pid)
+  current_pid = `test -e pids/unicorn.pid && cat pids/unicorn.pid`.chomp
+
+  if current_pid.empty?
+    false
+  else
+    current_pid.to_i != old_pid && child_pids(current_pid.to_i).size > 1
+  end
+end
+
+def self.child_pids parent_pid
+  process_list = `ps -eo pid,ppid | grep #{parent_pid}`.split("\n")
+  process_list.map(&:strip).find_all { |pr| pr.split.last == parent_pid.to_s }.map { |pr| pr.split.first }
+end
+
+if unicorn_pid.empty?
+  puts 'No unicorn pid found...'
+  `bundle exec unicorn -c config/unicorn.rb -E #{ENV['RACK_ENV']} -D`
+else
+  old_pid = unicorn_pid.to_i
+  Process.kill 'USR2', old_pid
+
+  puts 'Waiting new workers to spin up...'
+  Timeout.timeout(190) do
+    until new_workers_have_started?(old_pid) do
+      print '.'
+      sleep 1
+    end
+  end
+
+  if new_workers_have_started?(old_pid)
+    puts 'New workers are up and running...'
+
+    puts 'Shutting down old unicorn master...'
+    Process.kill 'TERM', old_pid
+    puts 'Unicorn old master successfully terminated...'
+  else
+    puts 'Something went wrong or it took too long to start new workers...'
+  end
+end
