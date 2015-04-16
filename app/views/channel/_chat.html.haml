@@ -32,54 +32,6 @@
                   Sign Out
         .panel-body
           %ul.chat
-            %li.left.clearfix
-              %span.chat-img.pull-left
-                %img.img-circle{:alt => "User Avatar", :src => "http://placehold.it/50/55C1E7/fff&text=U"}/
-              .chat-body.clearfix
-                .header
-                  %strong.primary-font Jack Sparrow
-                  %small.pull-right.text-muted
-                    %span.glyphicon.glyphicon-time>
-                    12 mins ago
-                %p
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                  dolor, quis ullamcorper ligula sodales.
-            %li.right.clearfix
-              %span.chat-img.pull-right
-                %img.img-circle{:alt => "User Avatar", :src => "http://placehold.it/50/FA6F57/fff&text=ME"}/
-              .chat-body.clearfix
-                .header
-                  %small.text-muted
-                    %span.glyphicon.glyphicon-time>
-                    13 mins ago
-                  %strong.pull-right.primary-font Bhaumik Patel
-                %p
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                  dolor, quis ullamcorper ligula sodales.
-            %li.left.clearfix
-              %span.chat-img.pull-left
-                %img.img-circle{:alt => "User Avatar", :src => "http://placehold.it/50/55C1E7/fff&text=U"}/
-              .chat-body.clearfix
-                .header
-                  %strong.primary-font Jack Sparrow
-                  %small.pull-right.text-muted
-                    %span.glyphicon.glyphicon-time>
-                    14 mins ago
-                %p
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                  dolor, quis ullamcorper ligula sodales.
-            %li.right.clearfix
-              %span.chat-img.pull-right
-                %img.img-circle{:alt => "User Avatar", :src => "http://placehold.it/50/FA6F57/fff&text=ME"}/
-              .chat-body.clearfix
-                .header
-                  %small.text-muted
-                    %span.glyphicon.glyphicon-time>
-                    15 mins ago
-                  %strong.pull-right.primary-font Bhaumik Patel
-                %p
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                  dolor, quis ullamcorper ligula sodales.
         .panel-footer
           = form_tag("/chat/#{channel_id}/new_message",:id => 'new_message_form', :remote => true) do
             .input-group

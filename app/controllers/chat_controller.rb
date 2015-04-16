@@ -1,6 +1,7 @@
 class ChatController < ApplicationController
   def new_message
     message  = {
+        user_name: current_user.username,
         chat_id: params[:chat_id],
         content: params[:message] }
 
