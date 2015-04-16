@@ -1,5 +1,6 @@
 class ChatController < ApplicationController
   def new_message
+    raise 'User has to be logged' unless current_user
     message  = {
         user_name: current_user.username,
         chat_id: params[:chat_id],
