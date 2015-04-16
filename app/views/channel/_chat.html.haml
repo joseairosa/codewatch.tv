@@ -81,7 +81,7 @@
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
                   dolor, quis ullamcorper ligula sodales.
         .panel-footer
-          = form_tag("/chat/#{channel_id}/new_message",:id => 'new_message_form') do
+          = form_tag("/chat/#{channel_id}/new_message",:id => 'new_message_form', :remote => true) do
             .input-group
               %input#btn-input.form-control.input-sm{:placeholder => "Type your message here...", :type => "text", :name => "message"}/
               %input#channel_id{:type => "hidden", :value => "#{channel_id}"}

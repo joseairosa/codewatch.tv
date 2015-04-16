@@ -15,13 +15,6 @@ $ ->
     </div>
     </li>
     """
-  $('#new_message_form').submit ->
-    $.post(
-      $(this).attr('action')
-      $(this).serialize())
-    preventDefault()
-    false
-
   socket = io.connect('http://0.0.0.0:5001')
   socket.emit('join', chat_id)
   socket.on 'chat_message', (message) ->
@@ -29,4 +22,3 @@ $ ->
 
   $("#btn-chat").on "click", ->
     console.log("button clicked!")
-    $('#new_message_form').submit()
