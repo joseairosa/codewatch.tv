@@ -23,6 +23,9 @@ module Codewatch
     # config.i18n.default_locale = :de
     Rails.logger = Logger.new(STDOUT)
 
+    require Rails.root.join("lib/custom_public_exceptions")
+    config.exceptions_app = CustomPublicExceptions.new(Rails.public_path)
+
     # Configure Rails generators
     config.generators do |g|
       g.template_engine :haml

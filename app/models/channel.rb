@@ -7,7 +7,7 @@ class Channel
 
   index title: 1
 
-  field :title,           type: String
+  field :title,           type: String, default: 'Untitled broadcast'
   field :description,     type: String
   field :total_viewers,   type: Integer, default: 0
   field :current_viewers, type: Integer, default: 0

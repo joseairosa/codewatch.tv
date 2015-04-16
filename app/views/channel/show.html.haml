@@ -1,1 +1,12 @@
-= render 'chat'
+.row
+  .col-md-12
+    %h1.title= channel.title
+.row
+  .col-xs-12.col-sm-6.col-md-8
+    = render 'stream'
+  .col-xs-6.col-md-4
+    = render 'chat'
+.row
+  .col-md-12
+    %h3 Description
+    .description= channel.description

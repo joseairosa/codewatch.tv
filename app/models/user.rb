@@ -8,6 +8,8 @@ class User
          :recoverable, :rememberable, :trackable, :validatable,
          :authentication_keys => [:login]
 
+  has_one :channel
+
   ## Database authenticatable
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
@@ -50,6 +52,8 @@ class User
 
   attr_accessor :login
 
+  after_create :create_channel
+
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login).downcase
@@ -61,5 +65,11 @@ class User
 
   def self.valid_stream_key?(username, stream_key)
     self.where(username: username, stream_key: stream_key).count == 1
+  end
+
+  private
+
+  def create_channel
+    Channel.create!(user: self)
   end
 end

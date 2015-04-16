@@ -17,13 +17,19 @@ Codewatch::Application.routes.draw do
   #     resources :products
   #   end
 
-  resources :channel
+  get 'channel/:username' => 'channel#show', as: :user_channel
+
+  # Errors
+  match '404' => 'errors#error404', via: [ :get, :post, :patch, :delete ]
 
   post 'chat/:chat_id/new_message' => 'chat#new_message'
   namespace :api do
     namespace :v1 do
       resource :auth, defaults: {format: 'json'} do
         post 'stream' => 'auth#stream', defaults: {format: 'json'}
+      end
+      resource :smil, defaults: {format: 'text'} do
+        get ':username' => 'smil#generate', defaults: {format: 'text'}
       end
     end
   end
