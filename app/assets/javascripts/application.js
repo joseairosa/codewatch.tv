@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require socket.io
+//= require chat
 //= require_tree .
