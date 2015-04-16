@@ -15,4 +15,7 @@
 //= require socket.io
 //= require chat
 //= require bootstrap.min
+//= require jwplayer/jwplayer
 //= require_tree .
+
+jwplayer.key="RdBgRDffK8CxoR+GCaOb0iinIDch8TJmzRxvoA==";

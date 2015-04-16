@@ -17,7 +17,10 @@ Codewatch::Application.routes.draw do
   #     resources :products
   #   end
 
-  resources :channel
+  get 'channel/:username' => 'channel#show', as: :user_channel
+
+  # Errors
+  match '404' => 'errors#error404', via: [ :get, :post, :patch, :delete ]
 
   post 'chat/:chat_id/new_message' => 'chat#new_message'
   namespace :api do
