@@ -1,0 +1,15 @@
+defaults: &defaults
+  database: <%= (ENV['CODEWATCH_MONGO_DATABASE'] || 'codewatch') %>
+  hosts:
+    - localhost:27017
+development:
+  sessions:
+    default:
+      <<: *defaults
+      options:
+  options:
+    raise_not_found_error: false
+production:
+  sessions:
+    default:
+      <<: *defaults
