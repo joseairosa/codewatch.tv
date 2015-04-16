@@ -59,6 +59,18 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+
+group :development do
+  gem 'better_errors', '~> 2.1.1'
+
+  gem 'awesome_print', git: 'git@github.com:joseairosa/awesome_print.git'
+
+  gem 'pry-plus', git: 'git@github.com:avantcredit/pry-plus', require: false # Use a pry-plus fork with support for Ruby 2.X
+  gem 'pry-nav', require: false
+
+  gem 'binding_of_caller'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

@@ -1,4 +1,4 @@
-Myapp::Application.configure do
+Codewatch::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -26,4 +26,19 @@ Myapp::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # Adds additional error checking when serving assets at runtime.
+  # Checks for improperly declared sprockets dependencies.
+  # Raises helpful error messages.
+  config.assets.raise_runtime_errors = true
+
+  # Raises error for missing translations
+  # config.action_view.raise_on_missing_translations = true
+
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+  # Stops server from blocking on requests; Needed for websockets
+  # config.middleware.delete Rack::Lock
+
+  config.default_url = 'http://localhost:3000'
 end

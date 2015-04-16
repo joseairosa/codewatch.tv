@@ -8,7 +8,7 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
-module Myapp
+module Codewatch
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -21,5 +21,11 @@ module Myapp
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    Rails.logger = Logger.new(STDOUT)
+
+    # Configure Rails generators
+    config.generators do |g|
+      g.template_engine :haml
+    end
   end
 end
