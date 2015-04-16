@@ -1,0 +1,19 @@
+.col-md-8
+  %h1.title= channel.title
+.col-md-4#channel-stats
+  .row
+    .col-md-4
+      .navbar.navbar-default
+        .navbar-brand
+          .fa.fa-eye
+        .navbar-text.text-center= channel.total_viewers
+    .col-md-4
+      .navbar.navbar-default
+        .navbar-brand
+          .fa.fa-user
+        .navbar-text.text-center= channel.current_viewers
+    .col-md-4
+      .navbar.navbar-default
+        .navbar-brand
+          .fa.fa-heart
+        .navbar-text.text-center= channel.likes
