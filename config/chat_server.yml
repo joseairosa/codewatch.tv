@@ -1,0 +1,6 @@
+development:
+  host: localhost
+  redis_port: 6379
+production:
+  host: 46.101.12.137
+  redis_port: 6379
