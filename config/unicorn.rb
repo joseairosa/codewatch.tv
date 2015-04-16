@@ -35,10 +35,10 @@ after_fork do |server, worker|
     puts 'Unicorn worker intercepting TERM and doing nothing. Wait for master to send QUIT'
   end
 
-  require 'bunny'
-
-  defined?(ActiveRecord::Base) and
-      ActiveRecord::Base.establish_connection
-
-  QUEUE_CONNECTION.start
+  # require 'bunny'
+  #
+  # defined?(ActiveRecord::Base) and
+  #     ActiveRecord::Base.establish_connection
+  #
+  # QUEUE_CONNECTION.start
 end
