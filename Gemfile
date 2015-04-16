@@ -63,9 +63,9 @@ end
 group :development do
   gem 'better_errors', '~> 2.1.1'
 
-  gem 'awesome_print', git: 'git@github.com:joseairosa/awesome_print.git'
+  gem 'awesome_print', git: 'https://github.com/michaeldv/awesome_print.git'
 
-  gem 'pry-plus', git: 'git@github.com:avantcredit/pry-plus', require: false # Use a pry-plus fork with support for Ruby 2.X
+  gem 'pry-plus', git: 'https://github.com/avantcredit/pry-plus.git', require: false # Use a pry-plus fork with support for Ruby 2.X
   gem 'pry-nav', require: false
 
   gem 'binding_of_caller'

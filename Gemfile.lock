@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:avantcredit/pry-plus
+  remote: https://github.com/avantcredit/pry-plus.git
   revision: f3844a8dd9862e9fd01d77d7bcbc7597cbb8f1c4
   specs:
     pry-plus (1.0.2)
@@ -12,10 +12,10 @@ GIT
       pry-stack_explorer
 
 GIT
-  remote: git@github.com:joseairosa/awesome_print.git
-  revision: f36e788584801aa528a284693b54faeee4467a6d
+  remote: https://github.com/michaeldv/awesome_print.git
+  revision: d8aeb66b4b03dfb2cc1aec4e3187ced2f826d11f
   specs:
-    awesome_print (1.2.0)
+    awesome_print (1.6.2)
 
 GEM
   remote: https://rubygems.org/
