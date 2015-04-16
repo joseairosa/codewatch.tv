@@ -1,6 +1,6 @@
 = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-signin'}) do |f|
   %h2.form-signin-heading Please sign in
-  = f.email_field :email, autofocus: '', placeholder: 'Email address', required: '', type: 'email', class: 'form-control'
+  = f.text_field :login, autofocus: '', placeholder: 'Email address or username', required: '', type: 'text', class: 'form-control'
   = f.password_field :password, autocomplete: 'off', placeholder: 'Password', required: '', type: 'password', class: 'form-control'
   .checkbox
     %label
