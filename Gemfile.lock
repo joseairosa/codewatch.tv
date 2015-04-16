@@ -172,8 +172,6 @@ GEM
     pry-docmore (0.1.1)
       pry
       pry-doc
-    pry-nav (0.2.4)
-      pry (>= 0.9.10, < 0.11.0)
     pry-rescue (1.4.1)
       interception (>= 0.5)
       pry
@@ -294,7 +292,6 @@ DEPENDENCIES
   jquery-rails
   mongoid (~> 4.0.0)
   mongoid_token (~> 2.1.1)
-  pry-nav
   pry-plus!
   rails (= 4.2.1)
   rails_bootstrap_navbar
