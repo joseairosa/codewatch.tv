@@ -10,6 +10,16 @@ Codewatch::Application.routes.draw do
 
   get 'dashboard' => 'dashboard#index', as: :user_dashboard
 
+  # Example resource route within a namespace:
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
+
+  resources :channel
+
+  post 'chat/:chat_id/new_message' => 'chat#new_message'
   namespace :api do
     namespace :v1 do
       resource :auth, defaults: {format: 'json'} do

@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require socket.io
+//= require chat
 //= require bootstrap.min
 //= require_tree .
