@@ -6,7 +6,7 @@ $ ->
     </span>
     <div class='chat-body clearfix'>
       <div class='header'>
-        <strong class='primary-font'>Jack Sparrow</strong>
+        <strong class='primary-font'>{{username}}</strong>
         <small class='pull-right text-muted'>
           <span class='glyphicon glyphicon-time'>12 mins ago</span>
         </small>
@@ -15,10 +15,10 @@ $ ->
     </div>
     </li>
     """
-  socket = io.connect('http://0.0.0.0:5001')
+  socket = io.connect("http://<%= CHAT_SERVER_HOST %>:5001")
   socket.emit('join', chat_id)
   socket.on 'chat_message', (message) ->
-    $("ul.chat").append(chatMessageTemplate.replace("{{message}}", message.content))
+    $("ul.chat").append(chatMessageTemplate.replace("{{message}}", message.content).replace("{{username}}", message.user_name))
 
   $("#btn-chat").on "click", ->
     console.log("button clicked!")
