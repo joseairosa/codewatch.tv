@@ -28,6 +28,9 @@ Codewatch::Application.routes.draw do
       resource :auth, defaults: {format: 'json'} do
         post 'stream' => 'auth#stream', defaults: {format: 'json'}
       end
+      resource :smil, defaults: {format: 'text'} do
+        get ':username' => 'smil#generate', defaults: {format: 'text'}
+      end
     end
   end
 end
