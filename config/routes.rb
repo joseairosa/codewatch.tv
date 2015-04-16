@@ -55,4 +55,6 @@ Codewatch::Application.routes.draw do
   #   end
 
   resources :channel
+
+  post 'chat/:chat_id/new_message' => 'chat#new_message'
 end

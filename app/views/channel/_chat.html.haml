@@ -81,8 +81,10 @@
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
                   dolor, quis ullamcorper ligula sodales.
         .panel-footer
-          .input-group
-            %input#btn-input.form-control.input-sm{:placeholder => "Type your message here...", :type => "text"}/
-            %span.input-group-btn
-              %button#btn-chat.btn.btn-warning.btn-sm
-                Send
+          = form_tag("/chat/#{channel_id}/new_message",:id => 'new_message_form') do
+            .input-group
+              %input#btn-input.form-control.input-sm{:placeholder => "Type your message here...", :type => "text", :name => "message"}/
+              %input#channel_id{:type => "hidden", :value => "#{channel_id}"}
+              %span.input-group-btn
+                %button#btn-chat.btn.btn-warning.btn-sm
+                  Send

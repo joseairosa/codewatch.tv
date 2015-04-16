@@ -1,4 +1,5 @@
 $ ->
+  chat_id = $("#channel_id").val()
   chatMessageTemplate = """<li class='left clearfix'>
     <span class='chat-img pull-left'>
     <img alt='User Avatar' class='img-circle' src='http://placehold.it/50/55C1E7/fff&text=U'/>
@@ -14,14 +15,18 @@ $ ->
     </div>
     </li>
     """
-  socket = io.connect('http://0.0.0.0:5001')
-  socket.on 'chat_message', (message) ->
-    $("ul.chat").append(chatMessageTemplate.replace("{{message}}", message))
+  $('#new_message_form').submit ->
+    $.post(
+      $(this).attr('action')
+      $(this).serialize())
+    preventDefault()
+    false
 
-  sendChat = (message) ->
-    console.log("Sending chat " + message)
-    socket.emit('chat_message', message)
+  socket = io.connect('http://0.0.0.0:5001')
+  socket.emit('join', chat_id)
+  socket.on 'chat_message', (message) ->
+    $("ul.chat").append(chatMessageTemplate.replace("{{message}}", message.content))
 
   $("#btn-chat").on "click", ->
     console.log("button clicked!")
-    sendChat($(".form-control.input-sm").val())
+    $('#new_message_form').submit()
