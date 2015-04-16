@@ -1,0 +1,60 @@
+.row#dashboard
+  .col-md-6.col-md-offset-1
+    %h1 Welcome to your dashboard!
+
+    #tabs-panel{:role => "tabpanel"}
+      %ul.nav.nav-pills{:role => "tablist"}
+        %li.active{:role => "presentation"}
+          %a{"aria-controls" => "home", "data-toggle" => "pill", :href => "#home", :role => "tab"} My Details
+        %li{:role => "presentation"}
+          %a{"aria-controls" => "password", "data-toggle" => "pill", :href => "#password", :role => "tab"} Password
+        %li{:role => "presentation"}
+          %a{"aria-controls" => "stream_key", "data-toggle" => "pill", :href => "#stream_key", :role => "tab"} Stream Key
+      .tab-content
+        #home.tab-pane.active{:role => "tabpanel"}
+          .panel.panel-default
+            .panel-body
+              .h3 Your details
+
+              %form.form-horizontal
+                .form-group
+                  %label.col-sm-2.control-label{:for => "inputUsername"} Username
+                  .col-sm-10
+                    %input#inputUsername.form-control.disabled{type: "text", value: current_user.username, disabled: true}
+                .form-group
+                  %label.col-sm-2.control-label{:for => "inputEmail"} Email
+                  .col-sm-10
+                    %input#inputEmail.form-control{type: "email", value: current_user.email}
+                .form-group
+                  .col-sm-offset-2.col-sm-10
+                    %button.btn.btn-default{:type => "submit"} Update
+        #password.tab-pane{role: 'tabpanel'}
+          .panel.panel-default
+            .panel-body
+              .h3 Change password
+
+              %form.form-horizontal
+                .form-group
+                  %label.col-sm-2.control-label{:for => "inputCurrentPassword"} Current Password
+                  .col-sm-10
+                    %input#inputCurrentPassword.form-control{:type => "password"}
+                .form-group
+                  %label.col-sm-2.control-label{:for => "inputNewPassword"} New Password
+                  .col-sm-10
+                    %input#inputNewPassword.form-control{:type => "password"}
+                .form-group
+                  %label.col-sm-2.control-label{:for => "inputConfirmNewPassword"} Confirm New Password
+                  .col-sm-10
+                    %input#inputConfirmNewPassword.form-control{:type => "password"}
+                .form-group
+                  .col-sm-offset-2.col-sm-10
+                    %button.btn.btn-default{:type => "submit"} Change
+        #stream_key.tab-pane{:role => "tabpanel"}
+          .panel.panel-default
+            .panel-body
+              .h3 Current Stream Key
+
+              .lead.text-center= current_user.stream_key
+
+
+

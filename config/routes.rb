@@ -8,6 +8,8 @@ Codewatch::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root to: 'home#index'
 
+  get 'dashboard' => 'dashboard#index', as: :user_dashboard
+
   namespace :api do
     namespace :v1 do
       resource :auth, defaults: {format: 'json'} do

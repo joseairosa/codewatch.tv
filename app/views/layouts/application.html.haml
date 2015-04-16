@@ -23,10 +23,12 @@
       = navbar_header brand: 'codewatch.tv'
       = navbar_group do
         = navbar_item 'Home', root_path
+        = navbar_item 'Browse', root_path
       = navbar_group align: 'right' do
         - if user_signed_in?
-          = navbar_item "User: #{current_user.username}", edit_user_registration_path,method: :get
-          = navbar_item 'Log Out', destroy_user_session_path, method: :get
+          = navbar_dropdown current_user.username do
+            = navbar_item 'Dashboard', user_dashboard_path
+            = navbar_item 'Log Out', destroy_user_session_path, method: :get
         - else
           = navbar_item 'Log In', new_user_session_path, method: :get
 
