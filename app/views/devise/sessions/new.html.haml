@@ -1,12 +1,15 @@
-= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-signin'}) do |f|
-  %h2.form-signin-heading Please sign in
-  = f.text_field :login, autofocus: '', placeholder: 'Email address or username', required: '', type: 'text', class: 'form-control'
-  = f.password_field :password, autocomplete: 'off', placeholder: 'Password', required: '', type: 'password', class: 'form-control'
-  .checkbox
-    %label
-      - if devise_mapping.rememberable?
-        = f.check_box :remember_me, value: 'remember-me'
-        Remember me
-  = f.submit 'Sign in', class: 'btn btn-lg btn-primary btn-block'
+%div.container
+  = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-signin'}) do |f|
+    %h2.form-signin-heading Please sign in
+    %div.form-group
+      = f.text_field :login, autofocus: '', placeholder: 'Email address or username', required: '', type: 'text', class: 'form-control'
+    %div.form-group
+      = f.password_field :password, autocomplete: 'off', placeholder: 'Password', required: '', type: 'password', class: 'form-control'
+    .checkbox
+      %label
+        - if devise_mapping.rememberable?
+          = f.check_box :remember_me, value: 'remember-me'
+          Remember me
+    = f.submit 'Sign in', class: 'btn btn-lg btn-primary btn-block'
 
-  = render 'devise/shared/links'
+    = render 'devise/shared/links'
