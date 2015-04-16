@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class User
   include Mongoid::Document
   # Include default devise modules. Others available are:
@@ -41,6 +43,11 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
+  field :stream_key,        type: String, default: SecureRandom.uuid
+
+  index stream_key: 1
+  index username: 1
+
   attr_accessor :login
 
   def self.find_for_database_authentication(warden_conditions)
@@ -50,5 +57,9 @@ class User
     else
       where(conditions).first
     end
+  end
+
+  def self.valid_stream_key?(username, stream_key)
+    self.where(username: username, stream_key: stream_key).count == 1
   end
 end
