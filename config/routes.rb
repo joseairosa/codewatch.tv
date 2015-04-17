@@ -20,6 +20,8 @@ Codewatch::Application.routes.draw do
 
   get 'channel/:username' => 'channel#show', as: :user_channel
 
+  get 'categories' => 'categories#index', as: :categories
+
   # Errors
   match '404' => 'errors#error404', via: [ :get, :post, :patch, :delete ]
 

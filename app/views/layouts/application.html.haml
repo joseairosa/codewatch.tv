@@ -23,7 +23,7 @@
       = navbar_header brand: 'codewatch.tv'
       = navbar_group do
         = navbar_item 'Home', root_path
-        = navbar_item 'Browse', root_path
+        = navbar_item 'Browse', categories_path
       = navbar_group align: 'right' do
         - if user_signed_in?
           = navbar_dropdown current_user.username do

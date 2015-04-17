@@ -1,0 +1,6 @@
+- @categories.each_slice(@categories.size / 5).to_a.each do |category_slice|
+  .row
+    - category_slice.each do |category|
+      .col-md-1
+        .category
+          = category.name
