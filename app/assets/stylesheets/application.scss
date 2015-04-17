@@ -3,6 +3,7 @@
 @import "font-awesome";
 @import "categories";
 @import "chat";
+@import "typeahead";
 
 #dashboard {
   #tabs-panel {
@@ -15,5 +16,35 @@
       margin-bottom: 45px;
       padding-left: 25px;
     }
+  }
+}
+
+#channel {
+  .title {
+    margin-top: 6px;
+    margin-bottom: 20px;
+  }
+  #channel-stats {
+    .navbar-text {
+      float: none;
+    }
+  }
+}
+
+#edit-channel {
+  .form-group-lg .form-control {
+    height: 52px;
+  }
+  .preview {
+    background-color: #dddddd;
+    height: 707px;
+    line-height: 707px;
+    text-align: center;
+  }
+  #channel-save {
+    margin-top: 25px;
+  }
+  #channel-category, .tt-query, .tt-hint {
+    margin-left: 10px;
   }
 }

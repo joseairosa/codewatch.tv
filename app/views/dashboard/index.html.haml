@@ -16,7 +16,7 @@
             .panel-body
               .h3 Your details
 
-              %form.form-horizontal
+              = form_tag({controller: :dashboard, action: :update_user}, {:class => 'form-horizontal'}) do
                 .form-group
                   %label.col-sm-2.control-label{:for => "inputUsername"} Username
                   .col-sm-10
@@ -24,7 +24,7 @@
                 .form-group
                   %label.col-sm-2.control-label{:for => "inputEmail"} Email
                   .col-sm-10
-                    %input#inputEmail.form-control{type: "email", value: current_user.email}
+                    %input#inputEmail.form-control{type: "email", name: "user[email]", value: current_user.email}
                 .form-group
                   .col-sm-offset-2.col-sm-10
                     %button.btn.btn-default{:type => "submit"} Update
@@ -33,19 +33,19 @@
             .panel-body
               .h3 Change password
 
-              %form.form-horizontal
+              = form_tag({controller: :dashboard, action: :update_password}, {:class => 'form-horizontal'}) do
                 .form-group
                   %label.col-sm-2.control-label{:for => "inputCurrentPassword"} Current Password
                   .col-sm-10
-                    %input#inputCurrentPassword.form-control{:type => "password"}
+                    %input#inputCurrentPassword.form-control{:type => "password", name: "user[current_password]"}
                 .form-group
                   %label.col-sm-2.control-label{:for => "inputNewPassword"} New Password
                   .col-sm-10
-                    %input#inputNewPassword.form-control{:type => "password"}
+                    %input#inputNewPassword.form-control{:type => "password", name: "user[password]"}
                 .form-group
                   %label.col-sm-2.control-label{:for => "inputConfirmNewPassword"} Confirm New Password
                   .col-sm-10
-                    %input#inputConfirmNewPassword.form-control{:type => "password"}
+                    %input#inputConfirmNewPassword.form-control{:type => "password", name: "user[password_confirmation]"}
                 .form-group
                   .col-sm-offset-2.col-sm-10
                     %button.btn.btn-default{:type => "submit"} Change

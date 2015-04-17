@@ -8,6 +8,8 @@ class Category
 
   field :name, type: String
 
+  has_many :channel
+
   def self.find_or_create(name)
     found = self.where(name: name)
     if found.count == 0

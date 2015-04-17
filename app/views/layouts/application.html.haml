@@ -29,6 +29,7 @@
           = navbar_dropdown current_user.username do
             = navbar_item 'Dashboard', user_dashboard_path
             = navbar_item 'My Channel', user_channel_path(current_user.username)
+            = navbar_item 'Edit Channel', edit_user_channel_path
             = navbar_item 'Log Out', destroy_user_session_path, method: :get
         - else
           = navbar_item 'Log In', new_user_session_path, method: :get
@@ -38,9 +39,9 @@
       .row-fluid
         .span12
           - if notice
-            .alert.alert-success{role: 'alert'}= notice
+            .alert.alert-success.text-center{role: 'alert'}= notice
           - if alert
-            .alert.alert-danger{role: 'alert'}= alert
+            .alert.alert-danger.text-center{role: 'alert'}= alert
           = yield
 
         %footer
