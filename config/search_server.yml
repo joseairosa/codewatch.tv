@@ -1,0 +1,4 @@
+development:
+    host: localhost
+production:
+    host: 46.101.12.137

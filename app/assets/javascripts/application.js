@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.autocomplete.min
 //= require socket.io
 //= require chat
+//= require search
 //= require bootstrap.min
 //= require jwplayer/jwplayer
 //= require typeahead.bundle.min

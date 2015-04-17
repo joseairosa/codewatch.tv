@@ -1,10 +1,9 @@
 class Category
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Concerns::Searchable
 
   index name: 1
-
-  has_many :channels, inverse_of: :category
 
   field :name, type: String
 
