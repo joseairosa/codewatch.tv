@@ -7,6 +7,8 @@ $(function() {
         maxHeight = height;
       }
       $(this).css('height', maxHeight-100);
+      $(this).css('max-height', maxHeight-100);
+      $(this).scrollTop($(this).prop("scrollHeight"));
     });
   }
   setTimeout(function(){

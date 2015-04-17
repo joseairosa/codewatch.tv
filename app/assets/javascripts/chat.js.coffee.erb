@@ -1,20 +1,18 @@
 $ ->
   chat_id = $("#channel_id").val()
-  chatMessageTemplate = """<li class='left clearfix'>
-    <span class='chat-img pull-left'>
-    </span>
-    <div class='chat-body clearfix'>
-      <div class='header'>
-        <strong class='primary-font'>{{username}}</strong>
-    </div>
-      <p>{{message}}</p>
-    </div>
+  chatMessageTemplate = """
+    <li class='chat-entry left clearfix'>
+      <div class='chat-body clearfix'>
+        <p><span class='chat-username'>{{username}}:</span> {{message}}</p>
+      </div>
     </li>
     """
   socket = io.connect("http://<%= CHAT_SERVER_HOST %>:5001")
   socket.emit('join', chat_id)
   socket.on 'chat_message', (message) ->
     $("ul.chat").append(chatMessageTemplate.replace("{{message}}", message.content).replace("{{username}}", message.user_name))
+    $('#chat-body').scrollTop($('#chat-body').prop("scrollHeight"))
+    $('#chat-message').val('');
 
   $("#btn-chat").on "click", ->
     console.log("button clicked!")

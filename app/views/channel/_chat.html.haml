@@ -1,32 +1,7 @@
-.panel.panel-primary
+.panel.panel-default
   .panel-heading
     %span.glyphicon.glyphicon-comment
-    Chat
     .btn-group.pull-right
-      %button.btn.btn-default.btn-xs.dropdown-toggle{"data-toggle" => "dropdown", :type => "button"}
-        %span.glyphicon.glyphicon-chevron-down
-      %ul.dropdown-menu.slidedown
-        %li
-          %a{:href => "http://www.jquery2dotnet.com"}
-            %span.glyphicon.glyphicon-refresh>
-            Refresh
-        %li
-          %a{:href => "http://www.jquery2dotnet.com"}
-            %span.glyphicon.glyphicon-ok-sign>
-            Available
-        %li
-          %a{:href => "http://www.jquery2dotnet.com"}
-            %span.glyphicon.glyphicon-remove>
-            Busy
-        %li
-          %a{:href => "http://www.jquery2dotnet.com"}
-            %span.glyphicon.glyphicon-time
-            Away
-        %li.divider
-        %li
-          %a{:href => "http://www.jquery2dotnet.com"}
-            %span.glyphicon.glyphicon-off
-            Sign Out
   .panel-body#chat-body
     %ul.chat
   .panel-footer
@@ -34,7 +9,7 @@
       %input#channel_id{:type => "hidden", :value => "#{channel_id}"}
       .input-group
         - if current_user
-          %input#btn-input.form-control.input-sm{:placeholder => "Type your message here...", :type => "text", :name => "message"}/
+          %input#chat-message.btn-input.form-control.input-sm{:placeholder => "Type your message here...", :type => "text", :name => "message"}/
           %span.input-group-btn
             %button#btn-chat.btn.btn-warning.btn-sm
               Send
