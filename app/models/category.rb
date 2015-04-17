@@ -4,6 +4,8 @@ class Category
 
   index name: 1
 
+  has_many :channels, inverse_of: :category
+
   field :name, type: String
 
   def self.find_or_create(name)

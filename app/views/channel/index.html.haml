@@ -1,0 +1,8 @@
+- unless @channels.empty?
+  - slice_size = (@channels.size >= 5 ? @channels.size / 5 : @channels.size)
+  - @channels.each_slice(slice_size).to_a.each do |channel_slice|
+    .row
+      - channel_slice.each do |channel|
+        .col-md-2
+          .channel
+            = channel.title

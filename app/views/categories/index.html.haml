@@ -3,4 +3,5 @@
     - category_slice.each do |category|
       .col-md-2
         .category
-          = category.name
+          %a{href: "/channel?category_id=#{category.id}"}
+            = category.name
