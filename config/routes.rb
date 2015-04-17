@@ -9,6 +9,7 @@ Codewatch::Application.routes.draw do
   root to: 'home#index'
 
   get 'dashboard' => 'dashboard#index', as: :user_dashboard
+  match 'edit/channel' => 'dashboard#edit_channel', as: :edit_user_channel, via: [ :get, :patch, :delete ]
 
   # Example resource route within a namespace:
   #   namespace :admin do

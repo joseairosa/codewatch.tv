@@ -28,3 +28,17 @@
   }
 }
 
+#edit-channel {
+  .form-group-lg .form-control {
+    height: 52px;
+  }
+  .preview {
+    background-color: #dddddd;
+    height: 707px;
+    line-height: 707px;
+    text-align: center;
+  }
+  #channel-save {
+    margin-top: 25px;
+  }
+}

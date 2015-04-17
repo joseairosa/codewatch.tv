@@ -3,4 +3,14 @@ class DashboardController < ApplicationController
 
   def index
   end
+
+  def edit_channel
+
+  end
+
+  def channel
+    current_user.channel
+  end
+
+  helper_method :channel
 end
