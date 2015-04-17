@@ -1,8 +1,8 @@
 #stream-player
 :javascript
   jwplayer("stream-player").setup({
-    file: '/api/v1/smil/#{params[:username]}',
-    type: 'rtmp',
+    file: '#{file}',
+    type: '#{type}',
     autostart: true,
     width: '100%',
     aspectratio: "16:9"

@@ -14,7 +14,6 @@ Codewatch::Application.routes.draw do
   post 'dashboard/update_user' => 'dashboard#update_user', as: :update_user
   post 'dashboard/update_password' => 'dashboard#update_password', as: :update_password
 
-
   # Example resource route within a namespace:
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController
@@ -29,6 +28,9 @@ Codewatch::Application.routes.draw do
   get 'categories' => 'categories#index', as: :categories
 
   get 'search' => 'search#search', as: :search
+
+  get 'vod/:username' => 'vod#index', as: :list_vod
+  get 'vod/:username/:recording_id' => 'vod#show', as: :show_vod
 
   # Errors
   match '404' => 'errors#error404', via: [ :get, :post, :patch, :delete ]

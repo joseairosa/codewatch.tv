@@ -6,5 +6,5 @@ class Recording
 
   field :name,  type: String
   field :views, type: Integer, default: 0
-
+  field :title, type: String
 end

@@ -1,0 +1,14 @@
+.row
+  .col-md-6.col-md-offset-3
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Name
+          %th Date
+      %tbody
+        - recordings.each do |recording|
+          %tr
+            %td= link_to('Recording', show_vod_path(recording.user.username, recording.id))
+            %td= recording.created_at
+
+

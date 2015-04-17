@@ -19,6 +19,4 @@ class ChannelController < ApplicationController
   def channel
     @channel
   end
-
-
 end

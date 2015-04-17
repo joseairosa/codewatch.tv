@@ -3,7 +3,7 @@
     = render 'header'
   .row#channel-interactive
     .col-xs-12.col-sm-6.col-md-8
-      = render 'stream'
+      = render partial: 'shared/stream', locals: {file: "/api/v1/smil/#{params[:username]}", type: 'rtmp'}
     .col-xs-6.col-md-4
       = render 'chat'
   .row
