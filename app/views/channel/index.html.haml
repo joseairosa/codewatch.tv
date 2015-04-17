@@ -5,4 +5,5 @@
       - channel_slice.each do |channel|
         .col-md-2
           .channel
-            = channel.title
+            %a{href: "/channel/#{channel.user.username}"}
+              = channel.title
