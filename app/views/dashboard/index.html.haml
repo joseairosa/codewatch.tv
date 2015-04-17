@@ -16,7 +16,7 @@
             .panel-body
               .h3 Your details
 
-              %form.form-horizontal
+              = form_tag({controller: :dashboard, action: :update_user}, {:class => 'form-horizontal'}) do
                 .form-group
                   %label.col-sm-2.control-label{:for => "inputUsername"} Username
                   .col-sm-10
@@ -24,7 +24,7 @@
                 .form-group
                   %label.col-sm-2.control-label{:for => "inputEmail"} Email
                   .col-sm-10
-                    %input#inputEmail.form-control{type: "email", value: current_user.email}
+                    %input#inputEmail.form-control{type: "email", name: "user[email]", value: current_user.email}
                 .form-group
                   .col-sm-offset-2.col-sm-10
                     %button.btn.btn-default{:type => "submit"} Update
