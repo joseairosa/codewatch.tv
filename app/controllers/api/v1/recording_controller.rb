@@ -1,6 +1,6 @@
 class Api::V1::RecordingController < Api::V1::ApiController
   def stats
-    recording = Recording.find(params[:pageurl].split('/').last).first
+    recording = Recording.find(params[:pageurl].split('/').last)
     if recording
       case params[:event]
         when 'play_done'
