@@ -3,6 +3,7 @@
 @import "font-awesome";
 @import "categories";
 @import "chat";
+@import "typeahead";
 
 #dashboard {
   #tabs-panel {
@@ -42,5 +43,8 @@
   }
   #channel-save {
     margin-top: 25px;
+  }
+  #channel-category, .tt-query, .tt-hint {
+    margin-left: 10px;
   }
 }
