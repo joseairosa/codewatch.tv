@@ -7,6 +7,7 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :authentication_keys => [:login]
+  devise :omniauthable, :omniauth_providers => [:facebook]
 
   has_one :channel
 
@@ -19,6 +20,8 @@ class User
             :uniqueness => {
                 :case_sensitive => false
             }
+  field :provider, :type => String
+  field :uid, :type => String
 
   ## Recoverable
   field :reset_password_token,   type: String
