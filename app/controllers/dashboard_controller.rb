@@ -13,11 +13,26 @@ class DashboardController < ApplicationController
     @user = User.find(current_user.id)
 
     if @user.update(user_params)
+      flash[:notice] = "User updated."
+      redirect_to user_dashboard_path
+    else
+      flash[:alert] = @user.errors.full_messages.first
+      redirect_to user_dashboard_path
+    end
+  end
+
+  def update_password
+    @user = User.find(current_user.id)
+
+    if @user.update_with_password(user_params) && !params[:user][:password].blank?
+      flash[:notice] = "Password updated."
       # Sign in the user by passing validation in case their password changed
       sign_in @user, :bypass => true
       redirect_to user_dashboard_path
     else
-      render "edit"
+      @user.errors[:password] << t('errors.messages.blank') if params[:user][:password].blank?
+      flash[:alert] = @user.errors.full_messages.first
+      redirect_to user_dashboard_path
     end
   end
 
@@ -31,6 +46,6 @@ class DashboardController < ApplicationController
 
   def user_params
     # NOTE: Using `strong_parameters` gem
-    params.required(:user).permit(:email)
+    params.required(:user).permit(:email, :current_password, :password, :password_confirmation)
   end
 end
