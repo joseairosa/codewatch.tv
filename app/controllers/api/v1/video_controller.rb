@@ -19,7 +19,7 @@ class Api::V1::VideoController < Api::V1::ApiController
   def new_recording
     user = User.where(username: params[:name]).first
     if user
-      Recording.create!(title: user.channel.title, user: user, name: params[:path].gsub('/recordings/',''))
+      Recording.create!(title: user.channel.title, user: user, name: params[:path].gsub('/tmp/',''))
     end
     respond_to do |format|
       format.json { render json: {auth:'ok'}, status: 200 }
