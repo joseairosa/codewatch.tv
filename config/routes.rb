@@ -11,6 +11,10 @@ Codewatch::Application.routes.draw do
   get 'dashboard' => 'dashboard#index', as: :user_dashboard
   match 'edit/channel' => 'dashboard#edit_channel', as: :edit_user_channel, via: [ :get, :post, :delete ]
 
+  post 'dashboard/update_user' => 'dashboard#update_user', as: :update_user
+  post 'dashboard/update_password' => 'dashboard#update_password', as: :update_password
+
+
   # Example resource route within a namespace:
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController
