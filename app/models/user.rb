@@ -14,9 +14,9 @@ class User
   has_many :recordings
 
   ## Database authenticatable
-  field :email,              type: String, default: ""
+  field :email, type: String, default: ""
   field :encrypted_password, type: String, default: ""
-  field :username,           type: String
+  field :username, type: String
   validates :username,
             :presence => true,
             :uniqueness => {
@@ -26,18 +26,18 @@ class User
   field :uid, :type => String
 
   ## Recoverable
-  field :reset_password_token,   type: String
+  field :reset_password_token, type: String
   field :reset_password_sent_at, type: Time
 
   ## Rememberable
   field :remember_created_at, type: Time
 
   ## Trackable
-  field :sign_in_count,      type: Integer, default: 0
+  field :sign_in_count, type: Integer, default: 0
   field :current_sign_in_at, type: Time
-  field :last_sign_in_at,    type: Time
+  field :last_sign_in_at, type: Time
   field :current_sign_in_ip, type: String
-  field :last_sign_in_ip,    type: String
+  field :last_sign_in_ip, type: String
 
   ## Confirmable
   # field :confirmation_token,   type: String
@@ -50,9 +50,9 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
-  field :stream_key,        type: String, default: SecureRandom.uuid
+  field :stream_key, type: String, default: SecureRandom.uuid
 
-  field :can_record,        type: Integer, default: 0
+  field :can_record, type: Integer, default: 0
 
   index stream_key: 1
   index username: 1
@@ -64,7 +64,7 @@ class User
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login).downcase
-      where(conditions).where('$or' => [ {:username => /^#{Regexp.escape(login)}$/i}, {:email => /^#{Regexp.escape(login)}$/i} ]).first
+      where(conditions).where('$or' => [{:username => /^#{Regexp.escape(login)}$/i}, {:email => /^#{Regexp.escape(login)}$/i}]).first
     else
       where(conditions).first
     end
@@ -80,7 +80,7 @@ class User
       user.uid = auth.uid
       user.username = auth.info.email
       user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
+      user.password = Devise.friendly_token[0, 20]
       user.save
     end
   end
@@ -91,6 +91,7 @@ class User
         user.email = data["email"] if user.email.blank?
       end
     end
+  end
 
   def can_record?
     !!can_record
