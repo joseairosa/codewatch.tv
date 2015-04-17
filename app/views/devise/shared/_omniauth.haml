@@ -1,0 +1,9 @@
+- if devise_mapping.omniauthable?
+  - resource_class.omniauth_providers.each do |provider|
+    %a{:class => "btn btn-primary btn-social btn-#{provider.to_s}", :href => omniauth_authorize_path(resource_name, provider)}
+      %i{:class => "fa fa-#{provider.to_s}"}
+      -if controller_name != 'sessions'
+        Sign up with #{provider.to_s.titleize}
+      -if devise_mapping.registerable? && controller_name != 'registrations'
+        Sign in with #{provider.to_s.titleize}
+    %br/

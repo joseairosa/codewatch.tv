@@ -58,6 +58,8 @@ gem 'socket.io-rails'
 
 gem 'redis'
 
+gem 'omniauth-facebook'
+
 gem 'tinymce-rails'
 
 gem 'elasticsearch'

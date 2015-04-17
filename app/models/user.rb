@@ -8,6 +8,7 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :authentication_keys => [:login]
+  devise :omniauthable, :omniauth_providers => [:facebook]
 
   has_one :channel
   has_many :recordings
@@ -21,6 +22,8 @@ class User
             :uniqueness => {
                 :case_sensitive => false
             }
+  field :provider, :type => String
+  field :uid, :type => String
 
   ## Recoverable
   field :reset_password_token,   type: String
@@ -70,6 +73,24 @@ class User
   def self.valid_stream_key?(username, stream_key)
     self.where(username: username, stream_key: stream_key).count == 1
   end
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.username = auth.info.email
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.save
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
 
   def can_record?
     !!can_record
