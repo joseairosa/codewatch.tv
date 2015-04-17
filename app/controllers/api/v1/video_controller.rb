@@ -1,6 +1,6 @@
 class Api::V1::VideoController < Api::V1::ApiController
   def stats
-    user = User.where(username: params[:name]).first
+    user = User.where(username: params[:pageurl].split('/').last).first
     if user
       case params[:event]
         when 'play'
@@ -10,9 +10,13 @@ class Api::V1::VideoController < Api::V1::ApiController
         else
           # do nothing
       end
-    end
-    respond_to do |format|
-      format.json { render json: {auth:'ok'}, status: 200 }
+      respond_to do |format|
+        format.json { render json: {status:'ok'}, status: 200 }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: {status:'not_found'}, status: 404 }
+      end
     end
   end
 
@@ -22,7 +26,7 @@ class Api::V1::VideoController < Api::V1::ApiController
       Recording.create!(title: user.channel.title, user: user, name: params[:path].gsub('/tmp/',''))
     end
     respond_to do |format|
-      format.json { render json: {auth:'ok'}, status: 200 }
+      format.json { render json: {status:'ok'}, status: 200 }
     end
   end
 end
