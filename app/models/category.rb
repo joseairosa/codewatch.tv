@@ -5,6 +5,8 @@ class Category
 
   index name: 1
 
+  has_many :channels, inverse_of: :category
+
   field :name, type: String
 
   has_many :channel

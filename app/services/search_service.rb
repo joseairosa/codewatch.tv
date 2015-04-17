@@ -19,7 +19,7 @@ class SearchService
     end
 
     channels = channels.map do |channel|
-      { value: channel[:title], data: { category: 'Channel' } }
+      { value: channel[:title], data: { category: 'Channel', user_id: channel[:user_id] } }
     end
 
     users = users.map do |user|
@@ -52,13 +52,13 @@ class SearchService
                                               dis_max: {
                                                   queries: [
                                                       {wildcard: {title: query}},
-                                                      {wildcard: {description: query}}
+                                                      {wildcard: {description: query}},
                                                   ]
                                               }
                                           }
                                       }
     hashed = Hashie::Mash.new(response)
-    hashed.hits.hits.map { |channel| {title: channel._source.title, description: channel._source.description} }
+    hashed.hits.hits.map { |channel| {title: channel._source.title, description: channel._source.description, user_id: channel._source.user_id} }
   end
 
   def search_users(query)
@@ -72,7 +72,7 @@ class SearchService
   end
 
   def index_channel(channel)
-    @elastic_client.index index: 'channel', type: 'channel', id: channel.id, body: {title: channel.title, description: channel.description}
+    @elastic_client.index index: 'channel', type: 'channel', id: channel.id, body: {title: channel.title, description: channel.description, user_id: channel.user.username}
   end
 
   def index_category(category)
