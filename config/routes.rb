@@ -48,6 +48,9 @@ Codewatch::Application.routes.draw do
         post 'new_recording' => 'video#new_recording', defaults: {format: 'json'}
         post 'stats/:event' => 'video#stats', defaults: {format: 'json'}
       end
+      resource :recording, defaults: {format: 'json'} do
+        post 'stats/:event' => 'recording#stats', defaults: {format: 'json'}
+      end
     end
   end
 end
