@@ -40,6 +40,10 @@ Codewatch::Application.routes.draw do
       resource :smil, defaults: {format: 'text'} do
         get ':username' => 'smil#generate', defaults: {format: 'text'}
       end
+      resource :video, defaults: {format: 'json'} do
+        post 'new_recording' => 'video#new_recording', defaults: {format: 'json'}
+        post 'stats/:event' => 'video#stats', defaults: {format: 'json'}
+      end
     end
   end
 end

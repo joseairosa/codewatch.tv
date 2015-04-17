@@ -9,6 +9,7 @@ class User
          :authentication_keys => [:login]
 
   has_one :channel
+  has_many :recordings
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -47,6 +48,8 @@ class User
 
   field :stream_key,        type: String, default: SecureRandom.uuid
 
+  field :can_record,        type: Integer, default: 0
+
   index stream_key: 1
   index username: 1
 
@@ -65,6 +68,10 @@ class User
 
   def self.valid_stream_key?(username, stream_key)
     self.where(username: username, stream_key: stream_key).count == 1
+  end
+
+  def can_record?
+    !!can_record
   end
 
   private
