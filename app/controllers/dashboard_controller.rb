@@ -14,11 +14,11 @@ class DashboardController < ApplicationController
 
     if @user.update(user_params)
       flash[:notice] = "User updated."
-      redirect_to user_dashboard_path
     else
-      flash[:alert] = @user.errors.full_messages.first
-      redirect_to user_dashboard_path
+      user_input_error
     end
+
+    redirect_to user_dashboard_path
   end
 
   def update_password
@@ -28,12 +28,12 @@ class DashboardController < ApplicationController
       flash[:notice] = "Password updated."
       # Sign in the user by passing validation in case their password changed
       sign_in @user, :bypass => true
-      redirect_to user_dashboard_path
     else
       @user.errors[:password] << t('errors.messages.blank') if params[:user][:password].blank?
-      flash[:alert] = @user.errors.full_messages.first
-      redirect_to user_dashboard_path
+      user_input_error
     end
+
+    redirect_to user_dashboard_path
   end
 
   def channel
@@ -47,5 +47,9 @@ class DashboardController < ApplicationController
   def user_params
     # NOTE: Using `strong_parameters` gem
     params.required(:user).permit(:email, :current_password, :password, :password_confirmation)
+  end
+
+  def user_input_error
+    flash[:alert] = @user.errors.full_messages.first
   end
 end
