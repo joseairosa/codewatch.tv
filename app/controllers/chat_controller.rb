@@ -6,7 +6,7 @@ class ChatController < ApplicationController
         chat_id: params[:chat_id],
         content: params[:message] }
 
-
+    $redis.rpush params[:chat_id], message.to_json
     $redis.publish 'chat_message', message.to_json
     render json: nil, status: :ok
   end
