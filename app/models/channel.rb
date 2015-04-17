@@ -3,7 +3,7 @@ class Channel
   include Mongoid::Timestamps
 
   belongs_to :user
-  has_one :category
+  belongs_to :category
 
   index title: 1
 

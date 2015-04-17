@@ -17,6 +17,7 @@
 //= require bootstrap.min
 //= require jwplayer/jwplayer
 //= require typeahead.bundle.min
+//= require tinymce-jquery
 //= require_tree .
 
 jwplayer.key="RdBgRDffK8CxoR+GCaOb0iinIDch8TJmzRxvoA==";
