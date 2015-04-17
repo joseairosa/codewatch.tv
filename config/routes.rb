@@ -28,6 +28,8 @@ Codewatch::Application.routes.draw do
 
   get 'categories' => 'categories#index', as: :categories
 
+  get 'search' => 'search#search', as: :search
+
   # Errors
   match '404' => 'errors#error404', via: [ :get, :post, :patch, :delete ]
 
@@ -39,6 +41,10 @@ Codewatch::Application.routes.draw do
       end
       resource :smil, defaults: {format: 'text'} do
         get ':username' => 'smil#generate', defaults: {format: 'text'}
+      end
+      resource :video, defaults: {format: 'json'} do
+        post 'new_recording' => 'video#new_recording', defaults: {format: 'json'}
+        post 'stats/:event' => 'video#stats', defaults: {format: 'json'}
       end
     end
   end

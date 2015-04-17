@@ -2,6 +2,7 @@ require 'securerandom'
 
 class User
   include Mongoid::Document
+  include Concerns::Searchable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,6 +11,7 @@ class User
   devise :omniauthable, :omniauth_providers => [:facebook]
 
   has_one :channel
+  has_many :recordings
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -50,6 +52,8 @@ class User
 
   field :stream_key,        type: String, default: SecureRandom.uuid
 
+  field :can_record,        type: Integer, default: 0
+
   index stream_key: 1
   index username: 1
 
@@ -87,6 +91,9 @@ class User
         user.email = data["email"] if user.email.blank?
       end
     end
+
+  def can_record?
+    !!can_record
   end
 
   private
