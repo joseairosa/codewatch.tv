@@ -19,7 +19,7 @@ Codewatch::Application.routes.draw do
 
   get 'channel/:username' => 'channel#show', as: :user_channel
 
-  get 'channel' => 'channel#index', as: :channels
+  get 'categories/:category_name' => 'categories#show', as: :category_channels
 
   get 'categories' => 'categories#index', as: :categories
 

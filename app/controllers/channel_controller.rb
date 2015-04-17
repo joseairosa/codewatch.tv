@@ -10,11 +10,6 @@ class ChannelController < ApplicationController
     @channel_id = params[:id]
   end
 
-  def index
-    @category = Category.find(params[:category_id])
-    @channels = @category.channels
-  end
-
   private
 
   def channel_id

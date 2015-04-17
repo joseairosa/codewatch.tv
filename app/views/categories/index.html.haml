@@ -3,5 +3,5 @@
     - category_slice.each do |category|
       .col-md-2
         .category
-          %a{href: "/channel?category_id=#{category.id}"}
+          %a{href: "/categories/#{URI::encode(category.name.gsub("/", "%2f"))}"}
             = category.name
