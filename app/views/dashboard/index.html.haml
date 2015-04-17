@@ -20,7 +20,7 @@
                 .form-group
                   %label.col-sm-2.control-label{:for => "inputUsername"} Username
                   .col-sm-10
-                    %input#inputUsername.form-control.disabled{type: "text", value: current_user.username, disabled: true}
+                    %input#inputUsername.form-control{type: "text", name: "user[username]", value: current_user.username}
                 .form-group
                   %label.col-sm-2.control-label{:for => "inputEmail"} Email
                   .col-sm-10
