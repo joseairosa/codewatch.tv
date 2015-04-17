@@ -1,6 +1,7 @@
 class Channel
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Concerns::Searchable
 
   belongs_to :user
   belongs_to :category

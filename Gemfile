@@ -60,6 +60,10 @@ gem 'redis'
 
 gem 'tinymce-rails'
 
+gem 'elasticsearch'
+
+gem 'hashie'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

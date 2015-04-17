@@ -24,6 +24,10 @@
       = navbar_group do
         = navbar_item 'Home', root_path
         = navbar_item 'Browse', categories_path
+        = navbar_form '/search', role: 'search', align: 'left' do
+          .form-group
+            %input#search.form-control{type: 'text', placeholder: 'Search'}
+          %button.btn.btn-default{type: 'submit'}Search
       = navbar_group align: 'right' do
         - if user_signed_in?
           = navbar_dropdown current_user.username do
