@@ -1,0 +1,29 @@
+#edit-channel
+  = form_tag({controller: :dashboard , action: :edit_channel}) do
+    .row#choose-category
+      .col-md-12
+        .form-group
+          %label.control-label{for: 'channel-category'} Choose the language you're streaming on:
+          %input{type: 'text', id: 'channel-category', name: 'channel[category]', class: 'typeahead form-control', value: channel.category.try(:name).to_s}
+    .row
+      .col-md-8
+        .form-group.form-group-lg
+          %label.sr-only{for: 'channel-title'}= channel.title
+          %input{type: 'text', class: 'form-control', id: 'channel-title', name: 'channel[title]', value: channel.title}
+      .col-md-4#channel-stats
+        = render partial: 'shared/channel_stats', locals: {total_viewers: '1,000,000', current_viewers: '1,000', likes: '1,234,567'}
+    .row#channel-interactive
+      .col-xs-12.col-sm-6.col-md-8
+        .preview.lead Stream Preview
+      .col-xs-6.col-md-4
+        .preview.lead Chat Preview
+    .row
+      .col-md-12
+        %h3 Description
+        %textarea{class: 'form-control tinymce', id: 'channel-description', name: 'channel[description]', rows: '15'}= channel.description
+        = tinymce
+    .row#channel-save
+      .col-md-12
+        = button_tag(type: 'submit', class: "btn btn-lg btn-primary") do
+          Save
+

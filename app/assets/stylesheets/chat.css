@@ -9,17 +9,21 @@
 {
     margin-bottom: 10px;
     padding-bottom: 5px;
-    border-bottom: 1px dotted #B3A9A9;
+}
+
+.chat li:last-child {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
 
 .chat li.left .chat-body
 {
-    margin-left: 60px;
+    margin-left: 15px;
 }
 
 .chat li.right .chat-body
 {
-    margin-right: 60px;
+    margin-right: 15px;
 }
 
 
@@ -37,6 +41,7 @@
 .panel-body
 {
     overflow-y: scroll;
+    overflow-x: hidden;
     height: 250px;
 }
 
@@ -61,4 +66,9 @@
 .chat ul
 {
     list-style-type: none;
+}
+
+.chat-username {
+    font-weight: bold;
+    color: #730E15;
 }
