@@ -8,7 +8,7 @@
       %tbody
         - recordings.each do |recording|
           %tr
-            %td= link_to('Recording', show_vod_path(recording.user.username, recording.id))
+            %td= link_to(recording.title, show_vod_path(recording.user.username, recording.id))
             %td= recording.created_at
 
 
