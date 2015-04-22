@@ -3,6 +3,8 @@ class Channel
   include Mongoid::Timestamps
   include Concerns::Searchable
 
+  QUALITIES = %w(180p 360p 720p)
+
   belongs_to :user
   belongs_to :category
 
