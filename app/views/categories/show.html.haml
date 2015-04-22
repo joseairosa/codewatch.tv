@@ -6,7 +6,7 @@
         .col-md-2
           .channel-thumbnail
             %a{href: "/channel/#{channel.user.username}", class: 'thumbnail'}
-              = image_tag "https://codewatch-tv.s3-eu-west-1.amazonaws.com/video-thumbnails/#{channel.user.username}.png"
+              = image_tag "https://codewatch-tv.s3-eu-west-1.amazonaws.com/stream-thumbnails/#{channel.user.username}.png"
               .caption
                 %h5= truncate(channel.title, length: 41)
                 .text-right
