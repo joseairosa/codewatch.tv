@@ -57,6 +57,21 @@ body {
   #coding-in {
     margin-bottom: 15px;
   }
+  #channel-offline {
+    min-height: 500px;
+    #stream-offline {
+      text-align: center;
+      line-height: 500px;
+      font-size: 50px;
+    }
+    #chat-offline {
+      .panel-body {
+        text-align: center;
+        line-height: 385px;
+        font-size: 50px;
+      }
+    }
+  }
 }
 
 #vod {
