@@ -4,6 +4,8 @@
     .row
       - channel_slice.each do |channel|
         .col-md-2
-          .channel
-            %a{href: "/channel/#{channel.user.username}"}
-              = channel.title
+          .channel-thumbnail
+            %a{href: "/channel/#{channel.user.username}", class: 'thumbnail'}
+              = image_tag "https://codewatch-tv.s3-eu-west-1.amazonaws.com/video-thumbnails/#{channel.user.username}.png"
+              .caption
+                %h4= channel.title
