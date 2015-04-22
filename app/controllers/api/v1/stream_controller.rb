@@ -1,6 +1,6 @@
 class Api::V1::StreamController < Api::V1::ApiController
   def event
-    user = User.where(username: params[:name]).first
+    user = User.where(username: params[:name].split('@').first).first
     response = if user
       case params[:event]
         when 'play'
