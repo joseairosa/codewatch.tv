@@ -17,7 +17,6 @@ class Channel
   field :is_online,       type: Integer, default: 0
 
   def new_viewer
-    self.current_viewers = self.current_viewers+1
     self.total_viewers = self.total_viewers+1
     save
   end

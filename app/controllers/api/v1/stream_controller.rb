@@ -7,7 +7,6 @@ class Api::V1::StreamController < Api::V1::ApiController
           user.channel.new_viewer
           {json: {auth: 'ok'}, status: 200}
         when 'play_done'
-          user.channel.viewer_left
           {json: {auth: 'ok'}, status: 200}
         when 'publish'
           valid = User.valid_stream_key?(params[:name], params[:stream_key])

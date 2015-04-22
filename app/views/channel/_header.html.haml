@@ -12,4 +12,4 @@
           %span.label.label-default= channel.category.name
     .row
       .col-md-12
-        = render partial: 'shared/channel_stats', locals: {total_viewers: channel.total_viewers, current_viewers: channel.current_viewers, likes: channel.likes, vod_count: current_user.recordings.count}
+        = render partial: 'shared/channel_stats', locals: {total_viewers: channel.total_viewers, current_viewers: current_viewers, likes: channel.likes, vod_count: current_user.recordings.count}
