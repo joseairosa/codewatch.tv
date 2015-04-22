@@ -1,14 +1,14 @@
-.row#vod-list
-  .col-md-6.col-md-offset-3
-    %table.table.table-striped
-      %thead
-        %tr
-          %th Name
-          %th Date
-      %tbody
-        - recordings.each do |recording|
-          %tr
-            %td= link_to(recording.title, show_vod_path(recording.user.username, recording.id))
-            %td= recording.created_at
-
-
+- unless recordings.empty?
+  - slice_size = (recordings.size >= 5 ? recordings.size / 5 : recordings.size)
+  - recordings.each_slice(slice_size).to_a.each do |recordings_slice|
+    .row
+      - recordings_slice.each do |recording|
+        .col-md-2
+          .recording-thumbnail
+            %a{href: show_vod_path(recording.user.username, recording.id), class: 'thumbnail'}
+              = image_tag "https://codewatch-tv.s3-eu-west-1.amazonaws.com/recording-thumbnails/#{recording.name}.png"
+              .caption
+                %h5= truncate(recording.title, length: 41)
+                .text-right
+                  %p
+                    = "#{recording.created_at}"
