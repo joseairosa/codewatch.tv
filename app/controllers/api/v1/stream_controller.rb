@@ -1,5 +1,5 @@
-class Api::V1::VideoController < Api::V1::ApiController
-  def stats
+class Api::V1::StreamController < Api::V1::ApiController
+  def process_event
     user = User.where(username: params[:pageurl].split('/').last).first
     if user
       case params[:event]
@@ -7,6 +7,10 @@ class Api::V1::VideoController < Api::V1::ApiController
           user.channel.new_viewer
         when 'play_done'
           user.channel.viewer_left
+        when 'publish'
+          user.channel.go_online
+        when 'publish_done'
+          user.channel.go_offline
         else
           # do nothing
       end

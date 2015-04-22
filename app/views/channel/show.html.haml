@@ -1,10 +1,26 @@
 #channel
   = render 'header'
   .row#channel-interactive
-    .col-xs-12.col-sm-6.col-md-8
-      = render partial: 'shared/stream', locals: {file: "/api/v1/smil/#{params[:username]}", type: 'rtmp'}
-    .col-xs-6.col-md-4
-      = render 'chat'
+    - if channel.online?
+      #channel-online
+        .col-xs-12.col-sm-6.col-md-8
+          #stream-online
+            = render partial: 'shared/stream', locals: {file: "/api/v1/smil/#{params[:username]}", type: 'rtmp'}
+        .col-xs-6.col-md-4
+          #chat-online
+            = render 'chat'
+    - else
+      #channel-offline
+        .col-xs-12.col-sm-6.col-md-8
+          #stream-offline
+            %span.fa.fa-microphone-slash
+        .col-xs-6.col-md-4
+          #chat-offline
+            .panel.panel-default
+              .panel-heading
+                &nbsp;
+              .panel-body
+                %span.fa.fa-comment-o
   .row
     .col-md-12
       .panel.panel-default
