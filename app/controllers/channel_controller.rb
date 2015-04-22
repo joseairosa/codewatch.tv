@@ -21,15 +21,12 @@ class ChannelController < ApplicationController
     @current_viewers ||= begin
       nviewers = Channel::QUALITIES.inject(0) { |total_viewers, quality|
         viewers = URI.parse("http://streamer-01.codewatch.tv/subscriberss?app=watch&name=#{channel.user.username}@#{quality}").read.delete("\n").to_i
-        if viewers <= 1
-          total_viewers += 0
-        else
-          # +1 is you :)
-          total_viewers += viewers+1
-        end
+        total_viewers += viewers
         total_viewers
       }
       nviewers = 0 if nviewers < 0
+      # That's you :)
+      nviewers = 1 if nviewers == 0
       nviewers
     end
   end
