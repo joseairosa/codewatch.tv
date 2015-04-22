@@ -7,6 +7,24 @@
 @import "typeahead";
 @import "bootstrap-social";
 
+body {
+  background-color: #f2f2f2;
+}
+
+#top-bar {
+  .navbar {
+
+    background-color: #ffffff;
+
+    .navbar-nav>.active>a,
+    .navbar-nav>.active>a:hover,
+    .navbar-nav>.active>a:focus {
+      background-color: #f2f2f2;
+      text-shadow: 1px 1px #fff;
+    }
+  }
+}
+
 #welcome {
   margin-top: 100px;
 }
@@ -27,13 +45,17 @@
 
 #channel {
   .title {
-    margin-top: 28px;
     font-size: 40px;
+    text-shadow: 1px 1px #fff;
+    line-height: 60px;
   }
   #channel-stats {
     .navbar-text {
       float: none;
     }
+  }
+  #coding-in {
+    margin-bottom: 15px;
   }
 }
 
@@ -41,6 +63,7 @@
   .title {
     margin-top: 6px;
     margin-bottom: 20px;
+    text-shadow: 1px 1px #fff;
   }
 }
 
@@ -49,7 +72,7 @@
     height: 52px;
   }
   .preview {
-    background-color: #dddddd;
+    background-color: #ffffff;
     height: 707px;
     line-height: 707px;
     text-align: center;
@@ -57,7 +80,30 @@
   #channel-save {
     margin-top: 25px;
   }
-  #channel-category, .tt-query, .tt-hint {
-    margin-left: 10px;
+}
+
+#channel-stats {
+  .navbar-default {
+    background-color: #ffffff;
+  }
+}
+
+.channel-thumbnail {
+  .thumbnail {
+    padding: 0;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+#vod-list {
+  .table-striped > tbody > tr:nth-of-type(even) {
+    background-color: #ffffff;
+  }
+
+  .table {
+    border: 1px solid #cccccc;
   }
 }

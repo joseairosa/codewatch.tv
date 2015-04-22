@@ -19,23 +19,24 @@
 
 
   %body
-    = navbar fluid: :top, container: 'fluid' do
-      = navbar_header brand: 'codewatch.tv'
-      = navbar_group do
-        = navbar_item 'Home', root_path
-        = navbar_item 'Browse', categories_path
-        = navbar_form '/search', role: 'search', align: 'left' do
-          .form-group
-            %input#search.form-control{type: 'text', placeholder: 'Search'}
-      = navbar_group align: 'right' do
-        - if user_signed_in?
-          = navbar_dropdown current_user.username do
-            = navbar_item 'Dashboard', user_dashboard_path
-            = navbar_item 'My Channel', user_channel_path(current_user.username)
-            = navbar_item 'Edit Channel', edit_user_channel_path
-            = navbar_item 'Log Out', destroy_user_session_path, method: :get
-        - else
-          = navbar_item 'Log In', new_user_session_path, method: :get
+    #top-bar
+      = navbar fluid: :top, container: 'fluid' do
+        = navbar_header brand: 'codewatch.tv'
+        = navbar_group do
+          = navbar_item 'Home', root_path
+          = navbar_item 'Browse', categories_path
+          = navbar_form '/search', role: 'search', align: 'left' do
+            .form-group
+              %input#search.form-control{type: 'text', placeholder: 'Search'}
+        = navbar_group align: 'right' do
+          - if user_signed_in?
+            = navbar_dropdown current_user.username do
+              = navbar_item 'Dashboard', user_dashboard_path
+              = navbar_item 'My Channel', user_channel_path(current_user.username)
+              = navbar_item 'Edit Channel', edit_user_channel_path
+              = navbar_item 'Log Out', destroy_user_session_path, method: :get
+          - else
+            = navbar_item 'Log In', new_user_session_path, method: :get
 
 
     .container-fluid
