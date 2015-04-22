@@ -1,26 +1,38 @@
 class Api::V1::StreamController < Api::V1::ApiController
-  def process_event
-    user = User.where(username: params[:pageurl].split('/').last).first
-    if user
+  def event
+    user = User.where(username: params[:name]).first
+    response = if user
       case params[:event]
         when 'play'
           user.channel.new_viewer
+          {json: {auth: 'ok'}, status: 200}
         when 'play_done'
           user.channel.viewer_left
+          {json: {auth: 'ok'}, status: 200}
         when 'publish'
-          user.channel.go_online
+          valid = User.valid_stream_key?(params[:name], params[:stream_key])
+          if valid
+            user = User.where(username: params[:name]).first
+            user.channel.go_online
+            if params[:app] == 'stream' && user.can_record?
+              {json: {auth: 'ok'}, status: 302, location: "rtmp://127.0.0.1/record/#{params[:name]}?stream_key=#{params[:stream_key]}"}
+            else
+              {json: {auth: 'ok'}, status: 200}
+            end
+          else
+            {json: {auth: 'fail'}, status: 401}
+          end
         when 'publish_done'
           user.channel.go_offline
+          {json: {auth: 'ok'}, status: 200}
         else
-          # do nothing
-      end
-      respond_to do |format|
-        format.json { render json: {status:'ok'}, status: 200 }
+          {json: {status:'event_not_found'}, status: 404}
       end
     else
-      respond_to do |format|
-        format.json { render json: {status:'not_found'}, status: 404 }
-      end
+      {json: {status:'user_not_found'}, status: 404}
+    end
+    respond_to do |format|
+      format.json { render response }
     end
   end
 
