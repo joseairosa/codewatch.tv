@@ -29,13 +29,17 @@ class SearchService
   end
 
   def index(object)
-    case (object.class)
-      when Channel
-        index_channel(object)
-      when Category
-        index_category(object)
-      when User
-        index_user(object)
+    begin
+      case (object.class)
+        when Channel
+          index_channel(object)
+        when Category
+          index_category(object)
+        when User
+          index_user(object)
+      end
+    rescue Faraday::ConnectionFailed
+      Rails.logger.error 'Connection failed: Indexing Elastic Search'
     end
   end
 
