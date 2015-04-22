@@ -24,7 +24,8 @@ class ChannelController < ApplicationController
         if viewers <= 1
           total_viewers += 0
         else
-          total_viewers += viewers
+          # +1 is you :)
+          total_viewers += viewers+1
         end
         total_viewers
       }
