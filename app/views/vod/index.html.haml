@@ -6,7 +6,7 @@
         .col-md-2
           .recording-thumbnail
             %a{href: show_vod_path(recording.user.username, recording.id), class: 'thumbnail'}
-              = image_tag "https://codewatch-tv.s3-eu-west-1.amazonaws.com/recording-thumbnails/#{recording.name}.png"
+              = image_tag "https://codewatch-tv.s3-eu-west-1.amazonaws.com/recording-thumbnails/#{recording.name.delete('.flv')}.png"
               .caption
                 %h5= truncate(recording.title, length: 41)
                 .text-right
