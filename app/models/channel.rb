@@ -24,6 +24,7 @@ class Channel
 
   def viewer_left
     self.current_viewers = self.current_viewers-1
+    self.current_viewers = 0 if self.current_viewers < 0
     save
   end
 
