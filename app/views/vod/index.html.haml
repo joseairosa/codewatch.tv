@@ -1,6 +1,6 @@
 - unless recordings.empty?
   - slice_size = (recordings.size >= 5 ? recordings.size / 5 : recordings.size)
-  - recordings.each_slice(slice_size).to_a.each do |recordings_slice|
+  - recordings.reverse.each_slice(slice_size).to_a.each do |recordings_slice|
     .row
       - recordings_slice.each do |recording|
         .col-md-2
