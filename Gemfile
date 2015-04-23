@@ -46,7 +46,7 @@ gem 'rails_bootstrap_navbar'
 
 gem 'colorize'
 
-gem 'whenever', '~> 0.9.2'
+gem 'whenever', :require => false
 
 gem 'devise'
 

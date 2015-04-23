@@ -4,10 +4,13 @@ class Category
   include Concerns::Searchable
 
   index name: 1
+  index viewers: 1
+  index viewers: -1, name: 1
 
   has_many :channels, inverse_of: :category
 
-  field :name, type: String
+  field :name,    type: String
+  field :viewers, type: Integer, default: 0
 
   has_many :channel
 
@@ -22,9 +25,5 @@ class Category
 
   def dehumanize
     name.gsub('#', 'sharp').gsub('+', 'plus').parameterize.underscore
-  end
-
-  def current_viewers
-    '0'
   end
 end
