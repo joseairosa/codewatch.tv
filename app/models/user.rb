@@ -53,6 +53,7 @@ class User
   field :stream_key, type: String, default: SecureRandom.uuid
 
   field :can_record, type: Integer, default: 0
+  validates :can_record, format: {with: /[0-1]/}
 
   index stream_key: 1
   index username: 1
@@ -94,7 +95,7 @@ class User
   end
 
   def can_record?
-    !!can_record
+    !can_record.zero?
   end
 
   private
