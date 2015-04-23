@@ -2,5 +2,5 @@ development:
   host: localhost
   redis_port: 6379
 production:
-  host: 46.101.12.137
+  host: 46.101.14.173
   redis_port: 6379
