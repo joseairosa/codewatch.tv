@@ -30,6 +30,20 @@ class DashboardController < ApplicationController
     redirect_to user_dashboard_path
   end
 
+  def update_settings
+    @user = User.find(current_user.id)
+
+    can_record = params[:user] && params[:user][:can_record] ? 1 : 0
+
+    if @user.update(can_record: can_record)
+      flash[:notice] = "Settings updated."
+    else
+      user_input_error
+    end
+
+    redirect_to user_dashboard_path
+  end
+
   def update_password
     @user = User.find(current_user.id)
 

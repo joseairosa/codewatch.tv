@@ -7,11 +7,13 @@
         %li.active{:role => "presentation"}
           %a{"aria-controls" => "home", "data-toggle" => "pill", :href => "#home", :role => "tab"} My Details
         %li{:role => "presentation"}
+          %a{"aria-controls" => "settings", "data-toggle" => "pill", :href => "#settings", :role => "tab"} Settings
+        %li{:role => "presentation"}
           %a{"aria-controls" => "password", "data-toggle" => "pill", :href => "#password", :role => "tab"} Password
         %li{:role => "presentation"}
           %a{"aria-controls" => "stream_key", "data-toggle" => "pill", :href => "#stream_key", :role => "tab"} Stream Key
       .tab-content
-        #home.tab-pane.active{:role => "tabpanel"}
+        #home.tab-pane.active{:role => 'tabpanel'}
           .panel.panel-default
             .panel-body
               .h3 Your details
@@ -25,6 +27,27 @@
                   %label.col-sm-2.control-label{:for => "inputEmail"} Email
                   .col-sm-10
                     %input#inputEmail.form-control{type: "email", name: "user[email]", value: current_user.email}
+                .form-group
+                  .col-sm-offset-2.col-sm-10
+                    %button.btn.btn-default{:type => "submit"} Update
+        #settings.tab-pane{:role => 'tabpanel'}
+          .panel.panel-default
+            .panel-body
+              .h3 Settings
+
+              = form_tag({controller: :dashboard, action: :update_settings}, {:class => 'form-horizontal'}) do
+                .form-group
+                  %label.col-sm-2.control-label{:for => "inputCanRecord"} VoD active
+                  .col-sm-10
+                    .checkbox
+                      - if current_user.can_record?
+                        %input#inputCanRecord{type: "checkbox", name: "user[can_record]", value: 1, checked: 'checked'}
+                      - else
+                        %input#inputCanRecord{type: "checkbox", name: "user[can_record]", value: 0}
+                      %i
+                        By clicking here, if you have a
+                        %u premium account
+                        , all your streams will be recorded as video on demand.
                 .form-group
                   .col-sm-offset-2.col-sm-10
                     %button.btn.btn-default{:type => "submit"} Update
