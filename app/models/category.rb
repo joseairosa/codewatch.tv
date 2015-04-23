@@ -19,4 +19,12 @@ class Category
       found.first
     end
   end
+
+  def dehumanize
+    name.gsub('#', 'sharp').gsub('+', 'plus').parameterize.underscore
+  end
+
+  def current_viewers
+    '0'
+  end
 end

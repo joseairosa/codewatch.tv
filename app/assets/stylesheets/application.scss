@@ -104,6 +104,14 @@ body {
   }
 }
 
+.language-thumbnail {
+  .thumbnail {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
 .channel-thumbnail, .recording-thumbnail {
   .thumbnail {
     padding: 0;

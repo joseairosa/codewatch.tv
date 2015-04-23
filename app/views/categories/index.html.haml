@@ -1,7 +1,13 @@
-- @categories.each_slice(@categories.size / 5).to_a.each do |category_slice|
+- @categories.each_slice(6).to_a.each do |category_slice|
   .row
     - category_slice.each do |category|
       .col-md-2
-        .category
-          %a{href: "/categories/#{URI::encode(category.name.gsub("/", "%2f"))}"}
-            = category.name
+        .language-thumbnail
+          %a{href: category_channels_path(URI::encode(category.name.gsub("/", "%2f"))), class: 'thumbnail'}
+            = image_tag "https://codewatch-tv.s3-eu-west-1.amazonaws.com/language-thumbnails/#{category.dehumanize}.png"
+            .caption
+              .lead= category.name
+              .text-right
+                %p
+                  .fa.fa-user
+                  = "#{category.current_viewers}"
