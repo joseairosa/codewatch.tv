@@ -1,5 +1,8 @@
-- unless recordings.empty?
-  -#- slice_size = (recordings.size >= 5 ? recordings.size / 5 : recordings.size)
+- if recordings.empty?
+  .row
+    .col-md-12.text-center
+      .lead#welcome No Video on Demand found for this user.
+- else
   - recordings.reverse.each_slice(6).to_a.each do |recordings_slice|
     .row
       - recordings_slice.each do |recording|

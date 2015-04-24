@@ -21,8 +21,9 @@
                 &nbsp;
               .panel-body
                 %span.fa.fa-comment-o
-  .row
-    .col-md-12
-      .panel.panel-default
-        .panel-body
-          .description= raw channel.description
+  - if channel.description && !channel.description.empty?
+    .row
+      .col-md-12
+        .panel.panel-default
+          .panel-body
+            .description= raw channel.description
