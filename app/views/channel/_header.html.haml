@@ -5,11 +5,18 @@
     - else
       %h1.title Channel Offline
   .col-md-4#channel-stats
-    .row#coding-in
-      .col-md-12
-        .h5
-          Coding in
-          %span.label.label-default= channel.category.name
+    - if channel.category
+      .row#coding-in
+        .col-md-12
+          .h5
+            Coding in
+            %span.label.label-default= channel.category.name
+    - else
+      .row#coding-in
+        .col-md-12
+          .h5
+            No category selected
+
     .row
       .col-md-12
         = render partial: 'shared/channel_stats', locals: {total_viewers: channel.total_viewers, current_viewers: (channel.online? ? current_viewers : '0'), likes: channel.likes, vod_count: channel.user.recordings.count}
