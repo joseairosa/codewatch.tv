@@ -18,4 +18,4 @@
     .navbar.navbar-default
       .navbar-brand
         .fa.fa-youtube-play
-      .navbar-text.text-center= link_to(vod_count, list_vod_path(current_user.username))
+      .navbar-text.text-center= link_to(vod_count, list_vod_path(channel.user.username))
