@@ -1,4 +1,8 @@
-- unless @channels.empty?
+- if @channels.empty?
+  .row
+    .col-md-12.text-center
+      .lead#welcome There are currently no streams in this category :(
+- else
   - slice_size = (@channels.size >= 5 ? @channels.size / 5 : @channels.size)
   - @channels.each_slice(slice_size).to_a.each do |channel_slice|
     .row
