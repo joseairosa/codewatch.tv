@@ -1,24 +1,21 @@
 %div.container
-  %h2.form-signin-heading Sign up
-  = form_for(resource, as: resource_name, url: registration_path(resource_name),  html: {class: 'form-group'}) do |f|
-    = devise_error_messages!
-    %div.form-group
-      = f.label :username
-      %br/
-      = f.text_field :username, autofocus: true, class: 'form-control'
-    %div.form-group
-      = f.label :email
-      %br/
-      = f.email_field :email, class: 'form-control', class: 'form-control'
-    %div.form-group
-      = f.label :password
-      %br/
-      = f.password_field :password, autocomplete: "off", class: 'form-control'
-    %div.form-group
-      = f.label :password_confirmation
-      %br/
-      = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
-    %br/
-    = f.submit "Sign up", class: 'btn btn-primary'
-    = render "devise/shared/omniauth"
-  = render "devise/shared/links"
+  .row.auth#sign-up
+    .col-md-6.col-md-offset-3
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title Sign up
+        .panel-body
+          = form_for(resource, as: resource_name, url: registration_path(resource_name),  html: {class: 'form-group'}) do |f|
+            = devise_error_messages!
+            %div.form-group
+              = f.text_field :username, autofocus: true, class: 'form-control', placeholder: 'Username'
+            %div.form-group
+              = f.email_field :email, class: 'form-control', class: 'form-control', placeholder: 'E-Mail'
+            %div.form-group
+              = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password'
+            %div.form-group
+              = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Confirm Password'
+            = f.submit "Sign up", class: 'btn btn-primary'
+            = render "devise/shared/omniauth"
+            #sign-up-links.auth-links
+              = render "devise/shared/links"
