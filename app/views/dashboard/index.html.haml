@@ -58,7 +58,7 @@
             .panel-body
               .h3 Video on Demand
 
-              - current_user.recordings.each do |recording|
+              - current_user.recordings.order_by(created_at: :desc).each do |recording|
                 .media
                   .media-left
                     %a{href: show_vod_path(recording.user.username, recording.id)}
