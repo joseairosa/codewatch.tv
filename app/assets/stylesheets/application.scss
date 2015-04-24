@@ -50,6 +50,9 @@ body {
     text-shadow: 1px 1px #fff;
     line-height: 60px;
   }
+  #channel-interactive {
+    margin-bottom: 25px;
+  }
   #channel-stats {
     .navbar-text {
       float: none;
@@ -129,5 +132,14 @@ body {
 
   .table {
     border: 1px solid #cccccc;
+  }
+}
+
+.auth {
+  .auth-links {
+    margin-top: 10px;
+    a {
+      margin-right: 10px;
+    }
   }
 }

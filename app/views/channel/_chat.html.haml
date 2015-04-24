@@ -13,3 +13,8 @@
           %span.input-group-btn
             %button#btn-chat.btn.btn-warning.btn-sm
               Send
+        - else
+          = link_to 'Log in', new_user_session_path
+          or
+          = link_to 'Register', new_user_registration_path
+          to participate in the chat.

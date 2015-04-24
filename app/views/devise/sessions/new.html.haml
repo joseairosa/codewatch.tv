@@ -1,16 +1,22 @@
 %div.container
-  = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-signin'}) do |f|
-    %h2.form-signin-heading Please sign in
-    %div.form-group
-      = f.text_field :login, autofocus: '', placeholder: 'Email address or username', required: '', type: 'text', class: 'form-control'
-    %div.form-group
-      = f.password_field :password, autocomplete: 'off', placeholder: 'Password', required: '', type: 'password', class: 'form-control'
-    .checkbox
-      %label
-        - if devise_mapping.rememberable?
-          = f.check_box :remember_me, value: 'remember-me'
-          Remember me
-    = f.submit 'Sign in', class: 'btn btn-primary'
+  .row.auth#sign-in
+    .col-md-6.col-md-offset-3
+      .panel.panel-default
+        .panel-heading
+          %h3.panel-title Please sign in
+        .panel-body
+          = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-signin'}) do |f|
+            %div.form-group
+              = f.text_field :login, autofocus: '', placeholder: 'Email address or username', required: '', type: 'text', class: 'form-control'
+            %div.form-group
+              = f.password_field :password, autocomplete: 'off', placeholder: 'Password', required: '', type: 'password', class: 'form-control'
+            .checkbox
+              %label
+                - if devise_mapping.rememberable?
+                  = f.check_box :remember_me, value: 'remember-me'
+                  Remember me
+            = f.submit 'Sign in', class: 'btn btn-primary'
 
-    = render "devise/shared/omniauth"
-    = render 'devise/shared/links'
+            = render "devise/shared/omniauth"
+            #sign-in-links.auth-links
+              = render 'devise/shared/links'
