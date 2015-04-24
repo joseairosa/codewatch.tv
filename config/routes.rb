@@ -15,6 +15,9 @@ Codewatch::Application.routes.draw do
   post 'dashboard/update_settings' => 'dashboard#update_settings', as: :update_settings
   post 'dashboard/update_password' => 'dashboard#update_password', as: :update_password
 
+  get 'dashboard/vod/delete/:id' => 'dashboard#delete_vod', as: :delete_vod
+  get 'dashboard/vod/toggle_visibility/:id' => 'dashboard#show_hide_vod', as: :toggle_vod_visibility
+
   # Example resource route within a namespace:
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController

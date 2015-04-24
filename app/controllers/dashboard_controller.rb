@@ -59,6 +59,32 @@ class DashboardController < ApplicationController
     redirect_to user_dashboard_path
   end
 
+  def show_hide_vod
+    @recording = Recording.find(params[:id])
+
+    if @recording
+      @recording.toggle_visibility
+      flash[:notice] = 'VoD hidden successfully'
+    else
+      flash[:alert] = 'Cannot find that VoD'
+    end
+
+    redirect_to user_dashboard_path
+  end
+
+  def delete_vod
+    @recording = Recording.find(params[:id])
+
+    if @recording
+      @recording.delete
+      flash[:notice] = 'VoD deleted successfully'
+    else
+      flash[:alert] = 'Cannot find that VoD'
+    end
+
+    redirect_to user_dashboard_path
+  end
+
   def channel
     current_user.channel
   end
