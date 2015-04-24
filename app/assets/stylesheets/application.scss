@@ -143,3 +143,19 @@ body {
     }
   }
 }
+
+#vod-tab {
+  .dropdown-menu {
+    left: auto;
+    right: 0;
+    min-width: inherit;
+  }
+  .media {
+    overflow: visible;
+    .media-right {
+      .btn-group {
+        margin-top: 25px;
+      }
+    }
+  }
+}

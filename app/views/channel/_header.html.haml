@@ -19,4 +19,4 @@
 
     .row
       .col-md-12
-        = render partial: 'shared/channel_stats', locals: {total_viewers: channel.total_viewers, current_viewers: (channel.online? ? current_viewers : '0'), likes: channel.likes, vod_count: channel.user.recordings.count}
+        = render partial: 'shared/channel_stats', locals: {total_viewers: channel.total_viewers, current_viewers: (channel.online? ? current_viewers : '0'), likes: channel.likes, vod_count: channel.user.recordings.where(visible: 1).count}
