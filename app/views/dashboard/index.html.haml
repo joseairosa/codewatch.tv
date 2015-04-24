@@ -1,19 +1,21 @@
 .row#dashboard
-  .col-md-6.col-md-offset-1
-    %h1 Welcome to your dashboard!
+  .col-md-6.col-md-offset-3
+    %h1 Hi #{current_user.username}, Welcome to your dashboard!
 
     #tabs-panel{:role => "tabpanel"}
       %ul.nav.nav-pills{:role => "tablist"}
         %li.active{:role => "presentation"}
-          %a{"aria-controls" => "home", "data-toggle" => "pill", :href => "#home", :role => "tab"} My Details
+          %a{"aria-controls" => "home-tab", "data-toggle" => "pill", :href => "#home-tab", :role => "tab"} My Details
         %li{:role => "presentation"}
-          %a{"aria-controls" => "settings", "data-toggle" => "pill", :href => "#settings", :role => "tab"} Settings
+          %a{"aria-controls" => "settings-tab", "data-toggle" => "pill", :href => "#settings-tab", :role => "tab"} Settings
         %li{:role => "presentation"}
-          %a{"aria-controls" => "password", "data-toggle" => "pill", :href => "#password", :role => "tab"} Password
+          %a{"aria-controls" => "password-tab", "data-toggle" => "pill", :href => "#password-tab", :role => "tab"} Password
         %li{:role => "presentation"}
-          %a{"aria-controls" => "stream_key", "data-toggle" => "pill", :href => "#stream_key", :role => "tab"} Stream Key
+          %a{"aria-controls" => "vod-tab", "data-toggle" => "pill", :href => "#vod-tab", :role => "tab"} VoD
+        %li{:role => "presentation"}
+          %a{"aria-controls" => "stream_key-tab", "data-toggle" => "pill", :href => "#stream_key-tab", :role => "tab"} Stream Key
       .tab-content
-        #home.tab-pane.active{:role => 'tabpanel'}
+        #home-tab.tab-pane.active{:role => 'tabpanel'}
           .panel.panel-default
             .panel-body
               .h3 Your details
@@ -30,7 +32,7 @@
                 .form-group
                   .col-sm-offset-2.col-sm-10
                     %button.btn.btn-default{:type => "submit"} Update
-        #settings.tab-pane{:role => 'tabpanel'}
+        #settings-tab.tab-pane{:role => 'tabpanel'}
           .panel.panel-default
             .panel-body
               .h3 Settings
@@ -51,7 +53,30 @@
                 .form-group
                   .col-sm-offset-2.col-sm-10
                     %button.btn.btn-default{:type => "submit"} Update
-        #password.tab-pane{role: 'tabpanel'}
+        #vod-tab.tab-pane{:role => 'tabpanel'}
+          .panel.panel-default
+            .panel-body
+              .h3 Video on Demand
+
+              - current_user.recordings.each do |recording|
+                .media
+                  .media-left
+                    %a{href: show_vod_path(recording.user.username, recording.id)}
+                      = image_tag "https://codewatch-tv.s3-eu-west-1.amazonaws.com/recording-thumbnails/#{recording.name.gsub('.flv', '')}.png", height: 72
+                  .media-body
+                    %h4.media-heading= recording.title
+                    %h5 Created at #{recording.created_at}
+                    %p
+                      .fa.fa-eye
+                        = recording.views
+                  .media-right
+                    .btn-group
+                      %button{type: 'button', class: 'btn btn-default dropdown-toggle', 'data-toggle' => 'dropdown', 'aria-expanded' => 'false'}
+                        %span.caret
+                      %ul.dropdown-menu{'data-role' => 'menu'}
+                        %li
+                          = link_to 'Remove'
+        #password-tab.tab-pane{role: 'tabpanel'}
           .panel.panel-default
             .panel-body
               .h3 Change password
@@ -72,7 +97,7 @@
                 .form-group
                   .col-sm-offset-2.col-sm-10
                     %button.btn.btn-default{:type => "submit"} Change
-        #stream_key.tab-pane{:role => "tabpanel"}
+        #stream_key-tab.tab-pane{:role => "tabpanel"}
           .panel.panel-default
             .panel-body
               .h3 Current Stream Key
