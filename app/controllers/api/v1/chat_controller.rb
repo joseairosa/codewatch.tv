@@ -9,28 +9,54 @@ class Api::V1::ChatController < Api::V1::ApiController
 
   def ban
     if @channel
-      ChatService.instance.ban(@channel, params[:username])
-      response = {json: {auth: 'ok'}, status: 200}
+      user = User.where(username: params[:username]).first
+      if user
+        response = if current_user.id == user.id
+                     {json: {response: "Can't ban yourself"}, status: 401}
+                   elsif is_channel_owner?(user)
+                     {json: {response: "Can't ban channel owner"}, status: 401}
+                   elsif !is_channel_owner?(current_user) && is_channel_moderator?(user)
+                     {json: {response: "Can't ban other moderators"}, status: 401}
+                   else
+                     ChatService.instance.ban(@channel, user)
+                     {json: {response: "#{user.username} banned"}, status: 200}
+                   end
+      else
+        response = {json: {response: 'User not found'}, status: 404}
+      end
     else
-      response = {json: {auth: 'not_found'}, status: 404}
+      response = {json: {response: 'Channel not found'}, status: 404}
     end
 
-    respond_to do |format|
-      format.json { render response }
-    end
+    respond_to { |format| format.json { render response } }
   end
 
   def toggle_moderator
     if @channel
-      ChatService.instance.toggle_moderator(@channel, params[:username])
-      response = {json: {auth: 'ok'}, status: 200}
+      user = User.where(username: params[:username]).first
+      if user
+        response = if current_user.id == user.id
+                     {json: {response: "Can't toggle yourself as moderator"}, status: 401}
+                   elsif is_channel_owner?(user)
+                     {json: {response: "Can't toggle channel owner as moderator"}, status: 401}
+                   elsif !is_channel_owner?(current_user) && is_channel_moderator?(user)
+                     {json: {response: "Can't toggle other moderators as moderator"}, status: 401}
+                   else
+                     ChatService.instance.toggle_moderator(@channel, user)
+                     if is_channel_moderator?(user)
+                       {json: {response: "#{user.username} is now a moderator"}, status: 200}
+                     else
+                       {json: {response: "#{user.username} is no longer a moderator"}, status: 200}
+                     end
+                   end
+      else
+        response = {json: {response: 'User not found'}, status: 404}
+      end
     else
-      response = {json: {auth: 'not_found'}, status: 404}
+      response = {json: {response: 'Channel not found'}, status: 404}
     end
 
-    respond_to do |format|
-      format.json { render response }
-    end
+    respond_to { |format| format.json { render response } }
   end
 
   private
@@ -41,7 +67,7 @@ class Api::V1::ChatController < Api::V1::ApiController
 
   def is_authorized
     unless current_user && (is_channel_owner? || is_channel_moderator?)
-      response = {json: {auth: 'unauthorized'}, status: 401}
+      response = {json: {response: 'Unauthorized'}, status: 401}
       respond_to do |format|
         format.json { render response }
       end
