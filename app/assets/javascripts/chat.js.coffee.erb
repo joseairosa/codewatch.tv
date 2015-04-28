@@ -4,9 +4,40 @@ $ ->
   socket = io.connect("http://<%= CHAT_SERVER_HOST %>:5001")
   socket.emit('join', chat_id)
   socket.on 'chat_message', (message) ->
-    $("ul.chat").append(chatMessageTemplate.replace(/\{\{message\}\}/g, message.content).replace(/\{\{username\}\}/g, message.user_name).replace(/%7B%7Busername%7D%7D/g, message.user_name))
+    ban_id = guid()
+    moderator_id = guid()
+    $("ul.chat").append(
+        chatMessageTemplate
+        .replace(/\{\{message\}\}/g, message.content)
+        .replace(/\{\{username\}\}/g, message.user_name)
+        .replace(/%7B%7Busername%7D%7D/g, message.user_name)
+        .replace(/\{\{banElementId\}\}/g, ban_id)
+        .replace(/\{\{moderatorElementId\}\}/g, moderator_id)
+    )
     $('#chat-body').scrollTop($('#chat-body').prop("scrollHeight"))
     $('#chat-message').val('')
+#    $('#' + ban_id).bind 'ajax:beforeSend', ->
+#      console.log("before")
+    $('#' + ban_id).bind 'ajax:complete', (event, request, settings) ->
+      this_id = guid()
+      if request.status == 200
+        $('#chat-alerts').append('<div id="'+this_id+'" class="alert alert-success" role="alert">'+request.responseJSON['response']+'</div>')
+      else
+        $('#chat-alerts').append('<div id="'+this_id+'" class="alert alert-danger" role="alert">'+request.responseJSON['response']+'</div>')
+      callback = ->
+        $('#' + this_id).remove()
+      setTimeout callback, 5000
+    $('#' + moderator_id).bind 'ajax:complete', (event, request, settings) ->
+      this_id = guid()
+      if request.status == 200
+        $('#chat-alerts').append('<div id="'+this_id+'" class="alert alert-success" role="alert">'+request.responseJSON['response']+'</div>')
+      else
+        $('#chat-alerts').append('<div id="'+this_id+'" class="alert alert-danger" role="alert">'+request.responseJSON['response']+'</div>')
+      callback = ->
+        $('#' + this_id).remove()
+      setTimeout callback, 5000
+
+
 
   $("#btn-chat").on "click", ->
     console.log("Chat message")

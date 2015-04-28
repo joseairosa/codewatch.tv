@@ -76,6 +76,18 @@ body {
       }
     }
   }
+
+  #chat-alerts {
+    position: relative;
+
+    .alert {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      text-align: center;
+      z-index: 1000;
+    }
+  }
 }
 
 #vod {
