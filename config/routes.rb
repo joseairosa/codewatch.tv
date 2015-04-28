@@ -18,13 +18,6 @@ Codewatch::Application.routes.draw do
   get 'dashboard/vod/delete/:id' => 'dashboard#delete_vod', as: :delete_vod
   get 'dashboard/vod/toggle_visibility/:id' => 'dashboard#show_hide_vod', as: :toggle_vod_visibility
 
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
   get 'channel/:username' => 'channel#show', as: :user_channel
 
   get 'categories/:category_name' => 'categories#show', as: :category_channels
@@ -54,6 +47,10 @@ Codewatch::Application.routes.draw do
       end
       resource :recording, defaults: {format: 'json'} do
         post 'stats/:event' => 'recording#stats', defaults: {format: 'json'}
+      end
+      resource :chat, defaults: {format: 'json'} do
+        put ':channel_id/toggle_moderator/:username' => 'chat#toggle_moderator', defaults: {format: 'json'}, as: :chat_toggle_moderator
+        put ':channel_id/ban/:username' => 'chat#ban', defaults: {format: 'json'}, as: :chat_ban
       end
     end
   end

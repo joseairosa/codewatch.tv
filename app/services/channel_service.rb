@@ -17,4 +17,12 @@ class ChannelService
     nviewers = 0 if nviewers < 0
     nviewers
   end
+
+  def subscribe(channel, user)
+    channel.subscribe(user)
+  end
+
+  def unsubscribe(channel, user)
+    channel.unsubscribe(user)
+  end
 end

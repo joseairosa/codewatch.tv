@@ -1,0 +1,11 @@
+%li.chat-entry.left.clearfix
+  .chat-body.clearfix
+    %p
+      - if current_user && (is_channel_owner? || is_channel_moderator?)
+        = link_to chat_ban_api_v1_chat_path(channel.id,'{{username}}'), remote: true, method: :put  do
+          %span.fa.fa-ban
+        = link_to chat_toggle_moderator_api_v1_chat_path(channel.id,'{{username}}'), remote: true, method: :put  do
+          %span.fa.fa-star
+      %span.chat-username
+        {{username}}
+      {{message}}

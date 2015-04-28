@@ -1,12 +1,12 @@
 $ ->
   chat_id = $("#channel_id").val()
-  chatMessageTemplate = $('#new-message').html()
+  chatMessageTemplate = $('#new_message').html()
   socket = io.connect("http://<%= CHAT_SERVER_HOST %>:5001")
   socket.emit('join', chat_id)
   socket.on 'chat_message', (message) ->
-    $("ul.chat").append(chatMessageTemplate.replace(/\{\{message\}\}/g, message.content).replace(/\{\{username\}\}/g, message.user_name).replace(/%7B%7Busername%7D%7D/g, message.user_name))
+    $("ul.chat").append(chatMessageTemplate.replace("{{message}}", message.content).replace("{{username}}", message.user_name))
     $('#chat-body').scrollTop($('#chat-body').prop("scrollHeight"))
-    $('#chat-message').val('')
+    $('#chat-message').val('');
 
   $("#btn-chat").on "click", ->
     console.log("Chat message")
