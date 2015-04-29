@@ -59,6 +59,28 @@ class Api::V1::ChatController < Api::V1::ApiController
     respond_to { |format| format.json { render response } }
   end
 
+  def remove_message
+    if @channel
+      user = User.where(username: params[:username]).first
+      if user
+        response = if is_channel_owner?(user) && is_channel_moderator?(current_user)
+                     {json: {response: "Can't remove channel owner messages"}, status: 401}
+                   elsif !is_channel_owner?(current_user) && is_channel_moderator?(user)
+                     {json: {response: "Can't remove other moderators messages"}, status: 401}
+                   else
+                     ChatService.instance.remove_message(@channel, params[:message_id])
+                     {json: {response: "#{user.username}'s message deleted"}, status: 200}
+                   end
+      else
+        response = {json: {response: 'User not found'}, status: 404}
+      end
+    else
+      response = {json: {response: 'Channel not found'}, status: 404}
+    end
+
+    respond_to { |format| format.json { render response } }
+  end
+
   private
 
   def find_channel

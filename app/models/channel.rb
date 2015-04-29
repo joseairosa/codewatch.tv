@@ -10,6 +10,8 @@ class Channel
 
   has_one :chat
 
+  after_create :create_chat
+
   index title: 1
   index is_online: 1
 
@@ -20,14 +22,6 @@ class Channel
   field :likes,           type: Integer, default: 0
   field :is_online,       type: Integer, default: 0
   field :subscribers,     type: Array, default: []
-
-  def chat
-    if self.chat.nil?
-      self.chat = Chat.create
-      save
-    end
-    self.chat
-  end
 
   def new_viewer
     self.total_viewers = self.total_viewers+1
@@ -70,5 +64,10 @@ class Channel
 
   def already_subscribed?(user)
     self.subscribers.find { |subscribed_user_id| subscribed_user_id == user.id }
+  end
+
+  def create_chat
+    self.chat = Chat.create
+    save
   end
 end

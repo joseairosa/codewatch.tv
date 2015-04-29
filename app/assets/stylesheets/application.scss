@@ -88,6 +88,18 @@ body {
       z-index: 1000;
     }
   }
+
+  .chat-entry {
+    .chat-body {
+      .chat-message {
+        .message-removed {
+          font-weight: bold;
+          font-style: italic;
+          color: red;
+        }
+      }
+    }
+  }
 }
 
 #vod {

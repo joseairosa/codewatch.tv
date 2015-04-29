@@ -1,9 +1,35 @@
+require 'securerandom'
+
 class ChatService
 
   include Singleton
 
   def initialize
 
+  end
+
+  def new_message(user, chat_id, message)
+    message_id = SecureRandom.uuid
+    payload  = {
+      id: message_id,
+      user_name: user.username,
+      chat_id: chat_id,
+      content: message
+    }
+    $redis.rpush "#{chat_id}_message_ids", message_id
+    $redis.hset "#{chat_id}_messages", message_id, payload.to_json
+    $redis.publish 'new_message', payload.to_json
+  end
+
+  def remove_message(channel, message_id)
+    chat_id = channel.user.username
+    payload  = {
+      id: message_id,
+      chat_id: chat_id
+    }
+    $redis.lrem "#{chat_id}_message_ids", -1, message_id
+    $redis.hdel "#{chat_id}_messages", message_id
+    $redis.publish 'removed_message', payload.to_json
   end
 
   def toggle_moderator(channel, user)
