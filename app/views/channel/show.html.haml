@@ -8,6 +8,7 @@
             = render partial: 'shared/stream', locals: {file: "/api/v1/smil/#{params[:username]}", type: 'rtmp'}
         .col-xs-6.col-md-4
           #chat-online
+            #chat-alerts
             = render 'chat'
     - else
       #channel-offline

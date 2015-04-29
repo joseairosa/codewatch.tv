@@ -1,8 +1,14 @@
 class ChannelController < ApplicationController
 
+  attr_reader :channel
+
   helper_method :channel
   helper_method :channel_id
   helper_method :current_viewers
+  helper_method :is_channel_owner?
+  helper_method :is_channel_moderator?
+
+  include ChannelHelper
 
   QUALITIES = %w(180p 360p 720p)
 
@@ -26,9 +32,5 @@ class ChannelController < ApplicationController
 
   def channel_id
     channel.user.username
-  end
-
-  def channel
-    @channel
   end
 end

@@ -1,18 +1,62 @@
 $ ->
   chat_id = $("#channel_id").val()
-  chatMessageTemplate = """
-    <li class='chat-entry left clearfix'>
-      <div class='chat-body clearfix'>
-        <p><span class='chat-username'>{{username}}:</span> {{message}}</p>
-      </div>
-    </li>
-    """
+  chatMessageTemplate = $('#new-message').html()
   socket = io.connect("http://<%= CHAT_SERVER_HOST %>:5001")
   socket.emit('join', chat_id)
-  socket.on 'chat_message', (message) ->
-    $("ul.chat").append(chatMessageTemplate.replace("{{message}}", message.content).replace("{{username}}", message.user_name))
+  socket.on 'removed_message', (message) ->
+    $('#' + message.id + ' .chat-message').html('<span class="message-removed">This message has been removed.</span>')
+  socket.on 'new_message', (message) ->
+
+    ban_id = "ban_" + message.id
+    moderator_id = "moderator_" + message.id
+    remove_id = "remove_" + message.id
+
+    $("ul.chat").append(
+        chatMessageTemplate
+        .replace(/\{\{message\}\}/g, message.content)
+        .replace(/\{\{username\}\}/g, message.user_name)
+        .replace(/%7B%7Busername%7D%7D/g, message.user_name)
+        .replace(/\{\{banElementId\}\}/g, ban_id)
+        .replace(/\{\{moderatorElementId\}\}/g, moderator_id)
+        .replace(/\{\{removeMessageElementId\}\}/g, remove_id)
+        .replace(/\{\{messageId\}\}/g, message.id)
+        .replace(/%7B%7BmessageId%7D%7D/g, message.id)
+    )
     $('#chat-body').scrollTop($('#chat-body').prop("scrollHeight"))
-    $('#chat-message').val('');
+    $('#chat-message').val('')
+
+#    $('#' + ban_id).bind 'ajax:beforeSend', ->
+#      console.log("before")
+
+    $('#' + ban_id).bind 'ajax:complete', (event, request, settings) ->
+      this_id = guid()
+      if request.status == 200
+        $('#chat-alerts').append('<div id="'+this_id+'" class="alert alert-success" role="alert">'+request.responseJSON['response']+'</div>')
+      else
+        $('#chat-alerts').append('<div id="'+this_id+'" class="alert alert-danger" role="alert">'+request.responseJSON['response']+'</div>')
+      callback = ->
+        $('#' + this_id).remove()
+      setTimeout callback, 5000
+
+    $('#' + moderator_id).bind 'ajax:complete', (event, request, settings) ->
+      this_id = guid()
+      if request.status == 200
+        $('#chat-alerts').append('<div id="'+this_id+'" class="alert alert-success" role="alert">'+request.responseJSON['response']+'</div>')
+      else
+        $('#chat-alerts').append('<div id="'+this_id+'" class="alert alert-danger" role="alert">'+request.responseJSON['response']+'</div>')
+      callback = ->
+        $('#' + this_id).remove()
+      setTimeout callback, 5000
+
+    $('#' + remove_id).bind 'ajax:complete', (event, request, settings) ->
+      this_id = guid()
+      if request.status == 200
+        $('#chat-alerts').append('<div id="'+this_id+'" class="alert alert-success" role="alert">'+request.responseJSON['response']+'</div>')
+      else
+        $('#chat-alerts').append('<div id="'+this_id+'" class="alert alert-danger" role="alert">'+request.responseJSON['response']+'</div>')
+      callback = ->
+        $('#' + this_id).remove()
+      setTimeout callback, 5000
 
   $("#btn-chat").on "click", ->
     console.log("Chat message")
