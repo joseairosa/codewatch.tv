@@ -1,0 +1,14 @@
+.header
+  .container
+    = render partial: 'shared/logo'
+    / Topbar
+    = render partial: 'shared/topbar'
+    / End Topbar
+    / Toggle get grouped for better mobile display
+    %button.navbar-toggle{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse", :type => "button"}
+      %span.sr-only Toggle navigation
+      %span.fa.fa-bars
+  / End Toggle
+  / /end container
+  / Collect the nav links, forms, and other content for toggling
+  = render partial: 'shared/navigation'

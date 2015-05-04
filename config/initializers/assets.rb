@@ -1,1 +1,1 @@
-Rails.application.config.assets.precompile += %w( jwplayer/jwplayer.flash.swf )
+Rails.application.config.assets.precompile += %w( jwplayer/jwplayer.flash.swf sky-forms-ie8.css respond.js placeholder-IE-fixes.js )

@@ -12,14 +12,23 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-migrate.min
 //= require jquery.autocomplete.min
+//= require bootstrap.min
+//= require back-to-top
+//= require smoothScroll
+//= require jquery.parallax
+//= require waypoints.min
+//= require jquery.counterup.min
+//= require owl.carousel
 //= require socket.io
 //= require chat
 //= require search
-//= require bootstrap.min
 //= require jwplayer/jwplayer
 //= require typeahead.bundle.min
 //= require tinymce-jquery
+//= require main
+//= require owl-carousel
 //= require_tree .
 
 jwplayer.key="RdBgRDffK8CxoR+GCaOb0iinIDch8TJmzRxvoA==";
@@ -30,3 +39,10 @@ function guid() {
   }
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' +  s4() + '-' + s4() + s4() + s4();
 }
+
+jQuery(document).ready(function() {
+  App.init();
+  App.initCounter();
+  App.initParallaxBg();
+  OwlCarousel.initOwlCarousel();
+});

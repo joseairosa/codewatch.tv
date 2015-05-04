@@ -1,3 +1,524 @@
-.row
-  .col-md-12.text-center
-    .lead#welcome Welcome to codewatch.tv
+.search-block.parallaxBg
+  .container
+    .col-md-6.col-md-offset-3
+      %h1
+        Discover
+        %span.color-green new
+        things
+      .input-group
+        %input.form-control{:placeholder => "Search words with regular expressions ...", :type => "text"}
+          %span.input-group-btn
+            %button.btn-u.btn-u-lg{:type => "button"}
+              %i.fa.fa-search
+      %form.sky-form.page-search-form{:action => ""}
+        .inline-group
+          %label.checkbox
+            %input{:checked => "", :name => "checkbox-inline", :type => "checkbox"}
+              %i>
+              Recent
+          %label.checkbox
+            %input{:name => "checkbox-inline", :type => "checkbox"}
+              %i>
+              Related
+          %label.checkbox
+            %input{:name => "checkbox-inline", :type => "checkbox"}
+              %i>
+              Popular
+          %label.checkbox
+            %input{:name => "checkbox-inline", :type => "checkbox"}
+              %i>
+              Most Common
+.container.content
+  / Top Categories
+  .headline
+    %h2 Top Categories
+  .row.category.margin-bottom-20
+    / Info Blocks
+    .col-md-4.col-sm-6
+      .content-boxes-v3.margin-bottom-10.md-margin-bottom-20
+        %i.icon-custom.icon-sm.rounded-x.icon-bg-sea.icon-line.icon-badge
+        .content-boxes-in-v3
+          %h3
+            %a{:href => "#"} Top 100 templates
+          %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+      .content-boxes-v3.margin-bottom-10.md-margin-bottom-20
+        %i.icon-custom.icon-sm.rounded-x.icon-bg-red.fa.fa-hdd-o
+        .content-boxes-in-v3
+          %h3
+            %a{:href => "#"} Wikipedia
+            %small (10837)
+          %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+      .content-boxes-v3.margin-bottom-10.md-margin-bottom-20
+        %i.icon-custom.icon-sm.rounded-x.icon-bg-brown.fa.fa-desktop
+        .content-boxes-in-v3
+          %h3
+            %a{:href => "#"} Web design
+            %small (462)
+          %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+      .content-boxes-v3.margin-bottom-10.md-margin-bottom-20
+        %i.icon-custom.icon-sm.rounded-x.icon-bg-green.icon-line.icon-graduation
+        .content-boxes-in-v3
+          %h3
+            %a{:href => "#"} Education
+            %small (396)
+          %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+      .content-boxes-v3.margin-bottom-10.md-margin-bottom-20
+        %i.icon-custom.icon-sm.rounded-x.icon-bg-dark.fa.fa-film
+        .content-boxes-in-v3
+          %h3
+            %a{:href => "#"} Filmography
+            %small (156)
+          %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+    / End Info Blocks
+    / Info Blocks
+    .col-md-4.col-sm-6.md-margin-bottom-40
+      .content-boxes-v3.margin-bottom-10.md-margin-bottom-20
+        %i.icon-custom.icon-sm.rounded-x.icon-bg-blue.fa.fa-bell-o
+        .content-boxes-in-v3
+          %h3
+            %a{:href => "#"} Hi-Tech
+            %small (324)
+          %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+      .content-boxes-v3.margin-bottom-10.md-margin-bottom-20
+        %i.icon-custom.icon-sm.rounded-x.icon-bg-yellow.fa.fa-thumbs-o-up
+        .content-boxes-in-v3
+          %h3
+            %a{:href => "#"} Programming
+            %small (4053)
+          %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+      .content-boxes-v3.margin-bottom-10.md-margin-bottom-20
+        %i.icon-custom.icon-sm.rounded-x.icon-bg-aqua.icon-line.icon-playlist
+        .content-boxes-in-v3
+          %h3
+            %a{:href => "#"} Music
+            %small (268)
+          %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+      .content-boxes-v3.margin-bottom-10.md-margin-bottom-20
+        %i.icon-custom.icon-sm.rounded-x.icon-bg-purple.fa.fa-lightbulb-o
+        .content-boxes-in-v3
+          %h3
+            %a{:href => "#"} Engineering
+            %small (703)
+          %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+      .content-boxes-v3.margin-bottom-10.md-margin-bottom-20
+        %i.icon-custom.icon-sm.rounded-x.icon-bg-orange.fa.fa-area-chart
+        .content-boxes-in-v3
+          %h3
+            %a{:href => "#"} Others
+            %small (1296)
+          %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+    / End Info Blocks
+    / Begin Section-Block
+    .col-md-4.col-sm-12
+      .section-block
+        .text-center
+          %i.rounded.icon-custom.icon-sm.icon-bg-darker.line-icon.icon-graph
+          %h2 Popular Search
+          %p
+            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis.
+            %a{:href => "#"} View more
+        / Progress Bar
+        %h3.heading-xs.no-top-space
+          Web Design
+          %span.pull-right 88%
+        .progress.progress-u.progress-xxs
+          .progress-bar.progress-bar-u{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "88", :role => "progressbar", :style => "width: 88%"}
+        %h3.heading-xs.no-top-space
+          PHP/WordPress
+          %span.pull-right 76%
+        .progress.progress-u.progress-xxs
+          .progress-bar.progress-bar-u{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "76", :role => "progressbar", :style => "width: 76%"}
+        %h3.heading-xs.no-top-space
+          HTML/CSS
+          %span.pull-right 97%
+        .progress.progress-u.progress-xxs
+          .progress-bar.progress-bar-u{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "97", :role => "progressbar", :style => "width: 97%"}
+        / End Progress Bar
+        .clearfix
+        .section-block-info
+          %ul.list-inline.tags-v1
+            %li
+              %a{:href => "#"} #HTML5
+            %li
+              %a{:href => "#"} #Bootstrap
+            %li
+              %a{:href => "#"} #Blog and Portfolio
+            %li
+              %a{:href => "#"} #Responsive
+            %li
+              %a{:href => "#"} #Unify
+            %li
+              %a{:href => "#"} #JavaScript
+/ End Section-Block
+/ End Top Categories
+/ /container
+/ === End Content ===
+/ === Parallax Counter ===
+.parallax-counter-v2.parallaxBg1
+  .container
+    %ul.row.list-row
+      %li.col-md-3.col-sm-6.col-xs-12.md-margin-bottom-30
+        .counters.rounded
+          %span.counter 18298
+          %h4 Web Developers
+      %li.col-md-3.col-sm-6.col-xs-12.md-margin-bottom-30
+        .counters.rounded
+          %span.counter 24583
+          %h4 Designers
+      %li.col-md-3.col-sm-6.col-xs-12.sm-margin-bottom-30
+        .counters.rounded
+          %span.counter 37904
+          %h4 Open Contests
+      %li.col-md-3.col-sm-6.col-xs-12
+        .counters.rounded
+          %span.counter 50892
+          %h4 Happy Customors
+/ === End Parallax Counter ===
+/ === Container Part ===
+.container.content-md
+  %ul.row.block-grid-v2
+    %li.col-md-4.col-sm-6.md-margin-bottom-30
+      .easy-block-v1
+        %img.img-responsive{:alt => "", :src => "assets/img/mockup/img1.jpg"}
+          .easy-block-v1-badge.rgba-purple Unify Template
+      .block-grid-v2-info.rounded-bottom
+        %h3
+          %a{:href => "#"} One Page Template
+        %p Excepturi sint occaecati cupiditate non provident, at vero eos et accusamus et iusto odio..
+        %ul.list-inline.star-vote
+          %li
+            %i.color-green.fa.fa-star
+          %li
+            %i.color-green.fa.fa-star
+          %li
+            %i.color-green.fa.fa-star
+          %li
+            %i.color-green.fa.fa-star
+          %li
+            %i.color-green.fa.fa-star-half-o
+    %li.col-md-4.col-sm-6.md-margin-bottom-30
+      .easy-block-v1
+        %img.img-responsive{:alt => "", :src => "assets/img/mockup/img2.jpg"}
+          .easy-block-v1-badge.rgba-blue Graphic Design
+      .block-grid-v2-info.rounded-bottom
+        %h3
+          %a{:href => "#"} Mockup Design
+        %p Excepturi sint occaecati cupiditate non provident, at vero eos et accusamus et iusto odio..
+        %ul.list-inline.star-vote
+          %li
+            %i.color-green.fa.fa-star
+          %li
+            %i.color-green.fa.fa-star
+          %li
+            %i.color-green.fa.fa-star
+          %li
+            %i.color-green.fa.fa-star-half-o
+          %li
+            %i.color-green.fa.fa-star-o
+    %li.col-md-4.col-sm-12
+      .easy-block-v1
+        %img.img-responsive{:alt => "", :src => "assets/img/mockup/img4.jpg"}
+          .easy-block-v1-badge.rgba-red Web Development
+      .block-grid-v2-info.rounded-bottom
+        %h3
+          %a{:href => "#"} HTML5/CSS3 + PHP
+        %p Excepturi sint occaecati cupiditate non provident, at vero eos et accusamus et iusto odio..
+        %ul.list-inline.star-vote
+          %li
+            %i.color-green.fa.fa-star
+          %li
+            %i.color-green.fa.fa-star
+          %li
+            %i.color-green.fa.fa-star
+          %li
+            %i.color-green.fa.fa-star
+          %li
+            %i.color-green.fa.fa-star-o
+/ /container
+/ === Container Part ===
+/ === Container Part ===
+.bg-grey
+  .container.content-md
+    %ul.row.list-row.margin-bottom-30
+      %li.col-md-4.md-margin-bottom-30
+        .content-boxes-v3.block-grid-v1.rounded
+          %img.pull-left.rounded-x.block-grid-v1-img{:alt => "", :src => "assets/img/testimonials/img6.jpg"}
+            .content-boxes-in-v3
+              %h3
+                %a{:href => "#"} Forbes 1000
+              %ul.star-vote
+                %li
+                  %i.fa.fa-star
+                %li
+                  %i.fa.fa-star
+                %li
+                  %i.fa.fa-star-half-o
+                %li
+                  %i.fa.fa-star-o
+                %li
+                  %i.fa.fa-star-o
+              %ul.list-inline.margin-bottom-5
+                %li
+                  By
+                  %a.color-green{:href => "#"} Edward Rooster
+                %li
+                  %i.fa.fa-clock-o
+                  Oct 07, 2014
+              %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium...
+              %ul.list-inline.block-grid-v1-add-info
+                %li
+                  %a{:href => "#"}
+                    %i.fa.fa-eye
+                    34039
+                %li
+                  %a{:href => "#"}
+                    %i.fa.fa-retweet
+                    451
+                %li
+                  %a{:href => "#"}
+                    %i.fa.fa-download
+                    10842
+                %li
+                  %a{:href => "#"}
+                    %i.fa.fa-heart
+                    863
+      %li.col-md-4.md-margin-bottom-30
+        .content-boxes-v3.block-grid-v1.rounded
+          %i.icon-custom.icon-sm.rounded-x.icon-bg-red.fa.fa-line-chart
+          .content-boxes-in-v3
+            %h3
+              %a{:href => "#"} Business &amp; Finance
+            %ul.star-vote
+              %li
+                %i.fa.fa-star
+              %li
+                %i.fa.fa-star
+              %li
+                %i.fa.fa-star
+              %li
+                %i.fa.fa-star
+              %li
+                %i.fa.fa-star-half-o
+            %ul.list-inline.margin-bottom-5
+              %li
+                By
+                %a.color-green{:href => "#"} The Economist
+              %li
+                %i.fa.fa-clock-o
+                Oct 02, 2014
+            %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium...
+            %ul.list-inline.block-grid-v1-add-info
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-eye
+                  4258
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-retweet
+                  382
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-download
+                  2938
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-heart
+                  230
+      %li.col-md-4
+        .content-boxes-v3.block-grid-v1.rounded
+          %img.rounded-x.pull-left.block-grid-v1-img{:alt => "", :src => "assets/img/testimonials/img7.jpg"}
+            .content-boxes-in-v3
+              %h3
+                %a{:href => "#"} Web Programming
+              %ul.star-vote
+                %li
+                  %i.fa.fa-star
+                %li
+                  %i.fa.fa-star
+                %li
+                  %i.fa.fa-star
+                %li
+                  %i.fa.fa-star-half-o
+                %li
+                  %i.fa.fa-star-o
+              %ul.list-inline.margin-bottom-5
+                %li
+                  By
+                  %a.color-green{:href => "#"} Edward Rooster
+                %li
+                  %i.fa.fa-clock-o
+                  Jan 02, 2013
+              %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium...
+              %ul.list-inline.block-grid-v1-add-info
+                %li
+                  %a{:href => "#"}
+                    %i.fa.fa-eye
+                    34039
+                %li
+                  %a{:href => "#"}
+                    %i.fa.fa-retweet
+                    451
+                %li
+                  %a{:href => "#"}
+                    %i.fa.fa-download
+                    10842
+                %li
+                  %a{:href => "#"}
+                    %i.fa.fa-heart
+                    863
+    %ul.row.list-row
+      %li.col-md-4.md-margin-bottom-30
+        .content-boxes-v3.block-grid-v1.rounded
+          %i.icon-custom.icon-sm.rounded-x.icon-bg-blue.fa.fa-twitter
+          .content-boxes-in-v3
+            %h3
+              %a{:href => "#"} Social Network
+            %ul.star-vote
+              %li
+                %i.fa.fa-star
+              %li
+                %i.fa.fa-star
+              %li
+                %i.fa.fa-star
+              %li
+                %i.fa.fa-star
+              %li
+                %i.fa.fa-star-o
+            %ul.list-inline.margin-bottom-5
+              %li
+                By
+                %a.color-green{:href => "#"} Twitter Inc.
+              %li
+                %i.fa.fa-clock-o
+                Jan 02, 2013
+            %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium...
+            %ul.list-inline.block-grid-v1-add-info
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-eye
+                  25232
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-retweet
+                  543
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-download
+                  6782
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-heart
+                  943
+      %li.col-md-4.md-margin-bottom-30
+        .content-boxes-v3.block-grid-v1.rounded
+          %img.rounded-x.pull-left.block-grid-v1-img{:alt => "", :src => "assets/img/testimonials/img2.jpg"}
+            .content-boxes-in-v3
+              %h3
+                %a{:href => "#"} Education/Travel
+              %ul.star-vote
+                %li
+                  %i.fa.fa-star
+                %li
+                  %i.fa.fa-star
+                %li
+                  %i.fa.fa-star
+                %li
+                  %i.fa.fa-star-half-o
+                %li
+                  %i.fa.fa-star-o
+              %ul.list-inline.margin-bottom-5
+                %li
+                  By
+                  %a.color-green{:href => "#"} Stanford University
+                %li
+                  %i.fa.fa-clock-o
+                  Jan 02, 2013
+              %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium...
+              %ul.list-inline.block-grid-v1-add-info
+                %li
+                  %a{:href => "#"}
+                    %i.fa.fa-eye
+                    7653
+                %li
+                  %a{:href => "#"}
+                    %i.fa.fa-retweet
+                    342
+                %li
+                  %a{:href => "#"}
+                    %i.fa.fa-download
+                    3621
+                %li
+                  %a{:href => "#"}
+                    %i.fa.fa-heart
+                    583
+      %li.col-md-4
+        .content-boxes-v3.block-grid-v1.rounded
+          %i.icon-custom.icon-sm.rounded-x.icon-bg-purple.fa.fa-music
+          .content-boxes-in-v3
+            %h3
+              %a{:href => "#"} Music/Films
+            %ul.star-vote
+              %li
+                %i.fa.fa-star
+              %li
+                %i.fa.fa-star
+              %li
+                %i.fa.fa-star
+              %li
+                %i.fa.fa-star
+              %li
+                %i.fa.fa-star-half-o
+            %ul.list-inline.margin-bottom-5
+              %li
+                By
+                %a.color-green{:href => "#"} Sony Corporation
+              %li
+                %i.fa.fa-clock-o
+                Jan 02, 2013
+            %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium...
+            %ul.list-inline.block-grid-v1-add-info
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-eye
+                  62637
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-retweet
+                  741
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-download
+                  21314
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-heart
+                  1041
+/ === Container Part ===
+.testimonials-v3
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        %ul.list-unstyled.owl-ts-v1
+          %li.item
+            %img.rounded-x.img-bordered{:alt => "", :src => "assets/img/team/img3-sm.jpg"}
+              .testimonials-v3-title
+                %p David Case
+                %span Web Developer, Google
+              %p
+                I just wanted to tell you how much I like to use Unify -
+                %strong it's so sleek and elegant!
+                %br
+                  The customisation options you implemented are countless, and I feel sorry I can't use them all. Good job, and keep going!
+                  %p
+          %li.item
+            %img.rounded-x.img-bordered{:alt => "", :src => "assets/img/team/img2-sm.jpg"}
+              .testimonials-v3-title
+                %p Tina Krueger
+                %span UI Designer, Apple
+              %p Keep up the great work. Your template is by far the best on the market in terms of features, quality and value or money.At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium..
+          %li.item
+            %img.rounded-x.img-bordered{:alt => "", :src => "assets/img/team/img1-sm.jpg"}
+              .testimonials-v3-title
+                %p John Clarck
+                %span Marketing &amp; Cunsulting, IBM
+              %p So far I really like the theme. I am looking forward to exploring more of your themes. Thank you! At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium...
