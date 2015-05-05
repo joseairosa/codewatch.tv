@@ -3422,6 +3422,7 @@ img.image-md {
 
 /*Other Spaces*/
 .margin-top-20 { margin-top: 20px;}
+.margin-top-50 { margin-top: 50px;}
 .margin-left-5 { margin-left: 5px;}
 .margin-left-10 { margin-left: 10px;}
 .margin-right-5 { margin-right: 5px;}
@@ -3497,7 +3498,7 @@ img.image-md {
 .rgba-purple { background-color: rgba(155,107,204,0.8);}
 
 /*Grey Backroud*/
-.bg-grey {
+.bg-highlighted {
   background: #f7f7f7;
   border-top: solid 1px #eee;
   border-bottom: solid 1px #eee;

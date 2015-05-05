@@ -2071,7 +2071,7 @@
 .parallax-counter-v2 {
   position: relative;
   padding: 80px 0 60px;
-  background: url(../img/patterns/16.png) repeat fixed;
+  background: url(bg1.jpg) repeat;
 }
 
 .parallax-counter-v2:after {
