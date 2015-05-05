@@ -1,0 +1,6 @@
+.container.content-md
+  .headline
+    %h2 Featured Streams
+  %ul.row.block-grid-v2
+    - featured_channels.each do |channel|
+      = render partial: 'shared/stream_thumbnail', locals: {classes: 'col-md-4 col-sm-6', channel: channel}

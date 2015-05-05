@@ -14,14 +14,16 @@ class Channel
 
   index title: 1
   index is_online: 1
+  index one_line_description: 1
 
-  field :title,           type: String, default: 'Untitled broadcast'
-  field :description,     type: String
-  field :total_viewers,   type: Integer, default: 0
-  field :current_viewers, type: Integer, default: 0
-  field :likes,           type: Integer, default: 0
-  field :is_online,       type: Integer, default: 0
-  field :subscribers,     type: Array, default: []
+  field :title,                 type: String,   default: 'Untitled broadcast'
+  field :description,           type: String
+  field :total_viewers,         type: Integer,  default: 0
+  field :current_viewers,       type: Integer,  default: 0
+  field :likes,                 type: Integer,  default: 0
+  field :is_online,             type: Integer,  default: 0
+  field :subscribers,           type: Array,    default: []
+  field :one_line_description,  type: String
 
   def new_viewer
     self.total_viewers = self.total_viewers+1

@@ -21,15 +21,6 @@ class ChannelController < ApplicationController
 
   private
 
-  def current_viewers
-    @current_viewers ||= begin
-      nviewers = ChannelService.instance.number_viewers(channel)
-      # That's you :)
-      nviewers = 1 if nviewers == 0
-      nviewers
-    end
-  end
-
   def channel_id
     channel.user.username
   end

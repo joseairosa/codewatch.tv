@@ -815,13 +815,12 @@
       -#      %a{:href => "page_misc_dark_other_color.html"} Dark Page with Theme Color
       -#    %li
       -#      %a{:href => "page_misc_sticky_footer.html"} Sticky Footer Example
-      / End Misc Pages
-      / Search Block
+
       %li
         %i.search.fa.fa-search.search-btn
         .search-open
           .input-group.animated.fadeInDown
-            %input#search.form-control{type: 'text', placeholder: 'Search'}
+            %input.search-activator.form-control{type: 'text', placeholder: 'Search'}
             -#%input.form-control{:placeholder => "Search", :type => "text"}
               %span.input-group-btn
                 %button.btn-u{:type => "button"} Go

@@ -16,7 +16,6 @@
 //= require jquery.autocomplete.min
 //= require bootstrap.min
 //= require back-to-top
-//= require smoothScroll
 //= require jquery.parallax
 //= require waypoints.min
 //= require jquery.counterup.min

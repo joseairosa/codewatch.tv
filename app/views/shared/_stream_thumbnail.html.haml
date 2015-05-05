@@ -1,0 +1,21 @@
+%li{class: "#{classes}"}
+  .easy-block-v1
+    = image_tag "https://codewatch-tv.s3-eu-west-1.amazonaws.com/stream-thumbnails/#{channel.user.username}.png", class: 'img-responsive'
+    .easy-block-v1-badge.rgba-purple= channel.category.name
+  .block-grid-v2-info.rounded-bottom
+    %h3
+      %a{:href => "#"}= channel.title
+    %p= channel.one_line_description.to_s
+    %ul.list-inline.block-grid-v1-add-info
+      %li
+        %a{:href => "#"}
+          %i.fa.fa-eye
+          = channel.total_viewers
+      %li
+        %a{:href => "#"}
+          %i.fa.fa-user
+          = (channel.online? ? current_viewers(channel) : '0')
+      %li
+        %a{:href => "#"}
+          %i.fa.fa-heart
+          = channel.likes
