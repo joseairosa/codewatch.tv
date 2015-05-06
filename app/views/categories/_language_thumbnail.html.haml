@@ -1,4 +1,5 @@
-%div{class: "cbp-item #{category.dehumanize}"}
+- first_letter = category.dehumanize.first.match(/[a-z]/) ? category.dehumanize.first : 'non-alphanumeric'
+%div{class: "cbp-item #{category.dehumanize} letter-#{first_letter}"}
   .cbp-caption.margin-bottom-20
     .cbp-caption-defaultWrap
       = link_to image_tag("https://codewatch-tv.s3-eu-west-1.amazonaws.com/language-thumbnails/#{category.dehumanize}.png"), category_channels_path(category.name)
