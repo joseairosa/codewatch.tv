@@ -28,6 +28,8 @@
 //= require tinymce-jquery
 //= require main
 //= require owl-carousel
+//= require jquery.cubeportfolio.min
+//= require cube-portfolio-6-fw-tx
 //= require_tree .
 
 jwplayer.key="RdBgRDffK8CxoR+GCaOb0iinIDch8TJmzRxvoA==";
@@ -45,3 +47,4 @@ jQuery(document).ready(function() {
   App.initParallaxBg();
   OwlCarousel.initOwlCarousel();
 });
+
