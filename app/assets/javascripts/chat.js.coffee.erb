@@ -11,7 +11,7 @@ $ ->
     moderator_id = "moderator_" + message.id
     remove_id = "remove_" + message.id
 
-    $("ul.chat").append(
+    $("#chat-messages").append(
         chatMessageTemplate
         .replace(/\{\{message\}\}/g, message.content)
         .replace(/\{\{username\}\}/g, message.user_name)
@@ -22,7 +22,8 @@ $ ->
         .replace(/\{\{messageId\}\}/g, message.id)
         .replace(/%7B%7BmessageId%7D%7D/g, message.id)
     )
-    $('#chat-body').scrollTop($('#chat-body').prop("scrollHeight"))
+    $("#chat-messages").mCustomScrollbar("scrollTo", 'bottom');
+#    $('#chat-body').scrollTop($('#chat-body').prop("scrollHeight"))
     $('#chat-message').val('')
 
 #    $('#' + ban_id).bind 'ajax:beforeSend', ->

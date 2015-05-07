@@ -29,6 +29,7 @@
 //= require main
 //= require owl-carousel
 //= require jquery.cubeportfolio.min
+//= require jquery.mCustomScrollbar.concat.min
 //= require cube-portfolio-6-fw-tx
 //= require_tree .
 

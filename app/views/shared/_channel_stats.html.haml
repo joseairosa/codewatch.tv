@@ -1,21 +1,23 @@
-.row#channel-stats
-  .col-md-3
-    .navbar.navbar-default
-      .navbar-brand
-        .fa.fa-eye
-      .navbar-text.text-center= total_viewers
-  .col-md-3
-    .navbar.navbar-default
-      .navbar-brand
-        .fa.fa-user
-      .navbar-text.text-center= current_viewers == 0 ? 1 : current_viewers
-  .col-md-3
-    .navbar.navbar-default
-      .navbar-brand
-        .fa.fa-heart
-      .navbar-text.text-center= likes
-  .col-md-3
-    .navbar.navbar-default
-      .navbar-brand
-        .fa.fa-youtube-play
-      .navbar-text.text-center= link_to(vod_count, list_vod_path(channel.user.username))
+#channel-stats
+  .row.margin-bottom-20
+    .col-sm-6.sm-margin-bottom-20
+      .service-block-v3.service-block-u
+        %i.fa.fa-eye
+        %span.service-heading Total Viewers
+        %span.counter= total_viewers
+    .col-sm-6
+      .service-block-v3.service-block-blue
+        %i.fa.fa-user
+        %span.service-heading Current Viewers
+        %span.counter= current_viewers == 0 ? 1 : current_viewers
+  .row
+    .col-sm-6.sm-margin-bottom-20
+      .service-block-v3.service-block-u
+        %i.fa.fa-heart
+        %span.service-heading Likes
+        %span.counter= likes
+    .col-sm-6
+      .service-block-v3.service-block-blue
+        %i.fa.fa-youtube-play
+        %span.service-heading Video on Demand
+        %span.counter= link_to(vod_count, list_vod_path(channel.user.username))
