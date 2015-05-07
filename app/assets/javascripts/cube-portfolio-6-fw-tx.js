@@ -10,59 +10,63 @@ jQuery(document).ready(function () {
   /*********************************
    init cubeportfolio
    *********************************/
-  gridCategoryContainer.cubeportfolio({
-    defaultFilter: '*',
-    animationType: 'slideLeft',
-    gapHorizontal: 20,
-    gapVertical: 20,
-    gridAdjustment: 'responsive',
-    mediaQueries: [{
-      width: 1600,
-      cols: 10
-    }, {
-      width: 1200,
-      cols: 10
-    }, {
-      width: 800,
-      cols: 6
-    }, {
-      width: 500,
-      cols: 4
-    }, {
-      width: 320,
-      cols: 1
-    }],
-    caption: '',
-    displayType: 'lazyLoading',
-    displayTypeSpeed: 100
-  });
+  if(gridCategoryContainer.length) {
+    gridCategoryContainer.cubeportfolio({
+      defaultFilter: '*',
+      animationType: 'slideLeft',
+      gapHorizontal: 20,
+      gapVertical: 20,
+      gridAdjustment: 'responsive',
+      mediaQueries: [{
+        width: 1600,
+        cols: 10
+      }, {
+        width: 1200,
+        cols: 10
+      }, {
+        width: 800,
+        cols: 6
+      }, {
+        width: 500,
+        cols: 4
+      }, {
+        width: 320,
+        cols: 1
+      }],
+      caption: 'opcity',
+      displayType: 'lazyLoading',
+      displayTypeSpeed: 100
+    });
+  }
 
-  gridChannelContainer.cubeportfolio({
-    defaultFilter: '*',
-    animationType: 'slideLeft',
-    gapHorizontal: 20,
-    gapVertical: 20,
-    gridAdjustment: 'responsive',
-    mediaQueries: [{
-      width: 1600,
-      cols: 6
-    }, {
-      width: 1200,
-      cols: 6
-    }, {
-      width: 800,
-      cols: 4
-    }, {
-      width: 500,
-      cols: 2
-    }, {
-      width: 320,
-      cols: 1
-    }],
-    caption: '',
-    displayType: 'lazyLoading',
-    displayTypeSpeed: 100
-  });
+  if(gridChannelContainer.length) {
+    gridChannelContainer.cubeportfolio({
+      defaultFilter: '*',
+      animationType: 'slideLeft',
+      gapHorizontal: 20,
+      gapVertical: 20,
+      gridAdjustment: 'responsive',
+      mediaQueries: [{
+        width: 1600,
+        cols: 6
+      }, {
+        width: 1200,
+        cols: 6
+      }, {
+        width: 800,
+        cols: 4
+      }, {
+        width: 500,
+        cols: 2
+      }, {
+        width: 320,
+        cols: 1
+      }],
+      caption: '',
+      displayType: 'lazyLoading',
+      displayTypeSpeed: 100
+    });
+  }
 
   /*********************************
    add listener for filters

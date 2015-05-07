@@ -8,7 +8,7 @@
     .navbar.navbar-default
       .navbar-brand
         .fa.fa-user
-      .navbar-text.text-center= current_viewers
+      .navbar-text.text-center= current_viewers == 0 ? 1 : current_viewers
   .col-md-3
     .navbar.navbar-default
       .navbar-brand
