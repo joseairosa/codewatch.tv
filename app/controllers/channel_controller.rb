@@ -4,7 +4,6 @@ class ChannelController < ApplicationController
 
   helper_method :channel
   helper_method :channel_id
-  helper_method :current_viewers
   helper_method :is_channel_owner?
   helper_method :is_channel_moderator?
 

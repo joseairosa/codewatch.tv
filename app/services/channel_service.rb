@@ -18,6 +18,10 @@ class ChannelService
     nviewers
   end
 
+  def update_current_viewers(channel)
+    channel.update(current_viewers: number_viewers(channel))
+  end
+
   def subscribe(channel, user)
     channel.subscribe(user)
   end

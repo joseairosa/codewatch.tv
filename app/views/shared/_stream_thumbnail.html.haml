@@ -26,17 +26,9 @@
     .cbp-title-dark
       .cbp-l-grid-agency-title= channel.title
       .cbp-l-grid-agency-desc= channel.one_line_description.to_s
-    .text-center
+    .text-right
       %ul.list-inline.block-grid-v1-add-info
         %li
           %a{:href => user_channel_path(channel.user.username)}
-            %i.fa.fa-eye
-            = channel.total_viewers
-        %li
-          %a{:href => user_channel_path(channel.user.username)}
             %i.fa.fa-user
-            = (channel.online? ? current_viewers(channel) : '0')
-        %li
-          %a{:href => user_channel_path(channel.user.username)}
-            %i.fa.fa-heart
-            = channel.likes
+            = (channel.online? ? channel.current_viewers : '0')

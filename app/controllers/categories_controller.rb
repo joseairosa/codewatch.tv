@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.where(name: params[:category_name].gsub("%2f", "/")).first
-    @channels = @category.channels.where(is_online: 1)
+    @channels = @category.channels.where(is_online: 1).order_by(current_viewers: :desc, name: :asc)
 
     add_breadcrumb @category.name, category_channels_path(@category.name)
   end

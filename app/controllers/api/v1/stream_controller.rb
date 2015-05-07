@@ -1,12 +1,17 @@
 class Api::V1::StreamController < Api::V1::ApiController
+
+  include ChannelHelper
+
   def event
     user = User.where(username: params[:name].split('@').first).first
     response = if user
       case params[:event]
         when 'play'
           user.channel.new_viewer
+          ChannelService.instance.update_current_viewers(user.channel)
           {json: {auth: 'ok'}, status: 200}
         when 'play_done'
+          ChannelService.instance.update_current_viewers(user.channel)
           {json: {auth: 'ok'}, status: 200}
         when 'publish'
           valid = User.valid_stream_key?(params[:name], params[:stream_key])
