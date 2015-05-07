@@ -8,6 +8,6 @@
       - ('a'..'z').to_a.each do |letter|
         |
         .cbp-filter-item{"data-filter" => ".letter-#{letter}"}= letter.upcase
-  #grid-container.cbp-l-grid-fullWidth
+  #grid-category-container.cbp-l-grid-fullWidth
     - @categories.each do |category|
       = render partial: 'categories/language_thumbnail', locals: {classes: 'col-md-3 col-sm-4', category: category}

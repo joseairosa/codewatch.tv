@@ -1,24 +1,16 @@
-= render partial: 'shared/breadcrumbs', locals: {page_name: "#{category.name} streams"}
-- if channels.empty?
-  .container.content
-    .row
-      .col-md-8.col-md-offset-2
-        .error-v1
-          %span.error-v1-title.margin-bottom-50 :'(
-          %span.margin-bottom-50 There are currently no streams in this category
-          = link_to 'Explore other categories', categories_path, class: 'btn-u btn-bordered'
-- else
-  - slice_size = (channels.size >= 5 ? channels.size / 5 : channels.size)
-  - channels.each_slice(slice_size).to_a.each do |channel_slice|
-    .row
-      - channel_slice.each do |channel|
-        .col-md-2
-          .channel-thumbnail
-            %a{href: "/channel/#{channel.user.username}", class: 'thumbnail'}
-              = image_tag "https://codewatch-tv.s3-eu-west-1.amazonaws.com/stream-thumbnails/#{channel.user.username}.png"
-              .caption
-                %h5= truncate(channel.title, length: 41)
-                .text-right
-                  %p
-                    .fa.fa-user
-                    = "#{channel.current_viewers}"
+.channel-list
+  = render partial: 'shared/breadcrumbs', locals: {page_name: "#{category.name} streams"}
+  - if channels.empty?
+    .container.content
+      .row
+        .col-md-8.col-md-offset-2
+          .error-v1
+            %span.error-v1-title.margin-bottom-50 :'(
+            %span.margin-bottom-50 There are currently no streams in this category
+            = link_to 'Explore other categories', categories_path, class: 'btn-u btn-bordered'
+  - else
+    .cube-portfolio.margin-bottom-50
+      .content-xs
+      #grid-channel-container.cbp-l-grid-fullWidth
+        - channels.each do |channel|
+          = render partial: 'shared/stream_thumbnail', locals: {channel: channel}
