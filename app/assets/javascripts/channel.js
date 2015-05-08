@@ -20,7 +20,11 @@
   $(window).load(function(){
     $("#chat-messages").mCustomScrollbar({
       theme: "minimal-dark",
-      setHeight: 365 + $('#channel-online .description').height()
+      setHeight: $(window).height() - 400,
+      advanced:{
+        updateOnContentResize: false,
+        updateOnImageLoad: false
+      }
     });
   });
 })(jQuery);

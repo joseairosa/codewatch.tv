@@ -14,6 +14,7 @@ class ChatService
       id: message_id,
       user_name: user.username,
       chat_id: chat_id,
+      user_image: user.gravatar_url,
       content: message
     }
     $redis.rpush "#{chat_id}_message_ids", message_id

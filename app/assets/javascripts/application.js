@@ -21,6 +21,7 @@
 //= require jquery.counterup.min
 //= require owl.carousel
 //= require socket.io
+//= require jquery.mCustomScrollbar.concat.min
 //= require chat
 //= require search
 //= require jwplayer/jwplayer
@@ -29,7 +30,6 @@
 //= require main
 //= require owl-carousel
 //= require jquery.cubeportfolio.min
-//= require jquery.mCustomScrollbar.concat.min
 //= require cube-portfolio-6-fw-tx
 //= require_tree .
 
