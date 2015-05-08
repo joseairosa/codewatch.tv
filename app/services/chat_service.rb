@@ -3,19 +3,22 @@ require 'securerandom'
 class ChatService
 
   include Singleton
+  include EmojiHelper
+  include ActionView::Helpers::AssetUrlHelper
 
   def initialize
 
   end
 
   def new_message(user, chat_id, message)
+    return if message.to_s.strip.empty?
     message_id = SecureRandom.uuid
     payload  = {
       id: message_id,
       user_name: user.username,
       chat_id: chat_id,
       user_image: user.gravatar_url,
-      content: message
+      content: emojify(message)
     }
     $redis.rpush "#{chat_id}_message_ids", message_id
     $redis.hset "#{chat_id}_messages", message_id, payload.to_json

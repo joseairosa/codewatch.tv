@@ -70,6 +70,8 @@ gem 'gravtastic'
 
 gem 'breadcrumbs_on_rails'
 
+gem 'gemoji'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

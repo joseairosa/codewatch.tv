@@ -14,6 +14,8 @@
           %li
             = link_to 'My Channel', user_channel_path(current_user.username)
           %li
+            = link_to 'My VoD', list_vod_path(current_user.username)
+          %li
             = link_to 'Edit Channel', edit_user_channel_path
           %li
             = link_to 'Log Out', destroy_user_session_path, method: :get
