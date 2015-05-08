@@ -3,8 +3,134 @@
     .col-md-12.text-center
       .lead#welcome No Video on Demand found for this user.
 - else
-  - recordings.reverse.each_slice(6).to_a.each do |recordings_slice|
+  .container.content
     .row
+      .col-md-12
+        %ul.vod-timeline
+          - recordings.each do |recording|
+            %li
+              %time.cbp_tmtime{:datetime => ""}
+                %span= recording.created_at.strftime('%A, %e at %H:%M')
+                %span= recording.created_at.strftime('%B %Y')
+              %i.cbp_tmicon.rounded-x.hidden-xs
+              .cbp_tmlabel
+                %h2= recording.title
+                .row
+                  .col-md-12.text-center
+                    %a{href: show_vod_path(recording.user.username, recording.id)}
+                      = image_tag "https://codewatch-tv.s3-eu-west-1.amazonaws.com/recording-thumbnails/#{recording.name.gsub('.flv', '')}.png"
+            -#%li
+            -#  %time.cbp_tmtime{:datetime => ""}
+            -#    %span 7/2/09
+            -#    %span February
+            -#  %i.cbp_tmicon.rounded-x.hidden-xs
+            -#  .cbp_tmlabel
+            -#    %h2 First achievements
+            -#    %p Caulie dandelion maize lentil collard greens radish arugula sweet pepper water spinach kombu courgette lettuce. Celery coriander bitterleaf epazote radicchio shallot winter purslane collard greens spring onion squash lentil. Artichoke salad bamboo shoot black-eyed pea brussels sprout garlic kohlrabi.
+            -#    .row
+            -#      .col-sm-6
+            -#        %ul.list-unstyled
+            -#          %li
+            -#            %i.fa.fa-check.color-green
+            -#            Donec id elit non mi porta gravida
+            -#          %li
+            -#            %i.fa.fa-check.color-green
+            -#            Corporate and Creative
+            -#          %li
+            -#            %i.fa.fa-check.color-green
+            -#            Responsive Bootstrap Template
+            -#          %li
+            -#            %i.fa.fa-check.color-green
+            -#            Corporate and Creative
+            -#      .col-sm-6
+            -#        %ul.list-unstyled
+            -#          %li
+            -#            %i.fa.fa-check.color-green
+            -#            Donec id elit non mi porta gravida
+            -#          %li
+            -#            %i.fa.fa-check.color-green
+            -#            Corporate and Creative
+            -#          %li
+            -#            %i.fa.fa-check.color-green
+            -#            Responsive Bootstrap Template
+            -#          %li
+            -#            %i.fa.fa-check.color-green
+            -#            Corporate and Creative
+            -#%li
+            -#  %time.cbp_tmtime{:datetime => ""}
+            -#    %span 28/6/12
+            -#    %span May
+            -#  %i.cbp_tmicon.rounded-x.hidden-xs
+            -#  .cbp_tmlabel
+            -#    %h2 Difficulties
+            -#    %p Parsley amaranth tigernut silver beet maize fennel spinach. Ricebean black-eyed pea maize scallion green bean spinach cabbage jícama bell pepper carrot onion corn plantain garbanzo. Sierra leone bologi komatsuna celery peanut swiss chard silver beet squash dandelion maize chicory burdock tatsoi dulse radish wakame beetroot.
+            -#%li
+            -#  %time.cbp_tmtime{:datetime => ""}
+            -#    %span 11/3/10
+            -#    %span March
+            -#  %i.cbp_tmicon.rounded-x.hidden-xs
+            -#  .cbp_tmlabel
+            -#    %h2 Our Popularity
+            -#    %p Parsnip lotus root celery yarrow seakale tomato collard greens tigernut epazote ricebean melon tomatillo soybean chicory broccoli beet greens peanut salad. Lotus root burdock bell pepper chickweed shallot groundnut pea sprouts welsh onion wattle seed pea salsify turnip scallion peanut arugula bamboo shoot onion swiss chard.
+            -#    .margin-bottom-20
+            -#    .row
+            -#      .col-sm-6
+            -#        / Progress Bar Text
+            -#        .progress-bar-text
+            -#          %p.text-left HTML &amp; CSS
+            -#          %p.text-right 91%
+            -#          .progress.progress-u.progress-xs
+            -#            .progress-bar.progress-bar-u.progress-bar-u-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "91", :role => "progressbar", :style => "width: 91%"}
+            -#        / End Progress Bar Text
+            -#        / Progress Bar Text
+            -#        .progress-bar-text
+            -#          %p.text-left Web Animation
+            -#          %p.text-right 55%
+            -#          .progress.progress-u.progress-xs
+            -#            .progress-bar.progress-bar-u.progress-bar-u-info{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "55", :role => "progressbar", :style => "width: 55%"}
+            -#      / End Progress Bar Text
+            -#      .col-sm-6
+            -#        / Progress Bar Text
+            -#        .progress-bar-text
+            -#          %p.text-left Web Design
+            -#          %p.text-right 67%
+            -#          .progress.progress-u.progress-xs
+            -#            .progress-bar.progress-bar-u.progress-bar-u-danger{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "67", :role => "progressbar", :style => "width: 67%"}
+            -#        / End Progress Bar Text
+            -#        / Progress Bar Text
+            -#        .progress-bar-text
+            -#          %p.text-left PHP &amp; Javascript
+            -#          %p.text-right 73%
+            -#          .progress.progress-u.progress-xs
+            -#            .progress-bar.progress-bar-u.progress-bar-u-warning{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "73", :role => "progressbar", :style => "width: 73%"}
+            -#/ End Progress Bar Text
+            -#%li
+            -#  %time.cbp_tmtime{:datetime => ""}
+            -#    %span 2/4/11
+            -#    %span April
+            -#  %i.cbp_tmicon.rounded-x.hidden-xs
+            -#  .cbp_tmlabel
+            -#    %h2 Back to the past
+            -#    %p Peanut gourd nori welsh onion rock melon mustard jícama. Desert raisin amaranth kombu aubergine kale seakale brussels sprout pea. Black-eyed pea celtuce bamboo shoot salad kohlrabi leek squash prairie turnip catsear rock melon chard taro broccoli turnip greens. Fennel quandong potato watercress ricebean swiss chard garbanzo. Endive daikon brussels sprout lotus root silver beet epazote melon shallot.
+            -#%li
+            -#  %time.cbp_tmtime{:datetime => ""}
+            -#    %span 18/7/13
+            -#    %span June
+            -#  %i.cbp_tmicon.rounded-x.hidden-xs
+            -#  .cbp_tmlabel
+            -#    %h2 Unify in recent years
+            -#    %p Caulie dandelion maize lentil collard greens radish arugula sweet pepper water spinach kombu courgette lettuce. Celery coriander bitterleaf epazote radicchio shallot winter purslane collard greens spring onion squash lentil. Artichoke salad bamboo shoot black-eyed pea brussels sprout garlic kohlrabi.
+            -#    %p Bitterleaf celery coriander epazote radicchio shallot winter purslane collard greens spring onion squash lentil. Artichoke salad bamboo shoot black-eyed pea brussels sprout.
+            -#    .margin-bottom-20
+            -#    .row
+            -#      .col-md-4.col-xs-6
+            -#        %img.img-responsive.md-margin-bottom-10{:alt => "", :src => "assets/img/main/img2.jpg"}
+            -#      .col-md-4.col-xs-6
+            -#        %img.img-responsive.md-margin-bottom-10{:alt => "", :src => "assets/img/main/img4.jpg"}
+            -#      .col-md-4.col-xs-6
+            -#        %img.img-responsive.md-margin-bottom-10{:alt => "", :src => "assets/img/main/img3.jpg"}
+            -#        / End Content
+    -#.row
       - recordings_slice.each do |recording|
         .col-md-2
           .recording-thumbnail

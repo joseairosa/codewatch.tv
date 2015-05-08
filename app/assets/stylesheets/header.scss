@@ -112,7 +112,7 @@
 .header .topbar ul.dashboard-dropdown li a:hover,
 .header .topbar ul.dashboard-dropdown li.active a {
   background: $cw-blue;
-  color: $cw-green;
+  color: $color_lima_approx;
 }
 
 .header .topbar ul.dashboard-dropdown li a:hover {
@@ -203,7 +203,7 @@
 .header .navbar-toggle,
 .header .navbar-toggle:hover,
 .header .navbar-toggle:focus {
-  background: $cw-green;
+  background: $color_lima_approx;
   padding: 6px 10px 2px;
 }
 
@@ -225,7 +225,7 @@
 }
 
 .header .navbar-nav > .active > a {
-  color: $cw-green;
+  color: $color_lima_approx;
 }
 
 @media (min-width: 992px) {
@@ -371,13 +371,13 @@
   }
 
   .header .navbar-nav > li > a:hover {
-    color: $cw-green;
+    color: $color_lima_approx;
   }
 
   .header .navbar-nav > .active > a,
   .header .navbar-nav > .active > a:hover,
   .header .navbar-nav > .active > a:focus {
-    background: $cw-green;
+    background: $color_lima_approx;
     color: #fff !important;
   }
 
@@ -421,7 +421,7 @@
   .header .navbar-nav > .active > a {
     bottom: -2px;
     position: relative;
-    border-bottom: solid 2px $cw-green;
+    border-bottom: solid 2px $color_lima_approx;
   }
 
   .header .navbar-nav > li > a,
@@ -436,11 +436,11 @@
   .header .navbar-nav > .open > a,
   .header .navbar-nav > .open > a:hover,
   .header .navbar-nav > .open > a:focus {
-    color: $cw-green;
+    color: $color_lima_approx;
   }
 
   .header .navbar-nav > li:hover > a {
-    color: $cw-green;
+    color: $color_lima_approx;
   }
 
   /*Dropdown Menu*/
@@ -450,7 +450,7 @@
     min-width: 200px;
     border-radius: 0;
     z-index: 9999 !important;
-    border-top: solid 2px $cw-green;
+    border-top: solid 2px $color_lima_approx;
     border-bottom: solid 2px #687074;
   }
 
@@ -599,9 +599,9 @@
 }
 
 .header .nav > li > .search:hover {
-  color: $cw-green;
+  color: $color_lima_approx;
   background: $cw-blue;
-  border-bottom-color: $cw-green;
+  border-bottom-color: $color_lima_approx;
 }
 
 .header .nav .search-open {
@@ -918,7 +918,7 @@
   }
 
   .header.header-dark .navbar-nav .dropdown > a:hover {
-    color: $cw-green;
+    color: $color_lima_approx;
     background: inherit;
   }
 
@@ -952,7 +952,7 @@
 @media (min-width: 992px) {
   .header.header-dark .navbar-nav > li > a:hover,
   .header.header-dark .navbar-nav > .active > a {
-    color: $cw-green !important;
+    color: $color_lima_approx !important;
   }
 
   .header.header-dark .dropdown-menu {

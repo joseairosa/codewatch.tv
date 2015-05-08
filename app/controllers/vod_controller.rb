@@ -3,7 +3,7 @@ class VodController < ApplicationController
   def index
     user = User.where(username: params[:username]).first
     redirect_to '/404' if user.nil? || params[:username].empty?
-    @recordings = user.recordings.where(visible: 1)
+    @recordings = user.recordings.where(visible: 1).order_by(created_at: :desc)
   end
 
   def show

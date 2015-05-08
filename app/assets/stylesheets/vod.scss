@@ -1,0 +1,133 @@
+@import 'variables';
+
+.vod-timeline {
+  padding: 0;
+  list-style: none;
+  position: relative;
+  &:before {
+    top: 0;
+    bottom: 0;
+    left: 22%;
+    width: 4px;
+    content: '';
+    background: $color_concrete_approx;
+    position: absolute;
+    margin-left: -14px;
+  }
+  > li {
+    position: relative;
+    .cbp_tmtime {
+      width: 25%;
+      display: block;
+      position: absolute;
+      padding-right: 80px;
+      span {
+        top: 9px;
+        display: block;
+        text-align: right;
+        position: relative;
+        &:first-child {
+          color: $color_mountain_mist_approx;
+          font-size: 14px;
+          line-height: 0.9;
+        }
+        &:last-child {
+          color: $color_mid_gray_approx;
+          font-size: 20px;
+          font-weight: normal;
+        }
+      }
+    }
+    .cbp_tmlabel {
+      color: $white;
+      padding: 10px 20px 20px;
+      background: $color_concrete_approx;
+      line-height: 1.4;
+      clear: both;
+      position: relative;
+      //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
+      border-radius: 5px;
+      margin: 0 0 40px 25%;
+      li {
+        padding: 0;
+      }
+      h2 {
+        margin-top: 0;
+        font-size: 21px;
+        padding: 0 0 5px;
+        margin-bottom: 10px;
+        text-transform: capitalize;
+        border-bottom: 1px solid $color_alto_approx;
+      }
+      .text-left {
+        float: left;
+      }
+      &:after {
+        right: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-right-color: $color_concrete_approx;
+        border-width: 10px;
+        top: 18px;
+      }
+      img {
+        width: 100%;
+      }
+    }
+    .cbp_tmicon {
+      top: 22px;
+      left: 22%;
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      background: $color_lima_approx;
+      margin: 0 0 0 -17px;
+      //Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+      box-shadow: 0 0 0 4px $color_concrete_approx;
+    }
+  }
+}
+@media screen and(max-width: 65.375em) {
+  .vod-timeline > li .cbp_tmtime span:last-child {
+    font-size: 1.5em;
+  }
+}
+@media screen and(max-width: 47.2em) {
+  .vod-timeline {
+    &:before {
+      display: none;
+    }
+    > li {
+      .cbp_tmtime {
+        width: 100%;
+        position: relative;
+        padding: 0 0 20px 0;
+        span {
+          text-align: left;
+        }
+      }
+      .cbp_tmlabel {
+        padding: 1em;
+        font-weight: 400;
+        margin: 0 0 30px 0;
+        &:after {
+          left: 20px;
+          top: -20px;
+          right: auto;
+          border-bottom-color: $color_concrete_approx;
+          border-right-color: transparent;
+        }
+      }
+      .cbp_tmicon {
+        left: auto;
+        float: right;
+        position: relative;
+        margin: -55px 5px 0 0;
+      }
+    }
+  }
+}
