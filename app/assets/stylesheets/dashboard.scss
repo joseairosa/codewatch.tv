@@ -1,43 +1,17 @@
 @import 'variables';
 
-.channel {
-  & > .row {
-    margin-right: 0;
-  }
-
-  #channel-stats {
-    .vod {
-      position: relative;
-      .vod-view-all {
-        position: absolute;
-        bottom: 10px;
-        right: 25px;
-      }
-    }
-  }
-
-  #channel-online, #channel-offiline {
-    padding: 20px 0 0 15px;
-
-    .title {
-      line-height: 50px;
-      margin-bottom: 25px;
-    }
-
-    #chat-online {
-      .panel {
-        margin-bottom: 0;
-      }
-    }
+.dashboard {
+  #stream-key {
+    font-size: 17px;
   }
   .heading-sm-v2 {
     font-size: 16px;
   }
-  .channel-body {
+  .dashboard-body {
     padding: 20px;
     background: $color_black_haze_approx;
   }
-  .panel-channel {
+  .panel-profile {
     border: none;
     margin-bottom: 0;
     //Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
@@ -104,7 +78,7 @@
       font-size: 12px;
     }
   }
-  .channel-post {
+  .dashboard-post {
     background: $white;
     margin-bottom: 2px;
     padding: 7px 7px 7px 0;
@@ -129,18 +103,18 @@
     &.color-seven {
       border-left: 2px solid $color_scooter_approx;
     }
-    span.channel-post-numb {
+    span.dashboard-post-numb {
       float: left;
       color: $color_mountain_mist_approx;
       font-size: 20px;
       font-weight: 200;
       padding: 5px 12px;
     }
-    &:hover span.channel-post-numb {
+    &:hover span.dashboard-post-numb {
       color: $color_lima_approx;
     }
   }
-  .channel-post-in {
+  .dashboard-post-in {
     overflow: hidden;
     p {
       color: $color_mountain_mist_approx;
@@ -151,7 +125,7 @@
       text-transform: uppercase;
     }
   }
-  .channel-event {
+  .dashboard-event {
     background: $white;
     padding: 10px 15px;
     margin-bottom: 2px;
@@ -297,7 +271,7 @@
       color: $color_mountain_mist_approx;
     }
   }
-  .channel-bio {
+  .dashboard-bio {
     background: $white;
     position: relative;
     padding: 15px 10px 5px 15px;
@@ -453,7 +427,7 @@
   .blog-border {
     border: 1px solid $color_gallery_approx;
   }
-  .channel-blog {
+  .dashboard-blog {
     padding: 20px;
     background: $white;
     img {
@@ -529,7 +503,7 @@
       margin-bottom: 0;
     }
   }
-  .channel-edit {
+  .dashboard-edit {
     padding: 20px;
     background: $white;
     h2 {
@@ -717,19 +691,19 @@
   }
 }
 @media screen and(max-width: 767px) {
-  .channel .timeline-v2 > li .cbp_tmlabel:after {
+  .dashboard .timeline-v2 > li .cbp_tmlabel:after {
     border-bottom-color: $white;
     border-right-color: transparent;
   }
 }
 @media screen and(min-width: 768px) and(max-width: 992px) {
-  .channel .timeline-v2 > li .cbp_tmlabel:after {
-    border-bottom-color: $white;
-    border-right-color: transparent;
-  }
+.dashboard .timeline-v2 > li .cbp_tmlabel:after {
+  border-bottom-color: $white;
+  border-right-color: transparent;
+}
 }
 @media(max-width: 768px) {
-  .channel .tab-v1 .nav-tabs {
+  .dashboard .tab-v1 .nav-tabs {
     border-bottom: none;
   }
 }

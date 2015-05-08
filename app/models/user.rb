@@ -4,7 +4,7 @@ class User
   include Mongoid::Document
   include Concerns::Searchable
   include Gravtastic
-  gravtastic :size => 150, default: 'identicon'
+  gravtastic :size => 440, default: 'identicon'
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
