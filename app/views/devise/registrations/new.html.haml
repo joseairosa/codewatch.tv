@@ -1,21 +1,43 @@
-%div.container
-  .row.auth#sign-up
-    .col-md-6.col-md-offset-3
-      .panel.panel-default
-        .panel-heading
-          %h3.panel-title Sign up
-        .panel-body
-          = form_for(resource, as: resource_name, url: registration_path(resource_name),  html: {class: 'form-group'}) do |f|
-            = devise_error_messages!
-            %div.form-group
-              = f.text_field :username, autofocus: true, class: 'form-control', placeholder: 'Username'
-            %div.form-group
-              = f.email_field :email, class: 'form-control', class: 'form-control', placeholder: 'E-Mail'
-            %div.form-group
-              = f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password'
-            %div.form-group
-              = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control', placeholder: 'Confirm Password'
-            = f.submit "Sign up", class: 'btn btn-primary'
-            = render "devise/shared/omniauth"
-            #sign-up-links.auth-links
-              = render "devise/shared/links"
+= render partial: 'shared/breadcrumbs', locals: {page_name: 'Registration'}
+.container.content
+  .row
+    .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2
+      = form_for(resource, as: resource_name, url: registration_path(resource_name),  html: {class: 'reg-page'}) do |f|
+        .reg-header
+          %h2 Register a new account
+          %p
+            Already Signed Up? Click
+            %a.color-green{:href => new_session_path(resource_name)} Sign In
+            to login your account.
+        %label
+          Username
+          %span.color-red *
+        = f.text_field :username, autofocus: true, class: 'form-control margin-bottom-20'
+        %label
+          Email Address
+          %span.color-red *
+        = f.email_field :email, class: 'form-control', class: 'form-control margin-bottom-20'
+        .row
+          .col-sm-6
+            %label
+              Password
+              %span.color-red *
+            = f.password_field :password, autocomplete: "off", class: 'form-control margin-bottom-20'
+          .col-sm-6
+            %label
+              Confirm Password
+              %span.color-red *
+            = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control margin-bottom-20'
+        %hr
+          .row
+            .col-lg-12.checkbox
+              %label
+                %input{:type => "checkbox", :name => 'terms'}
+                  I have read
+                  %a.color-green{:href => "page_terms.html"} Terms and Conditions
+          .row
+            .col-lg-12.margin-bottom-10
+              = f.submit "Create account", class: 'btn-u'
+          .row
+            .col-lg-12
+              = render "devise/shared/omniauth"
