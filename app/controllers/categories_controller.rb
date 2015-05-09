@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
 
-  add_breadcrumb 'Home', :root_path
   add_breadcrumb 'Categories', :categories_path
 
   helper_method :category

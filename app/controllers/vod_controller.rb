@@ -9,6 +9,7 @@ class VodController < ApplicationController
   def show
     @recording = Recording.find(params[:recording_id])
     redirect_to '/404' if @recording.nil? || params[:recording_id].empty? || !@recording.is_visible?
+    add_breadcrumb 'VoDs', list_vod_path(@recording.user.username)
   end
 
   private
