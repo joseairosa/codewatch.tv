@@ -5,6 +5,17 @@
     margin-right: 0;
   }
 
+  .chat-entry {
+    .chat-moderation {
+      visibility: hidden;
+    }
+    &:hover {
+      .chat-moderation {
+        visibility: visible;
+      }
+    }
+  }
+
   .category-name {
     line-height: 100px;
     margin-left: 20px;
