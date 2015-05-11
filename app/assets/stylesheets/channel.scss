@@ -22,7 +22,49 @@
     }
   }
 
-  #channel-online, #channel-offiline {
+  #channel-offline {
+    min-height: 500px;
+
+    #stream-offline {
+      width: 100%;
+      /* whatever width you want */
+      display: inline-block;
+      position: relative;
+    }
+    #stream-offline:after {
+      padding-top: 56.25%;
+      /* 16:9 ratio */
+      display: block;
+      content: '';
+    }
+    #stream-offline-content {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      /* fill parent */
+      background: url(static.gif);
+      /* let's see it! */
+      color: white;
+    }
+
+    #stream-offline {
+      text-align: center;
+      line-height: 500px;
+      font-size: 50px;
+      padding-left: 15px;
+      background-color: #000000;
+      color: #ffffff;
+    }
+    #chat-offline {
+      text-align: center;
+      line-height: 385px;
+      font-size: 50px;
+    }
+  }
+
+  #channel-online, #channel-offline {
     padding: 0px 0 0 15px;
 
     .title {
