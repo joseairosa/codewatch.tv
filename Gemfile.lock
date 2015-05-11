@@ -212,6 +212,8 @@ GEM
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
     rack (1.6.0)
+    rack-accept (0.4.5)
+      rack (>= 0.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.1)
@@ -296,6 +298,9 @@ GEM
       railties (>= 3.1.1)
     turbolinks (2.5.3)
       coffee-rails
+    turnout (2.1.0)
+      rack (~> 1.3)
+      rack-accept (~> 0.4)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.4.0)
@@ -348,6 +353,7 @@ DEPENDENCIES
   thin
   tinymce-rails
   turbolinks
+  turnout
   uglifier (>= 1.3.0)
   unicorn
   whenever
