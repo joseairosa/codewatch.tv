@@ -29,6 +29,8 @@ Codewatch::Application.routes.draw do
   get 'vod/:username' => 'vod#index', as: :list_vod
   get 'vod/:username/:recording_id' => 'vod#show', as: :show_vod
 
+  get 'conferences' => 'conferences#index', as: :conferences
+
   # Errors
   match '404' => 'errors#error404', via: [ :get, :post, :patch, :delete ]
 
