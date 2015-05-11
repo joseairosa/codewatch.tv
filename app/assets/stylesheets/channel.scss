@@ -5,6 +5,12 @@
     margin-right: 0;
   }
 
+  .category-name {
+    line-height: 100px;
+    margin-left: 20px;
+    font-size: 16px;
+  }
+
   #channel-stats {
     .vod {
       position: relative;
@@ -17,11 +23,11 @@
   }
 
   #channel-online, #channel-offiline {
-    padding: 20px 0 0 15px;
+    padding: 0px 0 0 15px;
 
     .title {
-      line-height: 50px;
-      margin-bottom: 25px;
+      line-height: 100px;
+      margin: 0px;
     }
 
     #chat-online {
@@ -731,5 +737,24 @@
 @media(max-width: 768px) {
   .channel .tab-v1 .nav-tabs {
     border-bottom: none;
+  }
+}
+
+
+#edit-channel {
+  .sky-form .row {
+    margin: 0 -15px 20px -15px;
+  }
+  #choose-category {
+    margin: 30px 0;
+  }
+  #channel-title {
+    margin: 30px 0;
+  }
+  .service-block-v3 {
+    background: #95a5a6 !important;
+  }
+  .vod-view-all {
+    display: none;
   }
 }

@@ -10,14 +10,18 @@
       - else
         #channel-offline
           %h1.title Channel Offline
-        #stream-offline
-        .description= raw channel.description
-    .col-md-4.margin-top-100
+          #stream-offline
+          .description= raw channel.description
+    .col-md-4
+      %span.label.label-u.category-name= "Coding #{channel.category.name}"
       .channel-body
         = render partial: 'shared/channel_stats', locals: {total_viewers: channel.total_viewers, current_viewers: (channel.online? ? channel.current_viewers : '0'), likes: channel.likes, vod_count: channel.user.recordings.where(visible: 1).count}
         %hr
           .row
             .col-sm-12
-              #chat-online
-                #chat-alerts
-                = render 'chat'
+              - if channel.online?
+                #chat-online
+                  #chat-alerts
+                  = render 'shared/chat'
+              - else
+                #chat-offline

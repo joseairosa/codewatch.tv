@@ -5,7 +5,7 @@
 
 .tt-query,
 .tt-hint {
-  width: 172px;
+  width: auto;
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;

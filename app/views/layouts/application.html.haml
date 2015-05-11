@@ -25,13 +25,14 @@
 
   %body
     .wrapper
-      = render partial: 'shared/header'
-      - if notice
-        .alert.alert-success.text-center{role: 'alert'}= notice
-      - if alert
-        .alert.alert-danger.text-center{role: 'alert'}= alert
-      = yield
-      = render partial: 'shared/footer'
+      #alerts-wrapper
+        = render partial: 'shared/header'
+        - if notice
+          .alert.alert-success.fade.in.alert-dismissable.text-center{role: 'alert'}= notice
+        - if alert
+          .alert.alert-danger.fade.in.alert-dismissable.text-center{role: 'alert'}= alert
+        = yield
+        = render partial: 'shared/footer'
     /[if lt IE 9]
       = javascript_include_tag 'respond'
       = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js'

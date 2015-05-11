@@ -10,6 +10,12 @@ body {
   margin-bottom: 350px;
 }
 
+#alerts-wrapper {
+  .alert {
+    margin-bottom: 0px;
+  }
+}
+
 .sticky-footer {
   position: absolute;
   bottom: 0;
