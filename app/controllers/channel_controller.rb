@@ -13,7 +13,7 @@ class ChannelController < ApplicationController
 
   def show
     user = User.where(username: params[:username]).first
-    redirect_to '/404' if user.nil? || params[:username].empty?
+    return redirect_to '/404' if user.nil? || params[:username].empty?
     @channel = user.channel
     @channel_id = params[:id]
   end
