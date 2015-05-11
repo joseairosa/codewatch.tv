@@ -5,7 +5,7 @@
       Chat
   #chat-messages.panel-body.no-padding
   .panel-footer
-    = form_tag("/chat/#{channel.user.username}/new_message",:id => 'new_message_form', :remote => true) do
+    = form_tag("/chat/#{channel.user.username}/new_message", :id => 'new_message_form', :remote => true) do
       %input#channel_id{:type => "hidden", :value => "#{channel.user.username}"}
       .input-group
         - if current_user
