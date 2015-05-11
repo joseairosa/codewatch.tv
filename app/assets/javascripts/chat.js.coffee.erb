@@ -31,11 +31,6 @@ $(document).on 'ready page:load', ->
     )
     $("#chat-messages").mCustomScrollbar("scrollTo", 'bottom');
     $("#chat-messages").mCustomScrollbar('update');
-#    $('#chat-body').scrollTop($('#chat-body').prop("scrollHeight"))
-    $('#chat-message').val('')
-
-#    $('#' + ban_id).bind 'ajax:beforeSend', ->
-#      console.log("before")
 
     $('#' + ban_id).bind 'ajax:complete', (event, request, settings) ->
       this_id = guid()
@@ -69,3 +64,6 @@ $(document).on 'ready page:load', ->
 
   $("#btn-chat").on "click", ->
     console.log("Chat message")
+
+  $("#new_message_form").on "ajax:complete", ->
+    $('#chat-message').val('')
