@@ -22,7 +22,24 @@
     }
   }
 
-  #channel-online, #channel-offiline {
+  #channel-offline {
+    min-height: 500px;
+    #stream-offline {
+      text-align: center;
+      line-height: 500px;
+      font-size: 50px;
+      padding-left: 15px;
+      background-color: #000000;
+      color: #ffffff;
+    }
+    #chat-offline {
+      text-align: center;
+      line-height: 385px;
+      font-size: 50px;
+    }
+  }
+
+  #channel-online, #channel-offline {
     padding: 0px 0 0 15px;
 
     .title {
