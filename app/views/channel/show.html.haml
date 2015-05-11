@@ -1,30 +1,27 @@
-#channel
-  = render 'header'
-  .row#channel-interactive
-    - if channel.online?
-      #channel-online
-        .col-xs-12.col-sm-6.col-md-8
+.channel
+  .row
+    .col-md-8
+      - if channel.online?
+        #channel-online
+          %h1.title= channel.title
           #stream-online
             = render partial: 'shared/stream', locals: {file: "/api/v1/smil/#{params[:username]}", type: 'rtmp'}
-        .col-xs-6.col-md-4
-          #chat-online
-            #chat-alerts
-            = render 'chat'
-    - else
-      #channel-offline
-        .col-xs-12.col-sm-6.col-md-8
+          .description= raw channel.description
+      - else
+        #channel-offline
+          %h1.title Channel Offline
           #stream-offline
-            %span.fa.fa-microphone-slash
-        .col-xs-6.col-md-4
-          #chat-offline
-            .panel.panel-default
-              .panel-heading
-                &nbsp;
-              .panel-body
-                %span.fa.fa-comment-o
-  - if channel.description && !channel.description.empty?
-    .row
-      .col-md-12
-        .panel.panel-default
-          .panel-body
-            .description= raw channel.description
+          .description= raw channel.description
+    .col-md-4
+      %span.label.label-u.category-name= "Coding #{channel.category.name}"
+      .channel-body
+        = render partial: 'shared/channel_stats', locals: {total_viewers: channel.total_viewers, current_viewers: (channel.online? ? channel.current_viewers : '0'), likes: channel.likes, vod_count: channel.user.recordings.where(visible: 1).count}
+        %hr
+          .row
+            .col-sm-12
+              - if channel.online?
+                #chat-online
+                  #chat-alerts
+                  = render 'shared/chat'
+              - else
+                #chat-offline

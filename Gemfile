@@ -66,6 +66,14 @@ gem 'elasticsearch'
 
 gem 'hashie'
 
+gem 'gravtastic'
+
+gem 'breadcrumbs_on_rails'
+
+gem 'gemoji'
+
+gem 'turnout'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

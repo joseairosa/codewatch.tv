@@ -9,8 +9,9 @@ class Category
 
   has_many :channels, inverse_of: :category
 
-  field :name,    type: String
-  field :viewers, type: Integer, default: 0
+  field :name,        type: String
+  field :viewers,     type: Integer, default: 0
+  field :description, type: String
 
   has_many :channel
 

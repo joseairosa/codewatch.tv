@@ -1,17 +1,23 @@
-$ ->
+$(document).on 'ready page:load', ->
   chat_id = $("#channel_id").val()
   chatMessageTemplate = $('#new-message').html()
   socket = io.connect("http://<%= CHAT_SERVER_HOST %>:5001")
   socket.emit('join', chat_id)
   socket.on 'removed_message', (message) ->
-    $('#' + message.id + ' .chat-message').html('<span class="message-removed">This message has been removed.</span>')
+    $('#' + message.id + ' p.chat-message').html('<span class="message-removed">This message has been removed.</span>')
+    $('#' + message.id + ' .chat-moderation').html('&nbsp;')
   socket.on 'new_message', (message) ->
 
     ban_id = "ban_" + message.id
     moderator_id = "moderator_" + message.id
     remove_id = "remove_" + message.id
 
-    $("ul.chat").append(
+    if $("#mCSB_1_container").length
+      selector = $("#mCSB_1_container")
+    else
+      selector = $("#chat-messages")
+
+    selector.append(
         chatMessageTemplate
         .replace(/\{\{message\}\}/g, message.content)
         .replace(/\{\{username\}\}/g, message.user_name)
@@ -21,8 +27,11 @@ $ ->
         .replace(/\{\{removeMessageElementId\}\}/g, remove_id)
         .replace(/\{\{messageId\}\}/g, message.id)
         .replace(/%7B%7BmessageId%7D%7D/g, message.id)
+        .replace(/{{userImage}}/g, message.user_image)
     )
-    $('#chat-body').scrollTop($('#chat-body').prop("scrollHeight"))
+    $("#chat-messages").mCustomScrollbar("scrollTo", 'bottom');
+    $("#chat-messages").mCustomScrollbar('update');
+#    $('#chat-body').scrollTop($('#chat-body').prop("scrollHeight"))
     $('#chat-message').val('')
 
 #    $('#' + ban_id).bind 'ajax:beforeSend', ->

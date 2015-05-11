@@ -3,15 +3,19 @@
     .col-md-12.text-center
       .lead#welcome No Video on Demand found for this user.
 - else
-  - recordings.reverse.each_slice(6).to_a.each do |recordings_slice|
+  .container.content
     .row
-      - recordings_slice.each do |recording|
-        .col-md-2
-          .recording-thumbnail
-            %a{href: show_vod_path(recording.user.username, recording.id), class: 'thumbnail'}
-              = image_tag "https://codewatch-tv.s3-eu-west-1.amazonaws.com/recording-thumbnails/#{recording.name.gsub('.flv', '')}.png"
-              .caption
-                %h5= truncate(recording.title, length: 41)
-                .text-right
-                  %p
-                    = "#{recording.created_at}"
+      .col-md-12
+        %ul.vod-timeline
+          - recordings.each do |recording|
+            %li
+              %time.cbp_tmtime{:datetime => ""}
+                %span= recording.created_at.strftime('%A, %e at %H:%M')
+                %span= recording.created_at.strftime('%B %Y')
+              %i.cbp_tmicon.rounded-x.hidden-xs
+              .cbp_tmlabel
+                %h2= recording.title
+                .row
+                  .col-md-12.text-center
+                    %a{href: show_vod_path(recording.user.username, recording.id)}
+                      = image_tag "https://codewatch-tv.s3-eu-west-1.amazonaws.com/recording-thumbnails/#{recording.name.gsub('.flv', '')}.png"

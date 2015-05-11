@@ -3,6 +3,8 @@ require 'securerandom'
 class User
   include Mongoid::Document
   include Concerns::Searchable
+  include Gravtastic
+  gravtastic :size => 440, default: 'identicon'
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -14,8 +16,12 @@ class User
   has_many :recordings
 
   ## Database authenticatable
-  field :email, type: String, default: ""
-  field :encrypted_password, type: String, default: ""
+  field :first_name, type: String, default: ''
+  field :last_name, type: String, default: ''
+  field :occupation, type: String, default: ''
+  field :about_me, type: String, default: ''
+  field :email, type: String, default: ''
+  field :encrypted_password, type: String, default: ''
   field :username, type: String
   validates :username,
             :presence => true,

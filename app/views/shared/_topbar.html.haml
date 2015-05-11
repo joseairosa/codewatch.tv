@@ -1,0 +1,24 @@
+.topbar
+  %ul.loginbar.pull-right
+    %li
+      %a{:href => "page_faq.html"} Help
+    %li.topbar-devider
+    - if user_signed_in?
+      %li.hoverSelector
+        %a
+          = current_user.username
+          %i.fa.fa-chevron-down
+        %ul.dashboard-dropdown.hoverSelectorBlock
+          %li
+            = link_to 'Dashboard', user_dashboard_path
+          %li
+            = link_to 'My Channel', user_channel_path(current_user.username)
+          %li
+            = link_to 'Edit Channel', edit_user_channel_path
+          %li
+            = link_to 'My VoD', list_vod_path(current_user.username)
+          %li
+            = link_to 'Log Out', destroy_user_session_path, method: :get
+    - else
+      %li
+        = link_to 'Login', new_user_session_path, method: :get

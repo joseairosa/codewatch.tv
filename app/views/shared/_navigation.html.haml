@@ -1,0 +1,826 @@
+.collapse.navbar-collapse.mega-menu.navbar-responsive-collapse
+  .container
+    -#= navbar fluid: :top, container: 'fluid' do
+    -#  = navbar_header brand: 'codewatch.tv'
+    -#  = navbar_group do
+    -#    = navbar_item 'Home', root_path
+    -#    = navbar_item 'Browse', categories_path
+    -#    = navbar_form '/search', role: 'search', align: 'left' do
+    -#      .form-group
+    -#        %input#search.form-control{type: 'text', placeholder: 'Search'}
+    -#  = navbar_group align: 'right' do
+    -#    - if user_signed_in?
+    -#      = navbar_dropdown current_user.username do
+    -#        = navbar_item 'Dashboard', user_dashboard_path
+    -#        = navbar_item 'My Channel', user_channel_path(current_user.username)
+    -#        = navbar_item 'Edit Channel', edit_user_channel_path
+    -#        = navbar_item 'Log Out', destroy_user_session_path, method: :get
+    -#    - else
+    -#      = navbar_item 'Log In', new_user_session_path, method: :get
+    %ul.nav.navbar-nav
+      = navbar_item 'Home', root_path
+      = navbar_item 'Browse', categories_path
+      -#= navbar_form '/search', role: 'search', align: 'left' do
+      -#  .form-group
+      -#    %input#search.form-control{type: 'text', placeholder: 'Search'}
+      -#%li
+      -#  %ul.dropdown-menu
+      -#    %li
+      -#      %a{:href => "index.html"} Option 1: Default Page
+      -#    / One Page
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Option 2: One Page
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "One-Page/index.html", :target => "_blank"} - One Page Template
+      -#        %li
+      -#          %a{:href => "One-Page/dark-page-example.html", :target => "_blank"} - One Page Dark Theme
+      -#    / End One Page
+      -#    / Shop UI Page
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Option 3: Shop UI
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "Shop-UI/index.html", :target => "_blank"} - Home Page
+      -#        %li
+      -#          %a{:href => "Shop-UI/shop-ui-inner.html", :target => "_blank"} - Product Page
+      -#        %li
+      -#          %a{:href => "Shop-UI/shop-ui-filter-grid.html", :target => "_blank"} - Filter Grid Page
+      -#        %li
+      -#          %a{:href => "Shop-UI/shop-ui-filter-list.html", :target => "_blank"} - Filter List Page
+      -#        %li
+      -#          %a{:href => "Shop-UI/shop-ui-add-to-cart.html", :target => "_blank"} - Checkout Page
+      -#        %li
+      -#          %a{:href => "Shop-UI/shop-ui-login.html", :target => "_blank"} - Login Page
+      -#        %li
+      -#          %a{:href => "Shop-UI/shop-ui-register.html", :target => "_blank"} - Registration Page
+      -#    / End Shop UI
+      -#    %li.active
+      -#      %a{:href => "page_home8.html"} Option 4: Home Discover
+      -#    %li
+      -#      %a{:href => "page_home9.html"} Option 5: Home Creative
+      -#    %li
+      -#      %a{:href => "page_home10.html"} Option 6: Home Inspire
+      -#    %li
+      -#      %a{:href => "page_home11.html"} Option 7: Home Desire
+      -#    %li
+      -#      %a{:href => "page_jobs.html"} Option 8: Home Jobs
+      -#    %li
+      -#      %a{:href => "page_home3.html"} Option 9: Amazing Content
+      -#    %li
+      -#      %a{:href => "page_home6.html"} Option 10: Home Magazine
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Option 11: Home Sidebar
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "page_home12.html"} - Home Left Sidebar
+      -#        %li
+      -#          %a{:href => "page_home13.html"} - Home Right Sidebar
+      -#    %li
+      -#      %a{:href => "page_home1.html"} Option 12: Home Basic v1
+      -#    %li
+      -#      %a{:href => "page_home2.html"} Option 13: Home Basic v2
+      -#    %li
+      -#      %a{:href => "page_home5.html"} Option 14: Home Basic v3
+      -#    %li
+      -#      %a{:href => "page_home4.html"} Option 15: Home Basic v4
+      -#    %li
+      -#      %a{:href => "page_home7.html"} Option 16: Home Basic v5
+      -#/ End Home
+      -#/ Pages
+      -#%li.dropdown
+      -#  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);"}
+      -#    Pages
+      -#  %ul.dropdown-menu
+      -#    / About Pages
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} About Pages
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "page_about2.html"} About Us
+      -#        %li
+      -#          %a{:href => "page_about3.html"} About Us 1
+      -#        %li
+      -#          %a{:href => "page_about1.html"} About Us 2
+      -#        %li
+      -#          %a{:href => "page_about.html"} About Us 3
+      -#        %li
+      -#          %a{:href => "page_about_me.html"} About Me
+      -#        %li
+      -#          %a{:href => "page_about_me1.html"} About Me 1
+      -#        %li
+      -#          %a{:href => "page_about_me2.html"} About Me 2
+      -#        %li
+      -#          %a{:href => "page_about_our_team.html"} About Our Team
+      -#        %li
+      -#          %a{:href => "page_about_our_team1.html"} About Our Team 1
+      -#        %li
+      -#          %a{:href => "page_about_our_team2.html"} About Our Team 2
+      -#    / End About Pages
+      -#    / Service Pages
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Service Pages
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "page_services.html"} Our Services
+      -#        %li
+      -#          %a{:href => "page_services1.html"} Our Services 1
+      -#        %li
+      -#          %a{:href => "page_services2.html"} Our Services 2
+      -#        %li
+      -#          %a{:href => "page_services3.html"} Our Services 3
+      -#    / End Service Pages
+      -#    / Contacts
+      -#    %li.dropdown-submenu
+      -#      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);"}
+      -#        Contact Pages
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "page_contact1.html"} Contacts Default
+      -#        %li
+      -#          %a{:href => "page_contact2.html"} Contacts Option 1
+      -#        %li
+      -#          %a{:href => "page_contact3.html"} Contacts Option 2
+      -#        %li
+      -#          %a{:href => "page_contact4.html"} Contacts Option 3
+      -#        %li
+      -#          %a{:href => "page_contact_advanced.php"} Contacts Advanced
+      -#    / End Contacts
+      -#    / Profile Pages
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Profile Pages
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "page_profile.html"} Profile Main Page
+      -#        %li
+      -#          %a{:href => "page_profile_me.html"} Profile Overview
+      -#        %li
+      -#          %a{:href => "page_profile_users.html"} Profile Users
+      -#        %li
+      -#          %a{:href => "page_profile_projects.html"} Profile Projects
+      -#        %li
+      -#          %a{:href => "page_profile_comments.html"} Profile Comments
+      -#        %li
+      -#          %a{:href => "page_profile_history.html"} Profile History
+      -#        %li
+      -#          %a{:href => "page_profile_settings.html"} Profile Settings
+      -#    / End Profile Pages
+      -#    / Job Pages
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Job Pages
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "page_jobs.html"} Jobs Main Page
+      -#        %li
+      -#          %a{:href => "page_jobs1.html"} Jobs Main Page 1
+      -#        %li
+      -#          %a{:href => "page_jobs_inner.html"} Jobs Description Default
+      -#        %li
+      -#          %a{:href => "page_jobs_inner1.html"} Jobs Description Basic
+      -#        %li
+      -#          %a{:href => "page_jobs_inner2.html"} Jobs Description Min
+      -#    / End Job Pages
+      -#    / Pricing Tables
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Pricing Tables
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "page_pricing_colorful.html"} Colorful Pricing Tables
+      -#        %li
+      -#          %a{:href => "page_pricing_flat.html"} Flat Pricing Tables
+      -#        %li
+      -#          %a{:href => "page_pricing_light.html"} Light Pricing Tables
+      -#        %li
+      -#          %a{:href => "page_pricing_mega.html"} Mega Pricing Tables
+      -#        %li
+      -#          %a{:href => "page_pricing.html"} Default Pricing Tables
+      -#    / End Pricing Tables
+      -#    / Login and Registration
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Login and Registration
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "page_registration.html"} Registration Page
+      -#        %li
+      -#          %a{:href => "page_login.html"} Login Page
+      -#        %li
+      -#          %a{:href => "page_registration1.html"} Registration Option
+      -#        %li
+      -#          %a{:href => "page_login1.html"} Login Option
+      -#    / End Login and Registration
+      -#    / FAQs Pages
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} FAQs Pages
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "page_faq1.html"} FAQs Page
+      -#        %li
+      -#          %a{:href => "page_faq.html"} FAQs Basic
+      -#    / End FAQs Pages
+      -#    / Email Tempaltes
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Email Templates
+      -#      %ul.dropdown-menu
+      -#        %li.dropdown-submenu
+      -#          %a{:href => "javascript:void(0);"} Email Corporate
+      -#          %ul.dropdown-menu
+      -#            %li
+      -#              %a{:href => "Email-Templates/corporate/email_corporate_aqua.html", :target => "_blank"} Corporate Aqua Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/corporate/email_corporate_blue.html", :target => "_blank"} Corporate Blue Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/corporate/email_corporate_brown.html", :target => "_blank"} Corporate Brown Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/corporate/email_corporate_dark_blue.html", :target => "_blank"} Corporate Dark Blue Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/corporate/email_corporate_green.html", :target => "_blank"} Corporate Green Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/corporate/email_corporate_light_green.html", :target => "_blank"} Corporate Light Green Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/corporate/email_corporate_grey.html", :target => "_blank"} Corporate Grey Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/corporate/email_corporate_orange.html", :target => "_blank"} Corporate Orange Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/corporate/email_corporate_purple.html", :target => "_blank"} Corporate Purple Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/corporate/email_corporate_red.html", :target => "_blank"} Corporate Red Color
+      -#        %li.dropdown-submenu
+      -#          %a{:href => "javascript:void(0);"} Email Flat
+      -#          %ul.dropdown-menu
+      -#            %li
+      -#              %a{:href => "Email-Templates/flat/email_flat_aqua.html", :target => "_blank"} Flat Aqua Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/flat/email_flat_blue.html", :target => "_blank"} Flat Blue Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/flat/email_flat_brown.html", :target => "_blank"} Flat Brown Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/flat/email_flat_dark_blue.html", :target => "_blank"} Flat Dark Blue Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/flat/email_flat_green.html", :target => "_blank"} Flat Green Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/flat/email_flat_light_green.html", :target => "_blank"} Flat Light Green Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/flat/email_flat_grey.html", :target => "_blank"} Flat Grey Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/flat/email_flat_orange.html", :target => "_blank"} Flat Orange Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/flat/email_flat_purple.html", :target => "_blank"} Flat Purple Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/flat/email_flat_red.html", :target => "_blank"} Flat Red Color
+      -#        %li.dropdown-submenu
+      -#          %a{:href => "javascript:void(0);"} Email Modern
+      -#          %ul.dropdown-menu
+      -#            %li
+      -#              %a{:href => "Email-Templates/modern/email_modern_aqua.html", :target => "_blank"} Modern Aqua Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/modern/email_modern_blue.html", :target => "_blank"} Modern Blue Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/modern/email_modern_brown.html", :target => "_blank"} Modern Brown Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/modern/email_modern_dark_blue.html", :target => "_blank"} Modern Dark Blue Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/modern/email_modern_green.html", :target => "_blank"} Modern Green Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/modern/email_modern_light_green.html", :target => "_blank"} Modern Light Green Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/modern/email_modern_grey.html", :target => "_blank"} Modern Grey Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/modern/email_modern_orange.html", :target => "_blank"} Modern Orange Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/modern/email_modern_purple.html", :target => "_blank"} Modern Purple Color
+      -#            %li
+      -#              %a{:href => "Email-Templates/modern/email_modern_red.html", :target => "_blank"} Modern Red Color
+      -#    / End Email Tempaltes
+      -#    / Search Results
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Search Results
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "page_search_inner_full_width.html"} Search Results Full Width
+      -#        %li
+      -#          %a{:href => "page_search_inner_left_sidebar.html"} Search Result Left Sidebar
+      -#        %li
+      -#          %a{:href => "page_search_table.html"} Search Result Tables
+      -#    / End Search Results
+      -#    / Coming Soon
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Coming Soon Pages
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "page_coming_soon.html"} Coming Soon
+      -#        %li
+      -#          %a{:href => "page_coming_soon1.html"} Coming Soon 1
+      -#    / End Coming Soon
+      -#    / Error Pages
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Error Pages
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "page_404_error.html"} 404 Error Default
+      -#        %li
+      -#          %a{:href => "page_404_error1.html"} 404 Error Option 1
+      -#        %li
+      -#          %a{:href => "page_404_error2.html"} 404 Error Option 2
+      -#        %li
+      -#          %a{:href => "page_404_error3.html"} 404 Error Option 3
+      -#    / End Error Pages
+      -#    / Invoice Page
+      -#    %li
+      -#      %a{:href => "page_invoice.html"} Invoice Page
+      -#    / End Invoice Page
+      -#    / Clients Page
+      -#    %li
+      -#      %a{:href => "page_clients.html"} Clients Page
+      -#    / End Clients Page
+      -#    / Column Pages
+      -#    %li
+      -#      %a{:href => "page_3_columns.html"} Three Columns Page
+      -#    / End Column Pages
+      -#    / Privacy Policy
+      -#    %li
+      -#      %a{:href => "page_privacy.html"} Privacy Policy
+      -#    / End Privacy Policy
+      -#    / Terms of Service
+      -#    %li
+      -#      %a{:href => "page_terms.html"} Terms of Service
+      -#    / End Terms of Service
+      -#    / Sub Level Menu
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Sub Level 1
+      -#      %ul.dropdown-menu.no-bottom-space
+      -#        %li
+      -#          %a{:href => "index.hmtl"} Sub Level 2
+      -#        %li.dropdown-submenu
+      -#          %a{:href => "javascript:void(0);"} Sub Level 2
+      -#          %ul.dropdown-menu
+      -#            %li
+      -#              %a{:href => "index.hmtl"} Sub Level 3
+      -#            %li
+      -#              %a{:href => "index.hmtl"} Sub Level 3
+      -#            %li
+      -#              %a{:href => "index.hmtl"} Sub Level 3
+      -#            %li
+      -#              %a{:href => "index.hmtl"} Sub Level 3
+      -#        %li
+      -#          %a{:href => "index.hmtl"} Sub Level 2
+      -#        %li.dropdown-submenu
+      -#          %a{:href => "javascript:void(0);"} Sub Level 2
+      -#          %ul.dropdown-menu.no-bottom-space
+      -#            %li
+      -#              %a{:href => "index.hmtl"} Sub Level 3
+      -#            %li
+      -#              %a{:href => "index.hmtl"} Sub Level 3
+      -#            %li
+      -#              %a{:href => "index.hmtl"} Sub Level 3
+      -#/ End Sub Level Menu
+      -#/ End Pages
+      -#/ Blog
+      -#%li.dropdown
+      -#  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);"}
+      -#    Blog
+      -#  %ul.dropdown-menu
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Blog Large Image
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "blog_large_right_sidebar1.html"} Right Sidebar
+      -#        %li
+      -#          %a{:href => "blog_large_left_sidebar1.html"} Left Sidebar
+      -#        %li
+      -#          %a{:href => "blog_large_full_width1.html"} Full Width
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Blog Medium Image
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "blog_medium_right_sidebar1.html"} Right Sidebar
+      -#        %li
+      -#          %a{:href => "blog_medium_left_sidebar1.html"} Left Sidebar
+      -#        %li
+      -#          %a{:href => "blog_medium_full_width1.html"} Full Width
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Blog Item Pages
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "blog_large_right_sidebar_item1.html"} Right Sidebar Item
+      -#        %li
+      -#          %a{:href => "blog_large_left_sidebar_item1.html"} Left Sidebar Item
+      -#        %li
+      -#          %a{:href => "blog_large_full_width_item1.html"} Full Width Item
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Blog Simple Pages
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "blog_large_right_sidebar.html"} Right Sidebar Large
+      -#        %li
+      -#          %a{:href => "blog_medium_right_sidebar.html"} Right Sidebar Medium
+      -#        %li
+      -#          %a{:href => "blog_large_full_width.html"} Full Width
+      -#        %li
+      -#          %a{:href => "blog_large_right_sidebar_item.html"} Right Sidebar Item
+      -#        %li
+      -#          %a{:href => "blog_large_full_width_item.html"} Full Width Item
+      -#    %li
+      -#      %a{:href => "blog_masonry_3col.html"} Masonry Grid Blog
+      -#    %li
+      -#      %a{:href => "blog_timeline.html"} Blog Timeline
+      -#/ End Blog
+      -#/ Portfolio
+      -#%li.dropdown
+      -#  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);"}
+      -#    Portfolio
+      -#  %ul.dropdown-menu
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} No Space Boxed
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "portfolio_2_columns_grid_no_space.html"} 2 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_3_columns_grid_no_space.html"} 3 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_4_columns_grid_no_space.html"} 4 Columns
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Grid Boxed
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "portfolio_2_columns_grid.html"} 2 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_3_columns_grid.html"} 3 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_4_columns_grid.html"} 4 Columns
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Grid Text Boxed
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "portfolio_2_columns_grid_text.html"} 2 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_3_columns_grid_text.html"} 3 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_4_columns_grid_text.html"} 4 Columns
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} No Space Full Width
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "portfolio_2_columns_fullwidth_no_space.html"} 2 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_3_columns_fullwidth_no_space.html"} 3 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_4_columns_fullwidth_no_space.html"} 4 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_5_columns_fullwidth_no_space.html"} 5 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_6_columns_fullwidth_no_space.html"} 6 Columns
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Grid Full Width
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "portfolio_2_columns_fullwidth.html"} 2 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_3_columns_fullwidth.html"} 3 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_4_columns_fullwidth.html"} 4 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_5_columns_fullwidth.html"} 5 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_6_columns_fullwidth.html"} 6 Columns
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Grid Text Full Width
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "portfolio_2_columns_fullwidth_text.html"} 2 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_3_columns_fullwidth_text.html"} 3 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_4_columns_fullwidth_text.html"} 4 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_5_columns_fullwidth_text.html"} 5 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_6_columns_fullwidth_text.html"} 6 Columns
+      -#    %li
+      -#      %a{:href => "portfolio_hover_colors.html"} Portfolio Hover Colors
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Portfolio Items
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "portfolio_single_item.html"} Single Item
+      -#        %li
+      -#          %a{:href => "portfolio_old_item.html"} Basic Item 1
+      -#        %li
+      -#          %a{:href => "portfolio_old_item1.html"} Basic Item 2
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Portfolio Basic Pages
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "portfolio_old_text_blocks.html"} Basic Grid Text
+      -#        %li
+      -#          %a{:href => "portfolio_old_2_column.html"} Basic 2 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_old_3_column.html"} Basic 3 Columns
+      -#        %li
+      -#          %a{:href => "portfolio_old_4_column.html"} Basic 4 Columns
+      -#/ End Portfolio
+      -#/ Features
+      -#%li.dropdown
+      -#  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);"}
+      -#    Features
+      -#  %ul.dropdown-menu
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Headers
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "feature_header_default.html"} Header Default
+      -#        %li
+      -#          %a{:href => "feature_header_v1.html"} Header v1
+      -#        %li
+      -#          %a{:href => "feature_header_v2.html"} Header v2
+      -#        %li
+      -#          %a{:href => "feature_header_v3.html"} Header v3
+      -#        %li
+      -#          %a{:href => "feature_header_v4.html"} Header v4
+      -#        %li
+      -#          %a{:href => "feature_header_v5.html"} Header v5
+      -#        %li
+      -#          %a{:href => "feature_header_v6_transparent.html"} Header v6 Transparent
+      -#        %li
+      -#          %a{:href => "feature_header_v6_semi_dark_transparent.html"} Header v6 Dark Transparent
+      -#        %li
+      -#          %a{:href => "feature_header_v6_semi_white_transparent.html"} Header v6 White Transparent
+      -#        %li
+      -#          %a{:href => "feature_header_v6_border_bottom.html"} Header v6 Border Bottom
+      -#        %li
+      -#          %a{:href => "feature_header_v6_classic_dark.html"} Header v6 Classic Dark
+      -#        %li
+      -#          %a{:href => "feature_header_v6_classic_white.html"} Header v6 Classic White
+      -#        %li
+      -#          %a{:href => "feature_header_v6_dark_dropdown.html"} Header v6 Dark Dropdown
+      -#        %li
+      -#          %a{:href => "feature_header_v6_dark_scroll.html"} Header v6 Dark on Scroll
+      -#        %li
+      -#          %a{:href => "feature_header_v6_dark_search.html"} Header v6 Dark Search
+      -#        %li
+      -#          %a{:href => "feature_header_v6_dark_res_nav.html"} Header v6 Dark in Responsive
+      -#    %li.dropdown-submenu
+      -#      %a{:href => "javascript:void(0);"} Footers
+      -#      %ul.dropdown-menu
+      -#        %li
+      -#          %a{:href => "feature_footer_default.html#footer-default"} Footer Default
+      -#        %li
+      -#          %a{:href => "feature_footer_v1.html#footer-v1"} Footer v1
+      -#        %li
+      -#          %a{:href => "feature_footer_v2.html#footer-v2"} Footer v2
+      -#        %li
+      -#          %a{:href => "feature_footer_v3.html#footer-v3"} Footer v3
+      -#        %li
+      -#          %a{:href => "feature_footer_v4.html#footer-v4"} Footer v4
+      -#        %li
+      -#          %a{:href => "feature_footer_v5.html#footer-v5"} Footer v5
+      -#        %li
+      -#          %a{:href => "feature_footer_v6.html#footer-v6"} Footer v6
+      -#        %li
+      -#          %a{:href => "feature_footer_v7.html#footer-v7"} Footer v7
+      -#    %li
+      -#      %a{:href => "feature_gallery.html"} Gallery Examples
+      -#    %li
+      -#      %a{:href => "feature_animations.html"} Animations on Scroll
+      -#    %li
+      -#      %a{:href => "feature_parallax_counters.html"} Parallax Counters
+      -#    %li
+      -#      %a{:href => "feature_parallax_blocks.html"} Parallax Blocks
+      -#    %li
+      -#      %a{:href => "feature_funny_boxes.html"} Funny Boxes
+      -#/ End Features
+      -#/ Shortcodes
+      -#%li.dropdown.mega-menu-fullwidth
+      -#  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);"}
+      -#    Shortcodes
+      -#  %ul.dropdown-menu
+      -#    %li
+      -#      .mega-menu-content.disable-icons
+      -#        .container
+      -#          .row.equal-height
+      -#            .col-md-3.equal-height-in
+      -#              %ul.list-unstyled.equal-height-list
+      -#                %li
+      -#                  %h3 Typography &amp; Components
+      -#                / Typography
+      -#                %li
+      -#                  %a{:href => "shortcode_typo_general.html"}
+      -#                    %i.fa.fa-sort-alpha-asc
+      -#                    General Typography
+      -#                %li
+      -#                  %a{:href => "shortcode_typo_headings.html"}
+      -#                    %i.fa.fa-magic
+      -#                    Headings Options
+      -#                %li
+      -#                  %a{:href => "shortcode_typo_dividers.html"}
+      -#                    %i.fa.fa-ellipsis-h
+      -#                    Dividers
+      -#                %li
+      -#                  %a{:href => "shortcode_typo_blockquote.html"}
+      -#                    %i.fa.fa-quote-left
+      -#                    Blockquote Blocks
+      -#                %li
+      -#                  %a{:href => "shortcode_typo_boxshadows.html"}
+      -#                    %i.fa.fa-asterisk
+      -#                    Box Shadows
+      -#                %li
+      -#                  %a{:href => "shortcode_typo_testimonials.html"}
+      -#                    %i.fa.fa-comments
+      -#                    Testimonials
+      -#                %li
+      -#                  %a{:href => "shortcode_typo_tagline_boxes.html"}
+      -#                    %i.fa.fa-tasks
+      -#                    Tagline Boxes
+      -#                %li
+      -#                  %a{:href => "shortcode_typo_grid.html"}
+      -#                    %i.fa.fa-align-justify
+      -#                    Grid Layouts
+      -#                / End Typography
+      -#                / Components
+      -#                %li
+      -#                  %a{:href => "shortcode_compo_messages.html"}
+      -#                    %i.fa.fa-comment
+      -#                    Alerts &amp; Messages
+      -#                %li
+      -#                  %a{:href => "shortcode_compo_labels.html"}
+      -#                    %i.fa.fa-tags
+      -#                    Labels &amp; Badges
+      -#                %li
+      -#                  %a{:href => "shortcode_compo_media.html"}
+      -#                    %i.fa.fa-volume-down
+      -#                    Audio/Videos &amp; Images
+      -#                %li
+      -#                  %a{:href => "shortcode_compo_pagination.html"}
+      -#                    %i.fa.fa-arrows-h
+      -#                    Paginations
+      -#            / End Components
+      -#            .col-md-3.equal-height-in
+      -#              %ul.list-unstyled.equal-height-list
+      -#                %li
+      -#                  %h3 Buttons &amp; Icons
+      -#                / Buttons
+      -#                %li
+      -#                  %a{:href => "shortcode_btn_general.html"}
+      -#                    %i.fa.fa-flask
+      -#                    General Buttons
+      -#                %li
+      -#                  %a{:href => "shortcode_btn_brands.html"}
+      -#                    %i.fa.fa-html5
+      -#                    Brand &amp; Social Buttons
+      -#                %li
+      -#                  %a{:href => "shortcode_btn_effects.html"}
+      -#                    %i.fa.fa-bolt
+      -#                    Loading &amp; Hover Effects
+      -#                / End Buttons
+      -#                / Icons
+      -#                %li
+      -#                  %a{:href => "shortcode_icon_general.html"}
+      -#                    %i.fa.fa-chevron-circle-right
+      -#                    General Icons
+      -#                %li
+      -#                  %a{:href => "shortcode_icon_fa.html"}
+      -#                    %i.fa.fa-chevron-circle-right
+      -#                    Font Awesome Icons
+      -#                %li
+      -#                  %a{:href => "shortcode_icon_line.html"}
+      -#                    %i.fa.fa-chevron-circle-right
+      -#                    Line Icons
+      -#                %li
+      -#                  %a{:href => "shortcode_icon_glyph.html"}
+      -#                    %i.fa.fa-chevron-circle-right
+      -#                    Glyphicons Icons (Bootstrap)
+      -#                %li
+      -#                  %a{:href => "shortcode_icon_glyph_pro.html"}
+      -#                    %i.fa.fa-chevron-circle-right
+      -#                    Glyphicons Icons Pro
+      -#            / End Icons
+      -#            .col-md-3.equal-height-in
+      -#              %ul.list-unstyled.equal-height-list
+      -#                %li
+      -#                  %h3 Common elements
+      -#                / Content Boxes
+      -#                %li
+      -#                  %a{:href => "shortcode_box_general.html"}
+      -#                    %i.fa.fa-cog
+      -#                    General Content Boxes
+      -#                %li
+      -#                  %a{:href => "shortcode_box_colored.html"}
+      -#                    %i.fa.fa-align-center
+      -#                    Colored Boxes
+      -#                %li
+      -#                  %a{:href => "shortcode_thumbnails.html"}
+      -#                    %i.fa.fa-image
+      -#                    Thumbnails
+      -#                %li
+      -#                  %a{:href => "shortcode_accordion_and_tabs.html"}
+      -#                    %i.fa.fa-list-ol
+      -#                    Accordion &amp; Tabs
+      -#                %li
+      -#                  %a{:href => "shortcode_timeline1.html"}
+      -#                    %i.fa.fa-dot-circle-o
+      -#                    Timeline Option 1
+      -#                %li
+      -#                  %a{:href => "shortcode_timeline2.html"}
+      -#                    %i.fa.fa-dot-circle-o
+      -#                    Timeline Option 2
+      -#                %li
+      -#                  %a{:href => "shortcode_table_general.html"}
+      -#                    %i.fa.fa-table
+      -#                    Tables
+      -#                %li
+      -#                  %a{:href => "shortcode_compo_progress_bars.html"}
+      -#                    %i.fa.fa-align-left
+      -#                    Progress Bars
+      -#                %li
+      -#                  %a{:href => "shortcode_compo_panels.html"}
+      -#                    %i.fa.fa-columns
+      -#                    Panels
+      -#            / End Common Elements
+      -#            .col-md-3.equal-height-in
+      -#              %ul.list-unstyled.equal-height-list
+      -#                %li
+      -#                  %h3 Forms &amp; Infographics
+      -#                / Forms
+      -#                %li
+      -#                  %a{:href => "shortcode_form_general.html"}
+      -#                    %i.fa.fa-bars
+      -#                    Common Bootstrap Forms
+      -#                %li
+      -#                  %a{:href => "shortcode_form_general1.html"}
+      -#                    %i.fa.fa-bars
+      -#                    General Unify Forms
+      -#                %li
+      -#                  %a{:href => "shortcode_form_advanced.html"}
+      -#                    %i.fa.fa-bars
+      -#                    Advanced Forms
+      -#                %li
+      -#                  %a{:href => "shortcode_form_layouts.html"}
+      -#                    %i.fa.fa-bars
+      -#                    Form Layouts
+      -#                %li
+      -#                  %a{:href => "shortcode_form_layouts_advanced.html"}
+      -#                    %i.fa.fa-bars
+      -#                    Advanced Layout Forms
+      -#                %li
+      -#                  %a{:href => "shortcode_form_states.html"}
+      -#                    %i.fa.fa-bars
+      -#                    Form States
+      -#                %li
+      -#                  %a{:href => "shortcode_form_sliders.html"}
+      -#                    %i.fa.fa-bars
+      -#                    Form Sliders
+      -#                %li
+      -#                  %a{:href => "shortcode_form_modals.html"}
+      -#                    %i.fa.fa-bars
+      -#                    Modals
+      -#                / End Forms
+      -#                / Infographics
+      -#                %li
+      -#                  %a{:href => "shortcode_carousels.html"}
+      -#                    %i.fa.fa-sliders
+      -#                    Carousel Examples
+      -#                %li
+      -#                  %a{:href => "shortcode_compo_charts.html"}
+      -#                    %i.fa.fa-pie-chart
+      -#                    Charts &amp; Countdowns
+      -#                %li
+      -#                  %a{:href => "shortcode_maps_google.html"}
+      -#                    %i.fa.fa-map-marker
+      -#                    Google Maps
+      -#                %li
+      -#                  %a{:href => "shortcode_maps_vector.html"}
+      -#                    %i.fa.fa-align-center
+      -#                    Vector Maps
+      -#/ End Infographics
+      -#/ End Shortcodes
+      -#/ Misc Pages
+      -#%li.dropdown
+      -#  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0);"}
+      -#    Misc
+      -#  %ul.dropdown-menu.pull-right
+      -#    %li
+      -#      %a{:href => "page_misc_blank.html"} Blank page
+      -#    %li
+      -#      %a{:href => "page_misc_boxed.html"} Boxed Page
+      -#    %li
+      -#      %a{:href => "page_misc_boxed_img.html"} Boxed Image Page
+      -#    %li
+      -#      %a{:href => "page_misc_boxed_fixed_header.html"} Boxed Fixed Menu
+      -#    %li
+      -#      %a{:href => "page_misc_fixed_header.html"} Fixed Menu
+      -#    %li
+      -#      %a{:href => "page_misc_dark.html"} Dark Page
+      -#    %li
+      -#      %a{:href => "page_misc_dark_boxed.html"} Dark Boxed Page
+      -#    %li
+      -#      %a{:href => "page_misc_dark_other_color.html"} Dark Page with Theme Color
+      -#    %li
+      -#      %a{:href => "page_misc_sticky_footer.html"} Sticky Footer Example
+
+      %li
+        %i.search.fa.fa-search.search-btn
+        .search-open
+          .input-group.animated.fadeInDown
+            %input.search-activator.form-control{type: 'text', placeholder: 'Search'}
+            -#%input.form-control{:placeholder => "Search", :type => "text"}
+              %span.input-group-btn
+                %button.btn-u{:type => "button"} Go

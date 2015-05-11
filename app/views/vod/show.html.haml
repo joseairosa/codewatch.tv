@@ -1,6 +1,7 @@
-#vod
-  .row
-    = render 'header'
-  .row#channel-interactive
-    .col-md-8.col-md-offset-2
-      = render partial: 'shared/stream', locals: {file: "rtmp://streamer-01.codewatch.tv/vod/#{recording.name}", type: 'rtmp'}
+= render partial: 'shared/breadcrumbs', locals: {page_name: recording.title}
+#vod-item
+  = render partial: 'vod/header'
+  .container.content
+    .row
+      .col-md-12
+        = render partial: 'shared/stream', locals: {file: "rtmp://streamer-01.codewatch.tv/vod/#{recording.name}", type: 'rtmp'}

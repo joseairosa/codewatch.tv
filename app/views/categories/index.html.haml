@@ -1,13 +1,13 @@
-- @categories.each_slice(6).to_a.each do |category_slice|
-  .row
-    - category_slice.each do |category|
-      .col-md-2
-        .language-thumbnail
-          %a{href: category_channels_path(URI::encode(category.name.gsub("/", "%2f"))), class: 'thumbnail'}
-            = image_tag "https://codewatch-tv.s3-eu-west-1.amazonaws.com/language-thumbnails/#{category.dehumanize}.png"
-            .caption
-              .lead= category.name
-              .text-right
-                %p
-                  .fa.fa-user
-                  = "#{category.viewers}"
+= render partial: 'shared/breadcrumbs', locals: {page_name: 'Categories'}
+.cube-portfolio.margin-bottom-50
+  .content-xs
+    #filters-container.cbp-l-filters-text.content-xs
+      .cbp-filter-item-active.cbp-filter-item{"data-filter" => "*"} All
+      |
+      .cbp-filter-item{"data-filter" => ".letter-non-alphanumeric"} #
+      - ('a'..'z').to_a.each do |letter|
+        |
+        .cbp-filter-item{"data-filter" => ".letter-#{letter}"}= letter.upcase
+  #grid-category-container.cbp-l-grid-fullWidth
+    - @categories.each do |category|
+      = render partial: 'categories/language_thumbnail', locals: {classes: 'col-md-3 col-sm-4', category: category}

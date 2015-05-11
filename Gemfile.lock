@@ -73,6 +73,7 @@ GEM
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
     bootstrap_form (2.3.0)
+    breadcrumbs_on_rails (2.3.0)
     bson (2.3.0)
     bson_ext (1.5.1)
     builder (3.2.2)
@@ -116,8 +117,10 @@ GEM
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
     gem_config (0.3.1)
+    gemoji (2.1.0)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
+    gravtastic (3.2.6)
     haml (4.0.6)
       tilt
     haml-rails (0.9.0)
@@ -209,6 +212,8 @@ GEM
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
     rack (1.6.0)
+    rack-accept (0.4.5)
+      rack (>= 0.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.1)
@@ -293,6 +298,9 @@ GEM
       railties (>= 3.1.1)
     turbolinks (2.5.3)
       coffee-rails
+    turnout (2.1.0)
+      rack (~> 1.3)
+      rack-accept (~> 0.4)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.4.0)
@@ -317,12 +325,15 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.3.4.1)
   bootstrap_form
+  breadcrumbs_on_rails
   bson_ext
   coffee-rails (~> 4.0.0)
   colorize
   devise
   elasticsearch
   font-awesome-rails
+  gemoji
+  gravtastic
   haml-rails
   hashie
   jbuilder (~> 1.2)
@@ -342,6 +353,7 @@ DEPENDENCIES
   thin
   tinymce-rails
   turbolinks
+  turnout
   uglifier (>= 1.3.0)
   unicorn
   whenever

@@ -1,0 +1,43 @@
+.footer-v1.sticky-footer
+  .footer
+    .container
+      .row
+        .col-md-6.md-margin-bottom-40
+          .margin-bottom-50.margin-top-20
+            = link_to image_tag('logo.png'), root_path, class: 'logo'
+          %p CodeWatch provides a platform that allowes anyone to stream coding sessions for, among others, learning purposes, knowledge sharing and live tech events.
+        .col-md-3.md-margin-bottom-40
+          .headline
+            %h2 Useful Links
+          %ul.list-unstyled.link-list
+            %li
+              %a{:href => "#"} About us
+              %i.fa.fa-angle-right
+            %li
+              %a{:href => "#"} Contact us
+              %i.fa.fa-angle-right
+        .col-md-3.map-img.md-margin-bottom-40
+          .headline
+            %h2 Contact Us
+          %address.md-margin-bottom-40
+            Email:
+            %a{:href => 'mailto:hi@codewatch.tv'} hi@codewatch.tv
+
+  .copyright
+    .container
+      .row
+        .col-md-6
+          %p
+            2015 &copy; All Rights Reserved.
+            %a{:href => "#"} Privacy Policy
+            |
+            %a{:href => "#"} Terms of Service
+        / Social Links
+        .col-md-6
+          %ul.footer-socials.list-inline
+            %li
+              %a.tooltips{"data-original-title" => "Facebook", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#", :title => ""}
+                %i.fa.fa-facebook
+            %li
+              %a.tooltips{"data-original-title" => "Twitter", "data-placement" => "top", "data-toggle" => "tooltip", :href => "#", :title => ""}
+                %i.fa.fa-twitter

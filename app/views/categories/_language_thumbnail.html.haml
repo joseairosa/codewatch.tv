@@ -1,0 +1,38 @@
+- first_letter = category.dehumanize.first.match(/[a-z]/) ? category.dehumanize.first : 'non-alphanumeric'
+%div{class: "cbp-item #{category.dehumanize} letter-#{first_letter}"}
+  .cbp-caption.margin-bottom-20
+    .cbp-caption-defaultWrap
+      = link_to image_tag("https://codewatch-tv.s3-eu-west-1.amazonaws.com/language-thumbnails/#{category.dehumanize}.png"), category_channels_path(category.name)
+    -#.cbp-caption-activeWrap
+    -#  .cbp-l-caption-alignCenter
+    -#    .cbp-l-caption-body
+    -#      %ul.link-captions.no-bottom-space
+    -#        %li
+    -#          %a{:href => "portfolio_single_item.html"}
+    -#            %i.rounded-x.fa.fa-link
+            -#%li
+            -#  %a.cbp-lightbox{"data-title" => "Design Object", :href => "assets/img/main/img12.jpg"}
+            -#    %i.rounded-x.fa.fa-search
+  .cbp-title-dark
+    .cbp-l-grid-agency-title= category.name
+    .cbp-l-grid-agency-desc= category.description.to_s
+-#%li{class: "#{classes}"}
+-#  .easy-block-v1
+-#    = image_tag "https://codewatch-tv.s3-eu-west-1.amazonaws.com/language-thumbnails/#{category.dehumanize}.png", class: 'img-responsive'
+-#  .block-grid-v2-info.rounded-bottom
+-#    %h3
+-#      %a{:href => "#"}= category.name
+-#    %p= category.description.to_s
+    -#%ul.list-inline.block-grid-v1-add-info
+    -#  %li
+    -#    %a{:href => "#"}
+    -#      %i.fa.fa-eye
+    -#      = channel.total_viewers
+    -#  %li
+    -#    %a{:href => "#"}
+    -#      %i.fa.fa-user
+    -#      = (channel.online? ? current_viewers(channel) : '0')
+    -#  %li
+    -#    %a{:href => "#"}
+    -#      %i.fa.fa-heart
+    -#      = channel.likes

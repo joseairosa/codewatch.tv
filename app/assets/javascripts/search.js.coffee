@@ -1,5 +1,5 @@
 $ ->
-  $('#search').autocomplete({
+  $('.search-activator').autocomplete({
     serviceUrl: '/search'
     groupBy: 'category'
     triggerSelectOnValidInput: false

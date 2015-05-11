@@ -1,52 +1,39 @@
 !!! 5
-%html(lang="en")
+/[if IE 8] <html class="ie8" lang="en">
+/[if IE 9] <html class="ie9" lang="en">
+<!--[if gt IE 9]><!-->
+%html(lang="en")<>
+  <!--<![endif]-->
   %head
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %meta(name="description" content="")
+    %meta(name="author" content="")
     %title= content_for?(:title) ? yield(:title) : 'codewatch.tv - Live coding streams'
     = csrf_meta_tags
-    / Le HTML5 shim, for IE6-8 support of HTML elements
-    /[if lt IE 9]
-      = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js'
     = stylesheet_link_tag 'application', :media => 'all'
     = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
     = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
     = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
+    = stylesheet_link_tag '//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'
+    /[if lt IE 9]
+      = stylesheet_link_tag 'sky-forms-ie8'
     = javascript_include_tag 'application'
 
-
   %body
-    #top-bar
-      = navbar fluid: :top, container: 'fluid' do
-        = navbar_header brand: 'codewatch.tv'
-        = navbar_group do
-          = navbar_item 'Home', root_path
-          = navbar_item 'Browse', categories_path
-          = navbar_form '/search', role: 'search', align: 'left' do
-            .form-group
-              %input#search.form-control{type: 'text', placeholder: 'Search'}
-        = navbar_group align: 'right' do
-          - if user_signed_in?
-            = navbar_dropdown current_user.username do
-              = navbar_item 'Dashboard', user_dashboard_path
-              = navbar_item 'My Channel', user_channel_path(current_user.username)
-              = navbar_item 'Edit Channel', edit_user_channel_path
-              = navbar_item 'Log Out', destroy_user_session_path, method: :get
-          - else
-            = navbar_item 'Log In', new_user_session_path, method: :get
-
-
-    .container-fluid
-      .row-fluid
-        .span12
-          - if notice
-            .alert.alert-success.text-center{role: 'alert'}= notice
-          - if alert
-            .alert.alert-danger.text-center{role: 'alert'}= alert
-          = yield
-
-        %footer
-          -#%p &copy; http://hearthstone.community
+    .wrapper
+      #alerts-wrapper
+        = render partial: 'shared/header'
+        - if notice
+          .alert.alert-success.fade.in.alert-dismissable.text-center{role: 'alert'}= notice
+        - if alert
+          .alert.alert-danger.fade.in.alert-dismissable.text-center{role: 'alert'}= alert
+        = yield
+        = render partial: 'shared/footer'
+    /[if lt IE 9]
+      = javascript_include_tag 'respond'
+      = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js'
+      = javascript_include_tag 'placeholder-IE-fixes'

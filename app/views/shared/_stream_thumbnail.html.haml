@@ -1,0 +1,13 @@
+%div{class: "cbp-item #{channel.user.username}"}
+  .cbp-caption.margin-bottom-20
+    .cbp-caption-defaultWrap
+      = link_to image_tag("https://codewatch-tv.s3-eu-west-1.amazonaws.com/stream-thumbnails/#{channel.user.username}.png"), user_channel_path(channel.user.username)
+    .cbp-title-dark
+      .cbp-l-grid-agency-title= channel.title
+      .cbp-l-grid-agency-desc= channel.one_line_description.to_s
+    .text-right
+      %ul.list-inline.block-grid-v1-add-info
+        %li
+          %a{:href => user_channel_path(channel.user.username)}
+            %i.fa.fa-user
+            = (channel.online? ? channel.current_viewers : '0')

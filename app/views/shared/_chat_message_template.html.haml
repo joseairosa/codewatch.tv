@@ -1,0 +1,15 @@
+.comment.chat-entry{id: '{{messageId}}'}
+  %img.portrait{:alt => "", :src => '{{userImage}}'}
+    .overflow-h
+      %strong
+        {{username}}
+        %small.pull-right 25m
+      %p.chat-message {{message}}
+      - if current_user && (is_channel_owner? || is_channel_moderator?)
+        .chat-moderation
+          = link_to chat_ban_api_v1_chat_path(channel.id,'{{username}}'), id: '{{banElementId}}', class: 'ban-user', remote: true, method: :put  do
+            %span.fa.fa-ban
+          = link_to chat_toggle_moderator_api_v1_chat_path(channel.id, '{{username}}'), id: '{{moderatorElementId}}', class: 'toggle-moderate-user', remote: true, method: :put  do
+            %span.fa.fa-star
+          = link_to chat_remove_message_api_v1_chat_path(channel.id, '{{username}}', '{{messageId}}'), id: '{{removeMessageElementId}}', class: 'remove-message', remote: true, method: :delete  do
+            %span.fa.fa-trash

@@ -1,8 +1,7 @@
-.col-md-8
-  %h1.title= recording.title
-.col-md-4#channel-stats.row
-  .col-md-4.col-md-offset-8
-    .navbar.navbar-default
-      .navbar-brand
-        .fa.fa-eye
-      .navbar-text.text-center= recording.views
+#vod-stats.col-md-2.col-md-offset-10.margin-top-15.margin-bottom-15
+  .row
+    .col-sm-12.total-viewers
+      .service-block-v3.service-block-u
+        %i.fa.fa-eye
+        %span.service-heading Total Viewers
+        %span.counter= recording.views
