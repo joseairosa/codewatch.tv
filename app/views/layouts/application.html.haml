@@ -31,7 +31,8 @@
           .alert.alert-success.fade.in.alert-dismissable.text-center{role: 'alert'}= notice
         - if alert
           .alert.alert-danger.fade.in.alert-dismissable.text-center{role: 'alert'}= alert
-        = yield
+        %div{id: "#{page_options[:page_id]}"}
+          = yield
         = render partial: 'shared/footer'
     /[if lt IE 9]
       = javascript_include_tag 'respond'

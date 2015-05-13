@@ -31,6 +31,8 @@ Codewatch::Application.routes.draw do
 
   get 'conferences' => 'conferences#index', as: :conferences
 
+  get 'help' => 'help#index', as: :help
+
   # Errors
   match '404' => 'errors#error404', via: [ :get, :post, :patch, :delete ]
 

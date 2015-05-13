@@ -25,4 +25,8 @@ class CategoriesController < ApplicationController
   def channels
     @channels
   end
+
+  def page_id
+    super.merge({page_id: 'categories'})
+  end
 end

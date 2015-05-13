@@ -1,0 +1,125 @@
+.container.content
+  .row
+    .col-md-12
+      .headline
+        %h2 How to Stream
+      #accordion.panel-group.acc-v1.margin-bottom-40
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
+                1. Download OBS (Open Broadcaster Software)
+          #collapseOne.panel-collapse.collapse.in
+            .panel-body
+              %p
+                = link_to 'Open Broadcaster Software', 'https://obsproject.com/index'
+                , or OBS, is a widely used application for streaming purposes. It can both live stream or record locally your monitor or specific application.
+                %br
+                Click
+                = link_to 'here', 'https://obsproject.com/forum/resources/official-quick-start-guide.5/'
+                to check official documentation.
+              %p
+                = succeed '.' do
+                  = link_to 'Download OBS', 'https://obsproject.com/download#mac'
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseTwo"}
+                2. Create your codewatch.tv account
+          #collapseTwo.panel-collapse.collapse
+            .panel-body
+              %p
+                Creating your codewatch.tv account is easy. Simply visit our
+                = link_to 'registration', new_registration_path(User)
+                page.
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseThree"}
+                3. Configure OBS to stream to codewatch.tv
+          #collapseThree.panel-collapse.collapse
+            .panel-body
+              .panel-body
+              .row
+                .col-md-4
+                  %a{:href => image_path('help/dashboard.png'), target: '_blank'}
+                    %img.img-responsive{:alt => "", :src => image_path('help/dashboard.png')}
+                .col-md-8
+                  %h4 1.
+                  %p
+                    Open your
+                    = link_to 'Dashboard', user_dashboard_path
+                    and click on the "Stream Key" tab (see image to the right)
+              .row
+                .col-md-4
+                  %a{:href => image_path('help/obs_1.png'), target: '_blank'}
+                    %img.img-responsive{:alt => "", :src => image_path('help/obs_1.png')}
+                .col-md-8
+                  %h4 2.
+                  %p Open OBS and go to preferences/settings.
+              .row
+                .col-md-4
+                  %a{:href => image_path('help/obs_2.png'), target: '_blank'}
+                    %img.img-responsive{:alt => "", :src => image_path('help/obs_2.png')}
+                .col-md-8
+                  %h4 3.
+                  %p Click on the stream tab.
+              .row
+                .col-md-4
+                  %a{:href => image_path('help/obs_3.png'), target: '_blank'}
+                    %img.img-responsive{:alt => "", :src => image_path('help/obs_3.png')}
+                .col-md-8
+                  %h4 4.
+                  %p
+                    Start by changing
+                    %span.label.label-u
+                      Stream Type
+                    = precede ' ' do
+                      to
+                    %span.label.label-u
+                      custom
+                  %p
+                    On the
+                    %span.label.label-u
+                      URL
+                    text box add
+                    %span.label.label-u
+                      rtmp://streamer-01.codewatch.tv/stream
+                  %p
+                    On the
+                    %span.label.label-u
+                      Stream key
+                    text box add your stream key (can be found on your dashboard, check step 1.)
+                    %br
+                    %br
+                    It should look something like
+                    %span.label.label-u
+                      username?stream_key=numbers_and_letters
+              .row
+                .col-md-8.col-md-offset-4
+                  %h4 5.
+                  %p That's it, just press save/OK and we're ready to go.
+
+        .panel.panel-default
+          .panel-heading
+            %h4.panel-title
+              %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseFour"}
+                4. Start broadcasting :)
+          #collapseFour.panel-collapse.collapse
+            .panel-body
+              .row
+                .col-md-4
+                  %a{:href => image_path('help/obs_4.png'), target: '_blank'}
+                    %img.img-responsive{:alt => "", :src => image_path('help/obs_4.png')}
+                .col-md-8
+                  %p This guide does not intend to provide with all the information on how to use OBS.
+                  %p To the left there's an example on how to configure Scenes (collection of Sources) and Sources (video source, audio source, etc)
+                  %p
+                    Once happy with the setup just press
+                    %span.label.label-u
+                      Start streaming...
+                  %p At this point your channel will automatically go online.
+                  %br
+                  %br
+                  %p Happy streaming!
+

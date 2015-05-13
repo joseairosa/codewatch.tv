@@ -1,7 +1,7 @@
 .topbar
   %ul.loginbar.pull-right
     %li
-      %a{:href => "page_faq.html"} Help
+      = link_to 'Help', help_path
     %li.topbar-devider
     - if user_signed_in?
       %li.hoverSelector

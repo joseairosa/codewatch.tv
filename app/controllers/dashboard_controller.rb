@@ -101,4 +101,8 @@ class DashboardController < ApplicationController
   def user_input_error
     flash[:alert] = @user.errors.full_messages.first
   end
+
+  def page_id
+    super.merge({page_id: 'dashboard'})
+  end
 end
