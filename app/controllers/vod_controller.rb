@@ -1,5 +1,8 @@
 class VodController < ApplicationController
 
+  helper_method :recording
+  helper_method :recordings
+
   def index
     user = User.where(username: params[:username]).first
     return redirect_to '/404' if user.nil? || params[:username].empty?
@@ -30,6 +33,7 @@ class VodController < ApplicationController
     @channel
   end
 
-  helper_method :recording
-  helper_method :recordings
+  def page_id
+    super.merge({page_id: 'vod'})
+  end
 end

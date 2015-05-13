@@ -8,6 +8,14 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  helper_method :page_options
+
+  private
+
+  def page_options
+    {page_id: 'default'}
+  end
+
   protected
 
   def configure_permitted_parameters

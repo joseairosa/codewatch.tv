@@ -23,4 +23,8 @@ class ChannelController < ApplicationController
   def channel_id
     channel.user.username
   end
+
+  def page_options
+    super.merge({page_id: 'channel'})
+  end
 end
