@@ -24,6 +24,7 @@
 //= require jquery.mCustomScrollbar.concat.min
 //= require chat
 //= require search
+//= require dashboard
 //= require jwplayer/jwplayer
 //= require typeahead.bundle.min
 //= require tinymce-jquery

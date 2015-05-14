@@ -18,6 +18,11 @@ class DashboardController < ApplicationController
     end
   end
 
+  def chat_management
+    @banned_users = current_user.channel.chat.users_banned
+    @moderator_users = current_user.channel.chat.users_moderator
+  end
+
   def update_user
     @user = User.find(current_user.id)
 
@@ -102,7 +107,7 @@ class DashboardController < ApplicationController
     flash[:alert] = @user.errors.full_messages.first
   end
 
-  def page_id
+  def page_options
     super.merge({page_id: 'dashboard'})
   end
 end

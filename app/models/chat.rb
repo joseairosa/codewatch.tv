@@ -4,38 +4,32 @@ class Chat
 
   belongs_to :channel
 
-  field :banned_users,  type: Array, default: []
-  field :moderators,    type: Array, default: []
+  has_many :users_banned,     class_name: 'ChatUserBanned',     inverse_of: :chat
+  has_many :users_moderator,  class_name: 'ChatUserModerator',  inverse_of: :chat
 
   def give_moderator(user)
-    unless is_moderator?(user)
-      self.moderators << user.id
-      save
-    end
+    ChatUserModerator.create(chat: self, user: user) unless is_moderator?(user)
   end
 
   def remove_moderator(user)
-    removed = self.moderators.delete(user.id)
-    save if removed
+    moderator_user = ChatUserModerator.where(chat_id: self.id, user_id: user.id).first
+    moderator_user.delete if moderator_user
   end
 
   def ban(user)
-    unless is_banned?(user)
-      self.banned_users << user.id
-      save
-    end
+    ChatUserBanned.create(chat: self, user: user) unless is_banned?(user)
   end
 
   def unban(user)
-    removed = self.banned_users.delete(user.id)
-    save if removed
+    banned_user = ChatUserBanned.where(chat_id: self.id, user_id: user.id).first
+    banned_user.delete if banned_user
   end
 
   def is_moderator?(user)
-    self.moderators.find { |moderator_user_id| moderator_user_id == user.id }
+    !ChatUserModerator.where(chat_id: self.id, user_id: user.id).count.zero?
   end
 
   def is_banned?(user)
-    self.banned_users.find { |banned_user_id| banned_user_id == user.id }
+    !ChatUserBanned.where(chat_id: self.id, user_id: user.id).count.zero?
   end
 end
