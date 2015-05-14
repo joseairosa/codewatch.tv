@@ -1,0 +1,73 @@
+.container.content
+  .row
+    .col-md-3.md-margin-bottom-40
+      = render partial: 'dashboard/portrait'
+      = render partial: 'dashboard/navigation'
+    .col-md-9
+      .dashboard-body.margin-bottom-20
+        .tab-v1
+          %ul.nav.nav-justified.nav-tabs
+            %li.active
+              %a{'data-toggle' => 'tab', :href => '#chat-tab'} Chat
+            %li
+              %a{'data-toggle' => 'tab', :href => '#bans-tab'} Bans
+            %li
+              %a{'data-toggle' => 'tab', :href => '#moderators-tab'} Moderators
+          .tab-content
+            #chat-tab.dashboard-edit.tab-pane.fade.in.active
+              %h2.heading-md Interact with your fans directly
+              %p Below are the name and email addresses on file for your account.
+              %br
+                = render partial: 'shared/chat', locals: {channel: current_user.channel}
+            #bans-tab.dashboard-edit.tab-pane.fade
+              %h2.heading-md Manage banned chat users
+              %p Bellow you can unban users that have been banned
+              .row
+                .col-md-12
+                  .panel.margin-bottom-40
+                    .panel-heading
+                      %h3.panel-title
+                        %i.fa.fa-user
+                        Banned users (#{@banned_users.count})
+                    .panel-body
+                      %table.table.table-hover
+                        %thead
+                          %tr
+                            %th #
+                            %th Username
+                            %th Date banned
+                        %tbody
+                          - @banned_users.each_with_index do |banned, i|
+                            %tr
+                              %td= i+1
+                              %td= banned.user.username
+                              %td
+                                = button_to chat_unban_api_v1_chat_path(channel.id, banned.user.username), {form_class: 'form-unban-user', class: 'btn btn-danger btn-xs unban-user', remote: true, method: :put} do
+                                  %i.fa.fa-user
+                                  Unban
+            #moderators-tab.dashboard-edit.tab-pane.fade
+              %h2.heading-md Manage chat moderators
+              %p Bellow you manage your chat moderators
+              .row
+                .col-md-12
+                  .panel.margin-bottom-40
+                    .panel-heading
+                      %h3.panel-title
+                        %i.fa.fa-user
+                        Moderators (#{@moderator_users.count})
+                    .panel-body
+                      %table.table.table-hover
+                        %thead
+                          %tr
+                            %th #
+                            %th Username
+                            %th Date created
+                        %tbody
+                          - @moderator_users.each_with_index do |moderator, i|
+                            %tr
+                              %td= i+1
+                              %td= moderator.user.username
+                              %td
+                                = button_to chat_toggle_moderator_api_v1_chat_path(channel.id, moderator.user.username), {form_class: 'form-toggle-moderator-user', class: 'btn btn-danger btn-xs toggle-moderator-user', remote: true, method: :put} do
+                                  %i.fa.fa-user
+                                  Remove

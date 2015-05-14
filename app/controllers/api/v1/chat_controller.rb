@@ -31,6 +31,22 @@ class Api::V1::ChatController < Api::V1::ApiController
     respond_to { |format| format.json { render response } }
   end
 
+  def unban
+    if @channel
+      user = User.where(username: params[:username]).first
+      if user
+        ChatService.instance.unban(@channel, user)
+        response = {json: {response: "#{user.username} unbanned"}, status: 200}
+      else
+        response = {json: {response: 'User not found'}, status: 404}
+      end
+    else
+      response = {json: {response: 'Channel not found'}, status: 404}
+    end
+
+    respond_to { |format| format.json { render response } }
+  end
+
   def toggle_moderator
     if @channel
       user = User.where(username: params[:username]).first

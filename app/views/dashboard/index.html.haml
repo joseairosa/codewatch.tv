@@ -3,36 +3,8 @@
   .row
     / Left Sidebar
     .col-md-3.md-margin-bottom-40
-      %img.img-responsive.dashboard-img.margin-bottom-20{:alt => "", :src => current_user.gravatar_url}
-        %ul#sidebar-nav-1.list-group.sidebar-nav-v1.margin-bottom-40
-          %li.list-group-item
-            %a{:href => "page_profile.html"}
-              %i.fa.fa-bar-chart-o
-              Overall
-          %li.list-group-item
-            %a{:href => "page_profile_me.html"}
-              %i.fa.fa-user
-              Profile
-          %li.list-group-item
-            %a{:href => "page_profile_users.html"}
-              %i.fa.fa-group
-              Users
-          %li.list-group-item
-            %a{:href => "page_profile_projects.html"}
-              %i.fa.fa-cubes
-              My Projects
-          %li.list-group-item
-            %a{:href => "page_profile_comments.html"}
-              %i.fa.fa-comments
-              Comments
-          %li.list-group-item
-            %a{:href => "page_profile_history.html"}
-              %i.fa.fa-history
-              History
-          %li.list-group-item.active
-            %a{:href => "page_profile_settings.html"}
-              %i.fa.fa-cog
-              Settings
+      = render partial: 'dashboard/portrait'
+      = render partial: 'dashboard/navigation'
     .col-md-9
       .dashboard-body.margin-bottom-20
         .tab-v1

@@ -9,6 +9,7 @@ Codewatch::Application.routes.draw do
   root to: 'home#index'
 
   get 'dashboard' => 'dashboard#index', as: :user_dashboard
+  get 'dashboard/chat_management' => 'dashboard#chat_management', as: :user_dashboard_chat_management
   match 'edit/channel' => 'dashboard#edit_channel', as: :edit_user_channel, via: [ :get, :post, :delete ]
 
   post 'dashboard/update_user' => 'dashboard#update_user', as: :update_user
@@ -55,6 +56,7 @@ Codewatch::Application.routes.draw do
       resource :chat, defaults: {format: 'json'} do
         put ':channel_id/toggle_moderator/:username' => 'chat#toggle_moderator', defaults: {format: 'json'}, as: :chat_toggle_moderator
         put ':channel_id/ban/:username' => 'chat#ban', defaults: {format: 'json'}, as: :chat_ban
+        put ':channel_id/unban/:username' => 'chat#unban', defaults: {format: 'json'}, as: :chat_unban
         delete ':channel_id/user/:username/delete/:message_id' => 'chat#remove_message', defaults: {format: 'json'}, as: :chat_remove_message
       end
     end

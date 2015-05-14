@@ -14,6 +14,6 @@ module ChannelHelper
   end
 
   def is_channel_moderator?(user=current_user)
-    !!channel.chat.moderators.find { |moderator| moderator == user.id }
+    channel.chat.is_moderator?(user)
   end
 end

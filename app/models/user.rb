@@ -4,6 +4,7 @@ class User
   include Mongoid::Document
   include Concerns::Searchable
   include Gravtastic
+
   gravtastic :size => 440, default: 'identicon'
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -14,6 +15,8 @@ class User
 
   has_one :channel
   has_many :recordings
+  has_many :chats_banned, class_name: 'ChatUserBanned'
+  has_many :chats_moderator, class_name: 'ChatUserModerator'
 
   ## Database authenticatable
   field :first_name, type: String, default: ''

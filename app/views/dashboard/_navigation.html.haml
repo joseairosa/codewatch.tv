@@ -1,0 +1,13 @@
+%ul#sidebar-nav-1.list-group.sidebar-nav-v1.margin-bottom-40
+  %li.list-group-item{class: params[:action] == 'index' ? 'active' : ''}
+    = link_to user_dashboard_path do
+      %i.fa.fa-user
+      Profile
+  %li.list-group-item{class: params[:action] == 'statistics' ? 'active' : ''}
+    = link_to user_dashboard_path do
+      %i.fa.fa-bar-chart-o
+      Statistics
+  %li.list-group-item{class: params[:action] == 'chat_management' ? 'active' : ''}
+    = link_to user_dashboard_chat_management_path do
+      %i.fa.fa-comments-o
+      Channel Management
