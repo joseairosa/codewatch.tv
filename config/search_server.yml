@@ -1,4 +1,4 @@
 development:
     host: localhost
 production:
-    host: 178.62.39.223
+    host: 46.101.14.173
