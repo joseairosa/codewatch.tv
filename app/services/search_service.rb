@@ -6,7 +6,7 @@ class SearchService
 
   def initialize
     config = YAML.load_file("#{Rails.root}/config/search_server.yml")[Rails.env]
-    @elastic_client = Elasticsearch::Client.new(host: config['host'], log: true)
+    @elastic_client = Elasticsearch::Client.new(host: config['host'], log: true, transport_options: { request: { timeout: 10 } })
   end
 
   def search(query)
@@ -72,14 +72,26 @@ class SearchService
   end
 
   def index_user(user)
-    @elastic_client.index index: 'users', type: 'users', id: user.id, body: {name: user.username}
+    begin
+      @elastic_client.index index: 'users', type: 'users', id: user.id, body: {name: user.username}
+    rescue Errno::ETIMEDOUT
+      # alert somewhere
+    end
   end
 
   def index_channel(channel)
-    @elastic_client.index index: 'channel', type: 'channel', id: channel.id, body: {title: channel.title, description: channel.description, user_id: channel.user.username}
+    begin
+      @elastic_client.index index: 'channel', type: 'channel', id: channel.id, body: {title: channel.title, description: channel.description, user_id: channel.user.username}
+    rescue Errno::ETIMEDOUT
+      # alert somewhere
+    end
   end
 
   def index_category(category)
-    @elastic_client.index index: 'category', type: 'category', id: category.id, body: {name: category.name}
+    begin
+      @elastic_client.index index: 'category', type: 'category', id: category.id, body: {name: category.name}
+    rescue Errno::ETIMEDOUT
+      # alert somewhere
+    end
   end
 end
