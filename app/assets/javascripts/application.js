@@ -43,6 +43,13 @@ function guid() {
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' +  s4() + '-' + s4() + s4() + s4();
 }
 
+function add_alert(type, message) {
+  var alert_id = "alert_"+guid();
+  $('#alerts-wrapper').append('<div id="'+alert_id+'" class="alert alert-'+type+' fade in alert-dismissable text-center">'+message+'</div>');
+  callback = function() { $('#' + alert_id).remove() };
+  setTimeout(callback, 5000);
+}
+
 jQuery(document).ready(function() {
   App.init();
   App.initCounter();

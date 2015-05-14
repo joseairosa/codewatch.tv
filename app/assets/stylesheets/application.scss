@@ -34,3 +34,15 @@
 @import "custom-cubeportfolio";
 @import "custom";
 
+#alerts-wrapper {
+  position: absolute;
+  z-index: 999;
+  top: 85px;
+  right: 15px;
+  .alert {
+    width: 100%;
+    text-align: center;
+    padding: 25px 40px;
+    margin-bottom: 15px;
+  }
+}

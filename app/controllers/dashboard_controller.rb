@@ -1,7 +1,10 @@
 class DashboardController < ApplicationController
   before_action :authenticate_user!
 
+  add_breadcrumb 'Dashboard', :user_dashboard_path
+
   def index
+    add_breadcrumb 'Profile', :user_dashboard_path
     @user = current_user
   end
 
@@ -19,6 +22,7 @@ class DashboardController < ApplicationController
   end
 
   def chat_management
+    add_breadcrumb 'Chat Management', :user_dashboard_chat_management_path
     @banned_users = current_user.channel.chat.users_banned
     @moderator_users = current_user.channel.chat.users_moderator
   end
