@@ -1,4 +1,7 @@
 class ConferencesController < ApplicationController
+
+  add_breadcrumb 'Conferences', :conferences_path
+
   def index
 
   end
