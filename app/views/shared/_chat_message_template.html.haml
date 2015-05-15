@@ -3,7 +3,6 @@
     .overflow-h
       %strong
         {{username}}
-        %small.pull-right 25m
       %p.chat-message {{message}}
       - if current_user && (is_channel_owner? || is_channel_moderator?)
         .chat-moderation
