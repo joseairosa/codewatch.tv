@@ -21,3 +21,14 @@
           %span.color-green Events
         %p
           Watch live conferences and tech events, right here in your browser
+  .row.margin-top-50.margin-bottom-50
+    .col-md-2.col-md-offset-4
+      .left
+        = button_to 'https://www.facebook.com/codewatch.tv', {class: 'btn btn-block btn-facebook-inversed rounded', method: :get} do
+          %i.fa.fa-facebook
+          Facebook
+    .col-md-2
+      .left
+        = button_to 'https://twitter.com/codewatchtv', {class: 'btn btn-block btn-twitter-inversed rounded', method: :get} do
+          %i.fa.fa-twitter
+          Twitter
