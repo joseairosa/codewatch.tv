@@ -1,15 +1,13 @@
 .bg-highlighted
   .container.content
-    / Top Categories
     .headline
       %h2 Top Categories
     .row.category.margin-bottom-20
-      / Info Blocks
       - top_languages.each_slice(5).to_a.each do |category_slice|
         .col-md-6.col-sm-8
           - category_slice.each do |category_name|
             .content-boxes-v3.margin-bottom-10.md-margin-bottom-20
-              %i.icon-custom.icon-sm.rounded-x.icon-bg-sea.icon-line.icon-badge
+              %i.icon-custom.icon-sm.rounded-x.icon-bg-sea.icon-line.fa.fa-code
               .content-boxes-in-v3
                 %h3
                   = link_to top_categories[category_name].name, category_channels_path(top_categories[category_name].name)
