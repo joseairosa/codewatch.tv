@@ -8,7 +8,6 @@ class SearchService
     config = YAML.load_file("#{Rails.root}/config/search_server.yml")[Rails.env]
     @elastic_client = Elasticsearch::Client.new(
         host: config['host'],
-        port: config['port'],
         log: true,
         transport_options: { request: { timeout: 10 } })
   end

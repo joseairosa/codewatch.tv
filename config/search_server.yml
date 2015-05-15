@@ -2,5 +2,4 @@ development:
     host: localhost
     port: 9200
 production:
-    host: 46.101.14.173
-    port: 9222
+    host: 46.101.14.173:9222
