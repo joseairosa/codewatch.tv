@@ -35,35 +35,23 @@ $(document).on 'ready page:load', ->
     $('#' + ban_id).bind 'ajax:complete', (event, request, settings) ->
       this_id = guid()
       if request.status == 200
-        $('#chat-alerts').append('<div id="'+this_id+'" class="alert alert-success" role="alert">'+request.responseJSON['response']+'</div>')
+        add_alert('success', request.responseJSON['response'])
       else
-        $('#chat-alerts').append('<div id="'+this_id+'" class="alert alert-danger" role="alert">'+request.responseJSON['response']+'</div>')
-      callback = ->
-        $('#' + this_id).remove()
-      setTimeout callback, 5000
+        add_alert('danger', request.responseJSON['response'])
 
     $('#' + moderator_id).bind 'ajax:complete', (event, request, settings) ->
       this_id = guid()
       if request.status == 200
-        $('#chat-alerts').append('<div id="'+this_id+'" class="alert alert-success" role="alert">'+request.responseJSON['response']+'</div>')
+        add_alert('success', request.responseJSON['response'])
       else
-        $('#chat-alerts').append('<div id="'+this_id+'" class="alert alert-danger" role="alert">'+request.responseJSON['response']+'</div>')
-      callback = ->
-        $('#' + this_id).remove()
-      setTimeout callback, 5000
+        add_alert('danger', request.responseJSON['response'])
 
     $('#' + remove_id).bind 'ajax:complete', (event, request, settings) ->
       this_id = guid()
       if request.status == 200
-        $('#chat-alerts').append('<div id="'+this_id+'" class="alert alert-success" role="alert">'+request.responseJSON['response']+'</div>')
+        add_alert('success', request.responseJSON['response'])
       else
-        $('#chat-alerts').append('<div id="'+this_id+'" class="alert alert-danger" role="alert">'+request.responseJSON['response']+'</div>')
-      callback = ->
-        $('#' + this_id).remove()
-      setTimeout callback, 5000
-
-  $("#btn-chat").on "click", ->
-    console.log("Chat message")
+        add_alert('danger', request.responseJSON['response'])
 
   $("#new_message_form").on "ajax:complete", ->
     $('#chat-message').val('')
