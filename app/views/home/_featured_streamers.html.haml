@@ -1,14 +1,15 @@
-.featured-streamers
-  .container.margin-top-50
-    .headline
-      %h2 Featured Streamers
-    .row.margin-top-50.margin-bottom-50
-      .col-md-8.col-md-offset-2
-        %ul.list-unstyled.owl-ts-v1
-          - featured_streamers.each do |user|
-            %li.item
-              = image_tag user.gravatar_url, class: 'rounded-x img-bordered', alt: user.username
-              .featured-streamers-title
-                %p= user.username
-                %span= user.occupation
-              %p= user.about_me
+- unless featured_streamers.empty?
+  .featured-streamers
+    .container.margin-top-50
+      .headline
+        %h2 Featured Streamers
+      .row.margin-top-50.margin-bottom-50
+        .col-md-8.col-md-offset-2
+          %ul.list-unstyled.owl-ts-v1
+            - featured_streamers.each do |user|
+              %li.item
+                = image_tag user.gravatar_url, class: 'rounded-x img-bordered', alt: user.username
+                .featured-streamers-title
+                  %p= user.username
+                  %span= user.occupation
+                %p= user.about_me
