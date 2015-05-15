@@ -15,6 +15,7 @@ class Channel
   index title: 1
   index is_online: 1
   index one_line_description: 1
+  index current_viewers: -1
 
   field :title,                 type: String,   default: 'Untitled broadcast'
   field :description,           type: String

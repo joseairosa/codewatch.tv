@@ -61,6 +61,8 @@ class User
 
   field :stream_key, type: String, default: SecureRandom.uuid
 
+  field :featured, type: Integer, default: 0
+
   field :can_record, type: Integer, default: 0
   validates :can_record, format: {with: /[0-1]/}
 

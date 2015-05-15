@@ -22,12 +22,10 @@ class HomeController < ApplicationController
   end
 
   def featured_channels
-    first_channel = Channel.first
-    [first_channel, first_channel, first_channel]
+    Channel.where(is_online: 1, :current_viewers.gt => 0).order_by(current_viewers: :desc).limit(3).to_a
   end
 
   def featured_streamers
-    first_user = User.first
-    [first_user, first_user, first_user]
+    User.where(featured: 1).to_a
   end
 end
