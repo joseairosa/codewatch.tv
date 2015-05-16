@@ -8,7 +8,7 @@ class ChannelService
 
   end
 
-  def number_live_streams
+  def total_live_viewers
     Channel.collection.aggregate([
                                      {'$group' => {
                                          '_id' => 'number_live_streams',
@@ -17,7 +17,7 @@ class ChannelService
                                  ]).first['current_viewers'].to_i
   end
 
-  def number_recording_streams
+  def total_recording_viewers
     Recording.collection.aggregate([
                                      {'$group' => {
                                          '_id' => 'number_recording_streams',
