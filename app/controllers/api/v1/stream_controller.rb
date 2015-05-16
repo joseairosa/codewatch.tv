@@ -13,12 +13,11 @@ class Api::V1::StreamController < Api::V1::ApiController
           if params[:app] == 'vod'
             recording = Recording.find(File.basename(params[:pageurl]))
             if recording
-              number_viewers = recording.current_viewers+1
-              ChannelService.instance.update_recording_viewers(recording, number_viewers)
+              ChannelService.instance.update_recording_viewers(recording, recording.current_viewers, adjustment: 1)
             end
           elsif params[:app] == 'watch'
             StatisticService.instance.watching_quality(quality)
-            ChannelService.instance.update_live_viewers(user.channel)
+            ChannelService.instance.update_live_viewers(user.channel, adjustment: 1)
           end
 
           {json: {auth: 'ok'}, status: 200}
@@ -26,11 +25,10 @@ class Api::V1::StreamController < Api::V1::ApiController
           if params[:app] == 'vod'
             recording = Recording.find(File.basename(params[:pageurl]))
             if recording
-              number_viewers = recording.current_viewers-1
-              ChannelService.instance.update_recording_viewers(recording, number_viewers)
+              ChannelService.instance.update_recording_viewers(recording, recording.current_viewers, adjustment: -1)
             end
           elsif params[:app] == 'watch'
-            ChannelService.instance.update_live_viewers(user.channel)
+            ChannelService.instance.update_live_viewers(user.channel, adjustment: -1)
           end
 
           {json: {auth: 'ok'}, status: 200}

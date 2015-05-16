@@ -36,9 +36,9 @@ class ChannelService
     nviewers
   end
 
-  def update_live_viewers(channel)
+  def update_live_viewers(channel, adjustment=0)
     channel_viewers = channel_viewers(channel)
-    channel.update(current_viewers: channel_viewers)
+    channel.update(current_viewers: channel_viewers+(adjustment))
     StatisticService.instance.live_online_users(channel, channel_viewers)
   end
 
