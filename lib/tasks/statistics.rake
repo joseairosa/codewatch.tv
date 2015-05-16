@@ -1,8 +1,8 @@
 namespace :statistics do
   desc 'Get online users'
   task online_users: :environment do
-    StatisticService.instance.live_online_users(ChannelService.instance.number_live_streams)
-    StatisticService.instance.recording_online_users(ChannelService.instance.number_recording_streams)
+    StatisticService.instance.live_online_users(nil, ChannelService.instance.number_live_streams)
+    StatisticService.instance.recording_online_users(nil, ChannelService.instance.number_recording_streams)
   end
 
   desc 'Get online streams'

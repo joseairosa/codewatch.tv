@@ -2,7 +2,7 @@ module ChannelHelper
   def current_viewers(channel)
     channel = @channel if @channel
     @current_viewers ||= begin
-      nviewers = ChannelService.instance.number_viewers(channel)
+      nviewers = ChannelService.instance.channel_viewers(channel)
       # That's you :)
       nviewers = 1 if nviewers == 0
       nviewers

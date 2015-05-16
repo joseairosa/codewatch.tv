@@ -4,10 +4,15 @@ class Recording
 
   belongs_to :user
 
-  field :name,    type: String
-  field :views,   type: Integer, default: 0
-  field :title,   type: String
-  field :visible, type: Integer, default: 1
+  has_many :statistics
+
+  index name: 1
+
+  field :name,            type: String
+  field :views,           type: Integer, default: 0
+  field :title,           type: String
+  field :visible,         type: Integer, default: 1
+  field :current_viewers, type: Integer, default: 0
 
   def new_viewer
     self.views = self.views+1

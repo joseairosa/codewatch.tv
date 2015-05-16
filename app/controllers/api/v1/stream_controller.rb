@@ -11,20 +11,27 @@ class Api::V1::StreamController < Api::V1::ApiController
           user.channel.new_viewer
 
           if params[:app] == 'vod'
-            StatisticService.instance.started_watching_recording
+            recording = Recording.find(File.basename(params[:pageurl]))
+            if recording
+              number_viewers = recording.current_viewers+1
+              ChannelService.instance.update_recording_viewers(recording, number_viewers)
+            end
           elsif params[:app] == 'watch'
             StatisticService.instance.watching_quality(quality)
+            ChannelService.instance.update_live_viewers(user.channel)
           end
-
-          ChannelService.instance.update_current_viewers(user.channel)
 
           {json: {auth: 'ok'}, status: 200}
         when 'play_done'
           if params[:app] == 'vod'
-            StatisticService.instance.finished_watching_recording
+            recording = Recording.find(File.basename(params[:pageurl]))
+            if recording
+              number_viewers = recording.current_viewers-1
+              ChannelService.instance.update_recording_viewers(recording, number_viewers)
+            end
+          elsif params[:app] == 'watch'
+            ChannelService.instance.update_live_viewers(user.channel)
           end
-
-          ChannelService.instance.update_current_viewers(user.channel)
 
           {json: {auth: 'ok'}, status: 200}
         when 'publish'

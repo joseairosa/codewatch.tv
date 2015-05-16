@@ -10,6 +10,8 @@ class Channel
 
   has_one :chat
 
+  has_many :statistics
+
   after_create :create_chat
 
   index title: 1
