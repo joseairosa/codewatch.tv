@@ -20,6 +20,6 @@
       .service-block-v3.service-block-yellow
         %i.fa.fa-youtube-play
         %span.service-heading Video on Demand
-        %span.counter
+        %span.counter= vod_count
         = link_to list_vod_path(channel.user.username) do
           %span.vod-view-all.btn-u.btn-u-yellow View all
