@@ -6,7 +6,7 @@ namespace :process do
       nviewers = 0
       category.channels.each do |channel|
         if channel.online?
-          channel_viewers = ChannelService.instance.number_viewers(channel)
+          channel_viewers = ChannelService.instance.channel_viewers(channel)
           Rails.logger.info "Adding #{channel_viewers} for channel #{channel.user.username}..."
           nviewers += channel_viewers
         end
