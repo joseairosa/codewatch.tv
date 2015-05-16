@@ -38,12 +38,12 @@ class ChannelService
 
   def update_live_viewers(channel, adjustment=0)
     channel_viewers = channel_viewers(channel)
-    channel.update(current_viewers: channel_viewers+(adjustment))
+    channel.update(current_viewers: channel_viewers.to_i+(adjustment))
     StatisticService.instance.live_online_users(channel, channel_viewers)
   end
 
-  def update_recording_viewers(recording, value)
-    recording.update(current_viewers: value)
+  def update_recording_viewers(recording, value, adjustment=0)
+    recording.update(current_viewers: value.to_i+(adjustment))
     StatisticService.instance.recording_online_users(recording, value)
   end
 
