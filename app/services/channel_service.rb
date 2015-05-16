@@ -8,6 +8,14 @@ class ChannelService
 
   end
 
+  def number_live_streams
+    URI.parse("http://streamer-01.codewatch.tv/subscriberss?app=watch").read.delete("\n").to_i
+  end
+
+  def number_recording_streams
+    URI.parse("http://streamer-01.codewatch.tv/subscriberss?app=vod").read.delete("\n").to_i
+  end
+
   def number_viewers(channel)
     nviewers = Channel::QUALITIES.inject(0) { |total_viewers, quality|
       viewers = URI.parse("http://streamer-01.codewatch.tv/subscriberss?app=watch&name=#{channel.user.username}@#{quality}").read.delete("\n").to_i

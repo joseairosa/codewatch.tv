@@ -3,15 +3,29 @@ class Api::V1::StreamController < Api::V1::ApiController
   include ChannelHelper
 
   def event
-    user = User.where(username: params[:name].split('@').first).first
+    username, quality = params[:name].split('@')
+    user = User.where(username: username).first
     response = if user
       case params[:event]
         when 'play'
           user.channel.new_viewer
+
+          if params[:app] == 'vod'
+            StatisticService.instance.started_watching_recording
+          elsif params[:app] == 'watch'
+            StatisticService.instance.watching_quality(quality)
+          end
+
           ChannelService.instance.update_current_viewers(user.channel)
+
           {json: {auth: 'ok'}, status: 200}
         when 'play_done'
+          if params[:app] == 'vod'
+            StatisticService.instance.finished_watching_recording
+          end
+
           ChannelService.instance.update_current_viewers(user.channel)
+
           {json: {auth: 'ok'}, status: 200}
         when 'publish'
           valid = User.valid_stream_key?(params[:name], params[:stream_key])
