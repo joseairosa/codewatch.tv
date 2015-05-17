@@ -16,8 +16,8 @@ class Api::V1::StreamController < Api::V1::ApiController
               ChannelService.instance.update_recording_viewers(recording, recording.current_viewers, 1)
             end
           elsif params[:app] == 'watch'
-            StatisticService.instance.watching_quality(quality)
-            ChannelService.instance.update_live_viewers(user.channel, 1)
+            StatisticService.instance.watching_quality(user.channel, quality)
+            ChannelService.instance.update_live_viewers(user.channel, user.channel.current_viewers, 1)
           end
 
           {json: {auth: 'ok'}, status: 200}
@@ -28,7 +28,7 @@ class Api::V1::StreamController < Api::V1::ApiController
               ChannelService.instance.update_recording_viewers(recording, recording.current_viewers, -1)
             end
           elsif params[:app] == 'watch'
-            ChannelService.instance.update_live_viewers(user.channel, -1)
+            ChannelService.instance.update_live_viewers(user.channel, user.channel.current_viewers, -1)
           end
 
           {json: {auth: 'ok'}, status: 200}

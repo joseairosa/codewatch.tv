@@ -13,15 +13,7 @@ class StatisticService
     Statistic.create(name: :online_streams, value: value)
   end
 
-  def watching_quality(value)
-    Statistic.create(name: :watching_quality, value: value)
-  end
-
-  def started_watching_recording(value=1)
-    Statistic.create(name: :started_watching_recording, value: value)
-  end
-
-  def finished_watching_recording(value=1)
-    Statistic.create(name: :finished_watching_recording, value: value)
+  def watching_quality(channel, value)
+    Statistic.create(name: :watching_quality, value: value, channel: channel)
   end
 end
