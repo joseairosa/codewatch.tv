@@ -1,10 +1,13 @@
 class Api::V1::RecordingController < Api::V1::ApiController
   def stats
-    recording = Recording.find(params[:pageurl].split('/').last)
+    recording = Recording.find(File.basename(params[:pageurl]))
     if recording
       case params[:event]
+        when 'play'
+          ChannelService.instance.update_recording_viewers(recording, recording.current_viewers, 1)
         when 'play_done'
           recording.new_viewer
+          ChannelService.instance.update_recording_viewers(recording, recording.current_viewers, -1)
         else
           # do nothing
       end
