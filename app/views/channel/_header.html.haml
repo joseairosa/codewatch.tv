@@ -1,9 +1,6 @@
 .row
   .col-md-8
-    - if channel.online?
-      %h1.title= channel.title
-    - else
-      %h1.title Channel Offline
+    %h1.title= channel.title
   .col-md-4#channel-stats
     - if channel.category
       .row#coding-in
