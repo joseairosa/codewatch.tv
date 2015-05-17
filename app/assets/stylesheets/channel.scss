@@ -54,15 +54,22 @@
       bottom: 0;
       right: 0;
       left: 0;
-      /* fill parent */
-      background: url(static.gif);
-      /* let's see it! */
+      background-color: #000000;
       color: white;
+      @extend .fa;
+
+      &:before {
+        content: "\f070  Channel Offline";
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        height: inherit;
+        font-size: 40px;
+      }
     }
 
     #stream-offline {
       text-align: center;
-      line-height: 500px;
       font-size: 50px;
       padding-left: 15px;
       background-color: #000000;
@@ -726,9 +733,11 @@
     font-size: 15px;
   }
 }
+
 .mCustomScrollbar {
   height: 320px;
 }
+
 .alert-blocks {
   margin: 0 15px 5px;
   background: $color_black_haze_approx;
@@ -758,41 +767,48 @@
     font-weight: 200;
   }
 }
+
 .alert-blocks-pending {
   background: $color_lemon_chiffon_approx;
 }
+
 .alert-blocks-success {
   background: $color_tusk_approx;
 }
+
 .alert-blocks-error {
   background: $color_pippin_approx;
 }
+
 .alert-blocks-info {
   background: $color_pattens_blue_approx;
 }
+
 @media(max-width: 450px) {
   .p-chart.col-xs-6 {
     width: 100%;
   }
 }
+
 @media screen and(max-width: 767px) {
   .channel .timeline-v2 > li .cbp_tmlabel:after {
     border-bottom-color: $white;
     border-right-color: transparent;
   }
 }
+
 @media screen and(min-width: 768px) and(max-width: 992px) {
   .channel .timeline-v2 > li .cbp_tmlabel:after {
     border-bottom-color: $white;
     border-right-color: transparent;
   }
 }
+
 @media(max-width: 768px) {
   .channel .tab-v1 .nav-tabs {
     border-bottom: none;
   }
 }
-
 
 #edit-channel {
   .sky-form .row {
