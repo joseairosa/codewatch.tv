@@ -51,7 +51,7 @@ Codewatch::Application.routes.draw do
         post 'event/:event' => 'stream#event', defaults: {format: 'json'}
       end
       resource :recording, defaults: {format: 'json'} do
-        post 'stats/:event' => 'recording#stats', defaults: {format: 'json'}
+        post 'event/:event' => 'recording#event', defaults: {format: 'json'}
       end
       resource :chat, defaults: {format: 'json'} do
         put ':channel_id/toggle_moderator/:username' => 'chat#toggle_moderator', defaults: {format: 'json'}, as: :chat_toggle_moderator

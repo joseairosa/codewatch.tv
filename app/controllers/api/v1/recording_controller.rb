@@ -1,5 +1,5 @@
 class Api::V1::RecordingController < Api::V1::ApiController
-  def stats
+  def event
     recording = Recording.find(File.basename(params[:pageurl]))
     if recording
       case params[:event]
