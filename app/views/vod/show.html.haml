@@ -1,6 +1,5 @@
 = render partial: 'shared/breadcrumbs', locals: {page_name: recording.title}
 #vod-item
-
   .row
     .col-md-8.col-md-offset-2
       = render partial: 'shared/stream', locals: {file: "rtmp://streamer-01.codewatch.tv/vod/#{recording.name}", type: 'rtmp'}
