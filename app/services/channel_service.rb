@@ -57,4 +57,24 @@ class ChannelService
   def unsubscribe(channel, user)
     channel.unsubscribe(user)
   end
+
+  def like(channel, user)
+    if channel && user
+      found_like = ChannelLike.where(channel: channel, user: user).first
+      unless found_like
+        ChannelLike.create(channel: channel, user: user)
+        channel.update(total_likes: channel.total_likes+1)
+      end
+    end
+  end
+
+  def unlike(channel, user)
+    if channel && user
+      found_like = ChannelLike.where(channel: channel, user: user).first
+      if found_like
+        found_like.delete
+        channel.update(total_likes: channel.total_likes-1)
+      end
+    end
+  end
 end

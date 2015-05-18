@@ -12,10 +12,18 @@
         %span.counter= current_viewers == 0 ? 1 : current_viewers
   .row
     .col-sm-6.sm-margin-bottom-20.likes
-      .service-block-v3.service-block-red
-        %i.fa.fa-heart
-        %span.service-heading Likes
-        %span.counter= likes
+      #likes-channel{class: user_likes_channel? ? '' : 'hide' }
+        = link_to channel_unlike_api_v1_channel_path(channel.user.username), id: 'ajax-unlike-channel', remote: true, method: :delete  do
+          .service-block-v3.service-block-red
+            %i.fa.fa-heart
+            %span.service-heading Likes
+            %span.counter= likes
+      #does-not-likes-channel{class: user_likes_channel? ? 'hide' : '' }
+        = link_to channel_like_api_v1_channel_path(channel.user.username), id: 'ajax-like-channel', remote: true, method: :post  do
+          .service-block-v3.service-block-red
+            %i.fa.fa-heart
+            %span.service-heading Likes
+            %span.counter= likes
     .col-sm-6.vod
       .service-block-v3.service-block-yellow
         %i.fa.fa-youtube-play

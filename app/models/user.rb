@@ -17,6 +17,7 @@ class User
   has_many :recordings
   has_many :chats_banned, class_name: 'ChatUserBanned'
   has_many :chats_moderator, class_name: 'ChatUserModerator'
+  has_many :channel_likes, class_name: 'ChannelLike'
 
   ## Database authenticatable
   field :first_name, type: String, default: ''
