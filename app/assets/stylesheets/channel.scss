@@ -33,6 +33,34 @@
     }
   }
 
+
+  #likes-channel, #does-not-likes-channel {
+    cursor: pointer;
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
+  #does-not-likes-channel {
+    .service-block-red {
+      background-color: #f7f7f7;
+    }
+    .fa-heart {
+      color: #95a5a6;
+    }
+    span {
+      color: #95a5a6;
+    }
+    &:hover {
+      .fa-heart {
+        color: #e74c3c;
+      }
+    }
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
   #channel-offline {
     min-height: 500px;
 

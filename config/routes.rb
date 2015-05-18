@@ -59,6 +59,10 @@ Codewatch::Application.routes.draw do
         put ':channel_id/unban/:username' => 'chat#unban', defaults: {format: 'json'}, as: :chat_unban
         delete ':channel_id/user/:username/delete/:message_id' => 'chat#remove_message', defaults: {format: 'json'}, as: :chat_remove_message
       end
+      resource :channel, defaults: {format: 'json'} do
+        post ':channel_id/like' => 'channel#like', defaults: {format: 'json'}, as: :channel_like
+        delete ':channel_id/unlike' => 'channel#unlike', defaults: {format: 'json'}, as: :channel_unlike
+      end
     end
   end
 end

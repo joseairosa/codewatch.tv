@@ -13,32 +13,32 @@ class Api::V1::StreamController < Api::V1::ApiController
           StatisticService.instance.watching_quality(user.channel, quality)
           ChannelService.instance.update_live_viewers(user.channel, user.channel.current_viewers, 1)
 
-          {json: {auth: 'ok'}, status: 200}
+          {json: {response: 'ok'}, status: 200}
         when 'play_done'
           ChannelService.instance.update_live_viewers(user.channel, user.channel.current_viewers, -1)
 
-          {json: {auth: 'ok'}, status: 200}
+          {json: {response: 'ok'}, status: 200}
         when 'publish'
           valid = User.valid_stream_key?(params[:name], params[:stream_key])
           if valid
             user = User.where(username: params[:name]).first
             user.channel.go_online
             if params[:app] == 'stream' && user.can_record?
-              {json: {auth: 'ok'}, status: 302, location: "rtmp://127.0.0.1/record/#{params[:name]}?stream_key=#{params[:stream_key]}"}
+              {json: {response: 'ok'}, status: 302, location: "rtmp://127.0.0.1/record/#{params[:name]}?stream_key=#{params[:stream_key]}"}
             else
-              {json: {auth: 'ok'}, status: 200}
+              {json: {response: 'ok'}, status: 200}
             end
           else
-            {json: {auth: 'fail'}, status: 401}
+            {json: {response: 'fail'}, status: 401}
           end
         when 'publish_done'
           user.channel.go_offline
-          {json: {auth: 'ok'}, status: 200}
+          {json: {response: 'ok'}, status: 200}
         else
-          {json: {status:'event_not_found'}, status: 404}
+          {json: {response:'event_not_found'}, status: 404}
       end
     else
-      {json: {status:'user_not_found'}, status: 404}
+      {json: {response:'user_not_found'}, status: 404}
     end
     respond_to do |format|
       format.json { render response }
@@ -51,7 +51,7 @@ class Api::V1::StreamController < Api::V1::ApiController
       Recording.create!(title: user.channel.title, user: user, name: params[:path].gsub('/tmp/',''))
     end
     respond_to do |format|
-      format.json { render json: {status:'ok'}, status: 200 }
+      format.json { render json: {response:'ok'}, status: 200 }
     end
   end
 end

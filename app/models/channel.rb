@@ -11,6 +11,7 @@ class Channel
   has_one :chat
 
   has_many :statistics
+  has_many :likes, class_name: 'ChannelLike'
 
   after_create :create_chat
 
@@ -24,6 +25,7 @@ class Channel
   field :total_viewers,         type: Integer,  default: 0
   field :current_viewers,       type: Integer,  default: 0
   field :likes,                 type: Integer,  default: 0
+  field :total_likes,           type: Integer,  default: 0
   field :is_online,             type: Integer,  default: 0
   field :subscribers,           type: Array,    default: []
   field :one_line_description,  type: String
