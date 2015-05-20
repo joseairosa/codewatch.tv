@@ -3,6 +3,7 @@ require 'securerandom'
 class User
   include Mongoid::Document
   include Concerns::Searchable
+  include Concerns::AccountLogic
   include Gravtastic
 
   gravtastic :size => 440, default: 'identicon'
@@ -13,11 +14,12 @@ class User
          :authentication_keys => [:login]
   devise :omniauthable, :omniauth_providers => [:facebook]
 
-  has_one :channel
-  has_many :recordings
-  has_many :chats_banned, class_name: 'ChatUserBanned'
-  has_many :chats_moderator, class_name: 'ChatUserModerator'
-  has_many :channel_likes, class_name: 'ChannelLike'
+  has_one     :channel
+  has_many    :recordings
+  has_many    :chats_banned,    class_name: 'ChatUserBanned'
+  has_many    :chats_moderator, class_name: 'ChatUserModerator'
+  has_many    :channel_likes,   class_name: 'ChannelLike'
+  embeds_one  :account_type
 
   ## Database authenticatable
   field :first_name, type: String, default: ''
@@ -73,6 +75,7 @@ class User
   attr_accessor :login
 
   after_create :create_channel
+  after_create :create_account_type
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
@@ -114,5 +117,9 @@ class User
 
   def create_channel
     Channel.create!(user: self)
+  end
+
+  def create_account_type
+    AccountType.create!(user: self)
   end
 end

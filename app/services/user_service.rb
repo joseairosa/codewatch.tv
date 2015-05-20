@@ -13,4 +13,8 @@ class UserService
   def remove_featured(user)
     user.update(featured: 0)
   end
+
+  def change_account_type(user, account_type)
+    user.account_type.update!(name: account_type)
+  end
 end
