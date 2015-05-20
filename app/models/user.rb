@@ -21,6 +21,8 @@ class User
   has_many    :channel_likes,   class_name: 'ChannelLike'
   embeds_one  :account_type
 
+  index 'account_type.name' => 1
+
   ## Database authenticatable
   field :first_name, type: String, default: ''
   field :last_name, type: String, default: ''
