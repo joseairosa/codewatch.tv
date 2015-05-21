@@ -3,7 +3,7 @@ every 5.minutes do
 end
 
 every 5.minutes do
-  rake 'statistics:update_reddit_feeds'
+  rake 'process:update_reddit_feeds'
 end
 
 every 1.minute do
