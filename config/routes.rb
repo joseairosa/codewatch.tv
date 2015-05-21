@@ -34,6 +34,9 @@ Codewatch::Application.routes.draw do
 
   get 'help' => 'help#index', as: :help
 
+  get 'channels/external' => 'external_streams#index', as: :external_channels
+  get 'channel/external/:username' => 'external_streams#show', as: :user_external_channel
+
   # Errors
   match '404' => 'errors#error404', via: [ :get, :post, :patch, :delete ]
 

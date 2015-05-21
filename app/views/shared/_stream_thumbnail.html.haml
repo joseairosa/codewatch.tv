@@ -1,13 +1,27 @@
 %div{class: "cbp-item #{channel.user.username}"}
   .cbp-caption.margin-bottom-20
     .cbp-caption-defaultWrap
-      = link_to image_tag("https://codewatch-tv.s3-eu-west-1.amazonaws.com/stream-thumbnails/#{channel.user.username}.png"), user_channel_path(channel.user.username)
+      -if channel.external? && channel.does_not_have_media?
+        = link_to image_tag(channel.thumbnail), channel.url, target: :blank
+      - else
+        = link_to image_tag(channel.thumbnail), link
     .cbp-title-dark
-      .cbp-l-grid-agency-title= channel.title
-      .cbp-l-grid-agency-desc= channel.one_line_description.to_s
+      .cbp-l-grid-agency-title{title: channel.title}= channel.title
     .text-right
       %ul.list-inline.block-grid-v1-add-info
         %li
-          %a{:href => user_channel_path(channel.user.username)}
-            %i.fa.fa-user
-            = (channel.online? ? channel.current_viewers : '0')
+          - if channel.external?
+            -if channel.status
+              %a.margin-right-5{:href => channel.url, target: :blank}
+                %i.fa.fa-play
+                = channel.status
+            %a{:href => channel.url, target: :blank}
+              %i.fa.fa-user
+              = channel.user.username
+          - else
+            %a{:href => link}
+              %i.fa.fa-user
+              = channel.user.username
+            %a{:href => link}
+              %i.fa.fa-user
+              = (channel.online? ? channel.current_viewers : '0')

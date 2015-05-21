@@ -3,6 +3,7 @@ class Chat
   include Mongoid::Timestamps
 
   belongs_to :channel
+  belongs_to :channel_external
 
   has_many :users_banned,     class_name: 'ChatUserBanned',     inverse_of: :chat
   has_many :users_moderator,  class_name: 'ChatUserModerator',  inverse_of: :chat

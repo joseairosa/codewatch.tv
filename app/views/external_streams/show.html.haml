@@ -1,0 +1,17 @@
+= render partial: 'shared/breadcrumbs', locals: {page_name: "#{channel.user.username} streaming on #{channel.user.domain}"}
+.channel
+  .row
+    .col-md-8
+      #channel-online
+        %h1.title{title: channel.title}= channel.title
+        #stream-online
+          = render partial: 'shared/external_stream', locals: {channel: channel}
+    .col-md-4
+      %span.label.label-u.category-name= channel.user.domain
+      .channel-body
+        .row
+          .col-sm-12
+            #chat-online
+              #chat-alerts
+              = render 'shared/chat'
+

@@ -5,4 +5,4 @@
     .row.block-grid-v2
       - featured_channels.each do |channel|
         .col-md-4
-          = render partial: 'shared/stream_thumbnail', locals: {classes: 'col-md-4 col-sm-6', channel: channel}
+          = render partial: 'shared/stream_thumbnail', locals: {classes: 'col-md-4 col-sm-6', channel: channel, link: user_channel_path(channel.user.username)}

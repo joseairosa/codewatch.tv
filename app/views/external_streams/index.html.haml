@@ -1,0 +1,17 @@
+= render partial: 'shared/breadcrumbs', locals: {page_name: 'External streams'}
+.channel-list
+  - if online_channels.count > 0
+    .headline
+      %h2 Online Streams
+    .cube-portfolio.margin-bottom-50
+      .content-xs
+      .grid-channel-container.cbp-l-grid-fullWidth
+        - online_channels.each do |channel|
+          = render partial: 'shared/stream_thumbnail', locals: {channel: channel, link: user_external_channel_path(channel.user.username)}
+  .headline
+    %h2 Offline/Recorded Streams
+  .cube-portfolio.margin-bottom-50
+    .content-xs
+    .grid-channel-container.cbp-l-grid-fullWidth
+      - offline_channels.each do |channel|
+        = render partial: 'shared/stream_thumbnail', locals: {channel: channel, link: user_external_channel_path(channel.user.username)}

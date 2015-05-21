@@ -36,4 +36,44 @@ namespace :process do
       ChannelService.instance.update_live_viewers(user.channel, current_viewers)
     end
   end
+
+  desc 'Update reddit feeds'
+  task :update_reddit_feeds, [:limit, :after, :before] => :environment do |_, args|
+    options = {}
+    if args['before'].present?
+      options[:before] = "t3_#{args['before']}"
+    # else
+    #   last_updated = ChannelExternal.desc(:updated_at).limit(1).first
+    #   if last_updated
+    #     Rails.logger.info "Retrieving all reddit links before #{last_updated.name}..."
+    #     options[:before] = last_updated.name
+    #   end
+    end
+    options[:after] = "t3_#{args['after']}" if args['after'].present?
+    options[:limit] = args['limit'] if args['limit']
+    options[:category] = :new
+
+    Rails.logger.info "Calling reddit API with #{options}"
+
+    links = REDDIT_CLIENT.links('WatchPeopleCode', options)
+
+    Rails.logger.info "Updating #{links.count} external channels..."
+
+    links.to_a.reverse.each do |link|
+      user_external = UserExternal.where(username: link.attributes[:author]).first
+      to_merge = {}
+      to_merge[:media] = link.attributes[:media] if link.attributes[:media]
+      to_merge[:selftext] = link.attributes[:selftext] if link.attributes[:selftext]
+      if user_external
+        Rails.logger.info "Updating external user #{link.attributes[:author]}..."
+        user_external.update({domain: link.attributes[:domain]}.merge(to_merge))
+      else
+        Rails.logger.info "Creating external user #{link.attributes[:author]}..."
+        user_external = UserExternal.create({username: link.attributes[:author], domain: link.attributes[:domain]}.merge(to_merge))
+      end
+
+      Rails.logger.info "Updating external channel #{link.attributes[:name]}..."
+      user_external.channel.update(name: link.attributes[:name], media: link.attributes[:media_embed][:content], title: link.attributes[:title], url: link.attributes[:url], status: link.attributes[:link_flair_text])
+    end
+  end
 end
