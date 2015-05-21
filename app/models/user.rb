@@ -111,6 +111,10 @@ class User
     end
   end
 
+  def chat_id
+    username
+  end
+
   def can_record?
     !can_record.zero?
   end

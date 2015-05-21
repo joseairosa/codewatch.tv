@@ -67,6 +67,14 @@ class Channel
     save if removed
   end
 
+  def thumbnail
+    "https://codewatch-tv.s3-eu-west-1.amazonaws.com/stream-thumbnails/#{user.username}.png"
+  end
+
+  def external?
+    false
+  end
+
   private
 
   def already_subscribed?(user)

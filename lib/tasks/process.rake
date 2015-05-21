@@ -40,16 +40,16 @@ namespace :process do
   desc 'Update reddit feeds'
   task :update_reddit_feeds, [:limit, :after, :before] => :environment do |_, args|
     options = {}
-    if args['before']
+    if args['before'].present?
       options[:before] = "t3_#{args['before']}"
-    else
-      last_updated = ChannelExternal.desc(:updated_at).limit(1).first
-      if last_updated
-        Rails.logger.info "Retrieving all reddit links before #{last_updated.name}..."
-        options[:before] = last_updated.name
-      end
+    # else
+    #   last_updated = ChannelExternal.desc(:updated_at).limit(1).first
+    #   if last_updated
+    #     Rails.logger.info "Retrieving all reddit links before #{last_updated.name}..."
+    #     options[:before] = last_updated.name
+    #   end
     end
-    options[:after] = "t3_#{args['after']}" if args['after']
+    options[:after] = "t3_#{args['after']}" if args['after'].present?
     options[:limit] = args['limit'] if args['limit']
     options[:category] = :new
 

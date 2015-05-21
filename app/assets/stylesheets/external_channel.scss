@@ -1,0 +1,31 @@
+#external_streams_page {
+  .cbp-caption-defaultWrap {
+    img {
+      height: 301px;
+    }
+  }
+  h1.title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+.embed-content {
+  width: 100%;
+  margin: 0 auto;
+  .embed-container {
+    height: 0;
+    width: 100%;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    position: relative;
+    iframe {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}

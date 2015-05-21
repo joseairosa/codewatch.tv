@@ -15,6 +15,10 @@ class UserExternal
 
   validates_uniqueness_of :username
 
+  def chat_id
+    "external_#{username}"
+  end
+
   private
 
   def create_channel

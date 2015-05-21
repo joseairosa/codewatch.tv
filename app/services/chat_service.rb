@@ -26,7 +26,7 @@ class ChatService
   end
 
   def remove_message(channel, message_id)
-    chat_id = channel.user.username
+    chat_id = channel.user.chat_id
     payload  = {
       id: message_id,
       chat_id: chat_id
