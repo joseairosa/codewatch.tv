@@ -1,9 +1,9 @@
 class ExternalStreamsController < ApplicationController
   add_breadcrumb 'External Streams', :external_channels_path
 
-  helper_method :offline_channels
-  helper_method :online_channels
+  helper_method :grouped_channels
   helper_method :channel
+  helper_method :display_order
 
   def index
     add_breadcrumb 'All', :external_channels_path
@@ -18,12 +18,8 @@ class ExternalStreamsController < ApplicationController
 
   private
 
-  def online_channels
-    @online_channels ||= ChannelExternal.where(status: 'Live').desc(:updated_at).limit(25)
-  end
-
-  def offline_channels
-    @offline_channels ||= ChannelExternal.ne(status: 'Live').desc(:updated_at).limit(25)
+  def grouped_channels
+    @grouped_channels ||= ChannelExternal.order_by(updated_at: -1).limit(25).group_by(&:status)
   end
 
   def channel
@@ -32,5 +28,10 @@ class ExternalStreamsController < ApplicationController
 
   def page_options
     super.merge({page_id: 'external_streams'})
+  end
+
+  def display_order
+    main_order = ['Live', 'Upcoming', 'Recording Available', 'Finished']
+    main_order + (grouped_channels.keys - main_order)
   end
 end
