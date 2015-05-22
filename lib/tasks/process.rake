@@ -50,7 +50,7 @@ namespace :process do
     #   end
     end
     options[:after] = "t3_#{args['after']}" if args['after'].present?
-    options[:limit] = args['limit'] if args['limit']
+    options[:limit] = args['limit'] || 50
     options[:category] = :new
 
     Rails.logger.info "Calling reddit API with #{options}"
@@ -74,6 +74,13 @@ namespace :process do
 
       Rails.logger.info "Updating external channel #{link.attributes[:name]}..."
       user_external.channel.update(name: link.attributes[:name], media: link.attributes[:media_embed][:content], title: link.attributes[:title], url: link.attributes[:url], status: link.attributes[:link_flair_text])
+    end
+
+    Rails.logger.info 'Making sure all live streams are actually live...'
+
+    ChannelExternal.where(status: 'Live').each do |channel|
+      link = REDDIT_CLIENT.link(channel.name)
+      channel.update(status: link.attributes[:link_flair_text]) unless link.attributes[:link_flair_text] == 'Live'
     end
   end
 end
