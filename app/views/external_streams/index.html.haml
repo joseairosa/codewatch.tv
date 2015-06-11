@@ -6,5 +6,5 @@
     .cube-portfolio.margin-bottom-50
       .content-xs
       .grid-channel-container.cbp-l-grid-fullWidth
-        - grouped_channels[order_key].each do |channel|
+        - grouped_channels[order_key].to_a.each do |channel|
           = render partial: 'shared/stream_thumbnail', locals: {channel: channel, link: user_external_channel_path(channel.user.username)}
