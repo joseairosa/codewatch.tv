@@ -6,7 +6,7 @@ class Api::V1::LoadBalancerController < Api::V1::ApiController
     if params[:app] == 'stream'
       user = User.where(username: params[:name], stream_key: params[:stream_key]).first
     else
-      user = User.where(username: params[:name]).first
+      user = User.where(username: params[:name].split('@').first).first
     end
     response = if user
                  redirection = "rtmp://#{STREAMERS_CONFIG[user.streamer_id]['private-ip']}/#{params[:app]}/#{params[:name]}"
