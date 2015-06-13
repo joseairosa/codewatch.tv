@@ -2,7 +2,7 @@
 #vod-item
   .row
     .col-md-8.col-md-offset-2
-      = render partial: 'shared/stream', locals: {file: "rtmp://streamer.codewatch.tv/vod/#{recording.name}.flv?recording_id=#{recording.id}", type: 'rtmp'}
+      = render partial: 'shared/stream', locals: {file: "rtmp://#{recording.user.streamer_id}.codewatch.tv/vod/#{recording.name}", type: 'rtmp'}
     .col-md-2
       = render partial: 'vod/header'
   .container.content

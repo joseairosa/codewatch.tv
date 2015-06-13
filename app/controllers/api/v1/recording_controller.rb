@@ -1,6 +1,6 @@
 class Api::V1::RecordingController < Api::V1::ApiController
   def event
-    recording = Recording.where(name: "#{params[:name]}.flv").first
+    recording = Recording.find(File.basename(params[:pageurl]))
     if recording
       case params[:event]
         when 'play'

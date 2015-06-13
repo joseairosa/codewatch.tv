@@ -5,8 +5,6 @@ class Api::V1::LoadBalancerController < Api::V1::ApiController
   def stream
     if params[:app] == 'stream'
       user = User.where(username: params[:name], stream_key: params[:stream_key]).first
-    elsif params[:app] == 'vod'
-      user = User.where(username: params[:name].split('-').first).first
     else
       user = User.where(username: params[:name]).first
     end
