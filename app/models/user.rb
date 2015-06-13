@@ -64,7 +64,8 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
-  field :stream_key, type: String, default: SecureRandom.uuid
+  field :stream_key,  type: String, default: SecureRandom.uuid
+  field :streamer_id, type: String
 
   field :featured, type: Integer, default: 0
 
@@ -78,6 +79,7 @@ class User
 
   after_create :create_channel
   after_create :create_account_type
+  after_create :assign_streamer_id
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
@@ -127,5 +129,12 @@ class User
 
   def create_account_type
     AccountType.create!(user: self)
+  end
+
+  def assign_streamer_id
+    grouped_users = User.all.group_by{ |user| user.streamer_id }
+    grouped_by_count = grouped_users.inject({}) {|res, (k, v)| res[k] = v.count; res }
+    grouped_by_count.merge!((STREAMERS_LIST - grouped_by_count.keys).inject({}) {|res, v| res[v] = 0; res })
+    self.streamer_id = Hash[grouped_by_count.sort_by{ |_,v| v }].keys.first
   end
 end
