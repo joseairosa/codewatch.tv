@@ -67,7 +67,7 @@ Codewatch::Application.routes.draw do
         delete ':channel_id/unlike' => 'channel#unlike', defaults: {format: 'json'}, as: :channel_unlike
       end
       resource :load_balancer, defaults: {format: 'json'} do
-        get 'node' => 'load_balancer#node', defaults: {format: 'json'}, as: :node
+        post 'node' => 'load_balancer#stream', defaults: {format: 'json'}, as: :node
       end
     end
   end
