@@ -3,7 +3,7 @@ class Api::V1::SmilController < Api::V1::ApiController
     output =
 """<smil>
   <head>
-    <meta base=\"rtmp://streamer-01.codewatch.tv/watch/\" />
+    <meta base=\"rtmp://streamer.codewatch.tv/watch/\" />
   </head>
   <body>
     <switch>

@@ -28,7 +28,7 @@ class ChannelService
 
   def channel_viewers(channel)
     nviewers = Channel::QUALITIES.inject(0) { |total_viewers, quality|
-      viewers = URI.parse("http://streamer-01.codewatch.tv/subscribers?app=watch&name=#{channel.user.username}@#{quality}").read.delete("\n").to_i
+      viewers = URI.parse("http://#{channel.user.streamer_id}.codewatch.tv/subscribers?app=watch&name=#{channel.user.username}@#{quality}").read.delete("\n").to_i
       total_viewers += viewers
       total_viewers
     }
