@@ -1,0 +1,113 @@
+= render partial: 'shared/breadcrumbs', locals: {page_name: 'Profile'}
+.container.content.dashboard
+  .row
+    .col-md-3.md-margin-bottom-40
+      = render partial: 'dashboard/portrait'
+      = render partial: 'dashboard/navigation'
+    .col-md-9
+      .dashboard-body.margin-bottom-20
+        .tab-v1
+          %ul.nav.nav-justified.nav-tabs
+            %li.active
+              %a{'data-toggle' => 'tab', :href => '#new-private-session-tab'} Create Private Session
+            %li
+              %a{'data-toggle' => 'tab', :href => '#private-sessions-tab'} Your Private Sessions
+          .tab-content
+            #new-private-session-tab.dashboard-edit.tab-pane.fade.in.active
+              %h2.heading-md Create a new Private Session
+              %p Fill the information below to create a new private session.
+              %br
+                = form_tag(user_dashboard_private_sessions_create_path, {id: 'sky-form4', class: 'sky-form'}) do
+                  %dl.dl-horizontal
+                    %dt Title
+                    %dd
+                      %section
+                        %label.input
+                          %i.icon-append.fa.fa-font
+                          %input{:name => "private_session[title]", :placeholder => "Title", :type => "text"}
+                            %b.tooltip.tooltip-bottom-right The title for your private session
+                    %dt Live date
+                    %dd.with-col
+                      %section.col.col-3.day
+                        %label.select
+                          %select{:name => "private_session[live_at_day]"}
+                            %option{value: '0', selected: true, disabled: true} Day
+                            - (1..31).each do |day|
+                              %option{value: day}= day
+                          %i
+                      %section.col.col-3.month
+                        %label.select
+                          %select{:name => "private_session[live_at_month]"}
+                            %option{value: '0', selected: true, disabled: true} Month
+                            - (1..12).each do |month|
+                              %option{value: month}= Date::MONTHNAMES[month]
+                          %i
+                      %section.col.col-3.year
+                        %label.select
+                          %select{:name => "private_session[live_at_year]"}
+                            %option{value: '0', selected: true, disabled: true} Year
+                            - [DateTime.now.year, DateTime.now.year+1].each do |year|
+                              %option{value: year}= year
+                          %i
+                      %section.col.col-3.hour
+                        %label.select
+                          %select{:name => "private_session[live_at_hour]"}
+                            %option{value: '0', selected: true, disabled: true} Hour
+                            - (0..23).each do |hour|
+                              %option{value: hour}= hour
+                          %i
+                      %section.col.col-3.minute
+                        %label.select
+                          %select{:name => "private_session[live_at_minute]"}
+                            %option{value: '0', selected: true, disabled: true} Minute
+                            - (0..59).each do |minute|
+                              %option{value: minute}= minute
+                          %i
+                    %dt Max participants
+                    %dd.with-col
+                      %section.col.col-3
+                        %label.input
+                          %i.icon-append.fa.fa-users
+                          %input{:name => "private_session[max_participants]", :placeholder => "Unlimited: 0", :type => "text", :value => '0'}
+                            %b.tooltip.tooltip-bottom-right Unlimited: 0
+                    %dt.margin-bottom-20 Description
+                    %dd &nbsp;
+                    %dd{style: 'margin-left: 0;'}
+                      %section
+                        %textarea{class: 'form-control tinymce', id: 'private-session-description', name: 'private_session[description]', rows: '15'}
+                        = tinymce
+                  %br
+                    %button.btn-u{:type => "submit"} Create
+            #private-sessions-tab.dashboard-edit.tab-pane.fade
+              %h2.heading-md Manage your private sessions
+              %p Below you can change and delete your private sessions
+              .row
+                .col-md-12
+                  .panel.margin-bottom-40
+                    .panel-heading
+                      %h3.panel-title
+                        %i.fa.fa-user
+                        Private sessions (#{@private_sessions.count})
+                    .panel-body
+                      %table.table.table-hover
+                        %thead
+                          %tr
+                            %th #
+                            %th Title
+                            %th Live date
+                            %th
+                            %th
+                        %tbody
+                          - @private_sessions.each_with_index do |private_session, i|
+                            %tr
+                              %td= i+1
+                              %td= private_session.title
+                              %td= private_session.live_at
+                              %td
+                                = button_to user_dashboard_private_sessions_edit_path(private_session.id), {form_class: 'form-unban-user', class: 'btn btn-warning btn-xs edit-private-session'} do
+                                  %i.fa.fa-edit
+                                  Edit
+                              %td
+                                = button_to delete_api_v1_private_session_path(private_session.id), {form_class: 'form-unban-user', class: 'btn btn-danger btn-xs delete-private-session', remote: true, method: :delete} do
+                                  %i.fa.fa-trash-o
+                                  Delete

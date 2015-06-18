@@ -94,6 +94,22 @@ class DashboardController < ApplicationController
     redirect_to user_dashboard_path
   end
 
+  def private_sessions
+    @private_sessions = current_user.private_sessions
+  end
+
+  def create_private_session
+
+  end
+
+  def edit_private_session
+
+  end
+
+  def update_private_session
+
+  end
+
   def channel
     current_user.channel
   end

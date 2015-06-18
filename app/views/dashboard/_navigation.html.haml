@@ -7,6 +7,10 @@
     = link_to user_dashboard_path do
       %i.fa.fa-bar-chart-o
       Statistics
+  %li.list-group-item{class: params[:action] == 'statistics' ? 'active' : ''}
+    = link_to user_dashboard_private_sessions_path do
+      %i.fa.fa-users
+      Private Sessions
   %li.list-group-item{class: params[:action] == 'chat_management' ? 'active' : ''}
     = link_to user_dashboard_chat_management_path do
       %i.fa.fa-comments-o

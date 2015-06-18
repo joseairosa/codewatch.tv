@@ -10,6 +10,10 @@ Codewatch::Application.routes.draw do
 
   get 'dashboard' => 'dashboard#index', as: :user_dashboard
   get 'dashboard/chat_management' => 'dashboard#chat_management', as: :user_dashboard_chat_management
+  get 'dashboard/private_sessions' => 'dashboard#private_sessions', as: :user_dashboard_private_sessions
+  post 'dashboard/private_sessions/create' => 'dashboard#create_private_session', as: :user_dashboard_private_sessions_create
+  get 'dashboard/private_sessions/:id/edit' => 'dashboard#edit_private_session', as: :user_dashboard_private_sessions_edit
+  post 'dashboard/private_sessions/:id/update' => 'dashboard#update_private_session', as: :user_dashboard_private_sessions_update
   match 'edit/channel' => 'dashboard#edit_channel', as: :edit_user_channel, via: [ :get, :post, :delete ]
 
   post 'dashboard/update_user' => 'dashboard#update_user', as: :update_user
@@ -61,6 +65,9 @@ Codewatch::Application.routes.draw do
         put ':channel_id/ban/:username' => 'chat#ban', defaults: {format: 'json'}, as: :chat_ban
         put ':channel_id/unban/:username' => 'chat#unban', defaults: {format: 'json'}, as: :chat_unban
         delete ':channel_id/user/:username/delete/:message_id' => 'chat#remove_message', defaults: {format: 'json'}, as: :chat_remove_message
+      end
+      resource :private_session, defaults: {format: 'json'} do
+        delete ':id/delete' => 'chat#toggle_moderator', defaults: {format: 'json'}, as: :delete
       end
       resource :channel, defaults: {format: 'json'} do
         post ':channel_id/like' => 'channel#like', defaults: {format: 'json'}, as: :channel_like
