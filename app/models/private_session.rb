@@ -9,4 +9,5 @@ class PrivateSession
   field :title,             type: String
   field :live_at,           type: Time
   field :max_participants,  type: Integer, default: 0
+  field :description,       type: String
 end
