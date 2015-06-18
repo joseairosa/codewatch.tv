@@ -95,6 +95,7 @@
                             %th #
                             %th Title
                             %th Live date
+                            %th Participants
                             %th
                             %th
                         %tbody
@@ -103,6 +104,7 @@
                               %td= i+1
                               %td= private_session.title
                               %td= private_session.live_at
+                              %td= private_session.participants.count
                               %td
                                 = button_to user_dashboard_private_sessions_edit_path(private_session.id), {form_class: 'form-unban-user', class: 'btn btn-warning btn-xs edit-private-session'} do
                                   %i.fa.fa-edit
