@@ -33,7 +33,7 @@
                           %select{:name => "private_session[live_at_day]"}
                             %option{value: '0', selected: true, disabled: true} Day
                             - (1..31).each do |day|
-                              %option{value: day}= day
+                              %option{value: day}= day.to_i.ordinalize
                           %i
                       %section.col.col-3.month
                         %label.select
@@ -54,14 +54,14 @@
                           %select{:name => "private_session[live_at_hour]"}
                             %option{value: '0', selected: true, disabled: true} Hour
                             - (0..23).each do |hour|
-                              %option{value: hour}= hour
+                              %option{value: hour}= sprintf '%02d', hour
                           %i
                       %section.col.col-3.minute
                         %label.select
                           %select{:name => "private_session[live_at_minute]"}
                             %option{value: '0', selected: true, disabled: true} Minute
                             - (0..59).each do |minute|
-                              %option{value: minute}= minute
+                              %option{value: minute}= sprintf '%02d', minute
                           %i
                     %dt Max participants
                     %dd.with-col

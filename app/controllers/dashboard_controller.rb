@@ -99,15 +99,27 @@ class DashboardController < ApplicationController
   end
 
   def create_private_session
-
+    live_at = DateTime.new(
+        params['private_session']['live_at_year'].to_i,
+        params['private_session']['live_at_month'].to_i,
+        params['private_session']['live_at_day'].to_i,
+        params['private_session']['live_at_hour'].to_i,
+        params['private_session']['live_at_minute'].to_i)
+    PrivateSession.create(
+        user: current_user,
+        title: params['private_session']['title'],
+        live_at: live_at,
+        max_participants: params['private_session']['max_participants'],
+        description: params['private_session']['description'])
+    flash[:notice] = 'Private session created successfully'
   end
 
   def edit_private_session
-
+    require 'pry'; binding.pry
   end
 
   def update_private_session
-
+    require 'pry'; binding.pry
   end
 
   def channel
