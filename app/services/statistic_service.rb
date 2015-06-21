@@ -27,12 +27,11 @@ class StatisticService
   def stream_offline(channel)
     Analytics.track(
         user_id: channel.user.id.to_s,
-        event: 'Stream Online',
+        event: 'Stream Offline',
         properties: { title: channel.title })
   end
 
   def watching_stream(channel, quality)
-    StatisticService.instance.new_user(channel.user)
     Analytics.track(
         user_id: channel.user.id.to_s,
         event: 'Started Watching Stream',

@@ -24,10 +24,10 @@ class Api::V1::StreamController < Api::V1::ApiController
           valid = User.valid_stream_key?(params[:name], params[:stream_key])
           if valid
             user = User.where(username: params[:name]).first
+            ChannelService.instance.go_online(user.channel)
             if params[:app] == 'stream' && user.can_record?
               {json: {response: 'ok'}, status: 302, location: "rtmp://127.0.0.1/record/#{params[:name]}?stream_key=#{params[:stream_key]}"}
             else
-              ChannelService.instance.go_online(user.channel)
               {json: {response: 'ok'}, status: 200}
             end
           else
