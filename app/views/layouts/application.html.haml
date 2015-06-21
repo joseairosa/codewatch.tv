@@ -22,6 +22,12 @@
     /[if lt IE 9]
       = stylesheet_link_tag 'sky-forms-ie8'
     = javascript_include_tag 'application'
+    - if current_user
+      :javascript
+        analytics.identify('#{current_user.id.to_s}', {
+          username: '#{current_user.username}',
+          email: '#{current_user.email}'
+        });
 
   %body
     .wrapper
