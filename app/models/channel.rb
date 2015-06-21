@@ -41,16 +41,6 @@ class Channel
     save
   end
 
-  def go_online
-    self.is_online = 1
-    save
-  end
-
-  def go_offline
-    self.is_online = 0
-    save
-  end
-
   def online?
     is_online == 1
   end

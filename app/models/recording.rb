@@ -14,6 +14,8 @@ class Recording
   field :visible,         type: Integer, default: 1
   field :current_viewers, type: Integer, default: 0
 
+  after_create :send_statistics
+
   def new_viewer
     self.views = self.views+1
     save
@@ -30,5 +32,11 @@ class Recording
       self.visible = 1
     end
     save
+  end
+
+  private
+
+  def send_statistics
+    StatisticService.instance.new_recording(self)
   end
 end
