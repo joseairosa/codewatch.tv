@@ -2,6 +2,7 @@ require 'securerandom'
 
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
   include Concerns::Searchable
   include Concerns::AccountLogic
   include Gravtastic
@@ -80,6 +81,7 @@ class User
   after_create :create_channel
   after_create :create_account_type
   after_create :assign_streamer_id
+  after_create :send_statistics
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
@@ -136,5 +138,9 @@ class User
     grouped_by_count = grouped_users.inject({}) {|res, (k, v)| res[k] = v.count; res }
     grouped_by_count.merge!((STREAMERS_LIST - grouped_by_count.keys).inject({}) {|res, v| res[v] = 0; res })
     self.streamer_id = Hash[grouped_by_count.sort_by{ |_,v| v }].keys.first
+  end
+
+  def send_statistics
+    StatisticService.instance.new_user(self)
   end
 end
