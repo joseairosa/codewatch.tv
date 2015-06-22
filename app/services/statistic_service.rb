@@ -31,7 +31,7 @@ class StatisticService
     Analytics.track(
         user_id: recording.user.id.to_s,
         event: 'Recording Viewers p/ Channel',
-        properties: { title: channel.title })
+        properties: { value: value })
   end
 
   def stream_online(channel)
