@@ -7,6 +7,5 @@ every 5.minutes do
 end
 
 # every 1.minute do
-#   rake 'statistics:online_users'
 #   rake 'statistics:online_streams'
 # end

@@ -10,14 +10,13 @@ class Api::V1::StreamController < Api::V1::ApiController
         when 'play'
           user.channel.new_viewer
 
-          # StatisticService.instance.watching_quality(user.channel, quality)
           StatisticService.instance.watching_stream(user.channel, quality)
-          # ChannelService.instance.update_live_viewers(user.channel, user.channel.current_viewers, 1)
+          ChannelService.instance.update_live_viewers(user.channel, user.channel.current_viewers, 1)
 
           {json: {response: 'ok'}, status: 200}
         when 'play_done'
           StatisticService.instance.finished_watching_stream(user.channel)
-          # ChannelService.instance.update_live_viewers(user.channel, user.channel.current_viewers, -1)
+          ChannelService.instance.update_live_viewers(user.channel, user.channel.current_viewers, -1)
 
           {json: {response: 'ok'}, status: 200}
         when 'publish'
