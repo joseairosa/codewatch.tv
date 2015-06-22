@@ -105,14 +105,17 @@ class DashboardController < ApplicationController
           params['private_session']['live_at_month'].to_i,
           params['private_session']['live_at_day'].to_i,
           params['private_session']['live_at_hour'].to_i,
-          params['private_session']['live_at_minute'].to_i)
+          params['private_session']['live_at_minute'].to_i,
+          0,
+          params['private_session']['live_at_tz'])
 
       PrivateSession.create!(
           user: current_user,
           title: params['private_session']['title'],
           live_at: live_at,
           max_participants: params['private_session']['max_participants'],
-          description: params['private_session']['description'])
+          description: params['private_session']['description'],
+          timezone: params['private_session']['live_at_tz'])
 
       flash[:notice] = 'Private session created successfully'
     rescue ArgumentError => e
@@ -129,6 +132,17 @@ class DashboardController < ApplicationController
 
   def update_private_session
     require 'pry'; binding.pry
+  end
+
+  def cancel_private_session
+    private_session = PrivateSession.where(user: current_user, id: params[:id]).first
+    if private_session
+      private_session.update(status: :cancelled)
+      flash[:notice] = 'Cancelled successfully'
+    else
+      flash[:error] = 'Could not find session'
+    end
+    redirect_to user_dashboard_private_sessions_path
   end
 
   def channel

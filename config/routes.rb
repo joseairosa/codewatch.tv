@@ -10,10 +10,13 @@ Codewatch::Application.routes.draw do
 
   get 'dashboard' => 'dashboard#index', as: :user_dashboard
   get 'dashboard/chat_management' => 'dashboard#chat_management', as: :user_dashboard_chat_management
+
   get 'dashboard/private_sessions' => 'dashboard#private_sessions', as: :user_dashboard_private_sessions
   post 'dashboard/private_sessions/create' => 'dashboard#create_private_session', as: :user_dashboard_private_sessions_create
   get 'dashboard/private_sessions/:id/edit' => 'dashboard#edit_private_session', as: :user_dashboard_private_sessions_edit
   post 'dashboard/private_sessions/:id/update' => 'dashboard#update_private_session', as: :user_dashboard_private_sessions_update
+  put 'dashboard/private_sessions/:id/cancel' => 'dashboard#cancel_private_session', as: :user_dashboard_private_sessions_cancel
+
   match 'edit/channel' => 'dashboard#edit_channel', as: :edit_user_channel, via: [ :get, :post, :delete ]
 
   post 'dashboard/update_user' => 'dashboard#update_user', as: :update_user

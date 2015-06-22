@@ -8,8 +8,12 @@ class PrivateSession
 
   field :title,             type: String
   field :live_at,           type: Time
+  field :status,            type: Symbol, default: :upcoming
   field :max_participants,  type: Integer, default: 0
   field :description,       type: String
+  field :timezone,          type: String
+  field :is_online,         type: Integer, default: 0
+  field :stream_key,        type: String, default: SecureRandom.uuid
 
   validate :valid_live_at_date
 

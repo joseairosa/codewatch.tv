@@ -63,6 +63,13 @@
                             - (0..59).each do |minute|
                               %option{value: minute}= sprintf '%02d', minute
                           %i
+                      %section.col.col-6.minute
+                        %label.select
+                          %select{:name => "private_session[live_at_tz]"}
+                            %option{value: '0', selected: true, disabled: true} Timezone
+                            - ActiveSupport::TimeZone.all.each do |tz|
+                              %option{value: tz.formatted_offset}= tz
+                          %i
                     %dt Max participants
                     %dd.with-col
                       %section.col.col-3
@@ -92,8 +99,8 @@
                       %table.table.table-hover
                         %thead
                           %tr
-                            %th #
                             %th Title
+                            %th Status
                             %th Live date
                             %th Participants
                             %th
@@ -101,8 +108,8 @@
                         %tbody
                           - @private_sessions.each_with_index do |private_session, i|
                             %tr
-                              %td= i+1
                               %td= private_session.title
+                              %td= private_session.status.capitalize
                               %td= private_session.live_at
                               %td= private_session.participants.count
                               %td
@@ -110,6 +117,6 @@
                                   %i.fa.fa-edit
                                   Edit
                               %td
-                                = button_to delete_api_v1_private_session_path(private_session.id), {form_class: 'form-unban-user', class: 'btn btn-danger btn-xs delete-private-session', remote: true, method: :delete} do
+                                = button_to user_dashboard_private_sessions_cancel_path(private_session.id), {form_class: 'form-unban-user', class: 'btn btn-danger btn-xs delete-private-session', remote: true, method: :put} do
                                   %i.fa.fa-trash-o
-                                  Delete
+                                  Cancel
