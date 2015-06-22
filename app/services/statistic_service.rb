@@ -3,7 +3,7 @@ class StatisticService
 
   def load_balancer(status, options)
     Analytics.track(
-        anonymous_id: 'codewatch',
+        user_id: 'codewatch',
         event: 'Load Balancer Response',
         properties: {
             status: status,
@@ -15,7 +15,7 @@ class StatisticService
 
   def online_streams(value)
     Analytics.track(
-        anonymous_id: 'codewatch',
+        user_id: 'codewatch',
         event: 'Total Online Streams',
         properties: { value: value })
   end
@@ -73,14 +73,6 @@ class StatisticService
         user_id: recording.user.id.to_s,
         event: 'Finished Watching Recording',
         properties: { recording_id: recording.id })
-  end
-
-  def watching_quality(channel, value)
-    # Statistic.create(name: :watching_quality, value: value, channel: channel)
-    Analytics.track(
-        user_id: channel.user.id.to_s,
-        event: 'Watching Quality',
-        properties: { quality: value })
   end
 
   def new_user(user)
