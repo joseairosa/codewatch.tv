@@ -41,6 +41,7 @@ class User
             }
   field :provider, :type => String
   field :uid, :type => String
+  field :timezone, :type => String
 
   ## Recoverable
   field :reset_password_token, type: String

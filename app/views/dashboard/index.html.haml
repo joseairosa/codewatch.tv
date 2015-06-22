@@ -39,6 +39,15 @@
                           %i.icon-append.fa.fa-envelope
                           %input{:name => "user[email]", :placeholder => "Email address", :type => "text", :value => current_user.email}
                             %b.tooltip.tooltip-bottom-right Needed to verify your account
+                    %dt Timezone
+                    %dd
+                      %section
+                        %label.select
+                          %select{:name => "user[timezone]"}
+                            %option{value: '0', selected: true, disabled: true} Timezone
+                            - ActiveSupport::TimeZone.all.each do |tz|
+                              %option{value: tz, selected: current_user.timezone == tz.to_s}= tz
+                          %i
                   %br
                     %button.btn-u.btn-u-default{:type => "button"} Cancel
                     %button.btn-u{:type => "submit"} Save Changes
