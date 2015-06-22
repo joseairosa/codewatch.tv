@@ -32,22 +32,32 @@
                             %th Live date
                             %th Participants
                             %th
-                            %th
                         %tbody
                           - @private_sessions.each_with_index do |private_session, i|
                             %tr
                               %td= private_session.title
                               %td= private_session.status.capitalize
-                              %td= private_session.live_at
+                              %td
+                                = private_session.live_at.to_formatted_s(:long_ordinal)
+                                %br
+                                = private_session.timezone
                               %td= private_session.participants.count
                               %td
-                                = button_to user_dashboard_private_sessions_edit_path(private_session.id), {form_class: 'form-unban-user', class: 'btn btn-warning btn-xs edit-private-session', method: :get} do
-                                  %i.fa.fa-edit
-                                  Edit
-                              %td
-                                = button_to user_dashboard_private_sessions_cancel_path(private_session.id), {form_class: 'form-unban-user', class: 'btn btn-danger btn-xs delete-private-session', remote: true, method: :put} do
-                                  %i.fa.fa-trash-o
-                                  Cancel
+                                .row
+                                  .col-md-5
+                                    = button_to user_dashboard_private_sessions_edit_path(private_session.token), {form_class: 'form-unban-user', class: 'btn btn-warning btn-xs edit-private-session', method: :get} do
+                                      %i.fa.fa-edit
+                                      Edit
+                                  .col-md-5
+                                    = button_to user_dashboard_private_sessions_cancel_path(private_session.token), {form_class: 'form-unban-user', class: 'btn btn-danger btn-xs delete-private-session', remote: true, method: :put} do
+                                      %i.fa.fa-trash-o
+                                      Cancel
+                                .row.margin-top-15
+                                  .col-md-12
+                                    -#= button_to user_dashboard_private_sessions_cancel_path(private_session.token), {form_class: 'form-unban-user', class: 'btn btn-success btn-xs delete-private-session', remote: true, method: :put} do
+                                    %button{form_class: 'form-unban-user', class: 'btn btn-success btn-xs delete-private-session'}
+                                      %i.fa.fa-key
+                                      Stream Key
 
             #new-private-session-tab.dashboard-edit.tab-pane.fade
               %h2.heading-md Create a new Private Session
@@ -104,7 +114,7 @@
                           %select{:name => "private_session[live_at_tz]"}
                             %option{value: '0', selected: true, disabled: true} Timezone
                             - ActiveSupport::TimeZone.all.each do |tz|
-                              %option{value: tz.formatted_offset}= tz
+                              %option{value: tz}= tz
                           %i
                     %dt Max participants
                     %dd.with-col

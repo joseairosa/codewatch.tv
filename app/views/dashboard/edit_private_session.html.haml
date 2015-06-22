@@ -12,7 +12,7 @@
               %h2.heading-md Edit Private Session
               %p Change the information below to edit your private session.
               %br
-                = form_tag(user_dashboard_private_sessions_update_path, {id: 'sky-form4', class: 'sky-form'}) do
+                = form_tag(user_dashboard_private_sessions_update_path(private_session.token), {id: 'sky-form4', class: 'sky-form'}) do
                   %dl.dl-horizontal
                     %dt Title
                     %dd
@@ -61,9 +61,9 @@
                       %section.col.col-6.minute
                         %label.select
                           %select{:name => "private_session[live_at_tz]"}
-                            %option{value: '0', selected: true, disabled: true} Timezone
+                            %option{value: '0', selected: false, disabled: true} Timezone
                             - ActiveSupport::TimeZone.all.each do |tz|
-                              %option{value: tz.formatted_offset, selected: (tz.formatted_offset == private_session.timezone)}= tz
+                              %option{value: tz, selected: tz.to_s == private_session.timezone}= tz
                           %i
                     %dt Max participants
                     %dd.with-col

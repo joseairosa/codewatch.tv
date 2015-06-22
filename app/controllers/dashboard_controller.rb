@@ -33,7 +33,7 @@ class DashboardController < ApplicationController
     @user = User.find(current_user.id)
 
     if @user.update(user_params)
-      flash[:notice] = "User updated."
+      flash[:notice] = 'User updated'
     else
       user_input_error
     end
@@ -47,7 +47,7 @@ class DashboardController < ApplicationController
     can_record = params[:user] && params[:user][:can_record] ? 1 : 0
 
     if @user.update(can_record: can_record)
-      flash[:notice] = "Settings updated."
+      flash[:notice] = 'Settings updated'
     else
       user_input_error
     end
@@ -129,11 +129,11 @@ class DashboardController < ApplicationController
   end
 
   def edit_private_session
-    @private_session = PrivateSession.where(user: current_user, id: params[:id]).first
+    @private_session = PrivateSession.where(user: current_user, token: params[:id]).first
   end
 
   def update_private_session
-    private_session = PrivateSession.where(user: current_user, id: params[:id]).first
+    private_session = PrivateSession.where(user: current_user, token: params[:id]).first
     if private_session
       begin
         live_at = DateTime.new(
@@ -168,7 +168,7 @@ class DashboardController < ApplicationController
   end
 
   def cancel_private_session
-    private_session = PrivateSession.where(user: current_user, id: params[:id]).first
+    private_session = PrivateSession.where(user: current_user, token: params[:id]).first
     if private_session
       private_session.update(status: :cancelled)
       flash[:notice] = 'Cancelled successfully'
@@ -184,12 +184,17 @@ class DashboardController < ApplicationController
 
   helper_method :channel
   helper_method :private_session
+  helper_method :timezone_to_offset
 
   private
 
+  def timezone_to_offset(string)
+    ActiveSupport::TimeZone.all.find { |tz| tz.to_s == string }.formatted_offset
+  end
+
   def user_params
     # NOTE: Using `strong_parameters` gem
-    params.required(:user).permit(:email, :username, :current_password, :password, :password_confirmation)
+    params.required(:user).permit(:email, :username, :current_password, :password, :password_confirmation, :timezone)
   end
 
   def user_input_error

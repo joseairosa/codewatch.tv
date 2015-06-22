@@ -1,6 +1,7 @@
 class PrivateSession
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Token
 
   belongs_to :user, class_name: 'User', inverse_of: :private_sessions
 
@@ -16,6 +17,8 @@ class PrivateSession
   field :stream_key,        type: String, default: SecureRandom.uuid
 
   validate :valid_live_at_date
+
+  token pattern: "PS-%s%s%s%s%s%s"
 
   private
 

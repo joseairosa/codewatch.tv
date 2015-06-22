@@ -4,10 +4,10 @@
       %i.fa.fa-user
       Profile
   %li.list-group-item{class: params[:action] == 'statistics' ? 'active' : ''}
-    = link_to user_dashboard_path do
+    = link_to user_dashboard_statistics_path do
       %i.fa.fa-bar-chart-o
       Statistics
-  %li.list-group-item{class: params[:action] == 'statistics' ? 'active' : ''}
+  %li.list-group-item{class: params[:action] == 'private_sessions' ? 'active' : ''}
     = link_to user_dashboard_private_sessions_path do
       %i.fa.fa-users
       Private Sessions
