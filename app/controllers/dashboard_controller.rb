@@ -1,6 +1,8 @@
 class DashboardController < ApplicationController
   before_action :authenticate_user!
 
+  attr_reader :private_session
+
   add_breadcrumb 'Dashboard', :user_dashboard_path
 
   def index
@@ -127,11 +129,42 @@ class DashboardController < ApplicationController
   end
 
   def edit_private_session
-    require 'pry'; binding.pry
+    @private_session = PrivateSession.where(user: current_user, id: params[:id]).first
   end
 
   def update_private_session
-    require 'pry'; binding.pry
+    private_session = PrivateSession.where(user: current_user, id: params[:id]).first
+    if private_session
+      begin
+        live_at = DateTime.new(
+            params['private_session']['live_at_year'].to_i,
+            params['private_session']['live_at_month'].to_i,
+            params['private_session']['live_at_day'].to_i,
+            params['private_session']['live_at_hour'].to_i,
+            params['private_session']['live_at_minute'].to_i,
+            0,
+            params['private_session']['live_at_tz'])
+
+        private_session.update!(
+            title: params['private_session']['title'],
+            live_at: live_at,
+            max_participants: params['private_session']['max_participants'],
+            description: params['private_session']['description'],
+            timezone: params['private_session']['live_at_tz'])
+
+        flash[:notice] = 'Private session changed successfully'
+        redirect_to user_dashboard_private_sessions_path
+      rescue ArgumentError => e
+        flash[:alert] = 'Go live date is Invalid'
+        redirect_to user_dashboard_private_sessions_edit_path(private_session.id)
+      rescue Mongoid::Errors::Validations => e
+        flash[:alert] = 'Go live date is cannot be in the past'
+        redirect_to user_dashboard_private_sessions_edit_path(private_session.id)
+      end
+    else
+      flash[:error] = 'Could not find session'
+      redirect_to user_dashboard_private_sessions_path
+    end
   end
 
   def cancel_private_session
@@ -150,6 +183,7 @@ class DashboardController < ApplicationController
   end
 
   helper_method :channel
+  helper_method :private_session
 
   private
 

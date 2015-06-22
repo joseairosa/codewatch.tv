@@ -9,11 +9,47 @@
         .tab-v1
           %ul.nav.nav-justified.nav-tabs
             %li.active
-              %a{'data-toggle' => 'tab', :href => '#new-private-session-tab'} Create Private Session
-            %li
               %a{'data-toggle' => 'tab', :href => '#private-sessions-tab'} Your Private Sessions
+            %li
+              %a{'data-toggle' => 'tab', :href => '#new-private-session-tab'} Create Private Session
           .tab-content
-            #new-private-session-tab.dashboard-edit.tab-pane.fade.in.active
+            #private-sessions-tab.dashboard-edit.tab-pane.fade.in.active
+              %h2.heading-md Manage your private sessions
+              %p Below you can change and delete your private sessions
+              .row
+                .col-md-12
+                  .panel.margin-bottom-40
+                    .panel-heading
+                      %h3.panel-title
+                        %i.fa.fa-user
+                        Private sessions (#{@private_sessions.count})
+                    .panel-body
+                      %table.table.table-hover
+                        %thead
+                          %tr
+                            %th Title
+                            %th Status
+                            %th Live date
+                            %th Participants
+                            %th
+                            %th
+                        %tbody
+                          - @private_sessions.each_with_index do |private_session, i|
+                            %tr
+                              %td= private_session.title
+                              %td= private_session.status.capitalize
+                              %td= private_session.live_at
+                              %td= private_session.participants.count
+                              %td
+                                = button_to user_dashboard_private_sessions_edit_path(private_session.id), {form_class: 'form-unban-user', class: 'btn btn-warning btn-xs edit-private-session', method: :get} do
+                                  %i.fa.fa-edit
+                                  Edit
+                              %td
+                                = button_to user_dashboard_private_sessions_cancel_path(private_session.id), {form_class: 'form-unban-user', class: 'btn btn-danger btn-xs delete-private-session', remote: true, method: :put} do
+                                  %i.fa.fa-trash-o
+                                  Cancel
+
+            #new-private-session-tab.dashboard-edit.tab-pane.fade
               %h2.heading-md Create a new Private Session
               %p Fill the information below to create a new private session.
               %br
@@ -85,38 +121,3 @@
                         = tinymce
                   %br
                     %button.btn-u{:type => "submit"} Create
-            #private-sessions-tab.dashboard-edit.tab-pane.fade
-              %h2.heading-md Manage your private sessions
-              %p Below you can change and delete your private sessions
-              .row
-                .col-md-12
-                  .panel.margin-bottom-40
-                    .panel-heading
-                      %h3.panel-title
-                        %i.fa.fa-user
-                        Private sessions (#{@private_sessions.count})
-                    .panel-body
-                      %table.table.table-hover
-                        %thead
-                          %tr
-                            %th Title
-                            %th Status
-                            %th Live date
-                            %th Participants
-                            %th
-                            %th
-                        %tbody
-                          - @private_sessions.each_with_index do |private_session, i|
-                            %tr
-                              %td= private_session.title
-                              %td= private_session.status.capitalize
-                              %td= private_session.live_at
-                              %td= private_session.participants.count
-                              %td
-                                = button_to user_dashboard_private_sessions_edit_path(private_session.id), {form_class: 'form-unban-user', class: 'btn btn-warning btn-xs edit-private-session'} do
-                                  %i.fa.fa-edit
-                                  Edit
-                              %td
-                                = button_to user_dashboard_private_sessions_cancel_path(private_session.id), {form_class: 'form-unban-user', class: 'btn btn-danger btn-xs delete-private-session', remote: true, method: :put} do
-                                  %i.fa.fa-trash-o
-                                  Cancel
