@@ -1,0 +1,14 @@
+= render partial: 'shared/breadcrumbs', locals: {page_name: 'Profile'}
+.container.content.dashboard
+  .row
+    .col-md-3.md-margin-bottom-40
+      = render partial: 'dashboard/portrait'
+      = render partial: 'dashboard/navigation'
+    .col-md-9
+      .dashboard-body.margin-bottom-20
+        .tab-v1
+          .tab-content
+            #statistics-tab.dashboard-edit.tab-pane.fade.in.active
+              %h2.heading-md Coming soon
+              %p We're working hard on implementing this functionality
+              %br
