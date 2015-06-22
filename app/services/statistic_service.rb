@@ -1,21 +1,31 @@
 class StatisticService
   include Singleton
 
+  def load_balancer(status, options)
+    Analytics.track(
+        anonymous_id: 'codewatch',
+        event: 'Load Balancer Response',
+        properties: {
+            status: status,
+            ip: options[:ip] || 'null',
+            app: options[:app],
+            name: options[:name]
+        })
+  end
+
   def live_online_users(channel, value)
-    Statistic.create(name: :live_online_users, value: value, channel: channel)
+    Analytics.track(
+        user_id: channel.user.id.to_s,
+        event: 'Online Viewers p/ Channel',
+        properties: { value: value })
   end
 
   def recording_online_users(recording, value)
-    Statistic.create(name: :recording_online_users, value: value, recording: recording)
+    Analytics.track(
+        user_id: recording.user.id.to_s,
+        event: 'Recording Viewers p/ Channel',
+        properties: { title: channel.title })
   end
-
-  # def online_streams(value)
-  #   Statistic.create(name: :online_streams, value: value)
-  #   Analytics.track(
-  #       user_id: channel.user.id,
-  #       event: 'Watching Quality',
-  #       properties: { quality: value })
-  # end
 
   def stream_online(channel)
     Analytics.track(
@@ -75,6 +85,10 @@ class StatisticService
             email: user.email,
             created_at: user.created_at
         })
+    Analytics.track(
+        user_id: user.id.to_s,
+        event: 'New User',
+        properties: { username: user.username })
   end
 
   def new_recording(recording)
