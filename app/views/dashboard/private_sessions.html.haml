@@ -54,8 +54,7 @@
                                       Cancel
                                 .row.margin-top-15
                                   .col-md-12
-                                    -#= button_to user_dashboard_private_sessions_cancel_path(private_session.token), {form_class: 'form-unban-user', class: 'btn btn-success btn-xs delete-private-session', remote: true, method: :put} do
-                                    %button{form_class: 'form-unban-user', class: 'btn btn-success btn-xs delete-private-session'}
+                                    = button_to user_dashboard_stream_keys_path, {form_class: 'form-unban-user', class: 'btn btn-success btn-xs delete-private-session', remote: true, method: :get} do
                                       %i.fa.fa-key
                                       Stream Key
 
