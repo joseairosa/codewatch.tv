@@ -16,8 +16,6 @@
               %a{"data-toggle" => "tab", :href => "#security-tab"} Security
             %li
               %a{"data-toggle" => "tab", :href => "#vod-tab"} VoD
-            %li
-              %a{"data-toggle" => "tab", :href => "#stream-key-tab"} Stream Key
           .tab-content
             #profile-tab.dashboard-edit.tab-pane.fade.in.active
               %h2.heading-md Manage your Name, ID and Email Addresses.
@@ -115,17 +113,3 @@
                           %i.fa.fa-eye &nbsp;Show
                       = link_to delete_vod_path(recording.id) do
                         %i.fa.fa-trash &nbsp;Delete
-            #stream-key-tab.dashboard-edit.tab-pane.fade
-              %h2.heading-md Your Stream Key
-              %p Bellow you can manage your stream key.
-              %br
-                %dl.dl-horizontal
-                  %dt
-                    %strong Current Stream Key
-                  %dd
-                    %span#stream-key.label.label-u= "#{current_user.username}?stream_key=#{current_user.stream_key}"
-                    %span
-                      %a.margin-left-10.pull-right{:href => "#"}
-                        %i.fa.fa-recycle
-                      %a.pull-right{:href => "#"}
-                        %i.fa.fa-copy

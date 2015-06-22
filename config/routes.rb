@@ -11,6 +11,7 @@ Codewatch::Application.routes.draw do
   get 'dashboard' => 'dashboard#index', as: :user_dashboard
   get 'dashboard/chat_management' => 'dashboard#chat_management', as: :user_dashboard_chat_management
   get 'dashboard/statistics' => 'dashboard#statistics', as: :user_dashboard_statistics
+  get 'dashboard/stream_keys' => 'dashboard#stream_keys', as: :user_dashboard_stream_keys
 
   get 'dashboard/private_sessions' => 'dashboard#private_sessions', as: :user_dashboard_private_sessions
   post 'dashboard/private_sessions/create' => 'dashboard#create_private_session', as: :user_dashboard_private_sessions_create

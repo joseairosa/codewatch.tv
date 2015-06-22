@@ -1,0 +1,25 @@
+= render partial: 'shared/breadcrumbs', locals: {page_name: 'Profile'}
+.container.content.dashboard
+  .row
+    .col-md-3.md-margin-bottom-40
+      = render partial: 'dashboard/portrait'
+      = render partial: 'dashboard/navigation'
+    .col-md-9
+      .dashboard-body.margin-bottom-20
+        .tab-v1
+          .tab-content
+            #stream-key-tab.dashboard-edit.tab-pane.fade.in.active
+              %h2.heading-md Your Stream Keys
+              %p Bellow you can manage your stream key.
+              %br
+                - stream_keys.each do |description, private_key|
+                  %dl.dl-horizontal
+                    %dt
+                      %strong= description
+                    %dd
+                      %span#stream-key.label.label-u= "#{current_user.username}?stream_key=#{private_key}"
+                      %span
+                        %a.margin-left-10.pull-right{:href => "#"}
+                          %i.fa.fa-recycle
+                        %a.pull-right{:href => "#"}
+                          %i.fa.fa-copy

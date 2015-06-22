@@ -2,8 +2,14 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   attr_reader :private_session
+  attr_reader :stream_keys
 
   add_breadcrumb 'Dashboard', :user_dashboard_path
+
+  helper_method :channel
+  helper_method :private_session
+  helper_method :timezone_to_offset
+  helper_method :stream_keys
 
   def index
     add_breadcrumb 'Profile', :user_dashboard_path
@@ -27,6 +33,16 @@ class DashboardController < ApplicationController
     add_breadcrumb 'Chat Management', :user_dashboard_chat_management_path
     @banned_users = current_user.channel.chat.users_banned
     @moderator_users = current_user.channel.chat.users_moderator
+  end
+
+  def stream_keys
+    private_session_stream_keys = current_user.private_sessions.inject({}) do |res, ps|
+      res[ps.title] = ps.stream_key
+      res
+    end
+    @stream_keys = {
+        'Current Stream Key' => current_user.stream_key
+    }.merge(private_session_stream_keys)
   end
 
   def update_user
@@ -181,10 +197,6 @@ class DashboardController < ApplicationController
   def channel
     current_user.channel
   end
-
-  helper_method :channel
-  helper_method :private_session
-  helper_method :timezone_to_offset
 
   private
 
