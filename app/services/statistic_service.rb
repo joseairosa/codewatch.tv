@@ -13,6 +13,13 @@ class StatisticService
         })
   end
 
+  def online_streams(value)
+    Analytics.track(
+        anonymous_id: 'codewatch',
+        event: 'Total Online Streams',
+        properties: { value: value })
+  end
+
   def live_online_users(channel, value)
     Analytics.track(
         user_id: channel.user.id.to_s,
