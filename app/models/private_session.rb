@@ -15,10 +15,15 @@ class PrivateSession
   field :timezone,          type: String
   field :is_online,         type: Integer, default: 0
   field :stream_key,        type: String, default: SecureRandom.uuid
+  field :price,             type: Numeric, default: 0.0
 
   validate :valid_live_at_date
 
   token pattern: "PS-%s%s%s%s%s%s"
+
+  def online?
+    is_online == 1
+  end
 
   private
 

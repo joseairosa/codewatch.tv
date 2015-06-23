@@ -33,6 +33,22 @@
     }
   }
 
+  #sign-up {
+    &:hover {
+      .service-block-u {
+        background-color: #f7f7f7;
+      }
+      span {
+        color: #72c02c;
+      }
+      .fa-ticket {
+        color: #72c02c;
+      }
+    }
+    a:hover {
+      text-decoration: none;
+    }
+  }
 
   #likes-channel, #does-not-likes-channel {
     cursor: pointer;

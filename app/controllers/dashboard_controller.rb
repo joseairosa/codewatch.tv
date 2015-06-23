@@ -133,7 +133,8 @@ class DashboardController < ApplicationController
           live_at: live_at,
           max_participants: params['private_session']['max_participants'],
           description: params['private_session']['description'],
-          timezone: params['private_session']['live_at_tz'])
+          timezone: params['private_session']['live_at_tz'],
+          price: params['private_session']['price'].to_f)
 
       flash[:notice] = 'Private session created successfully'
     rescue ArgumentError => e
@@ -166,7 +167,8 @@ class DashboardController < ApplicationController
             live_at: live_at,
             max_participants: params['private_session']['max_participants'],
             description: params['private_session']['description'],
-            timezone: params['private_session']['live_at_tz'])
+            timezone: params['private_session']['live_at_tz'],
+            price: params['private_session']['price'].to_f)
 
         flash[:notice] = 'Private session changed successfully'
         redirect_to user_dashboard_private_sessions_path

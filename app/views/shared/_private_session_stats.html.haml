@@ -1,0 +1,16 @@
+#channel-stats
+  .row
+    #sign-up.col-sm-6.sm-margin-bottom-20
+      = link_to '', id: 'ajax-unlike-channel' do
+        .service-block-v3.service-block-u
+          %i.fa.fa-ticket
+          %span.service-heading Sign Up
+          %span.counter= private_session.price.to_i == 0 ? 'Free' : number_to_currency(private_session.price.to_f)
+    #sign-ups.col-sm-6.sm-margin-bottom-20
+      .service-block-v3.service-block-yellow
+        %i.fa.fa-users
+        %span.service-heading Sign Ups
+        - if private_session.max_participants.to_i > 0
+          %span.counter= "#{private_session.participants.count}/#{private_session.max_participants}"
+        - else
+          %span.counter= private_session.participants.count

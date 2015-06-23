@@ -1,0 +1,26 @@
+.channel
+  .row
+    .col-md-8
+      - if private_session.online?
+        #channel-online
+          %h1.title= private_session.title
+          #stream-online
+            = render partial: 'shared/stream', locals: {file: "/api/v1/smil/#{params[:username]}", type: 'rtmp'}
+          .description.margin-top-20= raw private_session.description
+      - else
+        #channel-offline
+          %h1.title= private_session.title
+          #stream-offline
+            #stream-offline-content
+          .description.margin-top-20= raw private_session.description
+    .col-md-4
+      %span.label.label-u.category-name= "Going live on #{private_session.live_at.localtime(current_user.timezone_offset).to_formatted_s(:long_ordinal)} #{current_user.timezone}"
+      .channel-body
+        = render partial: 'shared/private_session_stats', locals: {}
+        - if private_session.online?
+          %hr
+            .row
+              .col-sm-12
+                #chat-online
+                  #chat-alerts
+                  = render 'shared/chat'

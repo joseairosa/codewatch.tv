@@ -46,6 +46,8 @@ Codewatch::Application.routes.draw do
   get 'channels/external' => 'external_streams#index', as: :external_channels
   get 'channel/external/:username' => 'external_streams#show', as: :user_external_channel
 
+  get 'private_session/:id' => 'private_sessions#show', as: :private_session
+
   # Errors
   match '404' => 'errors#error404', via: [ :get, :post, :patch, :delete ]
 

@@ -72,6 +72,13 @@
                           %i.icon-append.fa.fa-users
                           %input{:name => "private_session[max_participants]", :placeholder => "Unlimited: 0", :type => "text", value: private_session.max_participants}
                             %b.tooltip.tooltip-bottom-right Unlimited: 0
+                    %dt Price
+                    %dd.with-col
+                      %section.col.col-3
+                        %label.input
+                          %i.icon-append.fa.fa-dollar
+                          %input{:name => "private_session[price]", :placeholder => "Free: 0", :type => "text", value: private_session.price}
+                            %b.tooltip.tooltip-bottom-right Leave at 0 for Free
                     %dt.margin-bottom-20 Description
                     %dd &nbsp;
                     %dd{style: 'margin-left: 0;'}

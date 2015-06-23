@@ -126,6 +126,10 @@ class User
     !can_record.zero?
   end
 
+  def timezone_offset
+    ActiveSupport::TimeZone.all.find { |tz| tz.to_s == timezone }.formatted_offset
+  end
+
   private
 
   def create_channel

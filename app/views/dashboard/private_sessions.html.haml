@@ -30,7 +30,7 @@
                             %th Title
                             %th Status
                             %th Live date
-                            %th Participants
+                            %th Signups
                             %th
                         %tbody
                           - @private_sessions.each_with_index do |private_session, i|
@@ -53,10 +53,14 @@
                                       %i.fa.fa-trash-o
                                       Cancel
                                 .row.margin-top-15
-                                  .col-md-12
-                                    = button_to user_dashboard_stream_keys_path, {form_class: 'form-unban-user', class: 'btn btn-success btn-xs delete-private-session', remote: true, method: :get} do
+                                  .col-md-8
+                                    = button_to user_dashboard_stream_keys_path, {form_class: 'form-unban-user', class: 'btn btn-success btn-xs private-session-stream-key', method: :get} do
                                       %i.fa.fa-key
                                       Stream Key
+                                  .col-md-4
+                                    = button_to private_session_path(private_session.token), {form_class: 'form-unban-user', class: 'btn btn-info btn-xs private-session-link', method: :get} do
+                                      %i.fa.fa-link
+                                      Link
 
             #new-private-session-tab.dashboard-edit.tab-pane.fade
               %h2.heading-md Create a new Private Session
@@ -122,6 +126,13 @@
                           %i.icon-append.fa.fa-users
                           %input{:name => "private_session[max_participants]", :placeholder => "Unlimited: 0", :type => "text", :value => '0'}
                             %b.tooltip.tooltip-bottom-right Unlimited: 0
+                    %dt Price
+                    %dd.with-col
+                      %section.col.col-3
+                        %label.input
+                          %i.icon-append.fa.fa-dollar
+                          %input{:name => "private_session[price]", :placeholder => "Free: 0", :type => "text"}
+                            %b.tooltip.tooltip-bottom-right Leave at 0 for Free
                     %dt.margin-bottom-20 Description
                     %dd &nbsp;
                     %dd{style: 'margin-left: 0;'}
