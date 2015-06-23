@@ -14,7 +14,10 @@
             #stream-offline-content
           .description= raw channel.description
     .col-md-4
-      %span.label.label-u.category-name= "Coding #{channel.category.name}"
+      - if channel.category
+        %span.label.label-u.category-name= "Coding #{channel.category.name}"
+      - else
+        %span.label.label-u.category-name= "No Category"
       .channel-body
         = render partial: 'shared/channel_stats', locals: {total_viewers: channel.total_viewers, current_viewers: (channel.online? ? channel.current_viewers : '0'), likes: channel.total_likes, vod_count: channel.user.recordings.where(visible: 1).count}
         - if channel.online?

@@ -1,11 +1,55 @@
 #channel-stats
   .row
-    #sign-up.col-sm-6.sm-margin-bottom-20
-      = link_to '', id: 'ajax-unlike-channel' do
+    - if PrivateSessionService.instance.is_not_participant?(private_session, current_user)
+      #sign-up.col-sm-6.sm-margin-bottom-20
+        = link_to '', id: 'payment-button' do
+          .service-block-v3.service-block-u
+            %i.fa.fa-ticket
+            %span.service-heading Sign Up
+            %span.counter= private_session.price.to_i == 0 ? 'Free' : number_to_currency(private_session.price.to_f)
+        = form_tag payments_path, id: 'payment-form' do
+          %input{type: 'hidden', id: 'payment-object', name: 'payment[object]', value: ''}
+          %input{type: 'hidden', id: 'payment-id', name: 'payment[id]', value: ''}
+          %input{type: 'hidden', id: 'payment-email', name: 'payment[email]', value: ''}
+        :javascript
+          var handler = StripeCheckout.configure({
+            key: '#{ENV['STRIPE_PUBLISHABLE_KEY']}',
+            image: '#{image_path('logo.png')}',
+            token: function(token) {
+              $('#payment-id').val(token.id);
+              $('#payment-object').val('#{private_session.token}');
+              $('#payment-email').val(token.email);
+              $('#payment-form').submit();
+            }
+          });
+
+          $('#payment-button').on('click', function(e) {
+            // Open Checkout with further options
+            handler.open({
+              name: 'codewatch.tv',
+              description: 'Signup to #{private_session.title}',
+              currency: "usd",
+              amount: #{(private_session.price*100).to_i}
+            });
+            e.preventDefault();
+          });
+
+          // Close Checkout on page navigation
+          $(window).on('popstate', function() {
+            handler.close();
+          });
+    - elsif private_session.max_participants.to_i > 0 && private_session.participants.count == private_session.max_participants.to_i
+      #sign-up-sold-out.col-sm-6.sm-margin-bottom-20
         .service-block-v3.service-block-u
           %i.fa.fa-ticket
           %span.service-heading Sign Up
-          %span.counter= private_session.price.to_i == 0 ? 'Free' : number_to_currency(private_session.price.to_f)
+          %span.counter Sold Out :(
+    - else
+      #signed-up.col-sm-6.sm-margin-bottom-20
+        .service-block-v3.service-block-u
+          %i.fa.fa-ticket
+          %span.service-heading Sign Up
+          %span.counter Thank you!
     #sign-ups.col-sm-6.sm-margin-bottom-20
       .service-block-v3.service-block-yellow
         %i.fa.fa-users

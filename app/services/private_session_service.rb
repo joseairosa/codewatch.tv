@@ -10,6 +10,14 @@ class PrivateSessionService
     private_session.participants << user unless participant_is_allowed?(private_session, user)
   end
 
+  def is_participant?(private_session, user)
+    participant_is_allowed?(private_session, user)
+  end
+
+  def is_not_participant?(private_session, user)
+    !participant_is_allowed?(private_session, user)
+  end
+
   def participant_is_allowed?(private_session, user)
     private_session.participants.include?(user)
   end

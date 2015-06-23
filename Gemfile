@@ -78,6 +78,8 @@ gem 'redditkit', '~> 1.0.2'
 
 gem 'analytics-ruby', '~> 2.0.0', :require => 'segment/analytics'
 
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

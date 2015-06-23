@@ -41,7 +41,7 @@ class User
             }
   field :provider, :type => String
   field :uid, :type => String
-  field :timezone, :type => String
+  field :timezone, :type => String, default: '(GMT+00:00) UTC'
 
   ## Recoverable
   field :reset_password_token, type: String
@@ -75,6 +75,10 @@ class User
 
   field :can_record, type: Integer, default: 0
   validates :can_record, format: {with: /[0-1]/}
+
+  # Stripe
+  field :stripe_customer_id, type: String
+
 
   index stream_key: 1
   index username: 1

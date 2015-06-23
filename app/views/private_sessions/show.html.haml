@@ -1,4 +1,8 @@
 .channel
+  - if PrivateSessionService.instance.is_participant?(private_session, current_user)
+    .alert.alert-success.fade.in
+      %h4 Good job, you're in!
+      Nothing else to do now, you're signed in for this private session. Come back on #{private_session.live_at.localtime(current_user.timezone_offset).to_formatted_s(:long_ordinal)} #{current_user.timezone}.
   .row
     .col-md-8
       - if private_session.online?

@@ -53,7 +53,7 @@ function add_alert(type, message) {
 
 jQuery(document).ready(function() {
   App.init();
-  App.initCounter();
+  //App.initCounter();
   App.initParallaxBg();
   OwlCarousel.initOwlCarousel();
   Datepicker.initDatepicker();
