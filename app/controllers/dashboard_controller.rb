@@ -125,7 +125,7 @@ class DashboardController < ApplicationController
           params['private_session']['live_at_hour'].to_i,
           params['private_session']['live_at_minute'].to_i,
           0,
-          params['private_session']['live_at_tz'])
+          timezone_to_offset(params['private_session']['live_at_tz']))
 
       PrivateSession.create!(
           user: current_user,
@@ -160,7 +160,7 @@ class DashboardController < ApplicationController
             params['private_session']['live_at_hour'].to_i,
             params['private_session']['live_at_minute'].to_i,
             0,
-            params['private_session']['live_at_tz'])
+            timezone_to_offset(params['private_session']['live_at_tz']))
 
         private_session.update!(
             title: params['private_session']['title'],
