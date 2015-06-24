@@ -12,12 +12,12 @@
               %h2.heading-md Your Stream Keys
               %p Bellow you can manage your stream key.
               %br
-                - stream_keys.each do |description, private_key|
+                - stream_keys.each do |description, hash|
                   %dl.dl-horizontal
                     %dt
                       %strong= description
                     %dd
-                      %span#stream-key.label.label-u= "#{current_user.username}?stream_key=#{private_key}"
+                      %span#stream-key.label.label-u= "#{hash[:key]}?stream_key=#{hash[:private_key]}"
                       %span
                         %a.margin-left-10.pull-right{:href => "#"}
                           %i.fa.fa-recycle

@@ -7,6 +7,10 @@ class PrivateSession
 
   has_many :participants, class_name: 'User', inverse_of: :private_session_participant
 
+  index title: 1
+  index is_online: 1
+  index status: 1
+
   field :title,             type: String
   field :live_at,           type: Time
   field :status,            type: Symbol, default: :upcoming
@@ -16,6 +20,7 @@ class PrivateSession
   field :is_online,         type: Integer, default: 0
   field :stream_key,        type: String, default: SecureRandom.uuid
   field :price,             type: Numeric, default: 0.0
+  field :current_viewers,   type: Integer,  default: 0
 
   validate :valid_live_at_date
 

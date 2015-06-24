@@ -5,7 +5,7 @@
         {{username}}
       %p.chat-message {{message}}
       .chat-moderation
-        - if current_user && (is_channel_owner? || is_channel_moderator?)
+        - if current_user && try(:channel) && (is_channel_owner? || is_channel_moderator?)
           = link_to chat_ban_api_v1_chat_path(channel.id,'{{username}}'), id: '{{banElementId}}', class: 'ban-user', remote: true, method: :put  do
             %span.fa.fa-ban
           = link_to chat_toggle_moderator_api_v1_chat_path(channel.id, '{{username}}'), id: '{{moderatorElementId}}', class: 'toggle-moderate-user', remote: true, method: :put  do

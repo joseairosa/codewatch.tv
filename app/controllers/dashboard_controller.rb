@@ -37,11 +37,11 @@ class DashboardController < ApplicationController
 
   def stream_keys
     private_session_stream_keys = current_user.private_sessions.inject({}) do |res, ps|
-      res[ps.title] = ps.stream_key
+      res[ps.title] = {key: ps.token, private_key: ps.stream_key}
       res
     end
     @stream_keys = {
-        'Current Stream Key' => current_user.stream_key
+        'Current Stream Key' => {key: current_user.username, private_key: current_user.stream_key}
     }.merge(private_session_stream_keys)
   end
 

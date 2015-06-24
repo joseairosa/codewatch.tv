@@ -26,4 +26,4 @@
               .col-sm-12
                 #chat-online
                   #chat-alerts
-                  = render 'shared/chat'
+                  = render partial: 'shared/chat', locals: {chat_id: channel.user.chat_id}
