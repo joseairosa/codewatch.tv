@@ -7,9 +7,9 @@ class Api::V1::LoadBalancerController < Api::V1::ApiController
 
     user = if @stream_name.start_with?('PS-')
              if params[:app] == 'stream'
-               PrivateSession.where(token: @stream_name, stream_key: params[:stream_key]).try(:user)
+               PrivateSession.where(token: @stream_name, stream_key: params[:stream_key]).first.try(:user)
              else
-               PrivateSession.where(token: @stream_name).try(:user)
+               PrivateSession.where(token: @stream_name).first.try(:user)
              end
            else
              if params[:app] == 'stream'
