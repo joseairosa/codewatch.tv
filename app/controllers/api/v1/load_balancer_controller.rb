@@ -20,14 +20,14 @@ class Api::V1::LoadBalancerController < Api::V1::ApiController
            end
 
     response = if user
-                 redirection = "rtmp://#{STREAMERS_CONFIG[user.streamer_id]['private-ip']}/#{params[:app]}/#{@stream_name}"
+                 redirection = "rtmp://#{STREAMERS_CONFIG[user.streamer_id]['private-ip']}/#{params[:app]}/#{params[:name]}"
                  # redirection += "?#{params.to_query}"
                  redirection += "?stream_key=#{params[:stream_key]}" if params[:stream_key]
-                 Rails.logger.info "Redirecting stream #{@stream_name}/#{params[:app]} to #{redirection}"
-                 StatisticService.instance.load_balancer(302, ip: STREAMERS_CONFIG[user.streamer_id]['private-ip'], app: params[:app], name: @stream_name)
+                 Rails.logger.info "Redirecting stream #{params[:name]}/#{params[:app]} to #{redirection}"
+                 StatisticService.instance.load_balancer(302, ip: STREAMERS_CONFIG[user.streamer_id]['private-ip'], app: params[:app], name: params[:name])
                  {json: {response: 'ok'}, status: 302, location: redirection}
                else
-                 StatisticService.instance.load_balancer(404, app: params[:app], name: @stream_name)
+                 StatisticService.instance.load_balancer(404, app: params[:app], name: params[:name])
                  {json: {response:'user_streamer_id_not_found'}, status: 404}
                end
 
