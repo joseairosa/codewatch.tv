@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery-ui.min
+//= require jquery_ujs
 //= require jquery-migrate.min
 //= require jquery.autocomplete.min
 //= require bootstrap.min
