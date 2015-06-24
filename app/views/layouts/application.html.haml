@@ -22,6 +22,7 @@
     /[if lt IE 9]
       = stylesheet_link_tag 'sky-forms-ie8'
     = javascript_include_tag 'application'
+    = javascript_include_tag 'https://checkout.stripe.com/checkout.js'
     - if current_user
       :javascript
         analytics.identify('#{current_user.id.to_s}', {

@@ -20,6 +20,8 @@ class User
   has_many    :chats_banned,    class_name: 'ChatUserBanned'
   has_many    :chats_moderator, class_name: 'ChatUserModerator'
   has_many    :channel_likes,   class_name: 'ChannelLike'
+  has_many    :private_sessions, class_name: 'PrivateSession', inverse_of: :user
+  belongs_to  :private_session_participant, class_name: 'PrivateSession', inverse_of: :participants
   embeds_one  :account_type
 
   index 'account_type.name' => 1
@@ -39,6 +41,7 @@ class User
             }
   field :provider, :type => String
   field :uid, :type => String
+  field :timezone, :type => String, default: '(GMT+00:00) UTC'
 
   ## Recoverable
   field :reset_password_token, type: String
@@ -72,6 +75,10 @@ class User
 
   field :can_record, type: Integer, default: 0
   validates :can_record, format: {with: /[0-1]/}
+
+  # Stripe
+  field :stripe_customer_id, type: String
+
 
   index stream_key: 1
   index username: 1
@@ -121,6 +128,10 @@ class User
 
   def can_record?
     !can_record.zero?
+  end
+
+  def timezone_offset
+    ActiveSupport::TimeZone.all.find { |tz| tz.to_s == timezone }.formatted_offset
   end
 
   private

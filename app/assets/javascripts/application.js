@@ -11,7 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs
+//= require jquery-ui.min
 //= require jquery-migrate.min
 //= require jquery.autocomplete.min
 //= require bootstrap.min
@@ -28,6 +28,7 @@
 //= require jwplayer/jwplayer
 //= require typeahead.bundle.min
 //= require tinymce-jquery
+//= require datepicker
 //= require main
 //= require owl-carousel
 //= require jquery.cubeportfolio.min
@@ -52,8 +53,9 @@ function add_alert(type, message) {
 
 jQuery(document).ready(function() {
   App.init();
-  App.initCounter();
+  //App.initCounter();
   App.initParallaxBg();
   OwlCarousel.initOwlCarousel();
+  Datepicker.initDatepicker();
 });
 

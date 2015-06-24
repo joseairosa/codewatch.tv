@@ -20,6 +20,13 @@ class StatisticService
         properties: { value: value })
   end
 
+  def online_private_sessions(value)
+    Analytics.track(
+        user_id: 'codewatch',
+        event: 'Total Online Private Sessions',
+        properties: { value: value })
+  end
+
   def live_online_users(channel, value)
     Analytics.track(
         user_id: channel.user.id.to_s,
@@ -41,6 +48,13 @@ class StatisticService
         properties: { title: channel.title })
   end
 
+  def private_session_online(private_session)
+    Analytics.track(
+        user_id: private_session.user.id.to_s,
+        event: 'Private Session Online',
+        properties: { private_session_id: private_session.token, title: private_session.title })
+  end
+
   def stream_offline(channel)
     Analytics.track(
         user_id: channel.user.id.to_s,
@@ -48,17 +62,39 @@ class StatisticService
         properties: { title: channel.title })
   end
 
+  def private_session_offline(private_session)
+    Analytics.track(
+        user_id: private_session.user.id.to_s,
+        event: 'Private Session Offline',
+        properties: { private_session_id: private_session.token, title: private_session.title })
+  end
+
   def watching_stream(channel, quality)
     Analytics.track(
         user_id: channel.user.id.to_s,
         event: 'Started Watching Stream',
-        properties: { quality: quality })
+        properties: { channel_id: channel.user.username, quality: quality })
   end
 
   def finished_watching_stream(channel)
     Analytics.track(
         user_id: channel.user.id.to_s,
-        event: 'Finished Watching Stream')
+        event: 'Finished Watching Stream',
+        properties: { channel_id: channel.user.username })
+  end
+
+  def watching_private_session(private_session, quality)
+    Analytics.track(
+        user_id: private_session.user.id.to_s,
+        event: 'Started Watching Private Session',
+        properties: { private_session_id: private_session.token, quality: quality })
+  end
+
+  def finished_watching_private_session(private_session)
+    Analytics.track(
+        user_id: private_session.user.id.to_s,
+        event: 'Finished Watching Private Session',
+        properties: { private_session_id: private_session.token })
   end
 
   def watching_recording(recording)
