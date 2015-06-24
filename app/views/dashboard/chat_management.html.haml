@@ -19,7 +19,7 @@
               %h2.heading-md Interact with your fans directly
               %p Below are the name and email addresses on file for your account.
               %br
-                = render partial: 'shared/chat', locals: {channel: current_user.channel}
+                = render partial: 'shared/chat', locals: {chat_id: current_user.chat_id}
             #bans-tab.dashboard-edit.tab-pane.fade
               %h2.heading-md Manage banned chat users
               %p Bellow you can unban users that have been banned
