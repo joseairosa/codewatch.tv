@@ -40,5 +40,6 @@ Codewatch::Application.configure do
   # Stops server from blocking on requests; Needed for websockets
   # config.middleware.delete Rack::Lock
 
+  config.action_mailer.asset_host = 'http://localhost:3000'
   config.default_url = 'http://localhost:3000'
 end
