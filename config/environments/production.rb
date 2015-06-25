@@ -78,6 +78,8 @@ Codewatch::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  config.action_mailer.default_url_options = { :host => 'codewatch.tv' }
+
   config.default_url = 'http://codewatch.tv'
   config.action_mailer.asset_host = 'http://codewatch.tv'
 end
