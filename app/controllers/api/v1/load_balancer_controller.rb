@@ -13,7 +13,7 @@ class Api::V1::LoadBalancerController < Api::V1::ApiController
                                  PrivateSession.where(token: @stream_name).first
                                end
              if private_session
-               private_session.elect_streamer
+               private_session.elect_streamer if params[:app] == 'stream'
                streamer_id = private_session.streamer_id
                private_session.user
              else
@@ -26,7 +26,7 @@ class Api::V1::LoadBalancerController < Api::V1::ApiController
                       User.where(username: @stream_name).first
                     end
              if user
-               user.channel.elect_streamer
+               user.channel.elect_streamer if params[:app] == 'stream'
                streamer_id = user.channel.streamer_id
                user
              else
