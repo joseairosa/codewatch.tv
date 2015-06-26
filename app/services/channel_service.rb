@@ -80,7 +80,6 @@ class ChannelService
 
   def go_online(channel)
     StatisticService.instance.stream_online(channel)
-    channel.elect_streamer
     channel.update(is_online: 1)
     StatisticService.instance.online_streams(Channel.where(is_online: 1).count)
   end

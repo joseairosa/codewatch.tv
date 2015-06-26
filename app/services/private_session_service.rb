@@ -30,7 +30,6 @@ class PrivateSessionService
 
   def go_online(private_session)
     StatisticService.instance.private_session_online(private_session)
-    private_session.elect_streamer
     private_session.update(is_online: 1)
     StatisticService.instance.online_private_sessions(PrivateSession.where(is_online: 1).count)
   end
