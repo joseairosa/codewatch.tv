@@ -45,28 +45,28 @@ class StatisticService
     Analytics.track(
         user_id: channel.user.id.to_s,
         event: 'Stream Online',
-        properties: { title: channel.title })
+        properties: { title: channel.title, streamer_id: channel.streamer_id })
   end
 
   def private_session_online(private_session)
     Analytics.track(
         user_id: private_session.user.id.to_s,
         event: 'Private Session Online',
-        properties: { private_session_id: private_session.token, title: private_session.title })
+        properties: { private_session_id: private_session.token, title: private_session.title, streamer_id: private_session.streamer_id })
   end
 
   def stream_offline(channel)
     Analytics.track(
         user_id: channel.user.id.to_s,
         event: 'Stream Offline',
-        properties: { title: channel.title })
+        properties: { title: channel.title, streamer_id: channel.streamer_id })
   end
 
   def private_session_offline(private_session)
     Analytics.track(
         user_id: private_session.user.id.to_s,
         event: 'Private Session Offline',
-        properties: { private_session_id: private_session.token, title: private_session.title })
+        properties: { private_session_id: private_session.token, title: private_session.title, streamer_id: private_session.streamer_id })
   end
 
   def watching_stream(channel, quality)
