@@ -5,7 +5,7 @@
         #channel-online
           %h1.title= channel.title
           #stream-online
-            = render partial: 'shared/stream', locals: {file: "/api/v1/smil/#{params[:username]}", type: 'rtmp'}
+            = render partial: 'shared/stream', locals: {file: "/api/v1/smil/#{params[:username]}", type: 'rtmp', stretching: 'uniform'}
           .description= raw channel.description
       - else
         #channel-offline

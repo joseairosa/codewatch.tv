@@ -8,7 +8,7 @@
               %input{:name => 'channel[title]', :type => "text", :value => channel.title}
                 %b.tooltip.tooltip-bottom-right Your stream title
           #stream-online.margin-bottom-50
-            = render partial: 'shared/stream', locals: {file: "/api/v1/smil/#{channel.user.username}", type: 'rtmp'}
+            = render partial: 'shared/stream', locals: {file: "/api/v1/smil/#{channel.user.username}", type: 'rtmp', stretching: 'uniform'}
           .description
             %textarea{class: 'form-control tinymce', id: 'channel-description', name: 'channel[description]', rows: '15'}= channel.description
             = tinymce

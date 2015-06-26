@@ -9,7 +9,7 @@
         #channel-online
           %h1.title= private_session.title
           #stream-online
-            = render partial: 'shared/stream', locals: {file: "/api/v1/smil/#{private_session.token}", type: 'rtmp'}
+            = render partial: 'shared/stream', locals: {file: "/api/v1/smil/#{private_session.token}", type: 'rtmp', stretching: 'uniform'}
           .description.margin-top-20= raw private_session.description
       - else
         #channel-offline
