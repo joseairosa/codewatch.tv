@@ -7,9 +7,9 @@ class Api::V1::SmilController < Api::V1::ApiController
   </head>
   <body>
     <switch>
-      <video src=\"flv:#{params[:username]}@720p\" height=\"720\" system-bitrate=\"2000000\" width=\"1280\" />
-      <video src=\"flv:#{params[:username]}@320p\" height=\"360\" system-bitrate=\"800000\" width=\"640\" />
-      <video src=\"flv:#{params[:username]}@180p\" height=\"180\" system-bitrate=\"300000\" width=\"320\" />
+      <video src=\"flv:#{params[:username]}@720p\" width=\"1280\" height=\"720\" system-bitrate=\"960000\" />
+      <video src=\"flv:#{params[:username]}@320p\" width=\"640\" height=\"360\" system-bitrate=\"480000\" />
+      <video src=\"flv:#{params[:username]}@180p\" width=\"320\" height=\"180\" system-bitrate=\"240000\" />
     </switch>
   </body>
 </smil>

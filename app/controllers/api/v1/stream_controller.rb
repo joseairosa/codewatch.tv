@@ -1,6 +1,7 @@
 class Api::V1::StreamController < Api::V1::ApiController
 
   include ChannelHelper
+  include StreamerHelper
 
   def event
     @stream_name, @quality = params[:name].split('@')
@@ -23,7 +24,9 @@ class Api::V1::StreamController < Api::V1::ApiController
              User.where(username: params[:name]).first
            end
     if user
-      Recording.create!(title: user.channel.title, user: user, name: params[:path].gsub('/tmp/', ''))
+      streamer_id = streamer_for_private_ip(URI.parse(params[:tcurl]).host)
+      raise ArgumentError, "Could not find streamer for #{URI.parse(params[:tcurl]).host}" unless streamer_id
+      Recording.create!(title: user.channel.title, streamer_id: streamer_id, user: user, name: params[:path].gsub('/tmp/', ''))
     end
     respond_to do |format|
       format.json { render json: {response: 'ok'}, status: 200 }

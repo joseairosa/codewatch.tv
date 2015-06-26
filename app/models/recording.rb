@@ -1,6 +1,8 @@
 class Recording
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Concerns::Streamer
+  include Mongoid::Token
 
   belongs_to :user
 
@@ -13,6 +15,9 @@ class Recording
   field :title,           type: String
   field :visible,         type: Integer, default: 1
   field :current_viewers, type: Integer, default: 0
+  field :streamer_id,     type: String
+
+  token pattern: "R-%s%s%s%s%s%s"
 
   after_create :send_statistics
 

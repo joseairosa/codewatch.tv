@@ -2,6 +2,8 @@ class Channel
   include Mongoid::Document
   include Mongoid::Timestamps
   include Concerns::Searchable
+  include Concerns::Streamer
+  include Mongoid::Token
 
   QUALITIES = %w(180p 360p 720p)
 
@@ -29,6 +31,9 @@ class Channel
   field :is_online,             type: Integer,  default: 0
   field :subscribers,           type: Array,    default: []
   field :one_line_description,  type: String
+  field :streamer_id,           type: String
+
+  token pattern: "C-%s%s%s%s%s%s"
 
   def new_viewer
     self.total_viewers = self.total_viewers+1

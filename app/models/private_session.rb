@@ -1,6 +1,7 @@
 class PrivateSession
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Concerns::Streamer
   include Mongoid::Token
 
   belongs_to :user, class_name: 'User', inverse_of: :private_sessions
@@ -21,6 +22,7 @@ class PrivateSession
   field :stream_key,        type: String, default: SecureRandom.uuid
   field :price,             type: Numeric, default: 0.0
   field :current_viewers,   type: Integer,  default: 0
+  field :streamer_id,       type: String
 
   validate :valid_live_at_date
 
