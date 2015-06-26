@@ -19,14 +19,19 @@ class Api::V1::StreamController < Api::V1::ApiController
 
   def new_recording
     user = if params[:name].start_with?('PS-')
-             PrivateSession.find(params[:name]).try(:user)
+             private_session = PrivateSession.find(params[:name])
+             private_session.try(:user)
            else
              User.where(username: params[:name]).first
            end
     if user
-      streamer_id = streamer_for_private_ip(URI.parse(params[:tcurl]).host)
-      raise ArgumentError, "Could not find streamer for #{URI.parse(params[:tcurl]).host}" unless streamer_id
-      Recording.create!(title: user.channel.title, streamer_id: streamer_id, user: user, name: params[:path].gsub('/tmp/', ''))
+      # streamer_id = streamer_for_private_ip(URI.parse(params[:tcurl]).host)
+      # raise ArgumentError, "Could not find streamer for #{URI.parse(params[:tcurl]).host}" unless streamer_id
+      if params[:name].start_with?('PS-')
+        Recording.create!(title: private_session.title, streamer_id: private_session.streamer_id, user: user, name: params[:path].gsub('/tmp/', ''))
+      else
+        Recording.create!(title: user.channel.title, streamer_id: user.channel.streamer_id, user: user, name: params[:path].gsub('/tmp/', ''))
+      end
     end
     respond_to do |format|
       format.json { render json: {response: 'ok'}, status: 200 }
