@@ -43,6 +43,12 @@ class User
   field :uid, :type => String
   field :timezone, :type => String, default: '(GMT+00:00) UTC'
 
+  # Social
+  field :facebook_link, :type => String
+  field :twitter_link, :type => String
+  field :github_link, :type => String
+  field :google_plus_link, :type => String
+
   ## Recoverable
   field :reset_password_token, type: String
   field :reset_password_sent_at, type: Time

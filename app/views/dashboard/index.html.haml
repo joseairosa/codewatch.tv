@@ -19,33 +19,80 @@
           .tab-content
             #profile-tab.dashboard-edit.tab-pane.fade.in.active
               %h2.heading-md Manage your Name, ID and Email Addresses.
-              %p Below are the name and email addresses on file for your account.
+              %p Below are the name, email address and other information about your account.
               %br
                 = form_tag({controller: :dashboard, action: :update_user}, {id: 'sky-form4', class: 'sky-form'}) do
                   %dl.dl-horizontal
                     %dt Username
                     %dd
-                      %section
-                        %label.input
-                          %i.icon-append.fa.fa-user
-                          %input{:name => "user[username]", :placeholder => "Username", :type => "text", :value => current_user.username}
-                            %b.tooltip.tooltip-bottom-right Needed to enter the website
+                      .row
+                        %section.col.col-8
+                          %label.input
+                            %i.icon-append.fa.fa-user
+                            %input{:name => "user[username]", :placeholder => "Username", :type => "text", :value => current_user.username}
+                              %b.tooltip.tooltip-bottom-right Needed to enter the website
                     %dt Email address
                     %dd
-                      %section
-                        %label.input
-                          %i.icon-append.fa.fa-envelope
-                          %input{:name => "user[email]", :placeholder => "Email address", :type => "text", :value => current_user.email}
-                            %b.tooltip.tooltip-bottom-right Needed to verify your account
-                    %dt Timezone
+                      .row
+                        %section.col.col-8
+                          %label.input
+                            %i.icon-append.fa.fa-envelope
+                            %input{:name => "user[email]", :placeholder => "Email address", :type => "text", :value => current_user.email}
+                              %b.tooltip.tooltip-bottom-right Needed to verify your account
+                    %dt Your name
+                    %dd
+                      .row
+                        %section.col.col-6
+                          %label.input
+                            %i.icon-append.fa.fa-user
+                            %input{:name => "user[first_name]", :placeholder => "First name", :type => "text", :value => current_user.first_name}
+                              %b.tooltip.tooltip-bottom-right Your first name
+                        %section.col.col-6
+                          %label.input
+                            %i.icon-append.fa.fa-user
+                            %input{:name => "user[last_name]", :placeholder => "Last name", :type => "text", :value => current_user.last_name}
+                              %b.tooltip.tooltip-bottom-right Your last name
+                    %dt Occupation
                     %dd
                       %section
-                        %label.select
-                          %select{:name => "user[timezone]"}
-                            %option{value: '0', selected: true, disabled: true} Timezone
-                            - ActiveSupport::TimeZone.all.each do |tz|
-                              %option{value: tz, selected: current_user.timezone == tz.to_s}= tz
-                          %i
+                        %label.input
+                          %i.icon-append.fa.fa-briefcase
+                          %input{:name => "user[occupation]", :placeholder => "Occupation / Job title", :type => "text", :value => current_user.occupation}
+                            %b.tooltip.tooltip-bottom-right What's your job title
+                    %dt Social
+                    %dd
+                      .row
+                        %section.col.col-6
+                          %label.input
+                            %i.icon-append.fa.fa-facebook
+                            %input{:name => "user[facebook_link]", :placeholder => "Facebook", :type => "text", :value => current_user.facebook_link}
+                              %b.tooltip.tooltip-bottom-right Facebook username
+                        %section.col.col-6
+                          %label.input
+                            %i.icon-append.fa.fa-github
+                            %input{:name => "user[github_link]", :placeholder => "Github", :type => "text", :value => current_user.github_link}
+                              %b.tooltip.tooltip-bottom-right Github username
+                      .row
+                        %section.col.col-6
+                          %label.input
+                            %i.icon-append.fa.fa-twitter
+                            %input{:name => "user[twitter_link]", :placeholder => "Twitter", :type => "text", :value => current_user.twitter_link}
+                              %b.tooltip.tooltip-bottom-right Twitter username
+                        %section.col.col-6
+                          %label.input
+                            %i.icon-append.fa.fa-google-plus
+                            %input{:name => "user[google_plus_link]", :placeholder => "Google Plus", :type => "text", :value => current_user.google_plus_link}
+                              %b.tooltip.tooltip-bottom-right Google plus username
+                    %dt Timezone
+                    %dd
+                      .row
+                        %section.col.col-6
+                          %label.select
+                            %select{:name => "user[timezone]"}
+                              %option{value: '0', selected: true, disabled: true} Timezone
+                              - ActiveSupport::TimeZone.all.each do |tz|
+                                %option{value: tz, selected: current_user.timezone == tz.to_s}= tz
+                            %i
                   %br
                     %button.btn-u.btn-u-default{:type => "button"} Cancel
                     %button.btn-u{:type => "submit"} Save Changes

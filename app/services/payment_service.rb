@@ -1,18 +1,19 @@
-class PaymentsController < ApplicationController
-  before_action :authenticate_user!
+class PaymentService
 
-  def create
-    private_session = PrivateSession.find(params['payment']['object'])
+  include Singleton
+
+  def private_session_payment(current_user, private_session, payment_data)
+    response = {}
     if private_session && PrivateSessionService.instance.is_not_participant?(private_session, current_user)
 
       if current_user.stripe_customer_id
         customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
-        customer.source = params['payment']['id']
+        customer.source = payment_data['id']
         customer.save
       else
         customer = Stripe::Customer.create(
             :email => current_user.email,
-            :card  => params['payment']['id']
+            :card  => payment_data['id']
         )
         current_user.update(stripe_customer_id: customer.id)
       end
@@ -29,14 +30,13 @@ class PaymentsController < ApplicationController
         PrivateSessionService.instance.add_participant(private_session, current_user)
       end
 
-      flash[:notice] = 'Payment successfull. Thank you!'
+      response[:notice_type] = :error
+      response[:notice_message] = 'Payment successfull. Thank you!'
     else
-      flash[:error] = 'Internal error: Payment not processed'
+      response[:notice_type] = :error
+      response[:notice_message] = 'Internal error: Payment not taken!'
     end
-    redirect_to private_session_path(params['payment']['object'])
-
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to private_session_path(params['payment']['object'])
+    response
   end
+
 end

@@ -1,0 +1,33 @@
+= form_tag payments_path, id: 'payment-form' do
+  %input{type: 'hidden', id: 'payment-type', name: 'payment[type]', value: ''}
+  %input{type: 'hidden', id: 'payment-object', name: 'payment[object]', value: ''}
+  %input{type: 'hidden', id: 'payment-id', name: 'payment[id]', value: ''}
+  %input{type: 'hidden', id: 'payment-email', name: 'payment[email]', value: ''}
+:javascript
+  var handler = StripeCheckout.configure({
+    key: '#{ENV['STRIPE_PUBLISHABLE_KEY']}',
+    image: '#{image_path('logo.png')}',
+    token: function(token) {
+      $('#payment-type').val('#{payment_type}');
+      $('#payment-id').val(token.id);
+      $('#payment-object').val('#{payment_object}');
+      $('#payment-email').val(token.email);
+      $('#payment-form').submit();
+    }
+  });
+
+  $('#payment-button').on('click', function(e) {
+    // Open Checkout with further options
+    handler.open({
+      name: 'codewatch.tv',
+      description: '#{payment_description}',
+      currency: "usd",
+      amount: #{payment_amount}
+    });
+    e.preventDefault();
+  });
+
+  // Close Checkout on page navigation
+  $(window).on('popstate', function() {
+    handler.close();
+  });

@@ -1,0 +1,180 @@
+/*Job-Description
+------------------------------------*/
+.payment {
+  padding-bottom: 30px;
+  position: relative;
+  background: #f9f9f9;
+  border-top: 1px solid #eee;
+}
+
+/*Visit*/
+.payment .visit {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.payment .visit h2 {
+  font-size: 25px;
+  text-transform: uppercase;
+}
+
+/*Left-Inner*/
+.payment .left-inner {
+  padding: 20px;
+  background: #fff;
+  position: relative;
+}
+
+.payment i.position-top {
+  color: #777;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  min-width: 28px;
+  padding: 5px 4px;
+  position: absolute;
+  text-align: center;
+}
+
+.payment i.position-top:hover {
+  color: #fff;
+  background: #585f69;
+}
+
+.payment .left-inner img {
+  float: left;
+  width: 80px;
+  height: auto;
+  padding: 3px;
+  margin: 0 10px 10px 0;
+  border: 1px solid #eee;
+}
+
+.payment .left-inner h3 {
+  margin: 0 0 5px;
+}
+
+.payment .left-inner p.hex {
+  margin-bottom: 5px;
+}
+
+.payment .star-vote {
+  float: left;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.payment .star-vote li {
+  padding: 0;
+}
+
+/*Progresses*/
+.payment .progression span {
+  float: left;
+  width: 150px;
+  margin: -8px 15px 0 0;
+}
+
+/*Right-Inner*/
+.payment .right-inner {
+  padding: 20px;
+  background: #fff;
+}
+
+.payment .right-inner img {
+  float: left;
+  width: 90px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.payment .right-inner .font-s {
+  font-size: 18px;
+}
+
+.payment .right-inner hr {
+  margin: 15px 0;
+}
+
+/*P-chart-v2*/
+.payment .p-chart {
+  overflow: hidden;
+}
+
+.payment .p-chart h3 {
+  font-size: 16px;
+}
+
+.payment .p-chart .circle {
+  float: left;
+  margin-right: 10px;
+}
+
+.payment .p-chart .overflow-h li i,
+.payment .p-chart .overflow-h li a {
+  color: #72c02c;
+}
+
+.payment .p-chart .overflow-h li a {
+  font-size: 11px;
+}
+
+/*Circle in Responsive*/
+@media (max-width: 450px) {
+  .payment .p-chart.col-xs-6 {
+    width: 100%;
+  }
+}
+
+/*Save-Job*/
+.payment .save-job li {
+  padding: 2px 0;
+}
+
+.payment .save-job i {
+  color: #555;
+  min-width: 25px;
+  text-align: center;
+}
+
+.payment .save-job a {
+  color: #555;
+}
+
+.payment .save-job a:hover {
+  color: #72c02c;
+}
+
+/*Overview*/
+.payment .overview i {
+  color: #fff;
+  float: left;
+  min-width: 38px;
+  font-size: 20px;
+  padding: 10px 3px;
+  text-align: center;
+  margin-right: 10px;
+  background: #585f69;
+}
+
+/*People-Say*/
+.payment .people-say img {
+  float: left;
+  width: 40px;
+  height: auto;
+  margin: 6px 10px 0 0;
+}
+
+.payment .people-say .overflow-h span {
+  font-weight: 700;
+}
+
+.payment .people-say .overflow-h p {
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.payment .people-say .overflow-h small {
+  text-align: right;
+  font-style: italic;
+}

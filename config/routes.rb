@@ -49,6 +49,7 @@ Codewatch::Application.routes.draw do
   get 'private_session/:id' => 'private_sessions#show', as: :private_session
 
   resources :payments
+  get 'payments/private-session/:id' => 'payments#new_private_session', as: :new_private_session
 
   # Errors
   match '404' => 'errors#error404', via: [ :get, :post, :patch, :delete ]
