@@ -2,7 +2,7 @@
   .row
     - if PrivateSessionService.instance.is_not_participant?(private_session, current_user)
       #sign-up.col-sm-6.sm-margin-bottom-20
-        = link_to private_session_payment_path(private_session.token), id: 'payment-button' do
+        = link_to new_private_session_payment_path(private_session.token), id: 'payment-button' do
           .service-block-v3.service-block-u
             %i.fa.fa-ticket
             %span.service-heading Sign Up

@@ -25,12 +25,23 @@ class PaymentsController < ApplicationController
     end
   end
 
+  def new_plus
+    add_breadcrumb 'Upgrade to Plus!'
+  end
+
+  def plus_success
+
+  end
+
   def create
     case params['payment']['type']
       when 'private_session'
         private_session = PrivateSession.find(params['payment']['object'])
         response = PaymentService.instance.private_session_payment(current_user, private_session, params['payment'])
         response[:redirect_to] = private_session_path(params['payment']['object'])
+      when 'plus'
+        response = PaymentService.instance.plus_payment(current_user, params['payment'])
+        response[:redirect_to] = plus_success_payment_path
       else
         response = {
             notice_type: :error,
