@@ -8,7 +8,18 @@ class PaymentsController < ApplicationController
   def new_private_session
     @private_session = PrivateSession.find(params['id'])
     if @private_session
-      add_breadcrumb "Private Session ##{private_session.token}", private_session_path(params['id'])
+
+      if @private_session.participants.count >= @private_session.max_participants.to_i
+        flash[:error] = 'This session is already full'
+        redirect_to private_session_path(params['payment']['object'])
+      end
+
+      if @private_session.price == 0
+        PrivateSessionService.instance.add_participant(@private_session, current_user)
+        redirect_to private_session_path(params['payment']['object'])
+      else
+        add_breadcrumb "Private Session ##{private_session.token}", private_session_path(params['id'])
+      end
     else
       redirect_to '/404'
     end
