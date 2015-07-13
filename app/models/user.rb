@@ -17,11 +17,12 @@ class User
 
   has_one     :channel
   has_many    :recordings
-  has_many    :chats_banned,    class_name: 'ChatUserBanned'
-  has_many    :chats_moderator, class_name: 'ChatUserModerator'
-  has_many    :channel_likes,   class_name: 'ChannelLike'
-  has_many    :private_sessions, class_name: 'PrivateSession', inverse_of: :user
-  belongs_to  :private_session_participant, class_name: 'PrivateSession', inverse_of: :participants
+  has_many    :chats_banned,                class_name: 'ChatUserBanned'
+  has_many    :chats_moderator,             class_name: 'ChatUserModerator'
+  has_many    :channel_likes,               class_name: 'ChannelLike'
+  has_many    :private_sessions,            class_name: 'PrivateSession',     inverse_of: :user
+  belongs_to  :private_session_participant, class_name: 'PrivateSession',     inverse_of: :participants
+  has_many    :subscriptions,               class_name: 'ChannelSubscriber',  inverse_of: :user
   embeds_one  :account_type
 
   index 'account_type.name' => 1

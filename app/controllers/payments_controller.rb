@@ -30,23 +30,23 @@ class PaymentsController < ApplicationController
   end
 
   def plus_success
+    add_breadcrumb 'Thank you for subscribing!'
+  end
 
+  def new_subscription
+    add_breadcrumb 'Channel subscription'
   end
 
   def create
     case params['payment']['type']
       when 'private_session'
-        private_session = PrivateSession.find(params['payment']['object'])
-        response = PaymentService.instance.private_session_payment(current_user, private_session, params['payment'])
-        response[:redirect_to] = private_session_path(params['payment']['object'])
+        response = process_private_session
       when 'plus'
-        response = PaymentService.instance.plus_payment(current_user, params['payment'])
-        response[:redirect_to] = plus_success_payment_path
+        response = process_plus
+      when 'channel_subscription'
+        response = process_subscription
       else
-        response = {
-            notice_type: :error,
-            notice_message: 'Internal error: Payment not taken!',
-            redirect_to: private_session_path(params['payment']['object'])}
+        response = process_error
     end
 
     flash[response[:notice_type]] = response[:notice_message]
@@ -54,5 +54,49 @@ class PaymentsController < ApplicationController
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to private_session_path(params['payment']['object'])
+  end
+
+  private
+
+  def process_subscription
+    channel = Channel.find(params['payment']['object'])
+    if channel
+      response = PaymentService.instance.subscription_payment(current_user, channel, params['payment'])
+      response[:redirect_to] = user_channel_path(params['payment']['object'])
+    else
+      response = {
+          notice_type: :error,
+          notice_message: 'Could not find channel data',
+          redirect_to: user_channel_path(params['payment']['object'])}
+    end
+    response
+  end
+
+  def process_plus
+    response = PaymentService.instance.plus_payment(current_user, params['payment'])
+    response[:redirect_to] = plus_success_payment_path
+    response
+  end
+
+  def process_private_session
+    private_session = PrivateSession.find(params['payment']['object'])
+    if private_session
+      response = PaymentService.instance.private_session_payment(current_user, private_session, params['payment'])
+      response[:redirect_to] = private_session_path(params['payment']['object'])
+    else
+      response = {
+          notice_type: :error,
+          notice_message: 'Could not find private session data',
+          redirect_to: user_channel_path(params['payment']['object'])}
+    end
+    response
+  end
+
+  def process_error
+    {
+        notice_type: :error,
+        notice_message: 'Internal error: Payment not taken!',
+        redirect_to: root_path
+    }
   end
 end

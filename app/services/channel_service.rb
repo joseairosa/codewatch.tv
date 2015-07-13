@@ -51,11 +51,23 @@ class ChannelService
   end
 
   def subscribe(channel, user)
-    channel.subscribe(user)
+    if channel && user
+      found_subscriber = ChannelSubscriber.where(channel: channel, user: user).first
+      unless found_subscriber
+        ChannelSubscriber.create(channel: channel, user: user)
+        channel.update(total_subscribers: channel.total_subscribers+1)
+      end
+    end
   end
 
   def unsubscribe(channel, user)
-    channel.unsubscribe(user)
+    if channel && user
+      found_subscriber = ChannelSubscriber.where(channel: channel, user: user).first
+      if found_subscriber
+        found_subscriber.delete
+        channel.update(total_subscribers: channel.total_subscribers-1)
+      end
+    end
   end
 
   def like(channel, user)
