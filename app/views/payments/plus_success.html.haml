@@ -1,0 +1,10 @@
+= render partial: 'shared/breadcrumbs', locals: {page_name: 'Payment Successful'}
+.payment
+  .container.content
+    .title-box-v2
+      %h2 Thank You!
+      %p Your subscription is now active
+      .row.margin-top-50
+        .col.col-md-offset-4.col-md-4
+          = link_to root_path do
+            %button#payment-button.btn-u.btn-u-lg.btn-block{:type => 'button'}= 'Manage Subscription'

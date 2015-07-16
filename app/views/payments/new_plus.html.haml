@@ -1,0 +1,63 @@
+= render partial: 'shared/breadcrumbs', locals: {page_name: 'Payment'}
+.payment
+  .container.content
+    .title-box-v2
+      %h2 Subscribing to Plus membership
+      %p Plus provides a series of benefits over normal account users.
+    .row
+      .col-md-7
+        .left-inner
+          %h2 Who am I paying?
+          %p
+            This payment will go directly to codewatch.tv.
+          %hr
+            %h2 What do I get?
+            %ul.list-unstyled
+              %li
+                %i.fa.fa-check.color-green
+                Subscription lasts for 30 days
+              %li
+                %i.fa.fa-check.color-green
+                Works on a monthly rotation basis
+              %li
+                %i.fa.fa-check.color-green
+                Ad-free website
+              %li
+                %i.fa.fa-check.color-green
+                Record and keep your recordings for 30 days
+              %li
+                %i.fa.fa-check.color-green
+                Create subscription based private sessions
+          %hr
+            %h2 What if I don't want it anymore?
+            %p
+              You can cancel your subscription at any time through your dashboard. Subscription will last until next payment date and automatically downgrade itself to free.
+              %br
+              We cannot provide refunds once a subscription is purchased.
+            %ul.list-unstyled
+              %li
+                %i.fa.fa-check.color-green
+                The streamer will have the opportunity to reschedule the session.
+              %li
+                %i.fa.fa-check.color-green
+                A refund option will be available if we don't hear anything from the streamer in 24h.
+          %hr
+            %h2 More questions
+            %p
+              If you're still unsure feel free to get in contact with us on
+              = succeed '.' do
+                %a{:href => 'mailto:hi@codewatch.tv'} hi@codewatch.tv
+      .col-md-5
+        .right-inner
+          %img{:alt => current_user.username, :src => current_user.gravatar_url}
+          .overflow-h
+            %span.font-s codewatch.tv
+            %p.color-green &nbsp;
+            %ul.social-icons
+              %li
+                %a.social_facebook{"data-original-title" => "Facebook", :href => 'https://www.facebook.com/codewatch.tv'}
+              %li
+                %a.social_twitter{"data-original-title" => "Twitter", :href => 'https://twitter.com/codewatchtv'}
+          %hr
+            %button#payment-button.btn-u.btn-u-lg.btn-block{:type => 'button'}= "Pay now #{number_to_currency(BUSINESS_MODEL['prices']['plus_subscription'].to_f)}"
+= render partial: 'shared/payment_logic', locals: {payment_type: 'plus', payment_object: nil, payment_amount: (BUSINESS_MODEL['prices']['plus_subscription'].to_f*100).to_i, payment_description: 'Monthly Plus Membership'}

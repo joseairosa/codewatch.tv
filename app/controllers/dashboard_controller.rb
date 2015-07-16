@@ -208,7 +208,9 @@ class DashboardController < ApplicationController
 
   def user_params
     # NOTE: Using `strong_parameters` gem
-    params.required(:user).permit(:email, :username, :current_password, :password, :password_confirmation, :timezone)
+    params.required(:user).permit(:email, :username, :current_password, :password,
+                                  :password_confirmation, :timezone, :occupation, :first_name, :last_name,
+                                  :facebook_link, :twitter_link, :github_link, :google_plus_link)
   end
 
   def user_input_error

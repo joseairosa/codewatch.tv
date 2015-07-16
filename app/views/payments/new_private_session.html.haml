@@ -1,0 +1,71 @@
+= render partial: 'shared/breadcrumbs', locals: {page_name: 'Payment'}
+.payment
+  .container.content
+    .title-box-v2
+      %h2 Subscribing to Private Session ##{private_session.token}
+      %p= private_session.title
+    .row
+      .col-md-7
+        .left-inner
+          %h2 Who am I paying?
+          %p
+            This payment will go towards the streamer, following our
+            = succeed '.' do
+              %a{href: ''} terms and condition
+          %hr
+            %h2 What do I get?
+            %ul.list-unstyled
+              %li
+                %i.fa.fa-check.color-green
+                Full and unrestricted access to this private stream
+              %li
+                %i.fa.fa-check.color-green
+                A smaller and more intimate streaming session where you can learn and get in contact with the streamer
+          %hr
+            %h2 What if the streamer doesn't show up?
+            %p
+              We expect that all streamers providing private sessions are professional and will comply with the agreed schedule.
+              %br
+              However it's out of our control if things don't go according to plan. In this situation you'll have a couple of options:
+            %ul.list-unstyled
+              %li
+                %i.fa.fa-check.color-green
+                The streamer will have the opportunity to reschedule the session.
+              %li
+                %i.fa.fa-check.color-green
+                A refund option will be available if we don't hear anything from the streamer in 24h.
+          %hr
+            %h2 More questions
+            %p
+              If you're still unsure feel free to get in contact with us on
+              = succeed '.' do
+                %a{:href => 'mailto:hi@codewatch.tv'} hi@codewatch.tv
+      .col-md-5
+        .right-inner
+          %h3= "#{private_session.user.username}"
+          %img{:alt => private_session.user.username, :src => private_session.user.gravatar_url}
+          .overflow-h
+            %span.font-s= "#{private_session.user.first_name} #{private_session.user.last_name}"
+            %p.color-green= "#{private_session.user.occupation}"
+            %ul.social-icons
+              - unless private_session.user.facebook_link.empty?
+                %li
+                  %a.social_facebook{"data-original-title" => "Facebook", :href => "https://facebook.com/#{private_session.user.facebook_link}"}
+              - unless private_session.user.github_link.empty?
+                %li
+                  %a.social_github{"data-original-title" => "Github", :href => "https://github.com/#{private_session.user.github_link}"}
+              - unless private_session.user.twitter_link.empty?
+                %li
+                  %a.social_twitter{"data-original-title" => "Twitter", :href => "https://twitter.com/#{private_session.user.twitter_link}"}
+              - unless private_session.user.google_plus_link.empty?
+                %li
+                  %a.social_googleplus{"data-original-title" => "Google Plus", :href => "https://plus.google.com/u/0/+#{private_session.user.google_plus_link}/posts"}
+          %hr
+            %ul.list-unstyled.save-job
+              %li
+                %i.fa.fa-youtube-play
+                = link_to user_channel_path(private_session.user.username), target: :blank do
+                  View channel
+            %hr
+              %button#payment-button.btn-u.btn-u-lg.btn-block{:type => 'button'}= "Pay now #{number_to_currency(private_session.price.to_f)}"
+= render partial: 'shared/payment_logic', locals: {payment_type: 'private_session', payment_object: private_session.token, payment_amount: (private_session.price*100).to_i, payment_description: "Signup to #{private_session.title}"}

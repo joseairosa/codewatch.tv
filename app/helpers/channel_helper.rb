@@ -17,6 +17,10 @@ module ChannelHelper
     channel.chat.is_moderator?(user)
   end
 
+  def is_channel_subscriber?(user=current_user)
+    channel.is_subscriber?(user)
+  end
+
   def user_likes_channel?(user=current_user)
     !ChannelLike.where(channel: channel, user: user).first.nil?
   end

@@ -24,6 +24,9 @@
 
   #channel-stats {
     .vod {
+      a, a:hover {
+        text-decoration: none;
+      }
       position: relative;
       .vod-view-all {
         position: absolute;

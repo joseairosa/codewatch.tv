@@ -1,0 +1,59 @@
+= render partial: 'shared/breadcrumbs', locals: {page_name: 'Subscription Payment'}
+.payment
+  .container.content
+    .title-box-v2
+      %h2 Subscribing to #{channel.user.username} channel
+      %p By subscribing to a user channel you're directly supporting him/her.
+    .row
+      .col-md-7
+        .left-inner
+          %h2 Who am I paying?
+          %p
+            This payment will go towards the streamer, following our
+            = succeed '.' do
+              %a{href: ''} terms and condition
+          %hr
+            %h2 Why subscribe?
+          %hr
+            %h2 What do I get?
+            %ul.list-unstyled
+              %li
+                %i.fa.fa-check.color-green
+                Subscription lasts for 30 days and it automatically renews unless cancelled
+              %li
+                %i.fa.fa-check.color-green
+                Special subscriber only benefits. These benefits vary from streamer to streamer.
+          %hr
+            %h2 What if I don't want it anymore?
+            %p
+              You can cancel your subscription at any time through your dashboard. Subscription will last until next payment at which point it won't be renewed.
+              %br
+              We cannot provide refunds once a subscription is purchased.
+          %hr
+            %h2 More questions
+            %p
+              If you're still unsure feel free to get in contact with us on
+              = succeed '.' do
+                %a{:href => 'mailto:hi@codewatch.tv'} hi@codewatch.tv
+      .col-md-5
+        .right-inner
+          %img{:alt => channel.user.username, :src => channel.user.gravatar_url}
+          .overflow-h
+            %span.font-s= "#{channel.user.first_name} \"#{channel.user.username}\" #{channel.user.last_name}"
+            %p.color-green= "#{channel.user.occupation}"
+            %ul.social-icons
+              - unless channel.user.facebook_link.empty?
+                %li
+                  %a.social_facebook{"data-original-title" => "Facebook", :href => "https://facebook.com/#{channel.user.facebook_link}"}
+              - unless channel.user.github_link.empty?
+                %li
+                  %a.social_github{"data-original-title" => "Github", :href => "https://github.com/#{channel.user.github_link}"}
+              - unless channel.user.twitter_link.empty?
+                %li
+                  %a.social_twitter{"data-original-title" => "Twitter", :href => "https://twitter.com/#{channel.user.twitter_link}"}
+              - unless channel.user.google_plus_link.empty?
+                %li
+                  %a.social_googleplus{"data-original-title" => "Google Plus", :href => "https://plus.google.com/u/0/+#{channel.user.google_plus_link}/posts"}
+          %hr
+            %button#payment-button.btn-u.btn-u-lg.btn-block{:type => 'button'}= "Pay now #{number_to_currency(BUSINESS_MODEL['prices']['channel_subscription'].to_f)}"
+= render partial: 'shared/payment_logic', locals: {payment_type: 'channel_subscription', payment_object: channel.token, payment_amount: (BUSINESS_MODEL['prices']['channel_subscription'].to_f*100).to_i, payment_description: "Subscription to #{channel.user.username} channel"}

@@ -13,7 +13,8 @@ class Channel
   has_one :chat
 
   has_many :statistics
-  has_many :likes, class_name: 'ChannelLike'
+  has_many :likes,        class_name: 'ChannelLike'
+  has_many :subscribers,  class_name: 'ChannelSubscriber', inverse_of: :channel
 
   after_create :create_chat
 
@@ -28,8 +29,8 @@ class Channel
   field :current_viewers,       type: Integer,  default: 0
   field :likes,                 type: Integer,  default: 0
   field :total_likes,           type: Integer,  default: 0
+  field :total_subscribers,     type: Integer,  default: 0
   field :is_online,             type: Integer,  default: 0
-  field :subscribers,           type: Array,    default: []
   field :one_line_description,  type: String
   field :streamer_id,           type: String
 
@@ -60,6 +61,10 @@ class Channel
   def unsubscribe(user)
     removed = self.subscribers.delete(user.id)
     save if removed
+  end
+
+  def is_subscriber?(user)
+    !ChannelSubscriber.where(channel_id: self.id, user_id: user.id).count.zero?
   end
 
   def thumbnail

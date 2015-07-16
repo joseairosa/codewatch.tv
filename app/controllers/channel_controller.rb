@@ -6,6 +6,7 @@ class ChannelController < ApplicationController
   helper_method :channel_id
   helper_method :is_channel_owner?
   helper_method :is_channel_moderator?
+  helper_method :is_channel_subscriber?
 
   include ChannelHelper
 
