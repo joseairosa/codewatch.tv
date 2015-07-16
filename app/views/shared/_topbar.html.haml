@@ -1,8 +1,9 @@
 .topbar
   %ul.loginbar.pull-right
-    %li
-      = link_to 'Upgrade to Plus!', new_plus_payment_path
-    %li.topbar-devider
+    - if current_user.is_free?
+      %li
+        = link_to 'Upgrade to Plus!', new_plus_payment_path
+      %li.topbar-devider
     %li
       = link_to 'Help', help_path
     %li.topbar-devider

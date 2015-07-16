@@ -60,9 +60,9 @@ class DashboardController < ApplicationController
   def update_settings
     @user = User.find(current_user.id)
 
-    can_record = params[:user] && params[:user][:can_record] ? 1 : 0
+    record_stream = params[:user] && params[:user][:record_stream] ? 1 : 0
 
-    if @user.update(can_record: can_record)
+    if @user.update(record_stream: record_stream)
       flash[:notice] = 'Settings updated'
     else
       user_input_error
@@ -118,25 +118,31 @@ class DashboardController < ApplicationController
 
   def create_private_session
     begin
-      live_at = DateTime.new(
-          params['private_session']['live_at_year'].to_i,
-          params['private_session']['live_at_month'].to_i,
-          params['private_session']['live_at_day'].to_i,
-          params['private_session']['live_at_hour'].to_i,
-          params['private_session']['live_at_minute'].to_i,
-          0,
-          timezone_to_offset(params['private_session']['live_at_tz']))
+      if current_user.permissions.can_create_private_sessions?
+        live_at = DateTime.new(
+            params['private_session']['live_at_year'].to_i,
+            params['private_session']['live_at_month'].to_i,
+            params['private_session']['live_at_day'].to_i,
+            params['private_session']['live_at_hour'].to_i,
+            params['private_session']['live_at_minute'].to_i,
+            0,
+            timezone_to_offset(params['private_session']['live_at_tz']))
 
-      PrivateSession.create!(
-          user: current_user,
-          title: params['private_session']['title'],
-          live_at: live_at,
-          max_participants: params['private_session']['max_participants'],
-          description: params['private_session']['description'],
-          timezone: params['private_session']['live_at_tz'],
-          price: params['private_session']['price'].to_f)
+        PrivateSession.create!(
+            user: current_user,
+            title: params['private_session']['title'],
+            live_at: live_at,
+            max_participants: params['private_session']['max_participants'],
+            description: params['private_session']['description'],
+            timezone: params['private_session']['live_at_tz'],
+            price: params['private_session']['price'].to_f)
 
-      flash[:notice] = 'Private session created successfully'
+        flash[:notice] = 'Private session created successfully'
+        redirect_to new_plus_payment_path
+      else
+        flash[:alert] = 'You need a plus subscription to create private sessions'
+        redirect_to user_dashboard_private_sessions_path
+      end
     rescue ArgumentError => e
       flash[:alert] = 'Go live date is Invalid'
     rescue Mongoid::Errors::Validations => e

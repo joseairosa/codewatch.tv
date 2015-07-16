@@ -59,7 +59,7 @@ class Api::V1::StreamController < Api::V1::ApiController
           valid_key = StreamService.instance.valid_stream_key?(user, params[:stream_key])
           if valid_key
             ChannelService.instance.go_online(user.channel)
-            if params[:app] == 'stream' && user.can_record?
+            if params[:app] == 'stream' && user.record_stream?
               {json: {response: 'ok'}, status: 302, location: "rtmp://127.0.0.1/record/#{params[:name]}?stream_key=#{params[:stream_key]}"}
             else
               {json: {response: 'ok'}, status: 200}
@@ -97,7 +97,7 @@ class Api::V1::StreamController < Api::V1::ApiController
           valid_key = StreamService.instance.valid_stream_key?(private_session, params[:stream_key])
           if valid_key
             PrivateSessionService.instance.go_online(private_session)
-            if params[:app] == 'stream' && user.can_record?
+            if params[:app] == 'stream' && user.record_stream?
               {json: {response: 'ok'}, status: 302, location: "rtmp://127.0.0.1/record/#{params[:name]}?stream_key=#{params[:stream_key]}"}
             else
               {json: {response: 'ok'}, status: 200}

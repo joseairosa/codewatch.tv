@@ -111,6 +111,38 @@ class StatisticService
         properties: { recording_id: recording.id })
   end
 
+  def new_private_session_payment(user, private_session, result)
+    Analytics.track(
+        user_id: user.id.to_s,
+        event: 'New Private Session Registration',
+        properties: {
+            username: user.username,
+            private_session_id: private_session.token,
+            result: result
+        })
+  end
+
+  def new_plus_subscription(user, result)
+    Analytics.track(
+        user_id: user.id.to_s,
+        event: 'New Subscription',
+        properties: {
+            username: user.username,
+            result: result
+        })
+  end
+
+  def new_channel_subscription(user, channel, result)
+    Analytics.track(
+        user_id: user.id.to_s,
+        event: 'New Channel Subscription',
+        properties: {
+            username: user.username,
+            channel_id: channel.token,
+            result: result
+        })
+  end
+
   def new_user(user)
     Analytics.identify(
         user_id: user.id.to_s,

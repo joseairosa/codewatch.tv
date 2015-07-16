@@ -102,9 +102,9 @@
               %br
                 = form_tag({controller: :dashboard, action: :update_settings}, {id: 'sky-form3', class: 'sky-form'}) do
                   %label.toggle
-                    %input{:checked => current_user.can_record? ? true : false, :name => "user[can_record]", :type => "checkbox"}
+                    %input{:checked => current_user.record_stream? ? true : false, :name => "user[record_stream]", :type => "checkbox"}
                       %i>
-                      Video on Demand
+                      Keep recordings (only for Plus subscribers)
                   %hr
                   %br
                     %button.btn-u.btn-u-default{:type => "button"} Cancel

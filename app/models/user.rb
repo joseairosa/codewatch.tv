@@ -79,8 +79,8 @@ class User
 
   field :featured, type: Integer, default: 0
 
-  field :can_record, type: Integer, default: 0
-  validates :can_record, format: {with: /[0-1]/}
+  field :record_stream, type: Integer, default: 0
+  validates :record_stream, format: {with: /[0-1]/}
 
   # Stripe
   field :stripe_customer_id, type: String
@@ -130,12 +130,28 @@ class User
     username
   end
 
-  def can_record?
-    !can_record.zero?
+  def record_stream?
+    !record_stream.zero? && permissions.can_keep_recordings?
   end
 
   def timezone_offset
     ActiveSupport::TimeZone.all.find { |tz| tz.to_s == timezone }.formatted_offset
+  end
+
+  def permissions
+    account_type.permissions
+  end
+
+  def is_free?
+    account_type.name == :free
+  end
+
+  def is_plus?
+    account_type.name == :plus
+  end
+
+  def is_admin?
+    account_type.name == :admin
   end
 
   private
