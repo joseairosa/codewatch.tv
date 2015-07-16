@@ -9,7 +9,7 @@
         .left-inner
           %h2 Who am I paying?
           %p
-            This payment will go twards the streamer, following our
+            This payment will go towards the streamer, following our
             = succeed '.' do
               %a{href: ''} terms and condition
           %hr
@@ -42,24 +42,24 @@
                 %a{:href => 'mailto:hi@codewatch.tv'} hi@codewatch.tv
       .col-md-5
         .right-inner
-          %h3= "#{current_user.username}"
-          %img{:alt => current_user.username, :src => current_user.gravatar_url}
+          %h3= "#{private_session.user.username}"
+          %img{:alt => private_session.user.username, :src => private_session.user.gravatar_url}
           .overflow-h
-            %span.font-s= "#{current_user.first_name} #{current_user.last_name}"
-            %p.color-green= "#{current_user.occupation}"
+            %span.font-s= "#{private_session.user.first_name} #{private_session.user.last_name}"
+            %p.color-green= "#{private_session.user.occupation}"
             %ul.social-icons
-              - unless current_user.facebook_link.empty?
+              - unless private_session.user.facebook_link.empty?
                 %li
-                  %a.social_facebook{"data-original-title" => "Facebook", :href => "https://facebook.com/#{current_user.facebook_link}"}
-              - unless current_user.github_link.empty?
+                  %a.social_facebook{"data-original-title" => "Facebook", :href => "https://facebook.com/#{private_session.user.facebook_link}"}
+              - unless private_session.user.github_link.empty?
                 %li
-                  %a.social_github{"data-original-title" => "Github", :href => "https://github.com/#{current_user.github_link}"}
-              - unless current_user.twitter_link.empty?
+                  %a.social_github{"data-original-title" => "Github", :href => "https://github.com/#{private_session.user.github_link}"}
+              - unless private_session.user.twitter_link.empty?
                 %li
-                  %a.social_twitter{"data-original-title" => "Twitter", :href => "https://twitter.com/#{current_user.twitter_link}"}
-              - unless current_user.google_plus_link.empty?
+                  %a.social_twitter{"data-original-title" => "Twitter", :href => "https://twitter.com/#{private_session.user.twitter_link}"}
+              - unless private_session.user.google_plus_link.empty?
                 %li
-                  %a.social_googleplus{"data-original-title" => "Google Plus", :href => "https://plus.google.com/u/0/+#{current_user.google_plus_link}/posts"}
+                  %a.social_googleplus{"data-original-title" => "Google Plus", :href => "https://plus.google.com/u/0/+#{private_session.user.google_plus_link}/posts"}
           %hr
             %ul.list-unstyled.save-job
               %li

@@ -52,6 +52,8 @@ Codewatch::Application.routes.draw do
   resources :payments
   get 'payments/private-session/:id' => 'payments#new_private_session', as: :new_private_session_payment
   get 'payments/plus/success' => 'payments#plus_success', as: :plus_success_payment
+  get 'payments/channel_subscription/:id' => 'payments#new_channel_subscription', as: :channel_subscription_payment
+  get 'payments/channel_subscription/:id/success' => 'payments#channel_subscription_success', as: :channel_subscription_success_payment
 
   # Errors
   match '404' => 'errors#error404', via: [ :get, :post, :patch, :delete ]

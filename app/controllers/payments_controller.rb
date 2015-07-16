@@ -2,8 +2,10 @@ class PaymentsController < ApplicationController
   before_action :authenticate_user!
 
   attr_reader :private_session
+  attr_reader :channel
 
   helper_method :private_session
+  helper_method :channel
 
   def new_private_session
     @private_session = PrivateSession.find(params['id'])
@@ -33,8 +35,24 @@ class PaymentsController < ApplicationController
     add_breadcrumb 'Thank you for subscribing!'
   end
 
-  def new_subscription
+  def new_channel_subscription
     add_breadcrumb 'Channel subscription'
+    @channel = Channel.where(:user => User.where(username: params['id']).first).first
+    if @channel
+
+    else
+      redirect_to '/404'
+    end
+  end
+
+  def channel_subscription_success
+    add_breadcrumb 'Thank you!'
+    @channel = Channel.where(:user => User.where(username: params['id']).first).first
+    if @channel
+
+    else
+      redirect_to '/404'
+    end
   end
 
   def create
@@ -62,12 +80,12 @@ class PaymentsController < ApplicationController
     channel = Channel.find(params['payment']['object'])
     if channel
       response = PaymentService.instance.subscription_payment(current_user, channel, params['payment'])
-      response[:redirect_to] = user_channel_path(params['payment']['object'])
+      response[:redirect_to] = channel_subscription_success_payment_path(channel.user.username)
     else
       response = {
           notice_type: :error,
           notice_message: 'Could not find channel data',
-          redirect_to: user_channel_path(params['payment']['object'])}
+          redirect_to: user_channel_path(channel.user.username)}
     end
     response
   end

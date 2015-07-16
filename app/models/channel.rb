@@ -63,6 +63,10 @@ class Channel
     save if removed
   end
 
+  def is_subscriber?(user)
+    !ChannelSubscriber.where(channel_id: self.id, user_id: user.id).count.zero?
+  end
+
   def thumbnail
     "https://codewatch-tv.s3-eu-west-1.amazonaws.com/stream-thumbnails/#{user.username}.png"
   end

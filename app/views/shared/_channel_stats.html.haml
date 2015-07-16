@@ -25,9 +25,14 @@
             %span.service-heading Likes
             %span.counter= likes
     .col-sm-6.vod
-      .service-block-v3.service-block-yellow
-        %i.fa.fa-youtube-play
-        %span.service-heading Video on Demand
-        %span.counter= vod_count
-        = link_to list_vod_path(channel.user.username) do
-          %span.vod-view-all.btn-u.btn-u-yellow View all
+      - if is_channel_subscriber?
+        .service-block-v3.service-block-yellow
+          %i.fa.fa-thumbs-up
+          %span.service-heading Subscribed
+          %span.counter Thank you!
+      - else
+        = link_to channel_subscription_payment_path(channel.user.username) do
+          .service-block-v3.service-block-yellow
+            %i.fa.fa-thumbs-o-up
+            %span.service-heading Subscribe
+            %span.counter= number_to_currency(BUSINESS_MODEL['prices']['channel_subscription'].to_f)

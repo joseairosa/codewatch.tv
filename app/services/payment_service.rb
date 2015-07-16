@@ -97,16 +97,17 @@ class PaymentService
   end
 
   def init_plan(channel)
+    username = channel.user.username
     begin
-      plan = Stripe::Plan.retrieve(channel_subscription_name(channel.username))
+      plan = Stripe::Plan.retrieve(channel_subscription_name(username))
     rescue Stripe::InvalidRequestError => e
       if e.http_status == 404
         plan = Stripe::Plan.create(
             :amount => (BUSINESS_MODEL['prices']['channel_subscription']*100).to_i,
             :interval => 'month',
-            :name => "Subscription to #{channel.username} channel",
+            :name => "Subscription to #{username} channel",
             :currency => 'usd',
-            :id => channel_subscription_name(channel.username)
+            :id => channel_subscription_name(username)
         )
       else
         raise e

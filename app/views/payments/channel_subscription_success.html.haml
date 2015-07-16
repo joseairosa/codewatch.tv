@@ -1,0 +1,13 @@
+= render partial: 'shared/breadcrumbs', locals: {page_name: 'Payment Successful'}
+.payment
+  .container.content
+    .title-box-v2
+      %h2 Thank You!
+      %p Your subscription to #{channel.user.username} is now active
+      .row.margin-top-50
+        .col.col-md-offset-2.col-md-3
+          = link_to user_channel_path(channel.user.username) do
+            %button#back-to-channel-button.btn-u.btn-u-lg.btn-block{:type => 'button'}= "Back to #{channel.user.username}'s channel"
+        .col.col-md-offset-2.col-md-3
+          = link_to root_path do
+            %button#manage-subscription-button.btn-u.btn-u-lg.btn-block{:type => 'button'}= 'Manage Subscription'
