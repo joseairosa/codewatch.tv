@@ -1,0 +1,22 @@
+base: &base
+  has_ads?: true
+  can_create_private_sessions?: true
+  can_access_admin?: false
+  can_keep_recordings?: true
+  recordings_persistence: 0 #days
+
+free:
+  <<: *base
+
+plus:
+  <<: *base
+  has_ads?: false
+  can_keep_recordings?: true
+  recordings_persistence: 30 #days
+
+admin:
+  <<: *base
+  has_ads?: false
+  can_access_admin?: true
+  can_keep_recordings?: true
+  recordings_persistence: 30 #days

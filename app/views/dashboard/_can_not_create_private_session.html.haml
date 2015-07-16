@@ -1,0 +1,12 @@
+.dashboard-body.margin-bottom-20
+  .tab-v1
+    .tab-content
+      #statistics-tab.dashboard-edit.tab-pane.fade.in.active
+        %h2.heading-md Reserved for plus subscribers
+        %p In order to get access to this funcitonality you'll require a plus subscription
+        %br
+        .row.margin-top-30.margin-bottom-50
+          .col.col-md-5
+            = link_to new_plus_payment_path do
+              %button#payment-button.btn-u.btn-u-lg.btn-block{:type => 'button'}= "What's a Plus subscription?"
+

@@ -13,9 +13,11 @@ class PaymentService
 
       if successfull_payment(charge)
         PrivateSessionService.instance.add_participant(private_session, current_user)
+        StatisticService.instance.new_private_session_payment(current_user, private_session, 'success')
         response[:notice_type] = :notice
         response[:notice_message] = 'Payment successfull. Thank you!'
       else
+        StatisticService.instance.new_private_session_payment(current_user, private_session, 'error')
         response[:notice_type] = :error
         response[:notice_message] = 'Internal error. Payment not taken!'
       end
@@ -35,9 +37,12 @@ class PaymentService
     subscription = create_subscription(current_user, customer, 'codewatch-plus')
 
     if successfull_subscription(subscription)
+      UserService.instance.change_account_type(current_user, :plus)
+      StatisticService.instance.new_plus_subscription(current_user, 'success')
       response[:notice_type] = :notice
       response[:notice_message] = 'Payment successfull. Thank you!'
     else
+      StatisticService.instance.new_plus_subscription(current_user, 'error')
       response[:notice_type] = :error
       response[:notice_message] = 'Internal error. Payment not taken!'
     end
@@ -56,10 +61,11 @@ class PaymentService
 
     if successfull_subscription(subscription)
       ChannelService.instance.subscribe(channel, current_user)
-
+      StatisticService.instance.new_channel_subscription(current_user, channel, 'success')
       response[:notice_type] = :notice
       response[:notice_message] = 'Payment successfull. Thank you!'
     else
+      StatisticService.instance.new_channel_subscription(current_user, channel, 'error')
       response[:notice_type] = :error
       response[:notice_message] = 'Internal error. Payment not taken!'
     end
@@ -127,7 +133,7 @@ class PaymentService
   end
 
   def successfull_subscription(subscription)
-    subscription.status == 'active'
+    subscription.status == 'active' || subscription.status == 'trialing'
   end
 
   def channel_subscription_name(username)
