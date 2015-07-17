@@ -22,7 +22,8 @@ class User
   has_many    :channel_likes,               class_name: 'ChannelLike'
   has_many    :private_sessions,            class_name: 'PrivateSession',     inverse_of: :user
   belongs_to  :private_session_participant, class_name: 'PrivateSession',     inverse_of: :participants
-  has_many    :subscriptions,               class_name: 'ChannelSubscriber',  inverse_of: :user
+  has_many    :channel_subscriptions,       class_name: 'ChannelSubscriber',  inverse_of: :user
+  has_many    :plus_subscriptions,          class_name: 'PlusSubscriber',     inverse_of: :user
   embeds_one  :account_type
 
   index 'account_type.name' => 1
@@ -147,7 +148,16 @@ class User
   end
 
   def is_plus?
-    account_type.name == :plus
+    account_type.name == :plus && plus_active?
+  end
+
+  def plus_active?
+    most_recent_subscription = plus_subscriptions.last
+    if most_recent_subscription && most_recent_subscription.transaction
+      Time.now.to_i <= plus_subscriptions.last.transaction.data.fetch('current_period_end', 0).to_i
+    else
+      false
+    end
   end
 
   def is_admin?

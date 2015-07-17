@@ -54,10 +54,22 @@ class ChannelService
     if channel && user
       found_subscriber = ChannelSubscriber.where(channel: channel, user: user).first
       unless found_subscriber
-        ChannelSubscriber.create(channel: channel, user: user)
+        found_subscriber = ChannelSubscriber.create(channel: channel, user: user)
         channel.update(total_subscribers: channel.total_subscribers+1)
       end
     end
+    found_subscriber
+  end
+
+  def cancel_subscription(user, subscription_id)
+    found_subscription = ChannelSubscriber.find(subscription_id)
+    if user && found_subscription && user.id == found_subscription.user.id
+      result = PaymentService.instance.cancel_subscription(user, found_subscription.internal_id)
+      Transaction.create!(channel_subscription: found_subscription, source: result.to_hash.to_json)
+      StatisticService.instance.canceled_channel_subscription(user, found_subscription.channel)
+      return true
+    end
+    false
   end
 
   def unsubscribe(channel, user)

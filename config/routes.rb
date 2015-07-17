@@ -19,6 +19,10 @@ Codewatch::Application.routes.draw do
   post 'dashboard/private_sessions/:id/update' => 'dashboard#update_private_session', as: :user_dashboard_private_sessions_update
   put 'dashboard/private_sessions/:id/cancel' => 'dashboard#cancel_private_session', as: :user_dashboard_private_sessions_cancel
 
+  get 'dashboard/subscriptions' => 'dashboard#subscriptions', as: :user_dashboard_subscriptions
+  put 'dashboard/subscription/plus/:id/cancel' => 'dashboard#cancel_plus_subscription', as: :user_dashboard_plus_subscription_cancel
+  put 'dashboard/subscription/channel/:id/cancel' => 'dashboard#cancel_channel_subscription', as: :user_dashboard_channel_subscription_cancel
+
   match 'edit/channel' => 'dashboard#edit_channel', as: :edit_user_channel, via: [ :get, :post, :delete ]
 
   post 'dashboard/update_user' => 'dashboard#update_user', as: :update_user

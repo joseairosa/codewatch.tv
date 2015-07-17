@@ -125,10 +125,19 @@ class StatisticService
   def new_plus_subscription(user, result)
     Analytics.track(
         user_id: user.id.to_s,
-        event: 'New Subscription',
+        event: 'New Plus Subscription',
         properties: {
             username: user.username,
             result: result
+        })
+  end
+
+  def canceled_plus_subscription(user)
+    Analytics.track(
+        user_id: user.id.to_s,
+        event: 'Canceled Plus Subscription',
+        properties: {
+            username: user.username
         })
   end
 
@@ -140,6 +149,16 @@ class StatisticService
             username: user.username,
             channel_id: channel.token,
             result: result
+        })
+  end
+
+  def canceled_channel_subscription(user, channel)
+    Analytics.track(
+        user_id: user.id.to_s,
+        event: 'Canceled Channel Subscription',
+        properties: {
+            username: user.username,
+            channel_id: channel.token
         })
   end
 

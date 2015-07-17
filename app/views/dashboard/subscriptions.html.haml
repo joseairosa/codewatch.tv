@@ -1,0 +1,81 @@
+= render partial: 'shared/breadcrumbs', locals: {page_name: 'Profile'}
+.container.content.dashboard
+  .row
+    .col-md-3.md-margin-bottom-40
+      = render partial: 'dashboard/portrait'
+      = render partial: 'dashboard/navigation'
+    .col-md-9
+      .dashboard-body.margin-bottom-20
+        .tab-v1
+          %ul.nav.nav-justified.nav-tabs
+            %li.active
+              %a{'data-toggle' => 'tab', :href => '#plus-subscriptions-tab'} Plus Subscriptions
+            %li
+              %a{'data-toggle' => 'tab', :href => '#channel-subscriptions-tab'} Channel Subscriptions
+          .tab-content
+            #plus-subscriptions-tab.dashboard-edit.tab-pane.fade.in.active
+              %h2.heading-md Manage your Plus Subscriptions
+              %p Below you can cancel any active Plus Subscriptions
+              .row
+                .col-md-12
+                  .panel.margin-bottom-40
+                    .panel-heading
+                      %h3.panel-title
+                        %i.fa.fa-user
+                        Subscriptions (#{@plus_subscriptions.count})
+                    .panel-body
+                      %table.table.table-hover
+                        %thead
+                          %tr
+                            %th Start date
+                            %th End date
+                            %th Status
+                            %th Amount
+                            %th
+                        %tbody
+                          - @plus_subscriptions.each_with_index do |subscription, i|
+                            %tr
+                              %td= subscription.start_date.to_formatted_s(:long_ordinal)
+                              %td= subscription.end_date.to_formatted_s(:long_ordinal)
+                              %td= subscription.status.capitalize
+                              %td= number_to_currency(subscription.amount)
+                              %td
+                                - unless subscription.canceled?
+                                  .row
+                                    .col-md-5
+                                      = button_to user_dashboard_plus_subscription_cancel_path(subscription.token), {form_class: 'form-unban-user', class: 'btn btn-danger btn-xs cancel-subscription', data: {confirm: "Your subscription will end on #{subscription.end_date.to_formatted_s(:long_ordinal)}, are you sure you want to continue?"}, method: :put} do
+                                        %i.fa.fa-remove
+                                        Cancel
+            #channel-subscriptions-tab.dashboard-edit.tab-pane.fade
+              %h2.heading-md Manage your Channel Subscriptions
+              %p Below you can cancel any active Channel Subscriptions
+              .row
+                .col-md-12
+                  .panel.margin-bottom-40
+                    .panel-heading
+                      %h3.panel-title
+                        %i.fa.fa-user
+                        Subscriptions (#{@channel_subscriptions.count})
+                    .panel-body
+                      %table.table.table-hover
+                        %thead
+                          %tr
+                            %th Start date
+                            %th End date
+                            %th Status
+                            %th Amount
+                            %th
+                        %tbody
+                          - @channel_subscriptions.each_with_index do |subscription, i|
+                            %tr
+                              %td= subscription.start_date.to_formatted_s(:long_ordinal)
+                              %td= subscription.end_date.to_formatted_s(:long_ordinal)
+                              %td= subscription.status.capitalize
+                              %td= number_to_currency(subscription.amount)
+                              %td
+                                - unless subscription.canceled?
+                                  .row
+                                    .col-md-5
+                                      = button_to user_dashboard_channel_subscription_cancel_path(subscription.token), {form_class: 'form-unban-user', class: 'btn btn-danger btn-xs cancel-subscription', data: {confirm: "Your subscription will end on #{subscription.end_date.to_formatted_s(:long_ordinal)}, are you sure you want to continue?"}, method: :put} do
+                                        %i.fa.fa-remove
+                                        Cancel
