@@ -1,6 +1,6 @@
 .topbar
   %ul.loginbar.pull-right
-    - if current_user.is_free?
+    - if current_user.nil? || current_user.is_free?
       %li
         = link_to 'Upgrade to Plus!', new_plus_payment_path
       %li.topbar-devider
