@@ -58,5 +58,7 @@ jQuery(document).ready(function() {
   App.initParallaxBg();
   OwlCarousel.initOwlCarousel();
   Datepicker.initDatepicker();
+
+  setTimeout(function(){$('#alerts-wrapper .alert').fadeOut()}, 5000);
 });
 
