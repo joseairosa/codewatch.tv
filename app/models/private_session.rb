@@ -1,12 +1,14 @@
 class PrivateSession
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Concerns::Streamer
   include Mongoid::Token
+
+  include Concerns::Streamer
 
   belongs_to :user, class_name: 'User', inverse_of: :private_sessions
 
   has_many :participants, class_name: 'User', inverse_of: :private_session_participant
+  has_many :transactions, class_name: 'Transaction'
 
   index title: 1
   index is_online: 1

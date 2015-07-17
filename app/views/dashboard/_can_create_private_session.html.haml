@@ -42,7 +42,7 @@
                                 %i.fa.fa-edit
                                 Edit
                             .col-md-5
-                              = button_to user_dashboard_private_sessions_cancel_path(private_session.token), {form_class: 'form-unban-user', class: 'btn btn-danger btn-xs delete-private-session', remote: true, method: :put} do
+                              = button_to user_dashboard_private_sessions_cancel_path(private_session.token), {form_class: 'form-unban-user', class: 'btn btn-danger btn-xs delete-private-session', method: :put} do
                                 %i.fa.fa-trash-o
                                 Cancel
                           .row.margin-top-15

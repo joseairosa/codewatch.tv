@@ -3,6 +3,10 @@
     = link_to user_dashboard_path do
       %i.fa.fa-user
       Profile
+  %li.list-group-item{class: params[:action] == 'subscriptions' ? 'active' : ''}
+    = link_to user_dashboard_subscriptions_path do
+      %i.fa.fa-user-plus
+      Subscriptions
   %li.list-group-item{class: params[:action] == 'stream_keys' ? 'active' : ''}
     = link_to user_dashboard_stream_keys_path do
       %i.fa.fa-key

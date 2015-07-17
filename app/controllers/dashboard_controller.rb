@@ -202,6 +202,30 @@ class DashboardController < ApplicationController
     redirect_to user_dashboard_private_sessions_path
   end
 
+  def subscriptions
+    @plus_subscriptions = current_user.plus_subscriptions
+    @channel_subscriptions = current_user.channel_subscriptions
+  end
+
+  def cancel_plus_subscription
+    redirect_to user_dashboard_private_sessions_path
+    if UserService.instance.cancel_plus_subscription(current_user, params[:id])
+      flash[:notice] = 'Cancelled successfully.'
+    else
+      flash[:error] = 'There was an error while trying to cancel you subscription.'
+    end
+    redirect_to user_dashboard_private_sessions_path
+  end
+
+  def cancel_channel_subscription
+    if ChannelService.instance.cancel_subscription(current_user, params[:id])
+      flash[:notice] = 'Cancelled successfully.'
+    else
+      flash[:error] = 'There was an error while trying to cancel you subscription.'
+    end
+    redirect_to user_dashboard_private_sessions_path
+  end
+
   def channel
     current_user.channel
   end

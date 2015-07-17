@@ -9,5 +9,5 @@
           = link_to user_channel_path(channel.user.username) do
             %button#back-to-channel-button.btn-u.btn-u-lg.btn-block{:type => 'button'}= "Back to #{channel.user.username}'s channel"
         .col.col-md-offset-2.col-md-3
-          = link_to root_path do
+          = link_to user_dashboard_subscriptions_path do
             %button#manage-subscription-button.btn-u.btn-u-lg.btn-block{:type => 'button'}= 'Manage Subscription'
