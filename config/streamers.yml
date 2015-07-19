@@ -1,6 +1,4 @@
-#streamer-01:
-#  public-ip: 46.101.12.137
-#  private-ip: 10.131.168.34
 streamer-01:
   public-ip: 52.18.67.195
   private-ip: 172.31.8.8
+
