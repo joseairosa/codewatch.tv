@@ -59,6 +59,9 @@ Codewatch::Application.routes.draw do
   get 'payments/channel_subscription/:id' => 'payments#new_channel_subscription', as: :channel_subscription_payment
   get 'payments/channel_subscription/:id/success' => 'payments#channel_subscription_success', as: :channel_subscription_success_payment
 
+  get 'terms' => 'terms#show', as: :terms
+  get 'privacy' => 'privacy#show', as: :privacy
+
   # Errors
   match '404' => 'errors#error404', via: [ :get, :post, :patch, :delete ]
 
