@@ -37,6 +37,7 @@
 @import "app";
 @import "custom-sky-forms";
 @import "custom-cubeportfolio";
+@import "cookies_eu";
 @import "custom";
 
 #alerts-wrapper {
@@ -49,5 +50,44 @@
     text-align: center;
     padding: 25px 40px;
     margin-bottom: 15px;
+  }
+}
+
+.cookies-eu {
+  background: #071822;
+  border-top: 1px solid #72c02c;
+  color: #fff;
+  line-height: 80px;
+  font-size: 1.5em;
+
+  .cookies-eu-content-holder {
+    display: inline-block;
+    padding: 0 20px;
+    line-height: 26px;
+  }
+  .cookies-eu-button-holder {
+    display: inline-block;
+    padding-right: 20px;
+
+    .cookies-eu-ok {
+      background-color: #72c02c;
+      background-image: none;
+      border: none;
+      border-radius: 2px;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 15px;
+      font-weight: bold;
+      height: 40px;
+      line-height: 40px;
+      margin-right: 0px;
+      min-width: 26px;
+      outline: 0;
+      padding: 0 22px;
+      text-align: center;
+      white-space: nowrap;
+      margin: 0 5px;
+    }
   }
 }
