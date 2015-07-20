@@ -91,3 +91,24 @@
     }
   }
 }
+
+.omniauth-buttons {
+  .btn:not(:first-child) {
+    margin-top: 10px;
+  }
+
+  .btn-twitchtv {
+    @extend .btn-facebook;
+    border-color: #6441A5;
+    color: #6441A5;
+
+    &:hover {
+      @extend .btn-facebook:hover;
+      background-color: #6441A5;
+    }
+  }
+
+  .fa-twitchtv {
+    @extend .fa-twitch
+  }
+}

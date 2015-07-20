@@ -234,6 +234,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :facebook, ENV['CODEWATCH_FACEBOOK_APP_ID2'], ENV['CODEWATCH_FACEBOOK_APP_SECRET2']
+  config.omniauth :twitchtv, ENV['CODEWATCH_TWITCHTV_APP_ID'], ENV['CODEWATCH_TWITCHTV_APP_SECRET'], scope: 'user_read'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
