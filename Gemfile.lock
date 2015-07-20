@@ -1,4 +1,12 @@
 GIT
+  remote: git@github.com:masterkain/omniauth-twitchtv
+  revision: 7bd23695af7e54441b92350516696570cc78b31e
+  specs:
+    omniauth-twitchtv (0.3.0)
+      httpclient
+      omniauth-oauth2 (~> 1.1)
+
+GIT
   remote: git@github.com:mkdynamic/omniauth-facebook.git
   revision: f20e906b52b0a8849569f1391f01771fb628f6d7
   specs:
@@ -167,6 +175,7 @@ GEM
     htmlentities (4.3.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    httpclient (2.6.0.1)
     i18n (0.7.0)
     interception (0.5)
     jbuilder (1.5.3)
@@ -386,6 +395,7 @@ DEPENDENCIES
   mongoid (~> 4.0.0)
   mongoid_token (~> 2.1.1)
   omniauth-facebook!
+  omniauth-twitchtv!
   pry-plus!
   rails (= 4.2.1)
   rails_bootstrap_navbar

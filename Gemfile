@@ -62,6 +62,8 @@ gem 'redis'
 
 gem 'omniauth-facebook', git: 'git@github.com:mkdynamic/omniauth-facebook.git'
 
+gem 'omniauth-twitchtv', git: 'git@github.com:masterkain/omniauth-twitchtv'
+
 gem 'tinymce-rails'
 
 gem 'elasticsearch'
