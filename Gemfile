@@ -84,11 +84,12 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 gem 'airbrake'
 
+gem 'cookies_eu'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
-
 
 group :development do
   gem 'better_errors', '~> 2.1.1'

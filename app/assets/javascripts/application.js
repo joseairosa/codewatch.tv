@@ -34,6 +34,7 @@
 //= require owl-carousel
 //= require jquery.cubeportfolio.min
 //= require cube-portfolio-6-fw-tx
+//= require cookies_eu
 //= require_tree .
 
 jwplayer.key="RdBgRDffK8CxoR+GCaOb0iinIDch8TJmzRxvoA==";
@@ -61,4 +62,3 @@ jQuery(document).ready(function() {
 
   setTimeout(function(){$('#alerts-wrapper .alert').fadeOut()}, 5000);
 });
-
