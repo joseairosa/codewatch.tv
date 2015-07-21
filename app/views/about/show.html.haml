@@ -1,0 +1,22 @@
+= render partial: 'shared/breadcrumbs', locals: {page_name: 'About'}
+.container.content-sm
+  .row.about-me
+    .col-sm-4.shadow-wrapper.md-margin-bottom-40
+      .box-shadow.shadow-effect-2
+        %img.img-responsive.img-bordered.full-width{:alt => "Jose Airosa", :src => image_path("joseairosa.jpg")}
+    .col-sm-8
+      .overflow-h
+        .pull-left
+          %h2 José P. Airosa
+          %span Founder
+        %ul.social-icons.pull-right
+          %li
+            %a.rounded-x.social_facebook{"data-original-title" => "Facebook", :href => "https://facebook.com/josepairosa"}
+          %li
+            %a.rounded-x.social_twitter{"data-original-title" => "Twitter", :href => "https://twitter.com/joseairosa"}
+          %li
+            %a.rounded-x.social_linkedin{"data-original-title" => "Linkedin", :href => "https://uk.linkedin.com/in/joseairosa"}
+      %p Quite a while ago I idealized this project, obivously inspired with the popularity of twitch, but was not until April 2015 that the development really kicked off.
+      %p Codewatch.tv is not the first application of its type on the market, but the intention is to fill some of the gaps and introduce new and fresh functionality.
+      %p This project, apart from initial help from my collegues Carlo Scarioni and Jorja Hung, was fully developed and currently maintained by me.
+

@@ -5,10 +5,10 @@
     .row.category.margin-bottom-20
       - top_languages.each_slice(5).to_a.each do |category_slice|
         .col-md-6.col-sm-8
-          - category_slice.each do |category_name|
+          - category_slice.each do |category_name, description|
             .content-boxes-v3.margin-bottom-10.md-margin-bottom-20
               %i.icon-custom.icon-sm.rounded-x.icon-bg-sea.icon-line.fa.fa-code
               .content-boxes-in-v3
                 %h3
                   = link_to top_categories[category_name].name, category_channels_path(top_categories[category_name].name)
-                %p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                %p= top_categories[category_name].description
