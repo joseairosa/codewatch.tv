@@ -1,0 +1,11 @@
+.container.content
+  .headline
+    %h2 Latest News
+
+  .row.service-v1.margin-bottom-40
+    - latest_posts.each do |post|
+      .col-md-4
+        %h2= post['post_title']
+        %p= post['post_excerpt']
+        %p
+          %a{href: post['link'], target: :blank} See more...
