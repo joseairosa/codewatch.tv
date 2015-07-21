@@ -61,6 +61,7 @@ Codewatch::Application.routes.draw do
 
   get 'terms' => 'terms#show', as: :terms
   get 'privacy' => 'privacy#show', as: :privacy
+  get 'about' => 'about#show', as: :about
 
   # Errors
   match '404' => 'errors#error404', via: [ :get, :post, :patch, :delete ]
