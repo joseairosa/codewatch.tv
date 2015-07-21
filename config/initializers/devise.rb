@@ -235,6 +235,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :facebook, ENV['CODEWATCH_FACEBOOK_APP_ID2'], ENV['CODEWATCH_FACEBOOK_APP_SECRET2']
   config.omniauth :twitchtv, ENV['CODEWATCH_TWITCHTV_APP_ID'], ENV['CODEWATCH_TWITCHTV_APP_SECRET'], scope: 'user_read'
+  config.omniauth :reddit, ENV['CODEWATCH_REDDIT_APP_ID'], ENV['CODEWATCH_REDDIT_APP_SECRET'], scope: 'identity'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

@@ -1,4 +1,8 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  def reddit
+    process_callback(:reddit, 'Reddit')
+  end
+
   def twitchtv
     process_callback(:twitchtv, 'Twitch')
   end

@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/jackdempsey/omniauth-reddit.git
+  revision: 4e54423f2d8a000e010998b53fa653adb7137baa
+  specs:
+    omniauth-reddit (0.0.2)
+      omniauth-oauth2 (~> 1.1)
+
+GIT
   remote: git@github.com:masterkain/omniauth-twitchtv
   revision: 7bd23695af7e54441b92350516696570cc78b31e
   specs:
@@ -395,6 +402,7 @@ DEPENDENCIES
   mongoid (~> 4.0.0)
   mongoid_token (~> 2.1.1)
   omniauth-facebook!
+  omniauth-reddit!
   omniauth-twitchtv!
   pry-plus!
   rails (= 4.2.1)

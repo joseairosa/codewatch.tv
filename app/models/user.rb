@@ -13,7 +13,7 @@ class User
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :authentication_keys => [:login]
-  devise :omniauthable, :omniauth_providers => [:facebook, :twitchtv]
+  devise :omniauthable, :omniauth_providers => [:facebook, :twitchtv, :reddit]
 
   has_one     :channel
   has_many    :recordings
@@ -131,6 +131,9 @@ class User
         user.email = data["email"] if user.email.blank?
       end
       if data = session["devise.twitchtv_data"] && session["devise.twitchtv_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+      if data = session["devise.reddit_data"] && session["devise.reddit_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
       end
     end

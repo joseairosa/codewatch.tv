@@ -64,6 +64,8 @@ gem 'omniauth-facebook', git: 'git@github.com:mkdynamic/omniauth-facebook.git'
 
 gem 'omniauth-twitchtv', git: 'git@github.com:masterkain/omniauth-twitchtv'
 
+gem 'omniauth-reddit', :git => 'git://github.com/jackdempsey/omniauth-reddit.git'
+
 gem 'tinymce-rails'
 
 gem 'elasticsearch'
