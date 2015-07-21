@@ -1,8 +1,11 @@
 namespace :build do
   desc 'Build list of languages'
   task list_of_languages: :environment do
-    languages_array = File.read(File.join('lib', 'assets', 'languages.txt')).split("\r\n")
-    languages_array.each { |name| Category.find_or_create(name) }
+    languages_array = YAML.load_file(File.join('lib', 'assets', 'languages.yml'))
+    languages_array.each { |name, data|
+      category = Category.find_or_create(name)
+      category.update_attributes(description: data['description'])
+    }
   end
 
   desc 'reindex for search'
