@@ -7,6 +7,7 @@ class HomeController < ApplicationController
   helper_method :featured_streamers
   helper_method :top_categories
   helper_method :top_languages
+  helper_method :latest_posts
 
   def index
   end
@@ -27,5 +28,9 @@ class HomeController < ApplicationController
 
   def featured_streamers
     User.where(featured: 1).to_a
+  end
+
+  def latest_posts
+    CW_BLOG.getPosts(filter: {number: 3, orderby: 'post_date', order: 'desc'})
   end
 end
