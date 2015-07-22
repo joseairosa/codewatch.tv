@@ -37,7 +37,7 @@
 //= require cookies_eu
 //= require_tree .
 
-jwplayer.key="RdBgRDffK8CxoR+GCaOb0iinIDch8TJmzRxvoA==";
+jwplayer.key="XTCcJRRNCWLv6ALSFlA9oLGwf905fL80tNwAQg==";
 
 function guid() {
   function s4() {
