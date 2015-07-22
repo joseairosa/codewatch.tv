@@ -12,7 +12,7 @@ every 1.hour do
   rake_env 'process:update_offline_channels_current_viewers'
 end
 
-every 5.minutes do
+every 1.minutes do
   rake_env 'servers:update_streamers'
 end
 
