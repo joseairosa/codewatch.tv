@@ -13,6 +13,10 @@ every 1.hour do
 end
 
 every 5.minutes do
+  rake_env 'servers:update_streamers'
+end
+
+every 10.minutes do
   rake_env 'process:update_reddit_feeds'
 end
 
