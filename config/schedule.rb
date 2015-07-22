@@ -5,6 +5,14 @@ every 5.minutes do
 end
 
 every 5.minutes do
+  rake_env 'process:update_online_channels_current_viewers'
+end
+
+every 1.hour do
+  rake_env 'process:update_offline_channels_current_viewers'
+end
+
+every 5.minutes do
   rake_env 'process:update_reddit_feeds'
 end
 

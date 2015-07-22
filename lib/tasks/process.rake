@@ -22,7 +22,25 @@ namespace :process do
   task update_channels_current_viewers: :environment do
     Channel.all.each do |channel|
       current_viewers = ChannelService.instance.channel_viewers(channel)
-      Rails.logger.info "Updating #{channel.user.username} with #{current_viewers} current viewers..."
+      Rails.logger.debug "Updating #{channel.user.username} with #{current_viewers} current viewers..."
+      ChannelService.instance.update_live_viewers(channel, current_viewers)
+    end
+  end
+
+  desc 'Update online channels current viewers'
+  task update_online_channels_current_viewers: :environment do
+    Channel.where(is_online: 1).each do |channel|
+      current_viewers = ChannelService.instance.channel_viewers(channel)
+      Rails.logger.debug "Updating #{channel.user.username} with #{current_viewers} current viewers..."
+      ChannelService.instance.update_live_viewers(channel, current_viewers)
+    end
+  end
+
+  desc 'Update offline channels current viewers'
+  task update_offline_channels_current_viewers: :environment do
+    Channel.where(is_online: 0).each do |channel|
+      current_viewers = 0
+      Rails.logger.debug "Updating #{channel.user.username} with #{current_viewers} current viewers..."
       ChannelService.instance.update_live_viewers(channel, current_viewers)
     end
   end
