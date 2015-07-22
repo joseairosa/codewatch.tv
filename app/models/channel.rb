@@ -64,7 +64,11 @@ class Channel
   end
 
   def is_subscriber?(user)
-    !ChannelSubscriber.where(channel_id: self.id, user_id: user.id).count.zero?
+    if user
+      !ChannelSubscriber.where(channel_id: self.id, user_id: user.id).count.zero?
+    else
+      false
+    end
   end
 
   def thumbnail
