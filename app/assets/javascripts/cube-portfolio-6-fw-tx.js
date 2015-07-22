@@ -2,7 +2,7 @@ jQuery(document).ready(function () {
   'use strict';
 
   var gridCategoryContainer = $('#grid-category-container'),
-    gridChannelContainer = $('.grid-channel-container'),
+    gridChannelContainer = $('#grid-channel-container'),
     filtersContainer = $('#filters-container'),
     wrap, filtersCallback;
 
