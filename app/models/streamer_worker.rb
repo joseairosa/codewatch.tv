@@ -25,8 +25,8 @@ class StreamerWorker
     def update_streamers
       streamers_servers = FOG.servers.select { |s|
         s.tags['Group'] == 'streamer' &&
-            public_ip_address.present? &&
-            private_ip_address.present? &&
+            s.public_ip_address.present? &&
+            s.private_ip_address.present? &&
             s.tags['Active'] == 'yes'
       }
       streamers = streamers_servers.map { |s|
