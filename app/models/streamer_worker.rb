@@ -15,17 +15,21 @@ class StreamerWorker
     end
 
     def streamers_name_list
-      self.streamers.map { |s| s[:name] }
+      self.streamers.map { |s| s['name'] }
     end
 
     def find_streamer(streamer_id)
-      self.streamers.find { |s| s[:name] == streamer_id }
+      self.streamers.find { |s| s['name'] == streamer_id }
     end
 
     def update_streamers
       streamers_servers = FOG.servers.select { |s| s.tags['Group'] == 'streamer' }
       streamers = streamers_servers.map { |s|
-        {name: s.tags['Name'], public_ip: s.public_ip_address, private_ip: s.private_ip_address, type: s.tags['Type']}
+        {
+            'name' => s.tags['Name'],
+            'public_ip' => s.public_ip_address,
+            'private_ip' => s.private_ip_address,
+            'type' => s.tags['Type']}
       }
       if CACHE['streamer-lb'] != streamers
         CACHE['streamer-lb'] = streamers
