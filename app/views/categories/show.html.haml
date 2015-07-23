@@ -1,5 +1,5 @@
+= render partial: 'shared/breadcrumbs', locals: {page_name: "#{category.name} streams"}
 .channel-list
-  = render partial: 'shared/breadcrumbs', locals: {page_name: "#{category.name} streams"}
   - if channels.empty?
     .container.content
       .row
@@ -11,6 +11,6 @@
   - else
     .cube-portfolio.margin-bottom-50
       .content-xs
-      #grid-channel-container.cbp-l-grid-fullWidth.margin-left-10.margin-right-10
+      .grid-channel-container.cbp-l-grid-fullWidth.margin-left-10.margin-right-10
         - channels.each do |channel|
           = render partial: 'shared/stream_thumbnail', locals: {channel: channel, link: user_channel_path(channel.user.username)}

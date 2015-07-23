@@ -5,6 +5,6 @@
       %h2= order_key || 'Offline'
     .cube-portfolio.margin-bottom-50
       .content-xs
-      .grid-channel-container.cbp-l-grid-fullWidth
+      .grid-channel-container.cbp-l-grid-fullWidth.margin-left-10.margin-right-10
         - grouped_channels[order_key].to_a.each do |channel|
           = render partial: 'shared/stream_thumbnail', locals: {channel: channel, link: user_external_channel_path(channel.user.username)}
