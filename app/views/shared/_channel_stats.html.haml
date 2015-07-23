@@ -3,12 +3,12 @@
     .col-sm-6.sm-margin-bottom-20.total-viewers
       .service-block-v3.service-block-u
         %i.fa.fa-eye
-        %span.service-heading Total Viewers
+        %span.service-heading Views
         %span.counter= total_viewers
     .col-sm-6.current-viewers
       .service-block-v3.service-block-u
         %i.fa.fa-user
-        %span.service-heading Current Viewers
+        %span.service-heading Viewers
         %span.counter= current_viewers == 0 ? 1 : current_viewers
   .row
     .col-sm-6.sm-margin-bottom-20.likes
@@ -29,7 +29,7 @@
         .service-block-v3.service-block-yellow
           %i.fa.fa-star
           %span.service-heading Subscribed
-          %span.counter Thank you!
+          %span.counter Thanks!
       - else
         = link_to channel_subscription_payment_path(channel.user.username) do
           .service-block-v3.service-block-yellow
