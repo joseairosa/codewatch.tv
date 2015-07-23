@@ -1,6 +1,14 @@
+theme: "modern"
+skin: "light"
 toolbar:
-  - styleselect | bold italic | undo redo
-  - image | link
+  - styleselect | bold underline italic | bullist numlist | undo redo | image | link | code
 plugins:
   - image
   - link
+  - media
+  - bbcode
+  - code
+  - colorpicker
+  - emoticons
+  - hr
+  - table
