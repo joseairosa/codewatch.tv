@@ -7,7 +7,7 @@ namespace :build do
       category.update_attributes(description: data['description'])
     }
     puts 'Deleting not used languages...'
-    Category.nin(name: languages_array.keys)
+    Category.nin(name: languages_array.keys).delete
   end
 
   desc 'reindex for search'
