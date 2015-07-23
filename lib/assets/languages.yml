@@ -1,512 +1,196 @@
+(Visual) FoxPro:
+  description:
 4th Dimension/4D:
-  description: 
+  description:
 ABAP:
-  description: 
+  description:
 ABC:
-  description: 
-ActionScript:
-  description: 
-Ada:
-  description: 
-Agilent VEE:
-  description: 
-Algol:
-  description: 
-Alice:
-  description: 
-Angelscript:
-  description: 
-Apex:
-  description: 
+  description:
 APL:
-  description: 
-AppleScript:
-  description: 
-Arc:
-  description: 
-Arduino:
-  description: 
-ASP:
-  description: 
-AspectJ:
-  description: 
+  description:
+ActionScript:
+  description:
+Ada:
+  description:
+Alice:
+  description:
+Apex:
+  description:
 Assembly:
-  description: 
-ATLAS:
-  description: 
-Augeas:
-  description: 
-AutoHotkey:
-  description: 
-AutoIt:
-  description: 
+  description:
 AutoLISP:
-  description: 
+  description:
 Automator:
-  description: 
-Avenue:
-  description: 
+  description:
 Awk:
-  description: 
+  description:
 Bash:
-  description: 
-(Visual) Basic:
-  description: 
-bc:
-  description: 
-BCPL:
-  description: 
-BETA:
-  description: 
-BlitzMax:
-  description: 
-Boo:
-  description: 
-Bourne Shell:
-  description: 
-Bro:
-  description: 
+  description:
+Bourne shell:
+  description:
 C:
   description: C is a general-purpose language which has been closely associated with the UNIX operating system for which it was developed - since the system and most of the programs that run it are written in C.
 C Shell:
-  description: 
+  description:
 C#:
   description: A hybrid of C and C++, it is a Microsoft programming language developed to compete with Sun's Java language.
 C++:
   description: C++ is a general-purpose programming language. It has imperative, object-oriented and generic programming features, while also providing facilities for low-level memory manipulation.
-C++/CLI:
-  description: 
-C-Omega:
-  description: 
-Caml:
-  description: 
-Ceylon:
-  description: 
-CFML:
-  description: 
-cg:
-  description: 
-Ch:
-  description: 
-CHILL:
-  description: 
-CIL:
-  description: 
 CL (OS/400):
-  description: 
-Clarion:
-  description: 
-Clean:
-  description: 
-Clipper:
-  description: 
-Clojure:
-  description: 
-CLU:
-  description: 
+  description:
 COBOL:
-  description: 
-Cobra:
-  description: 
-CoffeeScript:
-  description: 
-ColdFusion:
-  description: 
-COMAL:
-  description: 
+  description:
+Caml:
+  description:
+Clojure:
+  description:
 Common Lisp:
-  description: 
-Coq:
-  description: 
-cT:
-  description: 
-Curl:
-  description: 
+  description:
 D:
-  description: 
+  description:
 Dart:
-  description: 
-DCL:
-  description: 
-DCPU-16 ASM:
-  description: 
-Delphi/Object Pascal:
-  description: 
-DiBOL:
-  description: 
-Dylan:
-  description: 
-E:
-  description: 
-eC:
-  description: 
-Ecl:
-  description: 
-ECMAScript:
-  description: 
-EGL:
-  description: 
-Eiffel:
-  description: 
-Elixir:
-  description: 
-Emacs Lisp:
-  description: 
-Erlang:
-  description: 
-Etoys:
-  description: 
-Euphoria:
-  description: 
+  description:
 EXEC:
-  description: 
+  description:
+Eiffel:
+  description:
+Emacs Lisp:
+  description:
+Erlang:
+  description:
+Etoys:
+  description:
 F#:
-  description: 
-Factor:
-  description: 
-Falcon:
-  description: 
-Fancy:
-  description: 
-Fantom:
-  description: 
-Felix:
-  description: 
+  description:
 Forth:
-  description: 
+  description:
 Fortran:
-  description: 
-Fortress:
-  description: 
-(Visual) FoxPro:
-  description: 
-Gambas:
-  description: 
+  description:
 GNU Octave:
-  description: 
+  description:
 Go:
   description: Go, also commonly referred to as golang, is a programming language developed at Google in 2007 by Robert Griesemer, Rob Pike, and Ken Thompson.
-Google AppsScript:
-  description: 
-Gosu:
-  description: 
 Groovy:
-  description: 
+  description:
 Haskell:
-  description: 
-haXe:
-  description: 
-Heron:
-  description: 
-HPL:
-  description: 
-HyperTalk:
-  description: 
-Icon:
-  description: 
+  description:
+Haxe:
+  description:
 IDL:
-  description: 
+  description:
+Icon:
+  description:
 Inform:
-  description: 
-Informix-4GL:
-  description: 
-INTERCAL:
-  description: 
+  description:
 Io:
-  description: 
+  description:
 Ioke:
-  description: 
+  description:
 J:
-  description: 
-J#:
-  description: 
+  description:
 JADE:
-  description: 
+  description:
 Java:
   description: Java is a general-purpose computer programming language that is concurrent, class-based, object-oriented, and specifically designed to have as few implementation dependencies as possible.
-Java FX Script:
-  description: 
 JavaScript:
   description: JavaScript is a dynamic programming language. It is most commonly used as part of web browsers, whose implementations allow client-side scripts to interact with the user, control the browser, communicate asynchronously, and alter the document content that is displayed.
-JScript:
-  description: 
-JScript.NET:
-  description: 
-Julia:
-  description: 
-Korn Shell:
-  description: 
-Kotlin:
-  description: 
+Korn shell:
+  description:
 LabVIEW:
-  description: 
+  description:
 Ladder Logic:
-  description: 
-Lasso:
-  description: 
-Limbo:
-  description: 
-Lingo:
-  description: 
+  description:
 Lisp:
-  description: 
+  description:
 Logo:
-  description: 
-Logtalk:
-  description: 
-LotusScript:
-  description: 
-LPC:
-  description: 
+  description:
 Lua:
-  description: 
-Lustre:
-  description: 
-M4:
-  description: 
-MAD:
-  description: 
-Magic:
-  description: 
-Magik:
-  description: 
-Malbolge:
-  description: 
-MANTIS:
-  description: 
-Maple:
-  description: 
-Mathematica:
-  description: 
+  description:
 MATLAB:
-  description: 
-Max/MSP:
-  description: 
-MAXScript:
-  description: 
-MEL:
-  description: 
-Mercury:
-  description: 
-Mirah:
-  description: 
-Miva:
-  description: 
+  description:
 ML:
-  description: 
-Monkey:
-  description: 
-Modula-2:
-  description: 
-Modula-3:
-  description: 
-MOO:
-  description: 
-Moto:
-  description: 
-MS-DOS Batch:
-  description: 
+  description:
+MQL4:
+  description:
 MUMPS:
-  description: 
+  description:
+Magic:
+  description:
+Mathematica:
+  description:
+Modula-2:
+  description:
 NATURAL:
-  description: 
-Nemerle:
-  description: 
-Nimrod:
-  description: 
-NQC:
-  description: 
-NSIS:
-  description: 
-Nu:
-  description: 
+  description:
 NXT-G:
-  description: 
-Oberon:
-  description: 
-Object Rexx:
-  description: 
+  description:
+OCaml:
+  description:
 Objective-C:
   description: Objective-C is a general-purpose, object-oriented programming language that adds Smalltalk-style messaging to the C programming language. It is the main programming language used by Apple for the OS X and iOS operating systems, and their respective application programming interfaces (APIs), Cocoa and Cocoa Touch.
-Objective-J:
-  description: 
-OCaml:
-  description: 
-Occam:
-  description: 
-ooc:
-  description: 
-Opa:
-  description: 
 OpenCL:
-  description: 
+  description:
 OpenEdge ABL:
-  description: 
-OPL:
-  description: 
+  description:
 Oz:
-  description: 
-Paradox:
-  description: 
-Parrot:
-  description: 
-Pascal:
-  description: 
-Perl:
-  description: 
+  description:
 PHP:
   description: PHP is a server-side scripting language created in 1995 and designed for web development but also used as a general-purpose programming language. As of January 2013, PHP was installed on more than 240 million websites (39% of those sampled) and 2.1 million web servers.
-Pike:
-  description: 
-PILOT:
-  description: 
 PL/I:
-  description: 
+  description:
 PL/SQL:
-  description: 
-Pliant:
-  description: 
+  description:
+Pascal:
+  description:
+Perl:
+  description:
 PostScript:
-  description: 
-POV-Ray:
-  description: 
-PowerBasic:
-  description: 
-PowerScript:
-  description: 
+  description:
 PowerShell:
-  description: 
-Processing:
-  description: 
+  description:
 Prolog:
-  description: 
-Puppet:
-  description: 
-Pure Data:
-  description: 
+  description:
 Python:
   description: Python is a widely used general-purpose, high-level programming language. Its design philosophy emphasizes code readability, and its syntax allows programmers to express concepts in fewer lines of code than would be possible in languages such as C++ or Java.
 Q:
-  description: 
+  description:
 R:
-  description: 
-Racket:
-  description: 
-REALBasic:
-  description: 
-REBOL:
-  description: 
-Revolution:
-  description: 
-REXX:
-  description: 
+  description:
 RPG (OS/400):
-  description: 
+  description:
 Ruby:
   description: Ruby is a dynamic, reflective, object-oriented, general-purpose programming language. It was designed and developed in the mid-1990s by Yukihiro "Matz" Matsumoto in Japan. Ruby was influenced by Perl, Smalltalk, Eiffel, Ada, and Lisp.
 Rust:
-  description: 
-S:
-  description: 
-S-PLUS:
-  description: 
+  description:
 SAS:
-  description: 
-Sather:
-  description: 
-Scala:
-  description: 
-Scheme:
-  description: 
-Scilab:
-  description: 
-Scratch:
-  description: 
-sed:
-  description: 
-Seed7:
-  description: 
-Self:
-  description: 
-Shell:
-  description: 
-SIGNAL:
-  description: 
-Simula:
-  description: 
-Simulink:
-  description: 
-Slate:
-  description: 
-Smalltalk:
-  description: 
-Smarty:
-  description: 
-SPARK:
-  description: 
+  description:
 SPSS:
-  description: 
-SQR:
-  description: 
-Squeak:
-  description: 
-Squirrel:
-  description: 
+  description:
+Scala:
+  description:
+Scheme:
+  description:
+Scratch:
+  description:
+Smalltalk:
+  description:
 Standard ML:
-  description: 
-Suneido:
-  description: 
-SuperCollider:
-  description: 
-TACL:
-  description: 
+  description:
+Stata:
+  description:
+Swift:
+  description:
 Tcl:
-  description: 
-Tex:
-  description: 
-thinBasic:
-  description: 
-TOM:
-  description: 
+  description:
 Transact-SQL:
-  description: 
-Turing:
-  description: 
-TypeScript:
-  description: 
-Vala/Genie:
-  description: 
+  description:
 VBScript:
-  description: 
-Verilog:
-  description: 
+  description:
 VHDL:
-  description: 
-VimL:
-  description: 
-Visual Basic .NET:
-  description: 
-WebDNA:
-  description: 
-Whitespace:
-  description: 
-X10:
-  description: 
-xBase:
-  description: 
-XBase++:
-  description: 
-Xen:
-  description: 
-XPL:
-  description: 
-XSLT:
-  description: 
-XQuery:
-  description: 
-yacc:
-  description: 
-Yorick:
-  description: 
+  description:
+Verilog:
+  description:
+Visual Basic:
+  description:
 Z shell:
-  description: 
+  description:
