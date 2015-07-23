@@ -6,7 +6,6 @@ plugins:
   - image
   - link
   - media
-  - bbcode
   - code
   - colorpicker
   - emoticons
