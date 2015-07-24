@@ -45,7 +45,7 @@ class StatisticService
     Analytics.track(
         user_id: channel.user.id.to_s,
         event: 'Stream Online',
-        properties: { title: channel.title, streamer_id: channel.streamer_id })
+        properties: { title: channel.title, streamer_id: channel.streamer_id, category: channel.category.name })
   end
 
   def private_session_online(private_session)
@@ -59,7 +59,7 @@ class StatisticService
     Analytics.track(
         user_id: channel.user.id.to_s,
         event: 'Stream Offline',
-        properties: { title: channel.title, streamer_id: channel.streamer_id })
+        properties: { title: channel.title, streamer_id: channel.streamer_id, category: channel.category.name })
   end
 
   def private_session_offline(private_session)
@@ -73,14 +73,14 @@ class StatisticService
     Analytics.track(
         user_id: channel.user.id.to_s,
         event: 'Started Watching Stream',
-        properties: { channel_id: channel.user.username, quality: quality })
+        properties: { channel_id: channel.user.username, quality: quality, category: channel.category.name })
   end
 
   def finished_watching_stream(channel)
     Analytics.track(
         user_id: channel.user.id.to_s,
         event: 'Finished Watching Stream',
-        properties: { channel_id: channel.user.username })
+        properties: { channel_id: channel.user.username, category: channel.category.name })
   end
 
   def watching_private_session(private_session, quality)
